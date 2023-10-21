@@ -1,0 +1,8 @@
+---
+import Page from "@/layouts/Page/Page.astro";
+import data from "@/data.json";
+
+const { pageTitle } = data.pages.notFound;
+---
+
+<Page title={pageTitle}>404</Page>

@@ -1,0 +1,15 @@
+---
+import * as SplashToScrollUpStyled from "./SplashToScrollUp.styled";
+import { Image } from "astro:assets";
+import logo from "./logo.png";
+import data from "@/data.json";
+
+const { sections } = data.pages.home;
+
+const sectionKey: keyof typeof sections = "about";
+const href = `#${sectionKey}`;
+---
+
+<SplashToScrollUpStyled.Component href={href}>
+  <Image class="logo" src={logo} alt="" />
+</SplashToScrollUpStyled.Component>

@@ -1,0 +1,33 @@
+---
+import * as FooterStyled from "./Footer.styled";
+import data from "@/data.json";
+
+const { copyright, sections } = data.footer;
+const { acknowledgments, othersPages } = sections;
+---
+
+<FooterStyled.Component>
+  <ul class="sections">
+    <li class="item">
+      <p class="title">{acknowledgments.title}</p>
+      <div class="separator"></div>
+      <div class="group-text">
+        <p class="acknowledgments text">{acknowledgments.data.text}</p>
+        <ul>
+          {
+            acknowledgments.data.items.map((item) => (
+              <li class="text">• {item}</li>
+            ))
+          }
+        </ul>
+      </div>
+    </li>
+    <li class="item">
+      <p class="title">{othersPages.title}</p>
+      <div class="separator"></div>
+      <!-- <ButtonSection title="Not found" handlingClass="link-page" /> -->
+    </li>
+  </ul>
+  <div class="separator"></div>
+  <span class="copyright text">{copyright}</span>
+</FooterStyled.Component>

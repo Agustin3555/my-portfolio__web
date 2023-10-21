@@ -1,0 +1,45 @@
+---
+import * as ToggleDarkModeStyled from "./ToggleDarkMode.styled";
+import Icon from "@/components/Icon/Icon.astro";
+import { FONT_SIZE } from "@/styles";
+---
+
+<ToggleDarkModeStyled.Component>
+  <div class="fake-button">
+    <div class="sun">
+      <Icon iconName="fa-solid fa-sun" style={{ size: FONT_SIZE.s }} />
+    </div>
+    <div class="moon">
+      <Icon iconName="fa-solid fa-moon" style={{ size: FONT_SIZE.s }} />
+    </div>
+  </div>
+  <input
+    class="input"
+    type="checkbox"
+    id="dark-mode-toggle"
+    title="Alternar tema"
+  />
+</ToggleDarkModeStyled.Component>
+
+<script>
+  import { darkModeBodyAttr } from "../../tools";
+  import { darkModeEntity } from "@/services";
+
+  const handleChange: EventListener = (event) => {
+    const element = event.target as HTMLInputElement;
+    const { checked } = element;
+
+    darkModeBodyAttr.set(String(checked));
+    darkModeEntity.set(checked);
+  };
+
+  const darkModeToggle = window.document.getElementById(
+    "dark-mode-toggle",
+  ) as HTMLInputElement | null;
+
+  if (darkModeToggle) {
+    darkModeToggle.checked = Boolean(darkModeEntity.get());
+
+    darkModeToggle.addEventListener("change", handleChange);
+  }
+</script>

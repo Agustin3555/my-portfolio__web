@@ -1,0 +1,19 @@
+---
+import * as IconStyled from "./Icon.styled";
+import { HandlingClass, asClassName } from "@/tools";
+
+interface Props {
+  iconName: string;
+  handlingClass?: HandlingClass;
+  style?: IconStyled.Props;
+}
+
+const { iconName, handlingClass, style } = Astro.props;
+---
+
+<IconStyled.Component
+  className={asClassName(handlingClass)}
+  p={IconStyled.adapter(style)}
+>
+  <i class={`icon ${iconName}`}></i>
+</IconStyled.Component>

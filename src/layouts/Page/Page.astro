@@ -1,0 +1,76 @@
+---
+import "@/styles/normalize.css";
+import "@/styles/vars.css";
+import "@/styles/style.css";
+import { GlobalStyle } from "@/styles";
+import * as PageStyled from "./Page.styled";
+import ToggleDarkMode from "./components/ToggleDarkMode/ToggleDarkMode.astro";
+import Footer from "./components/Footer/Footer.astro";
+import SplashToScrollUp from "./components/SplashToScrollUp/SplashToScrollUp.astro";
+import data from "@/data.json";
+
+interface Props {
+  title?: string;
+}
+
+const { title } = Astro.props;
+const { base, separator } = data.pageTitle;
+
+let documentTitle = base;
+
+if (title) documentTitle += ` ${separator} ${title}`;
+---
+
+<html lang="en">
+  <head>
+    <!-- TODO: completar -->
+
+    <meta charset="UTF-8" />
+    <meta name="description" content="Astro description" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{documentTitle}</title>
+
+    <script is:inline src="https://kit.fontawesome.com/7463805de7.js"></script>
+  </head>
+  <body>
+    <GlobalStyle darkMode={true} />
+    <PageStyled.Component>
+      <div class="static">
+        <main class="main">
+          <slot />
+          <ToggleDarkMode />
+        </main>
+        <Footer />
+      </div>
+      <SplashToScrollUp />
+      <!-- <LeftNav /> -->
+      <!-- <Menu /> -->
+    </PageStyled.Component>
+  </body>
+</html>
+
+<script>
+  import { darkModeBodyAttr } from "./tools";
+  import { darkModeEntity } from "@/services";
+
+  const DEFAULT_DARK_MODE = true;
+
+  const darkModeInit = () => {
+    // Si existe la entidad en local storage, se la utiliza
+    const darkModeValue = darkModeEntity.get();
+    if (darkModeValue !== null) return darkModeValue;
+
+    // Si existe la media del usuario, se la utiliza
+    if (window.matchMedia)
+      return window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+    // Si no, se crea la entidad en local storage y se la utiliza
+    darkModeEntity.set(DEFAULT_DARK_MODE);
+    return DEFAULT_DARK_MODE;
+  };
+
+  darkModeBodyAttr.set(String(darkModeInit()));
+</script>

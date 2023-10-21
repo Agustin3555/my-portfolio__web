@@ -1,0 +1,493 @@
+{
+  "pageTitle": {
+    "base": "Juan Agustín Lovera",
+    "separator": "·"
+  },
+  "externalNetwork": [
+    {
+      "iconName": "fa-brands fa-linkedin",
+      "url": "https://www.linkedin.com/in/agust%C3%ADn-lovera-b27528212/",
+      "title": "LinkedIn"
+    },
+    {
+      "iconName": "fa-brands fa-github",
+      "url": "https://github.com/Agustin3555",
+      "title": "GitHub"
+    },
+    {
+      "iconName": "fa-brands fa-instagram",
+      "url": "https://www.instagram.com/agustin_lovera2",
+      "title": "Instagram"
+    }
+  ],
+  "metalCuriosities": {
+    "interval": 1.5,
+    "volume": 0.05,
+    "curiosities": [
+      "I'm a software engineer specializing in building (and occasionally designing) exceptional digital experiences. Currently, I'm focused on building accessible.",
+      "Por cierto, mi amo vive en Argentina pero no en su capital, en una ciudad del hacia el norte, de ahi su acento particular.",
+      "C",
+      "D",
+      "E Holaaaaaaaaaaaaaaaaaaaa"
+    ],
+    "meows": ["cat-meow-1.wav", "cat-meow-2.wav", "cat-meow-3.wav"]
+  },
+  "footer": {
+    "sections": {
+      "acknowledgments": {
+        "title": "Agradecimientos",
+        "data": {
+          "text": "Su apoyo y enseñanzas han sido invaluables. A continuación, quiero reconocer a quienes han dejado una huella significativa en mi carrera:",
+          "items": [
+            "Mis profesores de universidad.",
+            "Mis padres.",
+            "Mi primera gata."
+          ]
+        }
+      },
+      "othersPages": {
+        "title": "Otras páginas"
+      }
+    },
+    "copyright": "© 2023 Juan Agustín Lovera. Todos los derechos reservados."
+  },
+  "pages": {
+    "home": {
+      "sections": {
+        "about": {
+          "buttonTitle": "Sobre mí",
+          "data": {
+            "presentation": [
+              "Hola, mi nombre es",
+              "Juan Agustín Lovera,",
+              "Full Stack Web Dev.",
+              "Soy un apasionado programador junior especializado en desarrollo web. Mi formación universitaria me brindó sólidos conocimientos en el lado del servidor, mientras que en el lado del cliente he adquirido habilidades a través de cursos y de forma autodidacta."
+            ],
+            "slider": {
+              "myself": "Disfruto creando proyectos innovadores para aplicar mis conocimientos. Aunque tengo poca experiencia laboral, estoy emocionado por enfrentar el desafío de trabajar en equipo y poner en práctica todas mis habilidades de manera profesional.",
+              "logo": "He tomado cursos o tengo conocimientos básicos del lenguaje / tecnología, pero aún no he tenido experiencia práctica considerable.",
+              "metal": "He trabajado en proyectos pequeños utilizando el lenguaje / tecnología y tengo un conocimiento intermedio de las características del mismo."
+            }
+          }
+        },
+        "skills": {
+          "buttonTitle": "Habilidades",
+          "title": "Habilidades",
+          "subsections": {
+            "technologies": {
+              "data": [
+                {
+                  "names": ["HTML"],
+                  "icons": [
+                    {
+                      "fileName": "logo-html-5.svg"
+                    }
+                  ],
+                  "skillLevel": 1
+                },
+                {
+                  "names": ["CSS"],
+                  "icons": [
+                    {
+                      "fileName": "logo-css-3.svg"
+                    }
+                  ],
+                  "skillLevel": 1
+                },
+                {
+                  "names": ["JavaScript", "TypeScript"],
+                  "icons": [
+                    {
+                      "fileName": "logo-javascript.svg"
+                    },
+                    {
+                      "fileName": "logo-typescript.svg"
+                    }
+                  ],
+                  "skillLevel": 2,
+                  "technologies": [
+                    {
+                      "names": ["React"],
+                      "icons": [
+                        {
+                          "fileName": "react.svg"
+                        }
+                      ],
+                      "skillLevel": 1
+                    },
+                    {
+                      "names": ["React Native"],
+                      "icons": [
+                        {
+                          "fileName": "react.svg"
+                        }
+                      ],
+                      "skillLevel": 0
+                    },
+                    {
+                      "names": ["styled-components"],
+                      "icons": [
+                        {
+                          "fileName": "logo-styled-components.png"
+                        }
+                      ],
+                      "skillLevel": 1
+                    },
+                    {
+                      "names": ["Emotion"],
+                      "icons": [
+                        {
+                          "fileName": "logo-styled-components.png"
+                        }
+                      ],
+                      "skillLevel": 1
+                    },
+                    {
+                      "names": ["Redux"],
+                      "icons": [
+                        {
+                          "fileName": "logo-redux.svg",
+                          "invertInDarkMode": true
+                        }
+                      ],
+                      "skillLevel": 1
+                    },
+                    {
+                      "names": ["Zustand"],
+                      "icons": [
+                        {
+                          "fileName": "logo-redux.svg",
+                          "invertInDarkMode": true
+                        }
+                      ],
+                      "skillLevel": 1
+                    },
+                    {
+                      "names": ["Express"],
+                      "icons": [
+                        {
+                          "fileName": "logo-express-js.svg",
+                          "invertInDarkMode": true
+                        }
+                      ],
+                      "skillLevel": 1
+                    },
+                    {
+                      "names": ["NestJS"],
+                      "icons": [
+                        {
+                          "fileName": "logo-nest-js.svg",
+                          "invertInDarkMode": true
+                        }
+                      ],
+                      "skillLevel": 0
+                    },
+                    {
+                      "names": ["Prisma"],
+                      "icons": [
+                        {
+                          "fileName": "logo-nest-js.svg",
+                          "invertInDarkMode": true
+                        }
+                      ],
+                      "skillLevel": 1
+                    }
+                  ]
+                },
+                {
+                  "names": ["PHP"],
+                  "icons": [
+                    {
+                      "fileName": "logo-php.svg"
+                    }
+                  ],
+                  "skillLevel": 0,
+                  "technologies": [
+                    {
+                      "names": ["Laravel"],
+                      "icons": [
+                        {
+                          "fileName": "logo-laravel.svg",
+                          "invertInDarkMode": true
+                        }
+                      ],
+                      "skillLevel": 1
+                    }
+                  ]
+                },
+                {
+                  "names": ["Python"],
+                  "icons": [
+                    {
+                      "fileName": "logo-python.svg"
+                    }
+                  ],
+                  "skillLevel": 1
+                },
+                {
+                  "names": ["C#"],
+                  "icons": [
+                    {
+                      "fileName": "logo-csharp.svg"
+                    }
+                  ],
+                  "skillLevel": 0
+                },
+                {
+                  "names": ["Java"],
+                  "icons": [
+                    {
+                      "fileName": "logo-java.svg",
+                      "invertInDarkMode": true
+                    }
+                  ],
+                  "skillLevel": 0
+                },
+                {
+                  "names": ["SQL"],
+                  "icons": [
+                    {
+                      "fileName": "logo-sql-26.png"
+                    }
+                  ],
+                  "skillLevel": 1,
+                  "technologies": [
+                    {
+                      "names": ["SQLite"],
+                      "icons": [
+                        {
+                          "fileName": "logo-sqlite.png",
+                          "invertInDarkMode": true
+                        }
+                      ],
+                      "skillLevel": 0
+                    },
+                    {
+                      "names": ["Microsoft SQL Server"],
+                      "icons": [
+                        {
+                          "fileName": "logo-microsoft-sql-server.svg"
+                        }
+                      ],
+                      "skillLevel": 0
+                    },
+                    {
+                      "names": ["MySQL"],
+                      "icons": [
+                        {
+                          "fileName": "logo-microsoft-sql-server.svg"
+                        }
+                      ],
+                      "skillLevel": 0
+                    },
+                    {
+                      "names": ["PostgreSQL"],
+                      "icons": [
+                        {
+                          "fileName": "logo-postgresql.svg"
+                        }
+                      ],
+                      "skillLevel": 0
+                    }
+                  ]
+                }
+              ]
+            },
+            "levels": [
+              {
+                "level": "Principiante",
+                "description": "He tomado cursos o tengo conocimientos básicos del lenguaje / tecnología, pero aún no he tenido experiencia práctica considerable."
+              },
+              {
+                "level": "Intermedio",
+                "description": "He trabajado en proyectos pequeños utilizando el lenguaje / tecnología y tengo un conocimiento intermedio de las características del mismo."
+              },
+              {
+                "level": "Avanzado",
+                "description": "He trabajado en proyectos complejos y tengo un conocimiento profundo del lenguaje / tecnología, incluyendo características avanzadas y mejores prácticas."
+              }
+            ]
+          }
+        },
+        "works": {
+          "buttonTitle": "Trabajos",
+          "title": "Trabajos",
+          "data": {
+            "works": [
+              {
+                "title": "Goicoechea Admin",
+                "types": ["Web App", "API", "Data Base"],
+                "desc": "Esta herramienta funciona como un eficiente sistema de gestión de inventario para el negocio Goicoechea. Está desarrollada como una SPA y opera completamente en tiempo real. Permite un control detallado de las ventas, así como el monitoreo constante del stock de productos y una gestión efectiva de los registros de los empleados. La solución contribuye significativamente a optimizar las operaciones del negocio, mejorando la eficiencia y facilitando la toma de decisiones estratégicas.",
+                "technologies": [
+                  "TypeScript",
+                  "React",
+                  "Redux",
+                  "Redux Toolkit",
+                  "styled-components",
+                  "NestJS",
+                  "Prisma",
+                  "JWT",
+                  "PostgreSQL",
+                  "Firebase"
+                ],
+                "imgs": [
+                  { "src": "goicoechea-admin/myself.jpg", "alt": "" },
+                  { "src": "goicoechea-admin/logo.png", "alt": "" },
+                  { "src": "goicoechea-admin/16_9.webp", "alt": "" },
+                  { "src": "goicoechea-admin/16_9_2.jpg", "alt": "" }
+                ]
+              },
+              {
+                "title": "Agustín Lovera",
+                "types": ["Web"],
+                "desc": "Diseñé y desarrollé mi propio portafolio desde cero, aprovechando mis habilidades en diseño y la asistencia de ChatGPT para la elaboración de su descripción. El sitio web refleja mi estilo único y presenta de manera efectiva mi experiencia y habilidades como programador.",
+                "technologies": ["TypeScript", "React", "Zustand", "Emotion"],
+                "imgs": [
+                  { "src": "goicoechea-admin/myself.jpg", "alt": "" },
+                  { "src": "goicoechea-admin/logo.png", "alt": "" }
+                ],
+                "links": {
+                  "srcCodeUrl": "https://github.com/Agustin3555"
+                }
+              },
+              {
+                "title": "Sequence",
+                "types": ["Web"],
+                "desc": "...",
+                "technologies": ["TypeScript", "React", "Zustand", "Emotion"],
+                "imgs": [
+                  { "src": "goicoechea-admin/myself.jpg", "alt": "" },
+                  { "src": "goicoechea-admin/logo.png", "alt": "" }
+                ],
+                "links": {
+                  "srcCodeUrl": "https://github.com/Agustin3555",
+                  "others": [
+                    {
+                      "title": "PAGINA 1",
+                      "url": "https://www.instagram.com/agustin_lovera2"
+                    }
+                  ]
+                }
+              },
+              {
+                "title": "Kalimar",
+                "types": ["Web"],
+                "desc": "Colaboré en el proyecto de desarrollo y diseño de un catálogo de propiedades para la inmobiliaria Kalimar. Junto a mi equipo, aportamos estilo y funcionalidades clave al sitio web. Esta experiencia destacó mis habilidades en diseño y desarrollo, contribuyendo al éxito del proyecto.",
+                "technologies": ["HTML", "CSS", "JavaScript"],
+                "imgs": [
+                  { "src": "goicoechea-admin/myself.jpg", "alt": "" },
+                  { "src": "goicoechea-admin/logo.png", "alt": "" }
+                ],
+                "links": {
+                  "srcCodeUrl": "https://github.com/Agustin3555",
+                  "others": [
+                    {
+                      "title": "PAGINA 1",
+                      "url": "https://www.instagram.com/agustin_lovera2"
+                    }
+                  ]
+                }
+              },
+              {
+                "title": "Hydro Saving",
+                "types": ["Mobile App", "Data Base"],
+                "desc": "Ayudé en un proyecto de fin de curso de estudiantes de secundaria con el objetivo de promover el cuidado del agua. Desarrollé una aplicación que se integra con un dispositivo conectado al tanque y a la red domiciliaria, permitiendo el monitoreo del consumo de agua en tiempo real. Los datos son almacenados en un historial y se utilizan para generar estadísticas y métricas del consumo a lo largo del tiempo.",
+                "technologies": [
+                  "TypeScript",
+                  "React Native",
+                  "Zustand",
+                  "Firebase"
+                ],
+                "imgs": [
+                  { "src": "goicoechea-admin/myself.jpg", "alt": "" },
+                  { "src": "goicoechea-admin/logo.png", "alt": "" }
+                ],
+                "sliderAspectRatio": [4, 3],
+                "links": {
+                  "srcCodeUrl": "https://github.com/Agustin3555",
+                  "others": [
+                    {
+                      "title": "PAGINA 1",
+                      "url": "https://www.instagram.com/agustin_lovera2"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        "education": {
+          "buttonTitle": "Formación",
+          "title": "Formación",
+          "data": {
+            "items": [
+              {
+                "title": "Tecnicatura Universitaria en Programación",
+                "startDate": "2023-01-01",
+                "endDate": "2023-01-01",
+                "eduInstitutionName": "Universidad Tecnológica Nacional FRRe",
+                "eduInstitutionLogoFile": "LOGO.png",
+                "url": "https://www.frre.utn.edu.ar/tsp/paginas/view/item/Incumbencias",
+                "desc": [
+                  "Perfil del Técnico Universitario en Programación:",
+                  "• Análisis y desarrollo de problemas de procesamiento de datos con lenguajes adecuados.",
+                  "• Elaboración y corrección de programas en lenguajes superiores.",
+                  "• Realización de tareas definidas por el Analista de Sistemas de Computación.",
+                  "• Análisis, depuración y transferencia de información procesada al especialista correspondiente."
+                ]
+              },
+              {
+                "title": "Curso de Desarrollo Web",
+                "startDate": "2023-01-01",
+                "endDate": "2023-01-01",
+                "eduInstitutionName": "Informatorio",
+                "eduInstitutionLogoFile": "LOGO.png",
+                "url": "https://www.frre.utn.edu.ar/tsp/paginas/view/item/Incumbencias",
+                "desc": [
+                  "Soy un apasionado programador junior especializado en desarrollo web. Mi formación universitaria me brindó sólidos conocimientos en el lado del servidor, mientras que en el lado del cliente he adquirido habilidades a través de cursos y de forma autodidacta."
+                ]
+              },
+              {
+                "title": "Curso de Introducción a la Programación",
+                "startDate": "2023-01-01",
+                "endDate": "2023-01-01",
+                "eduInstitutionName": "Informatorio",
+                "eduInstitutionLogoFile": "LOGO.png",
+                "url": "https://www.frre.utn.edu.ar/tsp/paginas/view/item/Incumbencias",
+                "desc": [
+                  "Soy un apasionado programador junior especializado en desarrollo web. Mi formación universitaria me brindó sólidos conocimientos en el lado del servidor, mientras que en el lado del cliente he adquirido habilidades a través de cursos y de forma autodidacta."
+                ]
+              }
+            ]
+          }
+        },
+        "contact": {
+          "buttonTitle": "Contáctame",
+          "title": "Contáctame",
+          "data": {
+            "desc": "Si eres un reclutador y deseas hablar de oportunidades de trabajo, te dejo mi contacto. O bien, si eres un programador y necesitas ayuda con tu código o buscas orientación en algún aspecto técnico, ¡estaré encantado de ayudarte! No dudes en ponerte en contacto a través del siguiente botón que te hará escribirme un correo.",
+            "email": "Agustin3555@hotmail.com"
+          }
+        }
+      }
+    },
+    "resume": {
+      "buttonTitle": "Currículum",
+      "pageTitle": "Currículum",
+      "data": {
+        "desc": ["Mi currículum", "un resumen"]
+      }
+    },
+    "notFound": {
+      "pageTitle": "Página no encontrada",
+      "data": {
+        "desc": [
+          "Error 404",
+          "página no encontrada",
+          "Creo que no es el programador que buscas.",
+          "El error 404 es un mensaje que se muestra cuando intentas acceder a una página que no existe en un sitio web. Esto puede suceder por varias razones, como una URL incorrecta o una página que ha sido eliminada."
+        ]
+      }
+    }
+  }
+}
