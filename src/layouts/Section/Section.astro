@@ -1,0 +1,15 @@
+---
+import * as SectionStyled from "./Section.styled";
+
+interface Props {
+  sectionKey: string;
+  title?: string;
+}
+
+const { sectionKey, title } = Astro.props;
+---
+
+<SectionStyled.Component id={sectionKey}>
+  {title && <h2 class="section__title">{title}</h2>}
+  <slot />
+</SectionStyled.Component>

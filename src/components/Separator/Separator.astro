@@ -1,0 +1,11 @@
+---
+import * as SeparatorStyled from "./Separator.styled";
+
+interface Props {
+  style: SeparatorStyled.Props;
+}
+
+const { style } = Astro.props;
+---
+
+<SeparatorStyled.Component p={SeparatorStyled.adapter(style)} />

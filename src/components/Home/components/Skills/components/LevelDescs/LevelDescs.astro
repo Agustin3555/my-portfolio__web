@@ -1,0 +1,52 @@
+---
+import * as LevelDescsStyled from "./LevelDescs.styled";
+import jsonData from "@/data.json";
+
+const { levels } = jsonData.pages.home.sections.skills.subsections;
+---
+
+<LevelDescsStyled.Component>
+  {
+    levels.map((item) => (
+      <div class="item">
+        <label class="toggle">
+          <input class="toggle-skill" type="checkbox" checked />
+          <div class="ui" />
+          {item.level}
+        </label>
+        <p class="text">{item.description}</p>
+      </div>
+    ))
+  }
+</LevelDescsStyled.Component>
+
+<script>
+  const handleChange: (index: number) => EventListener = (index) => (event) => {
+    const element = event.target as HTMLInputElement;
+    const { checked } = element;
+
+    technologies[index].forEach(
+      (technology) => (technology.dataset.show = checked),
+    );
+  };
+
+  const toggles = Array.from(
+    window.document.getElementsByClassName("toggle-skill"),
+  ) as HTMLInputElement[];
+
+  const technologies: HTMLElement[][] = Array.from(
+    { length: toggles.length },
+    (_, index) =>
+      Array.from(
+        document.getElementsByClassName(`skill-level-${index}`),
+      ) as HTMLElement[],
+  );
+
+  toggles.forEach((toggle, index) => {
+    technologies[index].forEach(
+      (technology) => (technology.dataset.show = toggle.checked),
+    );
+
+    toggle.addEventListener("change", handleChange(index));
+  });
+</script>

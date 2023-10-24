@@ -6,39 +6,39 @@ import {
   MICROINTERACTION,
   NOT_FONT_SIZE,
   Value,
-} from '@/styles'
-import styled from '@emotion/styled'
+} from "@/styles";
+import styled from "@emotion/styled";
 
-const SIZE = FONT_SIZE.xl
-const THICKNESS = '0.1875rem'
+const SIZE = FONT_SIZE.xl;
+const THICKNESS = "0.1875rem";
 
 interface ConstProvider {
-  width: Value
-  height: Value
+  width: Value;
+  height: Value;
   hamburgerAC: {
     bar: {
-      height: Value
+      height: Value;
       hamburgerIcon: {
         top: {
-          top: Value
-        }
+          top: Value;
+        };
         mid: {
-          top: Value
-        }
+          top: Value;
+        };
         bot: {
-          bottom: Value
-        }
-      }
+          bottom: Value;
+        };
+      };
       xIcon: {
         xBar: {
-          top: Value
-        }
-      }
-    }
-  }
+          top: Value;
+        };
+      };
+    };
+  };
 }
 
-const midTop = `calc(50% - ${THICKNESS} * 0.5)`
+const midTop = `calc(50% - ${THICKNESS} * 0.5)`;
 
 const cp: ConstProvider = {
   width: SIZE,
@@ -64,7 +64,7 @@ const cp: ConstProvider = {
       },
     },
   },
-}
+};
 
 export const Component = styled.button`
   width: ${cp.width};
@@ -77,13 +77,15 @@ export const Component = styled.button`
   .hamburger-AC {
     width: 100%;
     height: 100%;
-    transition: opacity ${MICROINTERACTION.s} ease,
-      transform ${MICROINTERACTION.s} ease, filter ${MICROINTERACTION.s} ease;
+    transition:
+      opacity ${MICROINTERACTION.s} ease,
+      transform ${MICROINTERACTION.s} ease,
+      filter ${MICROINTERACTION.s} ease;
 
     .bar {
       position: absolute;
       height: ${cp.hamburgerAC.bar.height};
-      border-radius: ${NOT_FONT_SIZE['6xl']};
+      border-radius: ${NOT_FONT_SIZE["6xl"]};
       background-color: ${COLOR_BRIGHT_A};
       transition: background-color ${MICROINTERACTION.s} ease-out;
     }
@@ -133,7 +135,7 @@ export const Component = styled.button`
   .fade-enter {
     opacity: 0;
     transform: scale(0);
-    filter: blur(${NOT_FONT_SIZE['4xs']});
+    filter: blur(${NOT_FONT_SIZE["4xs"]});
   }
 
   .fade-exit {
@@ -151,14 +153,14 @@ export const Component = styled.button`
   .fade-exit-active {
     opacity: 0;
     transform: scale(0);
-    filter: blur(${NOT_FONT_SIZE['4xs']});
+    filter: blur(${NOT_FONT_SIZE["4xs"]});
   }
 
   :hover .hamburger-AC .bar {
     background-color: ${COLOR.g_19};
   }
 
-  .app[data-dark-mode='true'] & {
+  body[data-dark-mode="true"] & {
     .hamburger-AC .bar {
       background-color: ${COLOR_DARK_A};
     }
@@ -167,4 +169,4 @@ export const Component = styled.button`
       background-color: ${COLOR.g_0};
     }
   }
-`
+`;

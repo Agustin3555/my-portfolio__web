@@ -7,14 +7,14 @@ import * as PageStyled from "./Page.styled";
 import ToggleDarkMode from "./components/ToggleDarkMode/ToggleDarkMode.astro";
 import Footer from "./components/Footer/Footer.astro";
 import SplashToScrollUp from "./components/SplashToScrollUp/SplashToScrollUp.astro";
-import data from "@/data.json";
+import jsonData from "@/data.json";
 
 interface Props {
   title?: string;
 }
 
 const { title } = Astro.props;
-const { base, separator } = data.pageTitle;
+const { base, separator } = jsonData.pageTitle;
 
 let documentTitle = base;
 

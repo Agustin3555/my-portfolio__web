@@ -1,0 +1,97 @@
+---
+import * as NodeStyled from "./Node.styled";
+import Separator from "@/components/Separator/Separator.astro";
+import { COLOR, NOT_FONT_SIZE } from "@/styles";
+
+export interface DataNode {
+  names: string[];
+  icons: {
+    fileName: string;
+    invertInBrightMode?: boolean;
+    invertInDarkMode?: boolean;
+  }[];
+  skillLevel: number;
+  technologies?: DataNode[];
+}
+
+interface Props {
+  dataNode: DataNode;
+}
+
+const { names, icons, skillLevel, technologies } = Astro.props.dataNode;
+---
+
+<NodeStyled.Component>
+  <div class={`technology skill-level-${skillLevel}`}>
+    <div class="group">
+      <div class="names">
+        {
+          names.map((name, index) => (
+            <>
+              <div class="name">{name}</div>
+              {index !== names.length - 1 && <div class="separator" />}
+            </>
+          ))
+        }
+      </div>
+      <div class="icons">
+        {
+          icons.map((icon, index) => (
+            <>
+              <img
+                class="icon"
+                data-invert-in-bright-mode={icon?.invertInBrightMode}
+                data-invert-in-dark-mode={icon?.invertInDarkMode}
+                src={icon.fileName}
+                alt={`Logo de ${names[index]}`}
+              />
+              {index !== names.length - 1 && <div class="separator" />}
+            </>
+          ))
+        }
+      </div>
+    </div>
+    <div class="level-bar">
+      <div class="separators">
+        {
+          Array(2)
+            .fill(undefined)
+            .map(() => (
+              <Separator
+                style={{
+                  long: NOT_FONT_SIZE["2xs"],
+                  backgroundColor: { dark: COLOR.g_10 },
+                }}
+              />
+            ))
+        }
+      </div>
+      <div class="bar" style={{ width: `${((skillLevel + 1) / 3) * 100}%` }}>
+      </div>
+    </div>
+  </div>
+  {
+    technologies && (
+      <ul class="child-tech">
+        {technologies?.map((item, index) => (
+          <li class="item">
+            <div class="child-group">
+              <div class="bullet-point-container">
+                <div class="box" />
+                {index !== technologies?.length - 1 && (
+                  <div class="next-extension line" />
+                )}
+              </div>
+              <Astro.self dataNode={item} />
+            </div>
+            {index !== technologies?.length - 1 && (
+              <div class="extension-container">
+                <div class="extension line" />
+              </div>
+            )}
+          </li>
+        ))}
+      </ul>
+    )
+  }
+</NodeStyled.Component>

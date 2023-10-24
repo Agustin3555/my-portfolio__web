@@ -110,7 +110,7 @@
                       "names": ["React"],
                       "icons": [
                         {
-                          "fileName": "react.svg"
+                          "fileName": "logo-react.svg"
                         }
                       ],
                       "skillLevel": 1
@@ -119,7 +119,7 @@
                       "names": ["React Native"],
                       "icons": [
                         {
-                          "fileName": "react.svg"
+                          "fileName": "logo-react.svg"
                         }
                       ],
                       "skillLevel": 0

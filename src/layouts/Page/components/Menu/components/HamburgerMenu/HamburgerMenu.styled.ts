@@ -10,22 +10,22 @@ import {
   Value,
   colorAlphaAdapter,
   shadowAdapter,
-} from '@/styles'
-import styled from '@emotion/styled'
+} from "@/styles";
+import styled from "@emotion/styled";
 
-const BORDER_RADIUS = NOT_FONT_SIZE['2xs']
+const BORDER_RADIUS = NOT_FONT_SIZE["2xs"];
 
 interface Provider {
   EXPANDED: {
     glassMenu: {
       content: {
         MC: {
-          width: Value
-          height: Value
-        }
-      }
-    }
-  }
+          width: Value;
+          height: Value;
+        };
+      };
+    };
+  };
 }
 
 export const adapter = (childWidth: number, childHeight: number): Provider => {
@@ -40,21 +40,21 @@ export const adapter = (childWidth: number, childHeight: number): Provider => {
         },
       },
     },
-  }
-}
+  };
+};
 
 interface ConstProvider {
   glassMenu: {
-    borderRadius: Value
+    borderRadius: Value;
 
     glassRefleccion: {
-      borderRadius: Value
-    }
+      borderRadius: Value;
+    };
 
     content: {
-      borderRadius: Value
-    }
-  }
+      borderRadius: Value;
+    };
+  };
 }
 
 const cp: ConstProvider = {
@@ -69,7 +69,7 @@ const cp: ConstProvider = {
       borderRadius: BORDER_RADIUS,
     },
   },
-}
+};
 
 export const Component = styled.header<{ p: Provider }>`
   display: none;
@@ -98,7 +98,8 @@ export const Component = styled.header<{ p: Provider }>`
     border-top-left-radius: 0;
     border-top-right-radius: 0;
     box-shadow: ${shadowAdapter(2)};
-    transition: background-color ${MICROINTERACTION.s} ease-out,
+    transition:
+      background-color ${MICROINTERACTION.s} ease-out,
       top ${MICROINTERACTION.m} ease;
     ${GLASS_SET.this}
 
@@ -115,7 +116,7 @@ export const Component = styled.header<{ p: Provider }>`
     .content {
       position: relative;
       padding: calc(
-        (${NOT_FONT_SIZE.l} - ${FONT_SIZE.xl}) * 0.5 - ${NOT_FONT_SIZE['6xs']}
+        (${NOT_FONT_SIZE.l} - ${FONT_SIZE.xl}) * 0.5 - ${NOT_FONT_SIZE["6xs"]}
       );
       border-radius: ${cp.glassMenu.content.borderRadius};
       border-top-left-radius: 0;
@@ -127,7 +128,8 @@ export const Component = styled.header<{ p: Provider }>`
       .MC {
         width: ${FONT_SIZE.xl};
         height: ${FONT_SIZE.xl};
-        transition: width ${MICROINTERACTION.m} ease,
+        transition:
+          width ${MICROINTERACTION.m} ease,
           height ${MICROINTERACTION.m} ease;
 
         .C {
@@ -142,7 +144,8 @@ export const Component = styled.header<{ p: Provider }>`
             gap: calc(${FONT_SIZE.s} * 2);
             opacity: 0;
             transform: translateX(37.5%);
-            transition: opacity ${MICROINTERACTION.xs} ease,
+            transition:
+              opacity ${MICROINTERACTION.xs} ease,
               transform ${MICROINTERACTION.xs} ease;
 
             .toggle-expand {
@@ -171,13 +174,13 @@ export const Component = styled.header<{ p: Provider }>`
     }
   }
 
-  &[data-show='true'] {
+  &[data-show="true"] {
     .glass-menu {
-      top: calc((${NOT_FONT_SIZE.l} + ${NOT_FONT_SIZE['6xs']}) * -1);
+      top: calc((${NOT_FONT_SIZE.l} + ${NOT_FONT_SIZE["6xs"]}) * -1);
     }
   }
 
-  &[data-expanded='true'] {
+  &[data-expanded="true"] {
     .deep-touch {
       opacity: 0.5;
       pointer-events: initial;
@@ -196,7 +199,8 @@ export const Component = styled.header<{ p: Provider }>`
           .C .group {
             opacity: 1;
             transform: translateX(0);
-            transition: opacity ${MICROINTERACTION.s} ${MICROINTERACTION.m} ease,
+            transition:
+              opacity ${MICROINTERACTION.s} ${MICROINTERACTION.m} ease,
               transform ${MICROINTERACTION.s} ${MICROINTERACTION.m} ease;
           }
         }
@@ -204,9 +208,9 @@ export const Component = styled.header<{ p: Provider }>`
     }
   }
 
-  .app[data-dark-mode='true'] &[data-expanded='true'] {
+  body[data-dark-mode="true"] &[data-expanded="true"] {
     .glass-menu {
       background-color: ${colorAlphaAdapter(BGC_DARK_A, 0.75)};
     }
   }
-`
+`;

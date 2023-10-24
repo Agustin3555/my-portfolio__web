@@ -1,8 +1,26 @@
 ---
 import Page from "@/layouts/Page/Page.astro";
-import data from "@/data.json";
+import * as ResumeStyled from "@/components/Resume/Resume.styled";
+import jsonData from "@/data.json";
 
-const { pageTitle } = data.pages.resume;
+const { pageTitle, data } = jsonData.pages.resume;
+const { desc } = data;
 ---
 
-<Page title={pageTitle}>Resume</Page>
+<Page title={pageTitle}>
+  <ResumeStyled.Component>
+    <h1 class="title">
+      {desc[0]}
+      <span>,</span>
+    </h1>
+    <h2 class="subtitle">
+      {desc[1]}
+      <span>.</span>
+    </h2>
+    <embed
+      class="cv"
+      src="CV - Juan Agustín Lovera.pdf"
+      type="application/pdf"
+    />
+  </ResumeStyled.Component>
+</Page>

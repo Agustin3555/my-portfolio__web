@@ -1,0 +1,19 @@
+---
+import Section from "@/layouts/Section/Section.astro";
+import * as SkillsStyled from "./Skills.styled";
+import Treeview from "./components/Treeview/Treeview.astro";
+import LevelDescs from "./components/LevelDescs/LevelDescs.astro";
+import jsonData from "@/data.json";
+
+const { home } = jsonData.pages;
+const sectionKey: keyof typeof home.sections = "skills";
+
+const { title } = home.sections.skills;
+---
+
+<Section sectionKey={sectionKey} title={title}>
+  <SkillsStyled.Component>
+    <Treeview />
+    <LevelDescs />
+  </SkillsStyled.Component>
+</Section>

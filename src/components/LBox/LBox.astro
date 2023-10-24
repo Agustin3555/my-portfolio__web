@@ -1,0 +1,16 @@
+---
+import * as LBoxStyled from "./LBox.styled";
+import { HandlingClass, asClassName } from "@/tools";
+
+interface Props {
+  handlingClass?: HandlingClass;
+  style?: LBoxStyled.Props;
+}
+
+const { handlingClass, style } = Astro.props;
+---
+
+<LBoxStyled.Component
+  className={asClassName(handlingClass)}
+  p={LBoxStyled.adapter(style)}
+/>

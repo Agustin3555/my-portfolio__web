@@ -2,9 +2,9 @@
 import * as SplashToScrollUpStyled from "./SplashToScrollUp.styled";
 import { Image } from "astro:assets";
 import logo from "./logo.png";
-import data from "@/data.json";
+import jsonData from "@/data.json";
 
-const { sections } = data.pages.home;
+const { sections } = jsonData.pages.home;
 
 const sectionKey: keyof typeof sections = "about";
 const href = `#${sectionKey}`;

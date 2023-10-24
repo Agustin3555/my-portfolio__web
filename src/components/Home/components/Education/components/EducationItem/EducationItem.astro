@@ -1,0 +1,87 @@
+---
+import * as EducationItemStyled from "./EducationItem.styled";
+import GlassPanel from "@/layouts/GlassPanel/GlassPanel.astro";
+import ExternalLink from "@/components/ExternalLink/ExternalLink.astro";
+import { NOT_FONT_SIZE } from "@/styles";
+
+interface Props {
+  title: string;
+  startDate: string;
+  endDate: string;
+  eduInstitutionName: string;
+  eduInstitutionLogoFile: string;
+  url: string;
+  desc: string[];
+  firstItem?: boolean;
+  lastItem?: boolean;
+}
+
+const {
+  title,
+  startDate,
+  endDate,
+  eduInstitutionName,
+  eduInstitutionLogoFile,
+  url,
+  desc,
+  firstItem = false,
+  lastItem = false,
+} = Astro.props;
+
+const time = new Date(`${startDate}T00:00`)
+  .toLocaleDateString()
+  .replace(/\//g, "·");
+---
+
+<EducationItemStyled.Component>
+  <div class="item">
+    <div class="pointer">
+      {!firstItem && <div class="pointer-line line top" />}
+      <div class="point-3">
+        <GlassPanel
+          style={{
+            padding: EducationItemStyled.POINT_2_PADDING,
+            borderRadius: NOT_FONT_SIZE["6xl"],
+            elevation: 2,
+          }}
+          handlingClass="glass-point"
+        >
+          <div class="point-1"></div>
+        </GlassPanel>
+      </div>
+      <div class="pointer-line line bot"></div>
+    </div>
+    <div class="extension-line line"></div>
+    <span class="date">{time}</span>
+    <GlassPanel
+      style={{
+        padding: NOT_FONT_SIZE.s,
+        borderRadius: NOT_FONT_SIZE["2xs"],
+        elevation: 2,
+      }}
+      handlingClass="heading"
+    >
+      <div class="heading-content">
+        <h4 class="title">{title}</h4>
+        <h5 class="subtitle text">{eduInstitutionName}</h5>
+      </div>
+    </GlassPanel>
+    <div class="desc">
+      {desc.map((item) => <p class="text">{item}</p>)}
+    </div>
+    <div class="links">
+      <ExternalLink
+        url={url}
+        title="Más información"
+        iconName="fa-solid fa-square-arrow-up-right"
+      />
+    </div>
+  </div>
+  {
+    !lastItem && (
+      <div class="item-gap">
+        <div class="gap-line line" />
+      </div>
+    )
+  }
+</EducationItemStyled.Component>

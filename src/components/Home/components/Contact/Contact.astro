@@ -1,0 +1,37 @@
+---
+import Section from "@/layouts/Section/Section.astro";
+import * as ContactStyled from "./Contact.styled";
+import LBox from "@/components/LBox/LBox.astro";
+import { NOT_FONT_SIZE } from "@/styles";
+import jsonData from "@/data.json";
+
+const { sections } = jsonData.pages.home;
+const sectionKey: keyof typeof sections = "contact";
+
+const { contact } = sections;
+const { title } = contact;
+const { desc, email } = contact.data;
+---
+
+<Section sectionKey={sectionKey} title={title}>
+  <ContactStyled.Component>
+    <p class="text">{desc}</p>
+    <div class="email-link">
+      <a class="link" href={`mailto:${email}`} target="_blank" rel="noopener">
+        Contáctame
+      </a>
+      <LBox
+        style={{ borderRadius: NOT_FONT_SIZE["3xs"], size: NOT_FONT_SIZE.m }}
+        handlingClass={"box b-1"}
+      />
+      <LBox
+        style={{ borderRadius: NOT_FONT_SIZE["4xs"], size: NOT_FONT_SIZE.s }}
+        handlingClass={"box b-2"}
+      />
+      <LBox
+        style={{ borderRadius: NOT_FONT_SIZE["4xs"], size: NOT_FONT_SIZE.s }}
+        handlingClass={"box b-3"}
+      />
+    </div>
+  </ContactStyled.Component>
+</Section>
