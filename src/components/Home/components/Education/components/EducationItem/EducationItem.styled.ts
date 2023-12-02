@@ -138,6 +138,7 @@ export const Component = styled.li`
       align-items: center;
       justify-content: flex-end;
       font-size: ${FONT_SIZE.xs};
+      word-spacing: calc(0.0625rem / 4);
     }
 
     .heading {

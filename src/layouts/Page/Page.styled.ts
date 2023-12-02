@@ -17,6 +17,7 @@ export const Component = styled.div`
   justify-content: center;
   color: ${COLOR_BRIGHT_A};
   overflow: hidden;
+  transition: color ${MICROINTERACTION.s} ease-out;
 
   .static {
     display: flex;
@@ -62,7 +63,7 @@ export const Component = styled.div`
     }
   }
 
-  &[data-dark-mode="true"] {
+  body[data-dark-mode="true"] & {
     color: ${COLOR_DARK_A};
   }
 `;

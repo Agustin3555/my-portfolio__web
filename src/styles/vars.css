@@ -1,8 +1,8 @@
-@import url('https://rsms.me/inter/inter.css');
+@import url("https://rsms.me/inter/inter.css");
 
 :root {
-  --font-p: 'Inter', Segoe UI;
-  --font-s: 'Cascadia Code', Segoe UI;
+  --font-p: "Inter", Segoe UI;
+  --font-s: "Cascadia Code", Segoe UI;
 
   --size-font-2xs: 0.75rem;
   --size-font-xs: 0.875rem;
@@ -30,25 +30,25 @@
 
   --color-a-d2: #000000;
   --color-a-d1: #000000;
-  --color-a: #eb4b4d;
+  --color-a: #eb5547;
   --color-a-b1: #000000;
   --color-a-b2: #000000;
 
   --color-b-d2: #000000;
   --color-b-d1: #000000;
-  --color-b: #4bb1eb;
+  --color-b: #47b4eb;
   --color-b-b1: #000000;
   --color-b-b2: #000000;
 
   --color-c-d2: #000000;
   --color-c-d1: #000000;
-  --color-c: #199f84;
+  --color-c: #17cfb0;
   --color-c-b1: #000000;
   --color-c-b2: #000000;
 
   --color-d-d2: #000000;
   --color-d-d1: #000000;
-  --color-d: #766fc0;
+  --color-d: #8a75f0;
   --color-d-b1: #000000;
   --color-d-b2: #000000;
 

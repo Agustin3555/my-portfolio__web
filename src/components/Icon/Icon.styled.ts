@@ -1,34 +1,34 @@
-import { FONT_SIZE, MICROINTERACTION, Size, Value } from '@/styles'
-import { SerializedStyles } from '@emotion/react'
-import styled from '@emotion/styled'
+import { FONT_SIZE, MICROINTERACTION, Size, Value } from "@/styles";
+import { SerializedStyles } from "@emotion/react";
+import styled from "@emotion/styled";
 
 export interface Props {
-  size?: Size
-  styled?: SerializedStyles
+  size?: Size;
+  styled?: SerializedStyles;
 }
 
 interface Provider {
-  width: Value
-  height: Value
+  width: Value;
+  height: Value;
 
   icon: {
-    fontSize: Value
-  }
+    fontSize: Value;
+  };
 
-  styled?: SerializedStyles
+  styled?: SerializedStyles;
 }
 
 interface NormalizedProps {
-  size: Size
+  size: Size;
 }
 
 export const adapter = (style?: Props): Provider => {
   const normalizedProps: NormalizedProps = {
     size: style?.size || FONT_SIZE.xs,
-  }
+  };
 
-  const size = normalizedProps.size
-  const dimensions = size === FONT_SIZE.xs ? FONT_SIZE['2xs'] : size
+  const size = normalizedProps.size;
+  const dimensions = size === FONT_SIZE.xs ? FONT_SIZE["2xs"] : size;
 
   return {
     width: dimensions,
@@ -39,8 +39,8 @@ export const adapter = (style?: Props): Provider => {
     },
 
     styled: style?.styled,
-  }
-}
+  };
+};
 
 export const Component = styled.div<{ p: Provider }>`
   display: flex;
@@ -51,8 +51,8 @@ export const Component = styled.div<{ p: Provider }>`
 
   .icon {
     font-size: ${({ p }) => p.icon.fontSize};
-    transition: color ${MICROINTERACTION.s} ease-out;
+    transition: color ${MICROINTERACTION.xs} ease-out;
   }
 
   ${({ p }) => p.styled};
-`
+`;

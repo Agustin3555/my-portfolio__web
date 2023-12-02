@@ -30,7 +30,7 @@ const {
 
 const time = new Date(`${startDate}T00:00`)
   .toLocaleDateString()
-  .replace(/\//g, "·");
+  .replace(/\//g, " · ");
 ---
 
 <EducationItemStyled.Component>
@@ -72,7 +72,7 @@ const time = new Date(`${startDate}T00:00`)
     <div class="links">
       <ExternalLink
         url={url}
-        title="Más información"
+        text="Más información"
         iconName="fa-solid fa-square-arrow-up-right"
       />
     </div>

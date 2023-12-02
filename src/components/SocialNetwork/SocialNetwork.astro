@@ -1,0 +1,32 @@
+---
+import * as ExternalLinkStyled from "./SocialNetwork.styled";
+import Icon from "@/components/Icon/Icon.astro";
+import { HandlingClass, asClassName } from "@/tools";
+import { FONT_SIZE } from "@/styles";
+
+interface Props {
+  url: string;
+  iconName: string;
+  title: string;
+  text?: string;
+  handlingClass?: HandlingClass;
+  style?: ExternalLinkStyled.Props;
+}
+
+const { url, iconName, title, text, handlingClass, style = {} } = Astro.props;
+---
+
+<ExternalLinkStyled.Component
+  className={asClassName(handlingClass)}
+  title={title}
+  href={url}
+  target="_blank"
+  rel="noopener"
+  p={ExternalLinkStyled.adapter(style)}
+>
+  <div class="external-network__glass-refleccion"></div>
+  <div class="external-network__content">
+    <Icon iconName={iconName} style={{ size: FONT_SIZE.m }} />
+    {text}
+  </div>
+</ExternalLinkStyled.Component>

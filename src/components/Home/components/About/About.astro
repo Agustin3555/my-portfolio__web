@@ -1,0 +1,75 @@
+---
+import Section from "@/layouts/Section/Section.astro";
+import * as AboutStyled from "./About.styled";
+import jsonData from "@/data.json";
+// import { NOT_FONT_SIZE, getCSSVarValue } from "@/styles";
+// import { useOnScreen } from "@/hooks";
+// import { Slider } from "./components";
+// import { useMemo } from "react";
+// import { ExternalLink } from "@/components";
+// import { LOCATION, useAppStore } from "@/store";
+// import { css } from "@emotion/react";
+
+// const ROOT_MARGIN = NOT_FONT_SIZE.m;
+
+const { sections } = jsonData.pages.home;
+const sectionKey: keyof typeof sections = "about";
+
+const { about } = sections;
+const { presentation } = about.data;
+
+// const location = useAppStore((store) => store.externalNetworkLocation);
+// const setLocation = useAppStore((store) => store.setExternalLinkLocation);
+
+// const rootMargin = useMemo(() => {
+//   let value = getCSSVarValue(ROOT_MARGIN);
+
+//   value = value.slice(0, -3);
+
+//   value = `-${parseFloat(value) * 16}px`;
+
+//   return value;
+// }, []);
+
+// const [navRef] = useOnScreen({
+//   options: { rootMargin },
+//   onIntersectionChange: (isIntersecting) => {
+//     setLocation(isIntersecting ? LOCATION.about : LOCATION.leftNav);
+//   },
+// });
+---
+
+<Section sectionKey={sectionKey}>
+  <AboutStyled.Component>
+    <div class="desc">
+      <p class="hello">{presentation[0]}</p>
+      <div class="title-group">
+        <h1 class="name">{presentation[1]}</h1>
+        <h2 class="rol">{presentation[2]}</h2>
+      </div>
+      <p class="summary text">{presentation[3]}</p>
+      <!-- TODO: hacer que destaque mi nivel cambiando de color la palabra. Ej: ...actualmente las empresas me consideran **junior**... -->
+      <!-- <nav class="nav" ref={navRef} data-show={location === LOCATION.about}>
+        {
+          externalNetwork
+            .slice()
+            .reverse()
+            .map((item, index) => (
+              <ExternalLink
+                key={item.title}
+                iconName={item.iconName}
+                url={item.url}
+                title={item.title}
+                style={{
+                  styled: css`
+                    --i: ${index};
+                  `,
+                }}
+              />
+            ))
+        }
+      </nav> -->
+      <!-- <Slider /> -->
+    </div>
+  </AboutStyled.Component>
+</Section>
