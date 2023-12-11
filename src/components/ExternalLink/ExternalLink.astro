@@ -1,22 +1,23 @@
 ---
 import * as ExternalLinkStyled from "./ExternalLink.styled";
 import Icon from "@/components/Icon/Icon.astro";
-import { HandlingClass, asClassName } from "@/tools";
+import { type HandlingClass, asClassName } from "@/tools";
 import { FONT_SIZE } from "@/styles";
 
-interface Props {
+export interface Props {
   url: string;
   iconName: string;
   text: string;
+  title?: string;
   handlingClass?: HandlingClass;
 }
 
-const { url, iconName, text, handlingClass } = Astro.props;
+const { url, iconName, text, title, handlingClass } = Astro.props;
 ---
 
 <ExternalLinkStyled.Component
   className={asClassName(handlingClass)}
-  title={`Ir a ${text}`}
+  title={title || `Ir a ${text.toLocaleLowerCase()}`}
   href={url}
   target="_blank"
   rel="noopener"

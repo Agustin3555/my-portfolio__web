@@ -1,0 +1,34 @@
+---
+import * as ImageStyled from "./Image.styled";
+import { Loader } from "./components";
+import { HandlingClass, asClassName } from "@/tools";
+import { Image } from "astro:assets";
+
+interface Props {
+  src: string;
+  alt: string;
+  handlingClass: HandlingClass;
+}
+
+const { src, alt, handlingClass } = Astro.props;
+
+// const [loading, setLoading] = useState(true)
+
+// const handleLoad = useCallback(() => {
+//   setLoading(false)
+// }, [])
+---
+
+<ImageStyled.Component
+  className={asClassName(handlingClass)}
+  data-loaded={!loading}
+>
+  {
+    loading && (
+      <div class="loader-C">
+        <Loader />
+      </div>
+    )
+  }
+  <Image class="img" loading="lazy" src={src} alt={alt} onLoad={handleLoad} />
+</ImageStyled.Component>

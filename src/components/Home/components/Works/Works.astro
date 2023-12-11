@@ -1,0 +1,38 @@
+---
+import Section from "@/layouts/Section/Section.astro";
+import WorkItem from "./components/WorkItem/WorkItem.astro";
+import jsonData from "@/data.json";
+import Logo from "@/../public/logo.png";
+
+const { sections } = jsonData.pages.home;
+const sectionKey: keyof typeof sections = "works";
+
+const { title } = sections.works;
+const { works } = sections.works.data;
+
+const srcImgs = [
+  [Logo, Logo],
+  [Logo, Logo],
+  [Logo, Logo],
+  [Logo, Logo],
+  [Logo, Logo],
+];
+---
+
+<Section sectionKey={sectionKey} title={title}>
+  {
+    works.map((work, i) => {
+      const { imgs, ...remainingWork } = work;
+
+      return (
+        <WorkItem
+          {...remainingWork}
+          imgs={imgs.map((img, j) => ({
+            src: srcImgs[i][j],
+            alt: img.alt,
+          }))}
+        />
+      );
+    })
+  }
+</Section>

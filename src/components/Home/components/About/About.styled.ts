@@ -3,9 +3,10 @@ import {
   COLOR_BRIGHT_B,
   FONT,
   FONT_SIZE,
+  MEDIA,
   MICROINTERACTION,
   NOT_FONT_SIZE,
-  Value,
+  type Value,
 } from "@/styles";
 import styled from "@emotion/styled";
 
@@ -49,14 +50,14 @@ const cp: ConstProvider = {
 
 export const Component = styled.div`
   display: flex;
-  align-items: center;
-  gap: ${NOT_FONT_SIZE.xl};
-
-  @media (max-width: 98.4375rem) {
-    flex-direction: column;
-  }
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: ${NOT_FONT_SIZE.l};
 
   .desc {
+    flex-grow: 1;
+    flex-basis: calc(${NOT_FONT_SIZE["4xl"]} - ${NOT_FONT_SIZE.xl});
+
     display: flex;
     flex-direction: column;
     gap: ${NOT_FONT_SIZE.l};
@@ -99,6 +100,35 @@ export const Component = styled.div`
         transform: initial;
         filter: initial;
       }
+    }
+  }
+
+  .extra-info {
+    --gap: ${NOT_FONT_SIZE.m};
+
+    flex-basis: calc(${NOT_FONT_SIZE["4xl"]} + var(--gap));
+
+    position: relative;
+    aspect-ratio: 1 / 1;
+
+    .slider {
+      width: calc(100% - var(--gap));
+    }
+
+    .glass-panel {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      aspect-ratio: 1 / 1;
+      width: calc(100% - var(--gap));
+
+      .content {
+        height: 100%;
+      }
+    }
+
+    @media (max-width: ${MEDIA["2xs"]}) {
+      --gap: ${NOT_FONT_SIZE.s};
     }
   }
 

@@ -3,7 +3,7 @@ import {
   MAIN_GAP,
   MICROINTERACTION,
   NOT_FONT_SIZE,
-  Value,
+  type Value,
   shadowAdapter,
 } from "@/styles";
 import styled from "@emotion/styled";
@@ -114,13 +114,21 @@ export const Component = styled.div<{ p: Provider }>`
   }
 
   .items-C {
-    display: flex;
     height: 100%;
 
-    .item {
-      flex-grow: 0;
-      flex-shrink: 0;
-      aspect-ratio: ${({ p }) => p.itemsC.item.aspectRatio};
+    astro-slot {
+      display: flex;
+      height: 100%;
+
+      img {
+        flex-grow: 0;
+        flex-shrink: 0;
+
+        width: 100%;
+        height: 100%;
+        aspect-ratio: ${({ p }) => p.itemsC.item.aspectRatio};
+        object-fit: contain;
+      }
     }
   }
 
@@ -161,6 +169,7 @@ export const Component = styled.div<{ p: Provider }>`
           border-radius: ${NOT_FONT_SIZE["6xl"]};
           background-color: ${COLOR.g_12};
           box-shadow: ${shadowAdapter(2)};
+          opacity: 0.75;
           transition:
             width ${MICROINTERACTION.l} ease-out,
             background-color ${MICROINTERACTION.s} ease-out;
@@ -177,7 +186,7 @@ export const Component = styled.div<{ p: Provider }>`
   &[data-fullscreen="true"] {
     border-radius: 0;
 
-    .items-C .item {
+    .items-C img {
       width: 100vw;
       height: 100vh;
     }

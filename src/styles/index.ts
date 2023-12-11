@@ -1,6 +1,5 @@
-export { default as GlobalStyle } from './GlobalStyle/GlobalStyle'
-export * from './adapters'
-export * from './enums'
-export * from './globalStyleConsts'
-export * from './tools'
-export * from './types'
+export * from "./adapters";
+export * from "./enums";
+export * from "./globalStyleConsts";
+export * from "./tools";
+export * from "./types";

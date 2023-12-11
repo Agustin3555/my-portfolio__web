@@ -2,11 +2,10 @@
 import "@/styles/normalize.css";
 import "@/styles/vars.css";
 import "@/styles/style.css";
-import { GlobalStyle } from "@/styles";
 import * as PageStyled from "./Page.styled";
-import ToggleDarkMode from "./components/ToggleDarkMode/ToggleDarkMode.astro";
-import Footer from "./components/Footer/Footer.astro";
 import SplashToScrollUp from "./components/SplashToScrollUp/SplashToScrollUp.astro";
+import LeftNav from "./components/LeftNav/LeftNav.astro";
+import Footer from "./components/Footer/Footer.astro";
 import jsonData from "@/data.json";
 
 interface Props {
@@ -37,17 +36,15 @@ if (title) documentTitle += ` ${separator} ${title}`;
   </head>
   <body>
     <PageStyled.Component>
-      <GlobalStyle darkMode={true} />
       <div class="static">
         <main class="main">
           <slot />
-          <ToggleDarkMode />
         </main>
         <Footer />
       </div>
-      <SplashToScrollUp />
-      <!-- <LeftNav /> -->
       <!-- <Menu /> -->
+      <LeftNav />
+      <SplashToScrollUp />
     </PageStyled.Component>
   </body>
 </html>

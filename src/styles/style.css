@@ -1,15 +1,36 @@
+:root {
+  --scrollbar-width: var(--size-not-font-3xs);
+  --scrollbar-padding: var(--size-not-font-3xs);
+  --scrollbar-size: calc(var(--scrollbar-width) + var(--scrollbar-padding) * 2);
+}
+
 * {
   box-sizing: border-box;
   scroll-behavior: smooth;
   margin: 0;
+  font-size: var(--size-font-s);
   line-height: 1;
   /* letter-spacing: calc(0.0625rem / 4); */
   word-spacing: 0.0625rem;
   color: inherit;
 }
 
-::-webkit-scrollbar-thumb {
-  border-style: solid;
+::selection {
+  background-color: var(--color-d);
+  color: var(--color-g-0);
+}
+
+:is(h2, h5),
+:is(h2, h5) > * {
+  color: var(--color-b);
+}
+
+:is(h1, h2, h3, h4),
+:is(h1, h2, h3, h4) > * {
+  font-family: var(--font-s);
+  font-weight: 700;
+  letter-spacing: initial;
+  word-spacing: initial;
 }
 
 :is(h1, h2, h3, h4, h5),
@@ -17,15 +38,74 @@
   margin: 0;
 }
 
-:is(h1, h2, h3, h4),
-:is(h1, h2, h3, h4) > * {
-  font-weight: 700;
-  letter-spacing: initial;
-  word-spacing: initial;
+body {
+  font-family: var(--font-p);
+  background-color: var(--color-g-1);
+  transition: background-color var(--time-microinteraction-s) ease-out;
+}
+
+body[data-dark-mode="true"] {
+  background-color: var(--color-g-16);
+}
+
+body::-webkit-scrollbar {
+  width: var(--scrollbar-size);
+  height: var(--scrollbar-size);
+  background-color: transparent;
+}
+
+body::-webkit-scrollbar-thumb {
+  border-radius: var(--size-not-font-6xl);
+  border-width: var(--scrollbar-padding);
+  border-style: solid;
+  border-color: var(--color-g-1);
+  background-color: var(--color-g-6);
+}
+
+body[data-dark-mode="true"]::-webkit-scrollbar-thumb {
+  border-color: var(--color-g-16);
+  background-color: var(--color-g-14);
+}
+
+body::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color-g-10);
+}
+
+body[data-dark-mode="true"]::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color-g-12);
+}
+
+body::-webkit-scrollbar-thumb:active {
+  background-color: var(--color-g-19);
+}
+
+body[data-dark-mode="true"]::-webkit-scrollbar-thumb:active {
+  background-color: var(--color-g-0);
+}
+
+h1,
+h1 > * {
+  font-size: var(--size-font-2xl);
+}
+
+h2,
+h2 > * {
+  font-size: var(--size-font-l);
+}
+
+h3,
+h3 > * {
+  font-size: var(--size-font-xl);
+}
+
+h4,
+h4 > * {
+  font-size: var(--size-font-l);
 }
 
 h5,
 h5 > * {
+  font-size: var(--size-font-xs);
   font-weight: normal;
 }
 

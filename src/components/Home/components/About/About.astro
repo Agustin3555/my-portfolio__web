@@ -1,22 +1,22 @@
 ---
 import Section from "@/layouts/Section/Section.astro";
 import * as AboutStyled from "./About.styled";
+import Slider from "../../components/Slider/Slider";
+import { Image } from "astro:assets";
 import jsonData from "@/data.json";
+import Logo from "@/../public/logo.png";
+import MySelf from "@/../public/myself.jpg";
+import GlassPanel from "@/layouts/GlassPanel/GlassPanel.astro";
+import { NOT_FONT_SIZE } from "@/styles";
+
 // import { NOT_FONT_SIZE, getCSSVarValue } from "@/styles";
 // import { useOnScreen } from "@/hooks";
-// import { Slider } from "./components";
 // import { useMemo } from "react";
 // import { ExternalLink } from "@/components";
 // import { LOCATION, useAppStore } from "@/store";
 // import { css } from "@emotion/react";
 
 // const ROOT_MARGIN = NOT_FONT_SIZE.m;
-
-const { sections } = jsonData.pages.home;
-const sectionKey: keyof typeof sections = "about";
-
-const { about } = sections;
-const { presentation } = about.data;
 
 // const location = useAppStore((store) => store.externalNetworkLocation);
 // const setLocation = useAppStore((store) => store.setExternalLinkLocation);
@@ -37,6 +37,17 @@ const { presentation } = about.data;
 //     setLocation(isIntersecting ? LOCATION.about : LOCATION.leftNav);
 //   },
 // });
+
+const { sections } = jsonData.pages.home;
+const sectionKey: keyof typeof sections = "about";
+
+const { about } = sections;
+const { presentation, descSlider } = about.data;
+
+const imgs = [
+  { src: MySelf, alt: descSlider[0].img.alt },
+  { src: Logo, alt: descSlider[1].img.alt },
+];
 ---
 
 <Section sectionKey={sectionKey}>
@@ -47,7 +58,7 @@ const { presentation } = about.data;
         <h1 class="name">{presentation[1]}</h1>
         <h2 class="rol">{presentation[2]}</h2>
       </div>
-      <p class="summary text">{presentation[3]}</p>
+      <p class="summary text">{descSlider[0].desc}</p>
       <!-- TODO: hacer que destaque mi nivel cambiando de color la palabra. Ej: ...actualmente las empresas me consideran **junior**... -->
       <!-- <nav class="nav" ref={navRef} data-show={location === LOCATION.about}>
         {
@@ -69,7 +80,20 @@ const { presentation } = about.data;
             ))
         }
       </nav> -->
-      <!-- <Slider /> -->
+    </div>
+    <div class="extra-info">
+      <GlassPanel
+        style={{ borderRadius: NOT_FONT_SIZE.xs, elevation: 2 }}
+        handlingClass="glass-panel"
+      />
+      <Slider
+        client:load
+        picturesLength={imgs.length}
+        style={{ aspectRatio: [1, 1] }}
+        handlingClass="slider"
+      >
+        {imgs.map((item) => <Image {...item} />)}
+      </Slider>
     </div>
   </AboutStyled.Component>
 </Section>

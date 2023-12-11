@@ -1,5 +1,5 @@
-import { FONT_SIZE, MICROINTERACTION, Size, Value } from "@/styles";
-import { SerializedStyles } from "@emotion/react";
+import { FONT_SIZE, MICROINTERACTION, type Size, type Value } from "@/styles";
+import type { SerializedStyles } from "@emotion/react";
 import styled from "@emotion/styled";
 
 export interface Props {

@@ -17,6 +17,7 @@ export const COLOR_DARK_B = COLOR.g_2;
 export const COLOR_BRIGHT_B = COLOR.g_14;
 
 export enum MEDIA {
+  "2xs" = "23.4375rem",
   xs = "31.25rem",
   s = "56.25rem",
   m = `calc(${STATIC_WIDTH} + 4.25rem * 4 + 0.375rem * 3)`,

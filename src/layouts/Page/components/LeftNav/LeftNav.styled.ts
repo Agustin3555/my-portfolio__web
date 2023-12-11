@@ -1,16 +1,22 @@
-import { MAIN_GAP, MEDIA, MICROINTERACTION, NOT_FONT_SIZE, Value } from '@/styles'
-import styled from '@emotion/styled'
+import {
+  MAIN_GAP,
+  MEDIA,
+  MICROINTERACTION,
+  NOT_FONT_SIZE,
+  type Value,
+} from "@/styles";
+import styled from "@emotion/styled";
 
-const GAP = MAIN_GAP
+const GAP = MAIN_GAP;
 
 interface ConstProvider {
-  left: Value
-  bottom: Value
-  gap: Value
+  left: Value;
+  bottom: Value;
+  gap: Value;
 
   nav: {
-    gap: Value
-  }
+    gap: Value;
+  };
 }
 
 const cp: ConstProvider = {
@@ -21,7 +27,7 @@ const cp: ConstProvider = {
   nav: {
     gap: GAP,
   },
-}
+};
 
 export const Component = styled.div`
   position: fixed;
@@ -44,16 +50,18 @@ export const Component = styled.div`
     > * {
       opacity: 0;
       transform: translateX(-100%);
-      filter: blur(${NOT_FONT_SIZE['5xs']});
-      transition: opacity ${MICROINTERACTION.m} ease,
-        transform ${MICROINTERACTION.m} ease, filter ${MICROINTERACTION.m} ease;
+      filter: blur(${NOT_FONT_SIZE["5xs"]});
+      transition:
+        opacity ${MICROINTERACTION.m} ease,
+        transform ${MICROINTERACTION.m} ease,
+        filter ${MICROINTERACTION.m} ease;
       transition-delay: calc(${MICROINTERACTION.s} * var(--i));
     }
 
-    &[data-show='true'] > * {
+    &[data-show="true"] > * {
       opacity: 1;
       transform: initial;
       filter: initial;
     }
   }
-`
+`;

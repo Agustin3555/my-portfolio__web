@@ -60,14 +60,20 @@
             "presentation": [
               "Hola, mi nombre es",
               "Juan Agustín Lovera,",
-              "Full Stack Web Dev.",
-              "Soy un apasionado programador junior especializado en desarrollo web. Mi formación universitaria me brindó sólidos conocimientos en el lado del servidor, mientras que en el lado del cliente he adquirido habilidades a través de cursos y de forma autodidacta."
+              "Full Stack Web Dev."
             ],
-            "slider": {
-              "myself": "Disfruto creando proyectos innovadores para aplicar mis conocimientos. Aunque tengo poca experiencia laboral, estoy emocionado por enfrentar el desafío de trabajar en equipo y poner en práctica todas mis habilidades de manera profesional.",
-              "logo": "He tomado cursos o tengo conocimientos básicos del lenguaje / tecnología, pero aún no he tenido experiencia práctica considerable.",
-              "metal": "He trabajado en proyectos pequeños utilizando el lenguaje / tecnología y tengo un conocimiento intermedio de las características del mismo."
-            }
+            "descSlider": [
+              {
+                "img": { "alt": "Fotografía de perfil de Juan Agustín Lovera" },
+                "desc": "Soy un apasionado programador junior especializado en desarrollo web. Mi formación universitaria me brindó sólidos conocimientos en el lado del servidor, mientras que en el lado del cliente he adquirido habilidades a través de cursos y de forma autodidacta."
+              },
+              {
+                "img": {
+                  "alt": "Logo de Juan Agustín Lovera como profesional en la programación"
+                },
+                "desc": "Disfruto creando proyectos innovadores para aplicar mis conocimientos. Aunque tengo poca experiencia laboral, estoy emocionado por enfrentar el desafío de trabajar en equipo y poner en práctica todas mis habilidades de manera profesional."
+              }
+            ]
           }
         },
         "skills": {
@@ -153,14 +159,14 @@
                       "skillLevel": 1
                     },
                     {
-                      "names": ["Zustand"],
+                      "names": ["NestJS"],
                       "icons": [
                         {
-                          "fileName": "logo-redux.svg",
+                          "fileName": "logo-nest-js.svg",
                           "invertInDarkMode": true
                         }
                       ],
-                      "skillLevel": 1
+                      "skillLevel": 0
                     },
                     {
                       "names": ["Express"],
@@ -171,16 +177,6 @@
                         }
                       ],
                       "skillLevel": 1
-                    },
-                    {
-                      "names": ["NestJS"],
-                      "icons": [
-                        {
-                          "fileName": "logo-nest-js.svg",
-                          "invertInDarkMode": true
-                        }
-                      ],
-                      "skillLevel": 0
                     },
                     {
                       "names": ["Prisma"],
@@ -250,46 +246,7 @@
                       "fileName": "logo-sql-26.png"
                     }
                   ],
-                  "skillLevel": 1,
-                  "technologies": [
-                    {
-                      "names": ["SQLite"],
-                      "icons": [
-                        {
-                          "fileName": "logo-sqlite.png",
-                          "invertInDarkMode": true
-                        }
-                      ],
-                      "skillLevel": 0
-                    },
-                    {
-                      "names": ["Microsoft SQL Server"],
-                      "icons": [
-                        {
-                          "fileName": "logo-microsoft-sql-server.svg"
-                        }
-                      ],
-                      "skillLevel": 0
-                    },
-                    {
-                      "names": ["MySQL"],
-                      "icons": [
-                        {
-                          "fileName": "logo-microsoft-sql-server.svg"
-                        }
-                      ],
-                      "skillLevel": 0
-                    },
-                    {
-                      "names": ["PostgreSQL"],
-                      "icons": [
-                        {
-                          "fileName": "logo-postgresql.svg"
-                        }
-                      ],
-                      "skillLevel": 0
-                    }
-                  ]
+                  "skillLevel": 1
                 }
               ]
             },
@@ -330,41 +287,42 @@
                   "PostgreSQL",
                   "Firebase"
                 ],
-                "imgs": [
-                  { "src": "goicoechea-admin/myself.jpg", "alt": "" },
-                  { "src": "goicoechea-admin/logo.png", "alt": "" },
-                  { "src": "goicoechea-admin/16_9.webp", "alt": "" },
-                  { "src": "goicoechea-admin/16_9_2.jpg", "alt": "" }
-                ]
+                "imgs": [{ "alt": "" }, { "alt": "" }]
               },
               {
                 "title": "Agustín Lovera",
                 "types": ["Web"],
                 "desc": "Diseñé y desarrollé mi propio portafolio desde cero, aprovechando mis habilidades en diseño y la asistencia de ChatGPT para la elaboración de su descripción. El sitio web refleja mi estilo único y presenta de manera efectiva mi experiencia y habilidades como programador.",
-                "technologies": ["TypeScript", "React", "Zustand", "Emotion"],
-                "imgs": [
-                  { "src": "goicoechea-admin/myself.jpg", "alt": "" },
-                  { "src": "goicoechea-admin/logo.png", "alt": "" }
-                ],
+                "technologies": ["TypeScript", "Astro", "React", "Emotion"],
+                "imgs": [{ "alt": "" }, { "alt": "" }],
                 "links": {
-                  "srcCodeUrl": "https://github.com/Agustin3555"
+                  "srcCode": {
+                    "url": "https://github.com/Agustin3555",
+                    "host": "GitHub"
+                  }
                 }
               },
               {
                 "title": "Sequence",
                 "types": ["Web"],
                 "desc": "...",
-                "technologies": ["TypeScript", "React", "Zustand", "Emotion"],
-                "imgs": [
-                  { "src": "goicoechea-admin/myself.jpg", "alt": "" },
-                  { "src": "goicoechea-admin/logo.png", "alt": "" }
+                "technologies": [
+                  "TypeScript",
+                  "Astro",
+                  "React",
+                  "Zustand",
+                  "Emotion"
                 ],
+                "imgs": [{ "alt": "" }, { "alt": "" }],
                 "links": {
-                  "srcCodeUrl": "https://github.com/Agustin3555",
+                  "srcCode": {
+                    "url": "https://github.com/Agustin3555",
+                    "host": "GitHub"
+                  },
                   "others": [
                     {
-                      "title": "PAGINA 1",
-                      "url": "https://www.instagram.com/agustin_lovera2"
+                      "url": "https://www.instagram.com/agustin_lovera2",
+                      "text": "PAGINA 1"
                     }
                   ]
                 }
@@ -374,43 +332,32 @@
                 "types": ["Web"],
                 "desc": "Colaboré en el proyecto de desarrollo y diseño de un catálogo de propiedades para la inmobiliaria Kalimar. Junto a mi equipo, aportamos estilo y funcionalidades clave al sitio web. Esta experiencia destacó mis habilidades en diseño y desarrollo, contribuyendo al éxito del proyecto.",
                 "technologies": ["HTML", "CSS", "JavaScript"],
-                "imgs": [
-                  { "src": "goicoechea-admin/myself.jpg", "alt": "" },
-                  { "src": "goicoechea-admin/logo.png", "alt": "" }
-                ],
+                "imgs": [{ "alt": "" }, { "alt": "" }],
                 "links": {
-                  "srcCodeUrl": "https://github.com/Agustin3555",
+                  "srcCode": {
+                    "url": "https://github.com/Agustin3555",
+                    "host": "GitHub"
+                  },
                   "others": [
                     {
-                      "title": "PAGINA 1",
-                      "url": "https://www.instagram.com/agustin_lovera2"
+                      "url": "https://www.instagram.com/agustin_lovera2",
+                      "text": "PAGINA 1"
                     }
                   ]
                 }
               },
               {
                 "title": "Hydro Saving",
-                "types": ["Mobile App", "Data Base"],
+                "types": ["Mobile App"],
                 "desc": "Ayudé en un proyecto de fin de curso de estudiantes de secundaria con el objetivo de promover el cuidado del agua. Desarrollé una aplicación que se integra con un dispositivo conectado al tanque y a la red domiciliaria, permitiendo el monitoreo del consumo de agua en tiempo real. Los datos son almacenados en un historial y se utilizan para generar estadísticas y métricas del consumo a lo largo del tiempo.",
-                "technologies": [
-                  "TypeScript",
-                  "React Native",
-                  "Zustand",
-                  "Firebase"
-                ],
-                "imgs": [
-                  { "src": "goicoechea-admin/myself.jpg", "alt": "" },
-                  { "src": "goicoechea-admin/logo.png", "alt": "" }
-                ],
+                "technologies": ["TypeScript", "React Native", "Zustand"],
+                "imgs": [{ "alt": "" }, { "alt": "" }],
                 "sliderAspectRatio": [4, 3],
                 "links": {
-                  "srcCodeUrl": "https://github.com/Agustin3555",
-                  "others": [
-                    {
-                      "title": "PAGINA 1",
-                      "url": "https://www.instagram.com/agustin_lovera2"
-                    }
-                  ]
+                  "srcCode": {
+                    "url": "https://github.com/Agustin3555",
+                    "host": "GitHub"
+                  }
                 }
               }
             ]

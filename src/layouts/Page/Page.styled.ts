@@ -49,7 +49,7 @@ export const Component = styled.div`
       display: flex;
       flex-direction: column;
       gap: calc(${NOT_FONT_SIZE.l} * 2);
-      padding-top: ${PADDING};
+      padding-top: calc(${PADDING} + ${NOT_FONT_SIZE.l});
       padding-bottom: ${PADDING};
       transition: padding ${MICROINTERACTION.m} ease;
 

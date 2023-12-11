@@ -5,7 +5,7 @@ import {
   MICROINTERACTION,
   NOT_FONT_SIZE,
 } from "./enums";
-import { SerializedStyles } from "@emotion/react";
+import { type SerializedStyles } from "@emotion/react";
 
 export type Font = FONT;
 
