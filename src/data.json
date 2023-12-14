@@ -113,6 +113,15 @@
                   "skillLevel": 2,
                   "technologies": [
                     {
+                      "names": ["Astro"],
+                      "icons": [
+                        {
+                          "fileName": "logo-react.svg"
+                        }
+                      ],
+                      "skillLevel": 1
+                    },
+                    {
                       "names": ["React"],
                       "icons": [
                         {
@@ -370,40 +379,33 @@
             "items": [
               {
                 "title": "Tecnicatura Universitaria en Programación",
-                "startDate": "2023-01-01",
-                "endDate": "2023-01-01",
+                "endDate": "2023-12-06",
                 "eduInstitutionName": "Universidad Tecnológica Nacional FRRe",
-                "eduInstitutionLogoFile": "LOGO.png",
                 "url": "https://www.frre.utn.edu.ar/tsp/paginas/view/item/Incumbencias",
-                "desc": [
-                  "Perfil del Técnico Universitario en Programación:",
-                  "• Análisis y desarrollo de problemas de procesamiento de datos con lenguajes adecuados.",
-                  "• Elaboración y corrección de programas en lenguajes superiores.",
-                  "• Realización de tareas definidas por el Analista de Sistemas de Computación.",
-                  "• Análisis, depuración y transferencia de información procesada al especialista correspondiente."
-                ]
+                "certificateImg": {
+                  "title": "Título otorgado por la Universidad Tecnológica Nacional FRRe",
+                  "alt": "Título otorgado por la Universidad Tecnológica Nacional FRRe por finalizar la carrera de Técnico Universitario en Programación"
+                }
               },
               {
                 "title": "Curso de Desarrollo Web",
-                "startDate": "2023-01-01",
-                "endDate": "2023-01-01",
+                "endDate": "2021-03-27",
                 "eduInstitutionName": "Informatorio",
-                "eduInstitutionLogoFile": "LOGO.png",
-                "url": "https://www.frre.utn.edu.ar/tsp/paginas/view/item/Incumbencias",
-                "desc": [
-                  "Soy un apasionado programador junior especializado en desarrollo web. Mi formación universitaria me brindó sólidos conocimientos en el lado del servidor, mientras que en el lado del cliente he adquirido habilidades a través de cursos y de forma autodidacta."
-                ]
+                "url": "https://empleo.chaco.gob.ar/capacitaciones/Programaci%C3%B3n-y-Desarrollo-Web",
+                "certificateImg": {
+                  "title": "Certificado otorgado por el Informatorio",
+                  "alt": "Certificado otorgado por el Informatorio por finalizar el Curso de Desarrollo Web"
+                }
               },
               {
                 "title": "Curso de Introducción a la Programación",
-                "startDate": "2023-01-01",
-                "endDate": "2023-01-01",
+                "endDate": "2020-08-31",
                 "eduInstitutionName": "Informatorio",
-                "eduInstitutionLogoFile": "LOGO.png",
-                "url": "https://www.frre.utn.edu.ar/tsp/paginas/view/item/Incumbencias",
-                "desc": [
-                  "Soy un apasionado programador junior especializado en desarrollo web. Mi formación universitaria me brindó sólidos conocimientos en el lado del servidor, mientras que en el lado del cliente he adquirido habilidades a través de cursos y de forma autodidacta."
-                ]
+                "url": "https://empleo.chaco.gob.ar/capacitaciones/Introducci%C3%B3n-a-la-Programaci%C3%B3n",
+                "certificateImg": {
+                  "title": "Certificado otorgado por el Informatorio",
+                  "alt": "Certificado otorgado por el Informatorio por finalizar el Curso de Introducción a la Programación"
+                }
               }
             ]
           }

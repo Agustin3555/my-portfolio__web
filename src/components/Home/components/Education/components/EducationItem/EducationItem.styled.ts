@@ -2,17 +2,18 @@ import {
   COLOR,
   FONT,
   FONT_SIZE,
+  GLASS_SET,
   MICROINTERACTION,
   NOT_FONT_SIZE,
-  Value,
+  shadowAdapter,
+  type Value,
 } from "@/styles";
 import styled from "@emotion/styled";
 
 const GAP = NOT_FONT_SIZE.s;
 const ITEM_GAP = NOT_FONT_SIZE.l;
-const DATE_WIDTH = "4.875rem";
+const DATE_WIDTH = "6rem";
 const HEADING_MIN_WIDTH = `calc(${GAP} * 12)`;
-const DESC_MIN_WIDTH = `calc(${GAP} * 15)`;
 const POINT_3_PADDING = `calc(${NOT_FONT_SIZE["2xs"]} - ${NOT_FONT_SIZE["6xs"]})`;
 export const POINT_2_PADDING = NOT_FONT_SIZE["3xs"];
 const POINT_1_SIZE = NOT_FONT_SIZE["2xs"];
@@ -64,12 +65,10 @@ const cp: ConstProvider = {
 };
 
 enum ITEM_L {
+  date = "date",
   pointer = "pointer",
   line = "line",
-  date = "date",
-  heading = "heading",
-  desc = "desc",
-  links = "links",
+  layout = "layout",
 }
 
 export const Component = styled.li`
@@ -80,9 +79,8 @@ export const Component = styled.li`
     display: grid;
 
     grid-template:
-      "${ITEM_L.date} ${ITEM_L.pointer} ${ITEM_L.heading} ${ITEM_L.desc}" auto
-      ".              ${ITEM_L.line}    ${ITEM_L.links}   ${ITEM_L.desc}" 1fr /
-      ${DATE_WIDTH} auto auto 1fr;
+      "${ITEM_L.date} ${ITEM_L.pointer} ${ITEM_L.layout}" auto /
+      ${DATE_WIDTH} auto 1fr;
 
     column-gap: ${GAP};
 
@@ -127,8 +125,9 @@ export const Component = styled.li`
 
     .extension-line {
       grid-area: ${ITEM_L.line};
-
       justify-self: center;
+
+      display: none;
     }
 
     .date {
@@ -136,45 +135,72 @@ export const Component = styled.li`
 
       display: flex;
       align-items: center;
-      justify-content: flex-end;
+      justify-content: flex-start;
       font-size: ${FONT_SIZE.xs};
       word-spacing: calc(0.0625rem / 4);
     }
 
-    .heading {
-      grid-area: ${ITEM_L.heading};
+    .layout {
+      grid-area: ${ITEM_L.layout};
 
-      min-width: ${HEADING_MIN_WIDTH};
-      margin-bottom: ${GAP};
+      display: flex;
+      gap: ${GAP};
 
-      .heading-content {
+      .certificate {
+        flex-grow: 1.5;
+        flex-basis: 0;
+
+        display: flex;
+        aspect-ratio: 16 / 9;
+        background-image: url("/bg_pattern.png");
+        background-color: ${COLOR.g_2};
+        border-radius: ${NOT_FONT_SIZE["2xs"]};
+        ${GLASS_SET.content}
+        box-shadow: ${shadowAdapter(2)};
+        overflow: hidden;
+        transition: background-color ${MICROINTERACTION.s} ease-out;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+        }
+      }
+
+      .group {
+        flex-grow: 3;
+        flex-basis: 0;
+
         display: flex;
         flex-direction: column;
         gap: ${GAP};
 
-        .title {
-          font-family: ${FONT.s};
-          font-size: ${FONT_SIZE.l};
-          line-height: 1.25;
+        .heading {
+          /* min-width: ${HEADING_MIN_WIDTH}; */
+
+          .heading-content {
+            display: flex;
+            flex-direction: column;
+            gap: ${GAP};
+
+            .title {
+              font-family: ${FONT.s};
+              font-size: ${FONT_SIZE.l};
+              line-height: 1.25;
+            }
+
+            .subtitle {
+              color: ${COLOR.b};
+              font-size: ${FONT_SIZE.xs};
+            }
+          }
         }
 
-        .subtitle {
-          color: ${COLOR.b};
-          font-size: ${FONT_SIZE.xs};
+        .links {
+          display: flex;
+          align-items: flex-start;
         }
       }
-    }
-
-    .desc {
-      grid-area: ${ITEM_L.desc};
-
-      min-width: ${DESC_MIN_WIDTH};
-    }
-
-    .links {
-      grid-area: ${ITEM_L.links};
-
-      display: flex;
     }
   }
 
@@ -193,27 +219,27 @@ export const Component = styled.li`
     transition: background-color ${MICROINTERACTION.s} ease-out;
   }
 
-  @media (max-width: 74.375rem) {
+  @media (max-width: 65.625rem) {
     .item {
       grid-template:
         "${ITEM_L.pointer}  ${ITEM_L.date}" auto
-        "${ITEM_L.line}     ${ITEM_L.heading}" auto
-        "${ITEM_L.line}     ${ITEM_L.desc}" auto
-        "${ITEM_L.line}     ${ITEM_L.links}" auto /
-        auto auto;
+        "${ITEM_L.line}     ${ITEM_L.layout}" auto /
+        auto 1fr;
+
+      .extension-line {
+        display: initial;
+      }
 
       .date {
         justify-self: flex-start;
       }
 
-      .heading {
-        min-width: initial;
-        margin-top: calc(${GAP} * 0.5);
-      }
+      .layout {
+        margin-top: calc(${GAP} - ((2.625rem - ${FONT_SIZE.xs}) / 2));
 
-      .desc {
-        min-width: initial;
-        margin-bottom: ${GAP};
+        .certificate {
+          flex-grow: 2;
+        }
       }
     }
 
@@ -222,9 +248,34 @@ export const Component = styled.li`
     }
   }
 
+  @media (max-width: 32.8125rem) {
+    .item {
+      .layout {
+        flex-direction: column;
+
+        .certificate {
+          flex-grow: 1;
+          flex-basis: initial;
+
+          /*
+            TODO: en cierta medida (para algunos items) se podria mejorar la visual.
+            El "certificate" podria ser igual de largo que el "heading".
+          */
+        }
+      }
+    }
+  }
+
   body[data-dark-mode="true"] & {
-    .item .pointer .point-3 {
-      border-color: ${COLOR.g_10};
+    .item {
+      .layout .certificate {
+        background-image: url("/bg_pattern_dark.png");
+        background-color: ${COLOR.g_15};
+      }
+
+      .pointer .point-3 {
+        border-color: ${COLOR.g_10};
+      }
     }
 
     .line {
