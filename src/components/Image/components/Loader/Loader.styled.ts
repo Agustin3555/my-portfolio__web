@@ -1,9 +1,14 @@
-import { COLOR, COLOR_BRIGHT_A, COLOR_DARK_A, MICROINTERACTION } from '@/styles'
-import styled from '@emotion/styled'
+import {
+  COLOR,
+  COLOR_BRIGHT_A,
+  COLOR_DARK_A,
+  MICROINTERACTION,
+} from "@/styles";
+import styled from "@emotion/styled";
 
-const SIZE = '3rem'
-const PARTICLE_SIZE = '1.5rem'
-const ANIMATION_DURATION = 1.375
+const SIZE = "3rem";
+const PARTICLE_SIZE = "1.5rem";
+const ANIMATION_DURATION = 1.375;
 
 export const Component = styled.div`
   position: relative;
@@ -22,7 +27,7 @@ export const Component = styled.div`
 
   ::after,
   ::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 50%;
     left: 50%;
@@ -40,7 +45,8 @@ export const Component = styled.div`
   ::before {
     background-color: ${COLOR.b};
     transform: scale(0.5) translate(-${SIZE}, -${SIZE});
-    animation: loader ${ANIMATION_DURATION}s infinite ease-in-out,
+    animation:
+      loader ${ANIMATION_DURATION}s infinite ease-in-out,
       overlap ${ANIMATION_DURATION * 2}s infinite;
 
     @keyframes overlap {
@@ -61,9 +67,9 @@ export const Component = styled.div`
     }
   }
 
-  .app[data-dark-mode='true'] & {
+  body[data-dark-mode="true"] & {
     ::after {
       background-color: ${COLOR_DARK_A};
     }
   }
-`
+`;

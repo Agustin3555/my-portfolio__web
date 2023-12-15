@@ -1,18 +1,18 @@
 ---
 import * as GlassPanelStyled from "./GlassPanel.styled";
-import { HandlingClass, asClassName } from "@/tools";
+import { type HandlingClass, asClassName } from "@/tools";
 
 interface Props {
-  handlingClass?: HandlingClass;
   style?: GlassPanelStyled.Props;
+  handlingClass?: HandlingClass;
 }
 
-const { handlingClass, style = {} } = Astro.props;
+const { style = {}, handlingClass } = Astro.props;
 ---
 
 <GlassPanelStyled.Component
-  className={asClassName(handlingClass)}
   p={GlassPanelStyled.adapter(style)}
+  className={asClassName(handlingClass)}
 >
   <div class="glass-refleccion"></div>
   <div class="content"><slot /></div>

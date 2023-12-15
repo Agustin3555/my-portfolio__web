@@ -115,10 +115,6 @@ ol {
   list-style: none;
 }
 
-li {
-  display: flex;
-}
-
 .text {
   line-height: 1.4375;
 }

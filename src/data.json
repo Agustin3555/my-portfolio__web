@@ -39,9 +39,13 @@
         "data": {
           "text": "Su apoyo y enseñanzas han sido invaluables. A continuación, quiero reconocer a quienes han dejado una huella significativa en mi carrera:",
           "items": [
-            "Mis profesores de universidad.",
-            "Mis padres.",
-            "Mi primera gata."
+            {
+              "emoji": "🫂",
+              "text": "Mis amigos y compañeros de universidad."
+            },
+            { "emoji": "👨🏻‍🏫", "text": "Mis profesores de universidad." },
+            { "emoji": "👩🏻‍👨🏻‍👦🏻", "text": "Mis padres." },
+            { "emoji": "😸", "text": "Mi primera gata." }
           ]
         }
       },

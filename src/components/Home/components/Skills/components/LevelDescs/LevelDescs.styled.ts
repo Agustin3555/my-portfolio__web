@@ -4,7 +4,7 @@ import {
   MAIN_GAP,
   MICROINTERACTION,
   NOT_FONT_SIZE,
-  Value,
+  type Value,
   shadowAdapter,
 } from "@/styles";
 import styled from "@emotion/styled";

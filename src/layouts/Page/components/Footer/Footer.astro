@@ -1,5 +1,7 @@
 ---
 import * as FooterStyled from "./Footer.styled";
+import Separator from "@/components/Separator/Separator.astro";
+import { COLOR } from "@/styles";
 import jsonData from "@/data.json";
 
 const { copyright, sections } = jsonData.footer;
@@ -10,13 +12,19 @@ const { acknowledgments, othersPages } = sections;
   <ul class="sections">
     <li class="item">
       <p class="title">{acknowledgments.title}</p>
-      <div class="separator"></div>
-      <div class="group-text">
-        <p class="acknowledgments text">{acknowledgments.data.text}</p>
+      <Separator
+        style={{ invert: true, backgroundColor: { dark: COLOR.g_10 } }}
+        handlingClass="separator"
+      />
+      <div class="acknowledgments paragraphs">
+        <p class="text">{acknowledgments.data.text}</p>
         <ul>
           {
             acknowledgments.data.items.map((item) => (
-              <li class="text">• {item}</li>
+              <li class="text">
+                <span class="emoji">{item.emoji}</span>
+                {item.text}
+              </li>
             ))
           }
         </ul>
@@ -24,10 +32,16 @@ const { acknowledgments, othersPages } = sections;
     </li>
     <li class="item">
       <p class="title">{othersPages.title}</p>
-      <div class="separator"></div>
+      <Separator
+        style={{ invert: true, backgroundColor: { dark: COLOR.g_10 } }}
+        handlingClass="separator"
+      />
       <!-- <ButtonSection title="Not found" handlingClass="link-page" /> -->
     </li>
   </ul>
-  <div class="separator"></div>
+  <Separator
+    style={{ invert: true, backgroundColor: { dark: COLOR.g_10 } }}
+    handlingClass="separator"
+  />
   <span class="copyright text">{copyright}</span>
 </FooterStyled.Component>

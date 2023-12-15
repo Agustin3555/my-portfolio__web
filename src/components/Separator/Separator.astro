@@ -1,11 +1,16 @@
 ---
 import * as SeparatorStyled from "./Separator.styled";
+import { type HandlingClass, asClassName } from "@/tools";
 
 interface Props {
   style: SeparatorStyled.Props;
+  handlingClass?: HandlingClass;
 }
 
-const { style } = Astro.props;
+const { style, handlingClass } = Astro.props;
 ---
 
-<SeparatorStyled.Component p={SeparatorStyled.adapter(style)} />
+<SeparatorStyled.Component
+  p={SeparatorStyled.adapter(style)}
+  className={asClassName(handlingClass)}
+/>

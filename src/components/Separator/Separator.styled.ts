@@ -1,78 +1,76 @@
-import { Color, MICROINTERACTION, NOT_FONT_SIZE, Size, Value } from '@/styles'
-import { SerializedStyles } from '@emotion/react'
-import styled from '@emotion/styled'
-
-type Long = 'expanded' | Size
+import {
+  type Color,
+  MICROINTERACTION,
+  NOT_FONT_SIZE,
+  type Size,
+  type Value,
+} from "@/styles";
+import styled from "@emotion/styled";
 
 export interface Props {
-  long?: Long
-  thickness?: Size
-  invert?: boolean
+  long?: Size;
+  thickness?: Size;
+  invert?: boolean;
   backgroundColor: {
-    dark: Color
-    bright?: Color
-  }
-  styled?: SerializedStyles
+    bright?: Color;
+    dark: Color;
+  };
 }
 
 interface NormalizedProps {
-  long: Long
-  thickness: Size
-  invert: boolean
+  long?: Size;
+  thickness: Size;
+  invert: boolean;
   backgroundColor: {
-    dark: Color
-    bright: Color
-  }
+    bright: Color;
+    dark: Color;
+  };
 }
 
 interface Provider {
-  width: Value
-  height: Value
-  backgroundColor: Value
+  width: Value;
+  height: Value;
+  backgroundColor: Value;
 
   DARK_MODE: {
-    backgroundColor: Value
-  }
-
-  styled?: SerializedStyles
+    backgroundColor: Value;
+  };
 }
 
 export const adapter = (style: Props): Provider => {
   const normalizedProps: NormalizedProps = {
-    long: style.long || 'expanded',
-    thickness: style.thickness || NOT_FONT_SIZE['6xs'],
+    long: style.long,
+    thickness: style.thickness || NOT_FONT_SIZE["6xs"],
     invert: style.invert || false,
     backgroundColor: {
-      dark: style.backgroundColor.dark,
       bright: style.backgroundColor.bright || style.backgroundColor.dark,
+      dark: style.backgroundColor.dark,
     },
-  }
+  };
 
-  const long = normalizedProps.long === 'expanded' ? '100%' : normalizedProps.long
+  const { long, thickness, invert, backgroundColor } = normalizedProps;
+
+  const longAux = long || "100%";
 
   return {
-    width: normalizedProps.invert ? long : normalizedProps.thickness,
-    height: normalizedProps.invert ? normalizedProps.thickness : long,
-    backgroundColor: normalizedProps.backgroundColor.bright,
+    width: invert ? longAux : thickness,
+    height: invert ? thickness : longAux,
+    backgroundColor: backgroundColor.bright,
 
     DARK_MODE: {
-      backgroundColor: normalizedProps.backgroundColor.dark,
+      backgroundColor: backgroundColor.dark,
     },
-
-    styled: style?.styled,
-  }
-}
+  };
+};
 
 export const Component = styled.div<{ p: Provider }>`
   width: ${({ p }) => p.width};
   height: ${({ p }) => p.height};
-  border-radius: ${NOT_FONT_SIZE['6xl']};
+  border-radius: ${NOT_FONT_SIZE["6xl"]};
   background-color: ${({ p }) => p.backgroundColor};
   transition: background-color ${MICROINTERACTION.s} ease-out;
 
-  .app[data-dark-mode='true'] & {
+  body[data-dark-mode="true"] & {
     background-color: ${({ p }) => p.DARK_MODE.backgroundColor};
   }
-
-  ${({ p }) => p.styled};
-`
+`;
