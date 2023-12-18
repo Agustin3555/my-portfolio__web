@@ -4,7 +4,7 @@ import {
   MEDIA,
   MICROINTERACTION,
   NOT_FONT_SIZE,
-  Value,
+  type Value,
   shadowAdapter,
 } from "@/styles";
 import styled from "@emotion/styled";
@@ -56,6 +56,9 @@ export const Component = styled.div`
   .technology {
     display: grid;
     grid-template-columns: 1fr ${NOT_FONT_SIZE["3xl"]};
+    grid-template-columns:
+      calc(${NOT_FONT_SIZE["3xl"]} - (2.25rem * var(--level)))
+      1fr;
     gap: calc(${GAP} * 3);
     padding: ${GAP};
     padding-left: ${cp.technology.paddingLeft};
@@ -66,6 +69,9 @@ export const Component = styled.div`
       box-shadow ${MICROINTERACTION.s} ease-out,
       transform ${MICROINTERACTION.s} ease-out,
       opacity ${MICROINTERACTION.s} ease-out;
+
+    display: flex;
+    flex-wrap: wrap;
 
     :hover {
       background-color: ${COLOR.g_0};
@@ -88,6 +94,11 @@ export const Component = styled.div`
     }
 
     .group {
+      width: calc(
+        (${NOT_FONT_SIZE["4xl"]} - ${NOT_FONT_SIZE.xl}) -
+          (2.25rem * var(--level))
+      );
+
       display: flex;
       align-items: center;
       gap: calc(${GAP} * 3);
@@ -122,17 +133,19 @@ export const Component = styled.div`
           height: ${ICON_SIZE};
           width: ${ICON_SIZE};
           object-fit: contain;
-          filter: grayscale(1) invert(0.25);
+          filter: invert(0.35);
           transition: filter ${MICROINTERACTION.s} ease-out;
 
-          &[data-invert-in-bright-mode="true"] {
-            filter: grayscale(1) invert(0.75);
-          }
+          /* &[data-invert-in-bright-mode="true"] {
+            filter: grayscale(1) invert(var(--invert-in-bright-mode));
+          } */
         }
       }
     }
 
     .level-bar {
+      flex-grow: 1;
+
       position: relative;
       height: ${NOT_FONT_SIZE.s};
       border-radius: calc(${NOT_FONT_SIZE["2xs"]} - ${NOT_FONT_SIZE["3xs"]});
@@ -234,9 +247,9 @@ export const Component = styled.div`
         }
 
         .icons .icon {
+          /* filter: grayscale(1) invert(var(--invert-in-dark-mode));
           &[data-invert-in-dark-mode="true"] {
-            filter: grayscale(1) invert(0.75);
-          }
+          } */
         }
       }
 
@@ -256,7 +269,7 @@ export const Component = styled.div`
     }
   }
 
-  @media (max-width: ${MEDIA.xs}) {
+  /* @media (max-width: ${MEDIA.xs}) {
     .technology {
       grid-template-columns: none;
       grid-template-rows: auto auto;
@@ -267,5 +280,5 @@ export const Component = styled.div`
         width: calc(${NOT_FONT_SIZE.s} * 3);
       }
     }
-  }
+  } */
 `;

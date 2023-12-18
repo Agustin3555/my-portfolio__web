@@ -120,7 +120,7 @@
                       "names": ["Astro"],
                       "icons": [
                         {
-                          "fileName": "logo-react.svg"
+                          "fileName": "logo-astro.png"
                         }
                       ],
                       "skillLevel": 1
@@ -156,7 +156,7 @@
                       "names": ["Emotion"],
                       "icons": [
                         {
-                          "fileName": "logo-styled-components.png"
+                          "fileName": "logo-emotion.png"
                         }
                       ],
                       "skillLevel": 1
@@ -195,7 +195,7 @@
                       "names": ["Prisma"],
                       "icons": [
                         {
-                          "fileName": "logo-nest-js.svg",
+                          "fileName": "logo-prisma.svg",
                           "invertInDarkMode": true
                         }
                       ],
@@ -220,7 +220,7 @@
                           "invertInDarkMode": true
                         }
                       ],
-                      "skillLevel": 1
+                      "skillLevel": 0
                     }
                   ]
                 },
@@ -231,7 +231,7 @@
                       "fileName": "logo-python.svg"
                     }
                   ],
-                  "skillLevel": 1
+                  "skillLevel": 0
                 },
                 {
                   "names": ["C#"],
@@ -256,25 +256,25 @@
                   "names": ["SQL"],
                   "icons": [
                     {
-                      "fileName": "logo-sql-26.png"
+                      "fileName": "logo-sql.png"
                     }
                   ],
-                  "skillLevel": 1
+                  "skillLevel": 0
                 }
               ]
             },
             "levels": [
               {
                 "level": "Principiante",
-                "description": "He tomado cursos o tengo conocimientos básicos del lenguaje / tecnología, pero aún no he tenido experiencia práctica considerable."
+                "desc": "Conocimiento básico, experiencia en proyectos personales pequeños."
               },
               {
                 "level": "Intermedio",
-                "description": "He trabajado en proyectos pequeños utilizando el lenguaje / tecnología y tengo un conocimiento intermedio de las características del mismo."
+                "desc": "Conocimiento avanzado, participación en proyectos reales, actualizado con las últimas novedades."
               },
               {
                 "level": "Avanzado",
-                "description": "He trabajado en proyectos complejos y tengo un conocimiento profundo del lenguaje / tecnología, incluyendo características avanzadas y mejores prácticas."
+                "desc": "Profundización constante, aplicando las mejores prácticas."
               }
             ]
           }

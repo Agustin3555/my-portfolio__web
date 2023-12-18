@@ -33,16 +33,30 @@ const cp: ConstProvider = {
 };
 
 export const Component = styled.fieldset`
+  flex-grow: 1;
+  flex-basis: 13.125rem;
+
+  container-type: inline-size;
   display: flex;
-  gap: ${GAP};
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: ${NOT_FONT_SIZE.m};
   padding: 0;
   border: none;
 
   .item {
+    flex-grow: 1;
+    flex-basis: 5rem;
+
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: ${GAP};
+    text-wrap: balance;
+
+    @container (width <= 43.75rem) {
+      flex-basis: 25rem;
+    }
 
     .toggle {
       display: flex;
@@ -115,14 +129,5 @@ export const Component = styled.fieldset`
       border-color: ${COLOR.g_10};
       background-color: ${COLOR.g_4};
     }
-  }
-
-  @media (min-width: 75rem), (max-width: 45.3125rem) {
-    flex-direction: column;
-    gap: calc(${GAP} * 2);
-  }
-
-  @media (min-width: 75rem) {
-    width: 37.5%;
   }
 `;

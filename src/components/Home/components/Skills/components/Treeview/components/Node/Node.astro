@@ -16,13 +16,18 @@ export interface DataNode {
 
 interface Props {
   dataNode: DataNode;
+  level?: number;
 }
 
-const { names, icons, skillLevel, technologies } = Astro.props.dataNode;
+const { dataNode, level = 0 } = Astro.props;
+const { names, icons, skillLevel, technologies } = dataNode;
 ---
 
 <NodeStyled.Component>
-  <div class={`technology skill-level-${skillLevel}`}>
+  <div
+    class={`technology skill-level-${skillLevel}`}
+    style={`--level: ${level};`}
+  >
     <div class="group">
       <div class="names">
         {
@@ -41,9 +46,15 @@ const { names, icons, skillLevel, technologies } = Astro.props.dataNode;
             <>
               <img
                 class="icon"
+                style={`--invert-in-bright-mode: ${
+                  icon?.invertInBrightMode ? 0 : 0.75
+                };`}
+                style={`--invert-in-dark-mode: ${
+                  icon?.invertInDarkMode ? 0 : 0.75
+                };`}
                 data-invert-in-bright-mode={icon?.invertInBrightMode}
                 data-invert-in-dark-mode={icon?.invertInDarkMode}
-                src={icon.fileName}
+                src={`/skills/${icon.fileName}`}
                 alt={`Logo de ${names[index]}`}
               />
               {index !== names.length - 1 && <div class="separator" />}
@@ -83,7 +94,7 @@ const { names, icons, skillLevel, technologies } = Astro.props.dataNode;
                   <div class="next-extension line" />
                 )}
               </div>
-              <Astro.self dataNode={item} />
+              <Astro.self dataNode={item} level={level + 1} />
             </div>
             {index !== technologies?.length - 1 && (
               <div class="extension-container">

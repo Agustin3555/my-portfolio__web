@@ -1,8 +1,8 @@
-import { NOT_FONT_SIZE } from '@/styles'
-import styled from '@emotion/styled'
+import { NOT_FONT_SIZE } from "@/styles";
+import styled from "@emotion/styled";
 
 export const Component = styled.div`
-  width: 100%;
+  flex-grow: 2;
 
   .glass-container {
     width: auto;
@@ -11,7 +11,7 @@ export const Component = styled.div`
     .items {
       display: flex;
       flex-direction: column;
-      gap: ${NOT_FONT_SIZE['3xs']};
+      gap: ${NOT_FONT_SIZE["3xs"]};
     }
   }
-`
+`;
