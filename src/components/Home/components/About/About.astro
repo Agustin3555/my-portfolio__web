@@ -1,48 +1,24 @@
 ---
 import Section from "@/layouts/Section/Section.astro";
 import * as AboutStyled from "./About.styled";
-import Slider from "../../components/Slider/Slider";
 import { Image } from "astro:assets";
+import GlassPanel from "@/layouts/GlassPanel/GlassPanel.astro";
+import SocialNetwork from "@/components/SocialNetwork/SocialNetwork.astro";
+import ExternalLink from "@/components/ExternalLink/ExternalLink.astro";
+import Slider from "../../components/Slider/Slider";
+import { NOT_FONT_SIZE } from "@/styles";
+import { css } from "@emotion/react";
 import jsonData from "@/data.json";
 import Logo from "@/../public/logo.png";
 import MySelf from "@/../public/myself.jpg";
-import GlassPanel from "@/layouts/GlassPanel/GlassPanel.astro";
-import { NOT_FONT_SIZE } from "@/styles";
 
-// import { NOT_FONT_SIZE, getCSSVarValue } from "@/styles";
-// import { useOnScreen } from "@/hooks";
-// import { useMemo } from "react";
-// import { ExternalLink } from "@/components";
-// import { LOCATION, useAppStore } from "@/store";
-// import { css } from "@emotion/react";
+const { externalNetwork, pages } = jsonData;
 
-// const ROOT_MARGIN = NOT_FONT_SIZE.m;
-
-// const location = useAppStore((store) => store.externalNetworkLocation);
-// const setLocation = useAppStore((store) => store.setExternalLinkLocation);
-
-// const rootMargin = useMemo(() => {
-//   let value = getCSSVarValue(ROOT_MARGIN);
-
-//   value = value.slice(0, -3);
-
-//   value = `-${parseFloat(value) * 16}px`;
-
-//   return value;
-// }, []);
-
-// const [navRef] = useOnScreen({
-//   options: { rootMargin },
-//   onIntersectionChange: (isIntersecting) => {
-//     setLocation(isIntersecting ? LOCATION.about : LOCATION.leftNav);
-//   },
-// });
-
-const { sections } = jsonData.pages.home;
+const { sections } = pages.home;
 const sectionKey: keyof typeof sections = "about";
 
 const { about } = sections;
-const { presentation, descSlider } = about.data;
+const { presentation, descSlider, residence } = about.data;
 
 const imgs = [
   { src: MySelf, alt: descSlider[0].img.alt },
@@ -60,14 +36,13 @@ const imgs = [
       </div>
       <p class="summary text">{descSlider[0].desc}</p>
       <!-- TODO: hacer que destaque mi nivel cambiando de color la palabra. Ej: ...actualmente las empresas me consideran **junior**... -->
-      <!-- <nav class="nav" ref={navRef} data-show={location === LOCATION.about}>
+      <nav class="nav" id="socialNetsInAbout">
         {
           externalNetwork
             .slice()
             .reverse()
             .map((item, index) => (
-              <ExternalLink
-                key={item.title}
+              <SocialNetwork
                 iconName={item.iconName}
                 url={item.url}
                 title={item.title}
@@ -79,21 +54,28 @@ const imgs = [
               />
             ))
         }
-      </nav> -->
+      </nav>
     </div>
     <div class="extra-info">
-      <GlassPanel
-        style={{ borderRadius: NOT_FONT_SIZE.xs, elevation: 2 }}
-        handlingClass="glass-panel"
+      <div class="x">
+        <GlassPanel
+          style={{ borderRadius: NOT_FONT_SIZE.xs, elevation: 2 }}
+          handlingClass="glass-panel"
+        />
+        <Slider
+          client:load
+          picturesLength={imgs.length}
+          style={{ aspectRatio: [1, 1] }}
+          handlingClass="slider"
+        >
+          {imgs.map((item) => <Image {...item} />)}
+        </Slider>
+      </div>
+      <ExternalLink
+        text={residence.text}
+        url={residence.mapsUrl}
+        iconName="fa-solid fa-location-dot"
       />
-      <Slider
-        client:load
-        picturesLength={imgs.length}
-        style={{ aspectRatio: [1, 1] }}
-        handlingClass="slider"
-      >
-        {imgs.map((item) => <Image {...item} />)}
-      </Slider>
     </div>
   </AboutStyled.Component>
 </Section>

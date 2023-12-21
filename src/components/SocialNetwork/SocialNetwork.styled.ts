@@ -3,37 +3,37 @@ import {
   GLASS_SET,
   MICROINTERACTION,
   NOT_FONT_SIZE,
-  Value,
   shadowAdapter,
-} from '@/styles'
-import styled from '@emotion/styled'
+} from "@/styles";
+import { type SerializedStyles } from "@emotion/react";
+import styled from "@emotion/styled";
 
-const BORDER_RADIUS = NOT_FONT_SIZE['3xs']
+const BORDER_RADIUS = NOT_FONT_SIZE["3xs"];
+const SIZE = NOT_FONT_SIZE.m;
 
 export interface Props {
-  size?: NOT_FONT_SIZE.m | NOT_FONT_SIZE.xs
+  styled?: SerializedStyles;
 }
 
 interface Provider {
-  width: Value
-  height: Value
+  styled?: SerializedStyles;
 }
 
-export const adapter = ({ size = NOT_FONT_SIZE.m }: Props): Provider => {
+export const adapter = ({ styled }: Props): Provider => {
   return {
-    width: size,
-    height: size,
-  }
-}
+    styled,
+  };
+};
 
 export const Component = styled.a<{ p: Provider }>`
   position: relative;
-  width: ${({ p }) => p.width};
-  height: ${({ p }) => p.height};
+  width: ${SIZE};
+  height: ${SIZE};
   border-radius: ${BORDER_RADIUS};
   text-decoration: none;
   box-shadow: ${shadowAdapter(2)};
-  transition: box-shadow ${MICROINTERACTION.xs} ease-out,
+  transition:
+    box-shadow ${MICROINTERACTION.xs} ease-out,
     transform ${MICROINTERACTION.xs} ease-out;
   ${GLASS_SET.this}
 
@@ -63,4 +63,6 @@ export const Component = styled.a<{ p: Provider }>`
     border-radius: ${BORDER_RADIUS};
     ${GLASS_SET.content}
   }
-`
+
+  ${({ p }) => p.styled};
+`;

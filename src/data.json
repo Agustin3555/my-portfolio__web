@@ -62,7 +62,7 @@
           "buttonTitle": "Sobre mí",
           "data": {
             "presentation": [
-              "Hola, mi nombre es",
+              "Hola 👋🏻, mi nombre es",
               "Juan Agustín Lovera,",
               "Full Stack Web Dev."
             ],
@@ -77,7 +77,11 @@
                 },
                 "desc": "Disfruto creando proyectos innovadores para aplicar mis conocimientos. Aunque tengo poca experiencia laboral, estoy emocionado por enfrentar el desafío de trabajar en equipo y poner en práctica todas mis habilidades de manera profesional."
               }
-            ]
+            ],
+            "residence": {
+              "text": "Argentina, Resistencia",
+              "mapsUrl": "https://maps.app.goo.gl/WV5tTaDhoktP9uRp8"
+            }
           }
         },
         "skills": {

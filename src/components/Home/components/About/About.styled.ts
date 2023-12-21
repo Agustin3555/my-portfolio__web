@@ -51,6 +51,7 @@ const cp: ConstProvider = {
 export const Component = styled.div`
   display: flex;
   justify-content: center;
+  align-items: flex-start;
   flex-wrap: wrap;
   gap: ${NOT_FONT_SIZE.l};
 
@@ -108,27 +109,34 @@ export const Component = styled.div`
 
     flex-basis: calc(${NOT_FONT_SIZE["4xl"]} + var(--gap));
 
-    position: relative;
-    aspect-ratio: 1 / 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: ${NOT_FONT_SIZE.s};
 
-    .slider {
-      width: calc(100% - var(--gap));
-    }
-
-    .glass-panel {
-      position: absolute;
-      right: 0;
-      bottom: 0;
+    .x {
+      position: relative;
       aspect-ratio: 1 / 1;
-      width: calc(100% - var(--gap));
 
-      .content {
-        height: 100%;
+      .slider {
+        width: calc(100% - var(--gap));
       }
-    }
 
-    @media (max-width: ${MEDIA["2xs"]}) {
-      --gap: ${NOT_FONT_SIZE.s};
+      .glass-panel {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        aspect-ratio: 1 / 1;
+        width: calc(100% - var(--gap));
+
+        .content {
+          height: 100%;
+        }
+      }
+
+      @media (max-width: ${MEDIA["2xs"]}) {
+        --gap: ${NOT_FONT_SIZE.s};
+      }
     }
   }
 

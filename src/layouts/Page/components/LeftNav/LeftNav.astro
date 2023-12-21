@@ -1,30 +1,26 @@
 ---
 import * as LeftNavStyled from "./LeftNav.styled";
+import SocialNetwork from "@/components/SocialNetwork/SocialNetwork.astro";
+import Separator from "@/components/Separator/Separator.astro";
 import ToggleDarkMode from "../ToggleDarkMode/ToggleDarkMode.astro";
+import { COLOR_BRIGHT_A, COLOR_DARK_A } from "@/styles";
+import { css } from "@emotion/react";
+import jsonData from "@/data.json";
 
-// import { COLOR_BRIGHT_A, COLOR_DARK_A } from "@/styles";
-// import { useData } from "@/hooks";
-// import Separator from "../Separator/Separator";
-// import ExternalLink from "../ExternalLink/ExternalLink";
-// import { LOCATION, useAppStore } from "@/store";
-// import { css } from "@emotion/react";
-
-// const { externalNetwork } = useData()
-// const location = useAppStore(store => store.externalNetworkLocation)
+const { externalNetwork } = jsonData;
 ---
 
 <LeftNavStyled.Component>
-  <!-- <nav className="nav" data-show={location === LOCATION.leftNav}>
+  <nav class="nav" id="socialNetsInLeftNav">
     {
-      externalNetwork.map((item, index) => (
-        <ExternalLink
-          key={item.title}
+      externalNetwork.map((item, i) => (
+        <SocialNetwork
           iconName={item.iconName}
           url={item.url}
-          title={item.title}
+          title={`Ir a mi cuenta de ${item.title}`}
           style={{
             styled: css`
-              --i: ${externalNetwork.length - index};
+              --i: ${externalNetwork.length - i};
             `,
           }}
         />
@@ -36,6 +32,6 @@ import ToggleDarkMode from "../ToggleDarkMode/ToggleDarkMode.astro";
         backgroundColor: { dark: COLOR_DARK_A, bright: COLOR_BRIGHT_A },
       }}
     />
-  </nav> -->
+  </nav>
   <ToggleDarkMode />
 </LeftNavStyled.Component>

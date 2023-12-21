@@ -71,3 +71,32 @@ if (title) documentTitle += ` ${separator} ${title}`;
 
   darkModeBodyAttr.set(String(darkModeInit()));
 </script>
+
+<script>
+  import { NOT_FONT_SIZE, getCSSVarValue } from "@/styles";
+  import {
+    onScreen,
+    showSocialNetsInAboutAttr,
+    showSocialNetsInLeftNavAttr,
+  } from "./tools";
+
+  const ROOT_MARGIN = NOT_FONT_SIZE.m;
+
+  let rootMargin = getCSSVarValue(ROOT_MARGIN);
+  rootMargin = rootMargin.slice(0, -3);
+  rootMargin = `-${parseFloat(rootMargin) * 16}px`;
+
+  const { element } = showSocialNetsInAboutAttr;
+
+  if (element)
+    onScreen({
+      element,
+      options: { rootMargin },
+      onIntersectionChange(isIntersecting) {
+        showSocialNetsInAboutAttr.set(String(isIntersecting));
+        showSocialNetsInLeftNavAttr.set(String(!isIntersecting));
+      },
+    });
+  // Si no existe socialNetsInAbout en la página, socialNetsInLeftNav siempre será visible
+  else showSocialNetsInLeftNavAttr.set("true");
+</script>

@@ -1,5 +1,5 @@
 export class ElementAttrManager {
-  protected element: HTMLElement;
+  element: HTMLElement;
   protected attrKey: string;
 
   constructor(element: HTMLElement, attrKey: string) {
