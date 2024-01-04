@@ -56,12 +56,12 @@ export const Component = styled.div`
         transform ${MICROINTERACTION.m} ease,
         filter ${MICROINTERACTION.m} ease;
       transition-delay: calc(${MICROINTERACTION.s} * var(--i));
-    }
 
-    &[data-show="true"] > * {
-      opacity: 1;
-      transform: initial;
-      filter: initial;
+      body[data-social-nets-in-left-nav="true"] & {
+        opacity: 1;
+        transform: initial;
+        filter: initial;
+      }
     }
   }
 `;

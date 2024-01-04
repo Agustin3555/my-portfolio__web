@@ -4,7 +4,7 @@ import {
   COLOR,
   MICROINTERACTION,
   NOT_FONT_SIZE,
-  Value,
+  type Value,
 } from "@/styles";
 import styled from "@emotion/styled";
 
@@ -55,35 +55,35 @@ const cp: ConstProvider = {
   },
 };
 
-export const Component = styled.div`
-  position: relative;
+export const Component = styled.button`
   width: ${cp.width};
   height: ${cp.height};
   padding: ${cp.padding};
+  border: none;
   border-radius: ${NOT_FONT_SIZE["6xl"]};
   background-color: ${cp.backgroundColor};
+  cursor: pointer;
   overflow: hidden;
-  transition:
-    background-color ${MICROINTERACTION.s} ease-out,
-    transform ${MICROINTERACTION.m} ease-out;
+  transition: background-color ${MICROINTERACTION.s} ease-out;
 
-  :hover {
-    transform: rotate(-22.5deg);
+  :hover .fake-button {
+    rotate: -22.5deg;
   }
 
   :active .fake-button {
-    transform: scale(87.5%);
+    scale: 87.5%;
   }
 
   .fake-button {
-    position: absolute;
+    position: relative;
     width: ${cp.fakeButton.width};
     height: ${cp.fakeButton.height};
     border-radius: ${NOT_FONT_SIZE["6xl"]};
     background-color: ${cp.fakeButton.backgroundColor};
     transition:
       background-color ${MICROINTERACTION.s} ease-out,
-      transform ${MICROINTERACTION.xs} ease-out;
+      scale ${MICROINTERACTION.xs} ease-out,
+      rotate ${MICROINTERACTION.m} ease-out;
 
     .sun,
     .moon {
@@ -95,30 +95,23 @@ export const Component = styled.div`
       height: 100%;
       transition:
         opacity ${MICROINTERACTION.m} ease-out,
-        transform ${MICROINTERACTION.m} ease-out;
+        scale ${MICROINTERACTION.m} ease-out,
+        rotate ${MICROINTERACTION.m} ease-out;
     }
 
     .sun {
       color: ${COLOR.g_4};
       opacity: 0;
-      transform: scale(0) rotate(135deg);
+      scale: 0;
+      rotate: 135deg;
     }
 
     .moon {
       color: ${COLOR.g_12};
       opacity: 1;
-      transform: initial;
+      scale: initial;
+      rotate: initial;
     }
-  }
-
-  .input {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    appearance: none;
-    cursor: pointer;
   }
 
   body[data-dark-mode="true"] & {
@@ -129,12 +122,14 @@ export const Component = styled.div`
 
       .sun {
         opacity: 1;
-        transform: initial;
+        scale: initial;
+        rotate: initial;
       }
 
       .moon {
         opacity: 0;
-        transform: scale(0) rotate(135deg);
+        scale: 0;
+        rotate: 135deg;
       }
     }
   }

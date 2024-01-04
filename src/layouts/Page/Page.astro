@@ -3,9 +3,10 @@ import "@/styles/normalize.css";
 import "@/styles/vars.css";
 import "@/styles/style.css";
 import * as PageStyled from "./Page.styled";
-import SplashToScrollUp from "./components/SplashToScrollUp/SplashToScrollUp.astro";
-import LeftNav from "./components/LeftNav/LeftNav.astro";
 import Footer from "./components/Footer/Footer.astro";
+import Menu from "./components/Menu/Menu.astro";
+import LeftNav from "./components/LeftNav/LeftNav.astro";
+import SplashToScrollUp from "./components/SplashToScrollUp/SplashToScrollUp.astro";
 import jsonData from "@/data.json";
 
 interface Props {
@@ -42,7 +43,7 @@ if (title) documentTitle += ` ${separator} ${title}`;
         </main>
         <Footer />
       </div>
-      <!-- <Menu /> -->
+      <Menu />
       <LeftNav />
       <!-- <SplashToScrollUp /> -->
     </PageStyled.Component>
@@ -50,7 +51,7 @@ if (title) documentTitle += ` ${separator} ${title}`;
 </html>
 
 <script>
-  import { darkModeBodyAttr } from "./tools";
+  import { bodyManager } from "@/tools/elementManagers.tool";
   import { darkModeEntity } from "@/services";
 
   const DEFAULT_DARK_MODE = true;
@@ -69,16 +70,13 @@ if (title) documentTitle += ` ${separator} ${title}`;
     return DEFAULT_DARK_MODE;
   };
 
-  darkModeBodyAttr.set(String(darkModeInit()));
+  bodyManager.setData("darkMode", String(darkModeInit()));
 </script>
 
 <script>
   import { NOT_FONT_SIZE, getCSSVarValue } from "@/styles";
-  import {
-    onScreen,
-    showSocialNetsInAboutAttr,
-    showSocialNetsInLeftNavAttr,
-  } from "./tools";
+  import { bodyManager } from "@/tools/elementManagers.tool";
+  import { onScreen } from "./tools";
 
   const ROOT_MARGIN = NOT_FONT_SIZE.m;
 
@@ -86,17 +84,16 @@ if (title) documentTitle += ` ${separator} ${title}`;
   rootMargin = rootMargin.slice(0, -3);
   rootMargin = `-${parseFloat(rootMargin) * 16}px`;
 
-  const { element } = showSocialNetsInAboutAttr;
+  const { socialNetsInAbout } = window;
 
-  if (element)
+  if (socialNetsInAbout)
     onScreen({
-      element,
+      element: socialNetsInAbout,
       options: { rootMargin },
-      onIntersectionChange(isIntersecting) {
-        showSocialNetsInAboutAttr.set(String(isIntersecting));
-        showSocialNetsInLeftNavAttr.set(String(!isIntersecting));
+      onIntersectionChange: (isIntersecting) => {
+        bodyManager.setData("socialNetsInLeftNav", String(!isIntersecting));
       },
     });
   // Si no existe socialNetsInAbout en la página, socialNetsInLeftNav siempre será visible
-  else showSocialNetsInLeftNavAttr.set("true");
+  else bodyManager.setData("socialNetsInLeftNav", "true");
 </script>

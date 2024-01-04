@@ -1,0 +1,40 @@
+---
+import * as HamburgerStyled from "./Hamburger.styled";
+---
+
+<HamburgerStyled.Component id="hamburger" title="Abrir menú">
+  <div class="hamburger-icon">
+    <div class="bar top"></div>
+    <div class="bar mid"></div>
+    <div class="bar bot"></div>
+  </div>
+  <div class="x-icon">
+    <div class="bar x-bar a"></div>
+    <div class="bar x-bar b"></div>
+  </div>
+</HamburgerStyled.Component>
+
+<script>
+  import { bodyManager } from "@/tools/elementManagers.tool";
+
+  bodyManager.setData("hamburgerMenuIsOpen", String(false));
+
+  const hamburger = window.hamburger as HTMLButtonElement;
+
+  const handleClick = () => {
+    const inversedHamburgerMenuIsOpen = !(
+      bodyManager.getData("hamburgerMenuIsOpen") === String(true)
+    );
+
+    hamburger.title = inversedHamburgerMenuIsOpen
+      ? "Cerrar menú"
+      : "Abrir menú";
+
+    bodyManager.setData(
+      "hamburgerMenuIsOpen",
+      String(inversedHamburgerMenuIsOpen),
+    );
+  };
+
+  hamburger.addEventListener("click", handleClick);
+</script>

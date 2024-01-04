@@ -1,0 +1,103 @@
+---
+import * as HamburgerMenuStyled from "./HamburgerMenu.styled";
+import Hamburger from "./components/Hamburger/Hamburger.astro";
+import Separator from "@/components/Separator/Separator.astro";
+import Link, { type Props as LinkProps } from "@/components/Link/Link.astro";
+import ToggleDarkMode from "@/components/ToggleDarkMode/ToggleDarkMode.astro";
+import SocialNetwork from "@/components/SocialNetwork/SocialNetwork.astro";
+import { COLOR_BRIGHT_A, COLOR_DARK_A } from "@/styles";
+import jsonData from "@/data.json";
+
+interface Props {
+  linksData: {
+    home: LinkProps[];
+    resume: LinkProps;
+  };
+}
+
+const { home, resume } = Astro.props.linksData;
+const { externalNetwork } = jsonData;
+---
+
+<HamburgerMenuStyled.Component p={HamburgerMenuStyled.adapter(100, 100)}>
+  <button class="deep-touch" id="deepTouch" title="Cerrar menú"></button>
+  <div class="glass-menu">
+    <div class="glass-refleccion"></div>
+    <div class="content">
+      <div class="MC" id="adaptable">
+        <div class="C" id="content">
+          <Hamburger />
+          <div class="group">
+            <Separator
+              style={{
+                invert: true,
+                backgroundColor: {
+                  dark: COLOR_DARK_A,
+                  bright: COLOR_BRIGHT_A,
+                },
+              }}
+            />
+            <nav class="nav">
+              {home.map((item) => <Link {...item} />)}
+              <Separator
+                style={{
+                  invert: true,
+                  backgroundColor: {
+                    dark: COLOR_DARK_A,
+                    bright: COLOR_BRIGHT_A,
+                  },
+                }}
+              />
+              <Link {...resume} />
+            </nav>
+            <Separator
+              style={{
+                invert: true,
+                backgroundColor: {
+                  dark: COLOR_DARK_A,
+                  bright: COLOR_BRIGHT_A,
+                },
+              }}
+            />
+            <nav class="nav nav--external-network">
+              {
+                externalNetwork.map((item) => (
+                  <SocialNetwork
+                    iconName={item.iconName}
+                    url={item.url}
+                    title={item.title}
+                  />
+                ))
+              }
+            </nav>
+            <Separator
+              style={{
+                invert: true,
+                backgroundColor: {
+                  dark: COLOR_DARK_A,
+                  bright: COLOR_BRIGHT_A,
+                },
+              }}
+            />
+            <ToggleDarkMode />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</HamburgerMenuStyled.Component>
+
+<script>
+  import { adaptable } from "@/tools/adaptable.tool";
+  import { bodyManager } from "@/tools/elementManagers.tool";
+
+  const deepTouch = window.deepTouch as HTMLButtonElement;
+
+  const deepTouchHandleClick = () => {
+    bodyManager.setData("hamburgerMenuIsOpen", "false");
+  };
+
+  deepTouch.addEventListener("click", deepTouchHandleClick);
+
+  adaptable(window.adaptable, window.content);
+</script>

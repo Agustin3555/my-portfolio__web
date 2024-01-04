@@ -1,5 +1,6 @@
 ---
 import * as FooterStyled from "./Footer.styled";
+import Link from "@/components/Link/Link.astro";
 import Separator from "@/components/Separator/Separator.astro";
 import { COLOR } from "@/styles";
 import jsonData from "@/data.json";
@@ -36,7 +37,7 @@ const { acknowledgments, othersPages } = sections;
         style={{ invert: true, backgroundColor: { dark: COLOR.g_10 } }}
         handlingClass="separator"
       />
-      <!-- <ButtonSection title="Not found" handlingClass="link-page" /> -->
+      <Link url="coffee" text="Not found" handlingClass="link-page" />
     </li>
   </ul>
   <Separator

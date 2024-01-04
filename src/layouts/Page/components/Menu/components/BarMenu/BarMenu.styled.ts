@@ -1,22 +1,21 @@
-import { MEDIA, MICROINTERACTION, NOT_FONT_SIZE, Value } from '@/styles'
-import styled from '@emotion/styled'
+import { MEDIA, MICROINTERACTION, NOT_FONT_SIZE, type Value } from "@/styles";
+import styled from "@emotion/styled";
 
 interface ConstProvider {
   HIDDEN: {
-    top: Value
-  }
+    top: Value;
+  };
 }
 
 const cp: ConstProvider = {
   HIDDEN: {
-    top: `calc((${NOT_FONT_SIZE.l} + ${NOT_FONT_SIZE['6xs']}) * -1)`,
+    top: `calc((${NOT_FONT_SIZE.l} + ${NOT_FONT_SIZE["6xs"]}) * -1)`,
   },
-}
+};
 
 export const Component = styled.nav`
   position: fixed;
   top: 0;
-  right: 0;
   transition: top ${MICROINTERACTION.m} ease;
 
   @media (max-width: ${MEDIA.s}) {
@@ -33,7 +32,7 @@ export const Component = styled.nav`
 
       > * {
         opacity: 0;
-        transform: translateY(calc(${NOT_FONT_SIZE['2xl']} * -1));
+        transform: translateY(calc(${NOT_FONT_SIZE["2xl"]} * -1));
         animation: fadeIn ${MICROINTERACTION.l} ease forwards;
         animation-delay: calc(${MICROINTERACTION.xs} * var(--i));
 
@@ -71,7 +70,7 @@ export const Component = styled.nav`
     }
   }
 
-  &[data-hidden='true'] {
+  body[data-vertical-scroll="true"] & {
     top: ${cp.HIDDEN.top};
   }
-`
+`;

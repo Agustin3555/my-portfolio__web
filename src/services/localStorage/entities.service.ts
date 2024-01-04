@@ -1,3 +1,3 @@
-import { LocalStorageEntity } from '@/tools'
+import { LocalStorageEntity } from "@/tools";
 
-export const darkModeEntity = new LocalStorageEntity<boolean>('dark-mode')
+export const darkModeEntity = new LocalStorageEntity<boolean>("dark-mode");

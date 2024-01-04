@@ -7,8 +7,8 @@ import {
   MEDIA,
   MICROINTERACTION,
   NOT_FONT_SIZE,
-  Value,
-  colorAlphaAdapter,
+  type Value,
+  // colorAlphaAdapter,
   shadowAdapter,
 } from "@/styles";
 import styled from "@emotion/styled";
@@ -84,6 +84,7 @@ export const Component = styled.header<{ p: Provider }>`
     width: 100%;
     height: 100%;
     background-color: ${COLOR.g_19};
+    border: none;
     opacity: 0;
     cursor: pointer;
     pointer-events: none;
@@ -126,11 +127,14 @@ export const Component = styled.header<{ p: Provider }>`
       transition: padding ${MICROINTERACTION.m} ease;
 
       .MC {
-        width: ${FONT_SIZE.xl};
-        height: ${FONT_SIZE.xl};
         transition:
           width ${MICROINTERACTION.m} ease,
           height ${MICROINTERACTION.m} ease;
+
+        body[data-hamburger-menu-is-open="false"] & {
+          width: ${FONT_SIZE.xl} !important;
+          height: ${FONT_SIZE.xl} !important;
+        }
 
         .C {
           display: flex;
@@ -174,28 +178,17 @@ export const Component = styled.header<{ p: Provider }>`
     }
   }
 
-  &[data-show="true"] {
-    .glass-menu {
-      top: calc((${NOT_FONT_SIZE.l} + ${NOT_FONT_SIZE["6xs"]}) * -1);
-    }
-  }
-
-  &[data-expanded="true"] {
+  body[data-hamburger-menu-is-open="true"] & {
     .deep-touch {
       opacity: 0.5;
       pointer-events: initial;
     }
 
     .glass-menu {
-      background-color: ${colorAlphaAdapter(BGC_BRIGHT_A, 0.75)};
-
       .content {
         padding: calc(${FONT_SIZE.s} * 2);
 
         .MC {
-          width: ${({ p }) => p.EXPANDED.glassMenu.content.MC.width};
-          height: ${({ p }) => p.EXPANDED.glassMenu.content.MC.height};
-
           .C .group {
             opacity: 1;
             transform: translateX(0);
@@ -210,7 +203,6 @@ export const Component = styled.header<{ p: Provider }>`
 
   body[data-dark-mode="true"] &[data-expanded="true"] {
     .glass-menu {
-      background-color: ${colorAlphaAdapter(BGC_DARK_A, 0.75)};
     }
   }
 `;

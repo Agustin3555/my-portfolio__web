@@ -2,7 +2,7 @@
 import * as LeftNavStyled from "./LeftNav.styled";
 import SocialNetwork from "@/components/SocialNetwork/SocialNetwork.astro";
 import Separator from "@/components/Separator/Separator.astro";
-import ToggleDarkMode from "../ToggleDarkMode/ToggleDarkMode.astro";
+import ToggleDarkMode from "@/components/ToggleDarkMode/ToggleDarkMode.astro";
 import { COLOR_BRIGHT_A, COLOR_DARK_A } from "@/styles";
 import { css } from "@emotion/react";
 import jsonData from "@/data.json";
@@ -11,7 +11,7 @@ const { externalNetwork } = jsonData;
 ---
 
 <LeftNavStyled.Component>
-  <nav class="nav" id="socialNetsInLeftNav">
+  <nav class="nav">
     {
       externalNetwork.map((item, i) => (
         <SocialNetwork

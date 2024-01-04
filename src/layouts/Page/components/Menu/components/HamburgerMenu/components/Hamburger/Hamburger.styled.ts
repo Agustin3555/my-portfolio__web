@@ -67,6 +67,7 @@ const cp: ConstProvider = {
 };
 
 export const Component = styled.button`
+  position: relative;
   width: ${cp.width};
   height: ${cp.height};
   padding: 0;
@@ -74,98 +75,84 @@ export const Component = styled.button`
   background-color: transparent;
   cursor: pointer;
 
-  .hamburger-AC {
-    width: 100%;
-    height: 100%;
+  > * {
+    position: absolute;
+    inset: 0;
     transition:
       opacity ${MICROINTERACTION.s} ease,
-      transform ${MICROINTERACTION.s} ease,
+      scale ${MICROINTERACTION.s} ease,
       filter ${MICROINTERACTION.s} ease;
+  }
 
-    .bar {
-      position: absolute;
-      height: ${cp.hamburgerAC.bar.height};
-      border-radius: ${NOT_FONT_SIZE["6xl"]};
-      background-color: ${COLOR_BRIGHT_A};
-      transition: background-color ${MICROINTERACTION.s} ease-out;
+  .bar {
+    position: absolute;
+    height: ${cp.hamburgerAC.bar.height};
+    border-radius: ${NOT_FONT_SIZE["6xl"]};
+    background-color: ${COLOR_BRIGHT_A};
+    transition: background-color ${MICROINTERACTION.s} ease-out;
+  }
+
+  .hamburger-icon {
+    width: 100%;
+    height: 100%;
+
+    body[data-hamburger-menu-is-open="true"] & {
+      opacity: 0;
+      scale: 0;
+      filter: blur(${NOT_FONT_SIZE["4xs"]});
     }
 
-    .hamburger-icon {
-      position: relative;
+    .top {
+      top: ${cp.hamburgerAC.bar.hamburgerIcon.top.top};
+      width: 50%;
+    }
+
+    .mid {
+      top: ${cp.hamburgerAC.bar.hamburgerIcon.mid.top};
       width: 100%;
-      height: 100%;
-
-      .top {
-        top: ${cp.hamburgerAC.bar.hamburgerIcon.top.top};
-        width: 50%;
-      }
-
-      .mid {
-        top: ${cp.hamburgerAC.bar.hamburgerIcon.mid.top};
-        width: 100%;
-      }
-
-      .bot {
-        bottom: ${cp.hamburgerAC.bar.hamburgerIcon.bot.bottom};
-        width: 75%;
-      }
     }
 
-    .x-icon {
-      position: relative;
-      left: -0.2656rem;
-      width: 100%;
-      height: 100%;
-
-      .x-bar {
-        top: ${cp.hamburgerAC.bar.xIcon.xBar.top};
-        width: 109%;
-      }
-
-      .a {
-        transform: rotate(45deg);
-      }
-
-      .b {
-        transform: rotate(-45deg);
-      }
+    .bot {
+      bottom: ${cp.hamburgerAC.bar.hamburgerIcon.bot.bottom};
+      width: 75%;
     }
   }
 
-  .fade-enter {
-    opacity: 0;
-    transform: scale(0);
-    filter: blur(${NOT_FONT_SIZE["4xs"]});
+  .x-icon {
+    left: -0.2656rem;
+    width: 100%;
+    height: 100%;
+
+    body[data-hamburger-menu-is-open="false"] & {
+      opacity: 0;
+      scale: 0;
+      filter: blur(${NOT_FONT_SIZE["4xs"]});
+    }
+
+    .x-bar {
+      top: ${cp.hamburgerAC.bar.xIcon.xBar.top};
+      width: 109%;
+    }
+
+    .a {
+      transform: rotate(45deg);
+    }
+
+    .b {
+      transform: rotate(-45deg);
+    }
   }
 
-  .fade-exit {
-    opacity: 1;
-    transform: scale(1);
-    filter: blur(0);
-  }
-
-  .fade-enter-active {
-    opacity: 1;
-    transform: scale(1);
-    filter: blur(0);
-  }
-
-  .fade-exit-active {
-    opacity: 0;
-    transform: scale(0);
-    filter: blur(${NOT_FONT_SIZE["4xs"]});
-  }
-
-  :hover .hamburger-AC .bar {
+  :hover .bar {
     background-color: ${COLOR.g_19};
   }
 
   body[data-dark-mode="true"] & {
-    .hamburger-AC .bar {
+    .bar {
       background-color: ${COLOR_DARK_A};
     }
 
-    :hover .hamburger-AC .bar {
+    :hover .bar {
       background-color: ${COLOR.g_0};
     }
   }

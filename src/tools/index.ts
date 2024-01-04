@@ -1,4 +1,4 @@
-export * from "./elementAttrManager.tool";
+export * from "./elementManager.tool";
 export * from "./handlingClass.tool";
 export * from "./localStorageEntity.tool";
 export * from "./random.tool";

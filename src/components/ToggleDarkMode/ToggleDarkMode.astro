@@ -1,0 +1,39 @@
+---
+import * as ToggleDarkModeStyled from "./ToggleDarkMode.styled";
+import Icon from "@/components/Icon/Icon.astro";
+import { FONT_SIZE } from "@/styles";
+---
+
+<ToggleDarkModeStyled.Component
+  className="dark-mode-toggle"
+  title="Alternar tema"
+>
+  <div class="fake-button">
+    <div class="sun">
+      <Icon iconName="fa-solid fa-sun" style={{ size: FONT_SIZE.s }} />
+    </div>
+    <div class="moon">
+      <Icon iconName="fa-solid fa-moon" style={{ size: FONT_SIZE.s }} />
+    </div>
+  </div>
+</ToggleDarkModeStyled.Component>
+
+<script>
+  import { bodyManager } from "@/tools/elementManagers.tool";
+  import { darkModeEntity } from "@/services";
+
+  const handleClick = () => {
+    const reverseDarkMode = !(bodyManager.getData("darkMode") === "true");
+
+    bodyManager.setData("darkMode", String(reverseDarkMode));
+    darkModeEntity.set(reverseDarkMode);
+  };
+
+  const toggles = window.document.getElementsByClassName(
+    "dark-mode-toggle",
+  ) as HTMLCollectionOf<HTMLButtonElement>;
+
+  Array.from(toggles).forEach((toggle) =>
+    toggle.addEventListener("click", handleClick),
+  );
+</script>

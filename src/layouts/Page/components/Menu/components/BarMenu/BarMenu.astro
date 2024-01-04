@@ -1,0 +1,56 @@
+---
+import * as BarMenuStyled from "./BarMenu.styled";
+import GlassPanel from "@/layouts/GlassPanel/GlassPanel.astro";
+import Link, { type Props as LinkProps } from "@/components/Link/Link.astro";
+import Separator from "@/components/Separator/Separator.astro";
+import {
+  COLOR_BRIGHT_A,
+  COLOR_DARK_A,
+  MAIN_GAP,
+  NOT_FONT_SIZE,
+} from "@/styles";
+import { css } from "@emotion/react";
+
+interface Props {
+  linksData: {
+    home: LinkProps[];
+    resume: LinkProps;
+  };
+}
+
+const { home, resume } = Astro.props.linksData;
+---
+
+<BarMenuStyled.Component>
+  <GlassPanel
+    style={{
+      padding: MAIN_GAP,
+      borderRadius: NOT_FONT_SIZE["2xs"],
+      elevation: 2,
+      styled: css`
+        &,
+        .glass-refleccion,
+        .content {
+          border-top-left-radius: 0;
+          border-top-right-radius: 0;
+        }
+
+        .content {
+          border-top-width: 0;
+        }
+      `,
+    }}
+  >
+    <div class="container">
+      <nav class="nav">
+        {home.map((item) => <Link {...item} />)}
+        <Separator
+          style={{
+            backgroundColor: { dark: COLOR_DARK_A, bright: COLOR_BRIGHT_A },
+          }}
+        />
+        <Link {...resume} />
+      </nav>
+    </div>
+  </GlassPanel>
+</BarMenuStyled.Component>

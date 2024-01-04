@@ -1,0 +1,55 @@
+---
+import BarMenu from "./components/BarMenu/BarMenu.astro";
+import HamburgerMenu from "./components/HamburgerMenu/HamburgerMenu.astro";
+import jsonData from "@/data.json";
+import { reassemble } from "./tools";
+import { type Props as LinkProps } from "@/components/Link/Link.astro";
+
+const { pages } = jsonData;
+const { sections } = pages.home;
+
+const home = reassemble(
+  sections,
+  (sectionKey, current): LinkProps => ({
+    url: `#${sectionKey}`,
+    text: current.buttonTitle,
+  }),
+);
+
+const resume: { url: keyof typeof pages } & LinkProps = {
+  url: "resume",
+  text: pages.resume.buttonTitle,
+};
+
+const linksData = { home, resume };
+---
+
+<>
+  <BarMenu linksData={linksData} />
+  <HamburgerMenu linksData={linksData} />
+</>
+
+<script>
+  import { bodyManager } from "@/tools/elementManagers.tool";
+
+  let lastScrollY = 0;
+  let ticking = false;
+
+  const updateScrollDir = () => {
+    const scrollY = window.scrollY;
+
+    bodyManager.setData("verticalScroll", String(scrollY > lastScrollY));
+
+    lastScrollY = scrollY;
+    ticking = false;
+  };
+
+  const onScroll = () => {
+    if (!ticking) {
+      window.requestAnimationFrame(updateScrollDir);
+      ticking = true;
+    }
+  };
+
+  window.addEventListener("scroll", onScroll);
+</script>
