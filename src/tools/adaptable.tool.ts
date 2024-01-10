@@ -1,11 +1,20 @@
-export const adaptable = (adaptable: HTMLElement, content: HTMLElement) => {
+export const adaptable = (
+  adaptable: HTMLElement,
+  content: HTMLElement,
+  form?: boolean,
+) => {
   const handleResize = (entries: ResizeObserverEntry[]) => {
     if (entries.length > 0) {
       const firstEntry = entries[0];
       const { width, height } = firstEntry.contentRect;
 
-      adaptable.style.width = `${width}px`;
-      adaptable.style.height = `${height}px`;
+      if (form === undefined) {
+        adaptable.style.width = `${width}px`;
+        adaptable.style.height = `${height}px`;
+      } else
+        form
+          ? (adaptable.style.width = `${width}px`)
+          : (adaptable.style.height = `${height}px`);
     }
   };
 

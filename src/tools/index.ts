@@ -1,3 +1,4 @@
+export * from "./highlightToHTMLTag.tool";
 export * from "./elementManager.tool";
 export * from "./handlingClass.tool";
 export * from "./localStorageEntity.tool";

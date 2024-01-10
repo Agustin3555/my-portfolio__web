@@ -20,18 +20,6 @@
       "title": "Instagram"
     }
   ],
-  "metalCuriosities": {
-    "interval": 1.5,
-    "volume": 0.05,
-    "curiosities": [
-      "I'm a software engineer specializing in building (and occasionally designing) exceptional digital experiences. Currently, I'm focused on building accessible.",
-      "Por cierto, mi amo vive en Argentina pero no en su capital, en una ciudad del hacia el norte, de ahi su acento particular.",
-      "C",
-      "D",
-      "E Holaaaaaaaaaaaaaaaaaaaa"
-    ],
-    "meows": ["cat-meow-1.wav", "cat-meow-2.wav", "cat-meow-3.wav"]
-  },
   "footer": {
     "sections": {
       "acknowledgments": {
@@ -63,19 +51,19 @@
           "data": {
             "presentation": [
               "Hola 👋🏻, mi nombre es",
-              "Juan Agustín Lovera,",
-              "Full Stack Web Dev."
+              "Juan Agustín Lovera",
+              "Full Stack Web Dev"
             ],
             "descSlider": [
               {
                 "img": { "alt": "Fotografía de perfil de Juan Agustín Lovera" },
-                "desc": "Soy un apasionado programador junior especializado en desarrollo web. Mi formación universitaria me brindó sólidos conocimientos en el lado del servidor, mientras que en el lado del cliente he adquirido habilidades a través de cursos y de forma autodidacta."
+                "desc": "Recién graduado con sólidas bases en la [creación de software]. Durante mi trayectoria universitaria, complementé mis estudios con cursos y [aprendizaje autodidacta], enfocándome en [tecnologías web] y [diseño UI]."
               },
               {
                 "img": {
                   "alt": "Logo de Juan Agustín Lovera como profesional en la programación"
                 },
-                "desc": "Disfruto creando proyectos innovadores para aplicar mis conocimientos. Aunque tengo poca experiencia laboral, estoy emocionado por enfrentar el desafío de trabajar en equipo y poner en práctica todas mis habilidades de manera profesional."
+                "desc": "Emocionado por integrarme a un equipo de desarrollo web y dominar el ámbito profesional. Destaco por [aprender rápidamente], [idear proyectos innovadores] y mi sólido conocimiento en [TypeScript]. Comprometido a potenciar mi inglés para ampliar oportunidades laborales y apasionado por mantenerme al tanto de las [últimas tendencias tecnológicas] que mejoran la eficiencia del desarrollo."
               }
             ],
             "residence": {

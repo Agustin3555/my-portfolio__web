@@ -81,6 +81,24 @@ export const Component = styled.div`
       }
     }
 
+    #descAdaptable {
+      transition:
+        width ${MICROINTERACTION.m} ease,
+        height ${MICROINTERACTION.m} ease;
+
+      #descContent {
+        > * {
+          display: none;
+          opacity: 0;
+          transition: opacity ${MICROINTERACTION.m} ease;
+        }
+
+        .show {
+          opacity: 1;
+        }
+      }
+    }
+
     .nav {
       display: flex;
       gap: ${NOT_FONT_SIZE.s};

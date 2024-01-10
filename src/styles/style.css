@@ -117,6 +117,16 @@ ol {
 
 .text {
   line-height: 1.4375;
+
+  strong {
+    font-weight: 600;
+    color: var(--color-b-d2);
+    transition: color var(--time-microinteraction-s) ease-out;
+
+    body[data-dark-mode="true"] & {
+      color: var(--color-b-b2);
+    }
+  }
 }
 
 .paragraphs > * {

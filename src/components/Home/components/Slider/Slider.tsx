@@ -1,18 +1,26 @@
 import * as SliderStyled from "./Slider.styled";
 import Icon from "@/components/Icon/Icon";
 import GlassButton from "@/components/GlassButton/GlassButton";
-import { useCallback, useRef, useState, type ReactNode } from "react";
+import {
+  useCallback,
+  useRef,
+  useState,
+  useEffect,
+  type ReactNode,
+} from "react";
 import { type HandlingClass, asClassName, sleep } from "@/tools";
 import { FONT_SIZE, MICROINTERACTION, getCSSVarValue } from "@/styles";
 import { useFullscreen } from "@/hooks";
 
 const Slider = ({
   picturesLength,
+  descContainerId,
   children,
   style = {},
   handlingClass,
 }: {
   picturesLength: number;
+  descContainerId?: string;
   children: ReactNode;
   style?: SliderStyled.Props;
   handlingClass?: HandlingClass;
@@ -20,6 +28,37 @@ const Slider = ({
   const [currentIndex, setCurrentIndex] = useState(0);
   const itemsContainerRef = useRef<HTMLDivElement | null>(null);
   const [changing, setChanging] = useState(false);
+  const descContainer = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    descContainer.current = window[descContainerId];
+  }, []);
+
+  useEffect(() => {
+    (async () => {
+      const descContainerElement = descContainer.current;
+
+      if (descContainerElement) {
+        const activeElement = descContainerElement.querySelector(".show");
+
+        if (activeElement) {
+          activeElement.classList.remove("show");
+
+          await sleep(500);
+
+          activeElement.style.display = "none";
+        }
+
+        const nowActive = descContainerElement.children[currentIndex];
+
+        nowActive.style.display = "initial";
+
+        await sleep(250);
+
+        nowActive.classList.add("show");
+      }
+    })();
+  }, [currentIndex]);
 
   const rightButtonHandleClick = useCallback(async () => {
     setChanging(true);
