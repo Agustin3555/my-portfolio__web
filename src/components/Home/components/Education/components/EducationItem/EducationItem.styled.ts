@@ -152,13 +152,10 @@ export const Component = styled.li`
 
         display: flex;
         aspect-ratio: 16 / 9;
-        background-image: url("/bg_pattern.png");
-        background-color: ${COLOR.g_2};
         border-radius: ${NOT_FONT_SIZE["2xs"]};
         ${GLASS_SET.content}
         box-shadow: ${shadowAdapter(2)};
         overflow: hidden;
-        transition: background-color ${MICROINTERACTION.s} ease-out;
 
         img {
           width: 100%;
@@ -268,11 +265,6 @@ export const Component = styled.li`
 
   body[data-dark-mode="true"] & {
     .item {
-      .layout .certificate {
-        background-image: url("/bg_pattern_dark.png");
-        background-color: ${COLOR.g_15};
-      }
-
       .pointer .point-3 {
         border-color: ${COLOR.g_10};
       }

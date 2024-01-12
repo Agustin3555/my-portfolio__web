@@ -101,13 +101,8 @@ export const Component = styled.div<{ p: Provider }>`
   position: relative;
   aspect-ratio: ${({ p }) => p.aspectRatio};
   border-radius: ${NOT_FONT_SIZE.xs};
-  background-image: ${cp.backgroundImage};
-  background-size: ${cp.backgroundSize};
-  background-position: ${cp.backgroundPosition};
-  background-color: ${COLOR.g_2};
   box-shadow: ${shadowAdapter(2)};
   overflow: hidden;
-  transition: background ${MICROINTERACTION.s} ease-out;
 
   :hover .controls-C .controls .control {
     opacity: 1;
@@ -190,10 +185,5 @@ export const Component = styled.div<{ p: Provider }>`
       width: 100vw;
       height: 100vh;
     }
-  }
-
-  body[data-dark-mode="true"] & {
-    background-image: ${cp.DARK_MODE.backgroundImage};
-    background-color: ${COLOR.g_15};
   }
 `;

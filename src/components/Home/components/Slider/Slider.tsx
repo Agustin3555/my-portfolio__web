@@ -129,7 +129,7 @@ const Slider = ({
 
   return (
     <SliderStyled.Component
-      className={asClassName(handlingClass)}
+      className={`${asClassName(handlingClass)} background-pictures`}
       ref={elementRef}
       data-fullscreen={isFullscreen}
       p={SliderStyled.adapter(style)}
