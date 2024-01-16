@@ -1,4 +1,4 @@
-import { FONT_SIZE, MICROINTERACTION, type Size, type Value } from "@/styles";
+import { FONT_SIZE, MICROINT, type Size, type Value } from "@/styles";
 import type { SerializedStyles } from "@emotion/react";
 import styled from "@emotion/styled";
 
@@ -51,7 +51,7 @@ export const Component = styled.div<{ p: Provider }>`
 
   .icon {
     font-size: ${({ p }) => p.icon.fontSize};
-    transition: color ${MICROINTERACTION.xs} ease-out;
+    transition: color ${MICROINT.xs} ease-out;
   }
 
   ${({ p }) => p.styled};

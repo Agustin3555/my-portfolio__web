@@ -8,12 +8,12 @@ export interface Props {
   handlingClass?: HandlingClass;
 }
 
-const { url, text, handlingClass } = Astro.props;
+const { url, text, handlingClass = [] } = Astro.props;
 ---
 
 <ButtonSectionStyled.Component
   href={`/${url}`}
-  className={asClassName(handlingClass)}
+  className={asClassName(...handlingClass)}
 >
   {text}
 </ButtonSectionStyled.Component>

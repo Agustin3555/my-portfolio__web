@@ -7,10 +7,10 @@ interface Props {
   handlingClass?: HandlingClass;
 }
 
-const { style, handlingClass } = Astro.props;
+const { style, handlingClass = [] } = Astro.props;
 ---
 
 <SeparatorStyled.Component
   p={SeparatorStyled.adapter(style)}
-  className={asClassName(handlingClass)}
+  className={asClassName(...handlingClass)}
 />

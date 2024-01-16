@@ -1,11 +1,10 @@
 import {
   COLOR,
   FONT_SIZE,
-  MEDIA,
-  MICROINTERACTION,
+  MICROINT,
   NOT_FONT_SIZE,
-  type Value,
   shadowAdapter,
+  type Value,
 } from "@/styles";
 import styled from "@emotion/styled";
 
@@ -53,39 +52,28 @@ export const Component = styled.div`
   gap: ${GAP};
   width: 100%;
 
-  .technology {
-    display: grid;
-    grid-template-columns: 1fr ${NOT_FONT_SIZE["3xl"]};
-    grid-template-columns:
-      calc(${NOT_FONT_SIZE["3xl"]} - (2.25rem * var(--level)))
-      1fr;
+  .tech {
+    display: flex;
+    justify-content: space-between;
     gap: calc(${GAP} * 3);
     padding: ${GAP};
     padding-left: ${cp.technology.paddingLeft};
     border-radius: ${NOT_FONT_SIZE["3xs"]};
     opacity: 0.25;
-    transition:
-      background-color ${MICROINTERACTION.s} ease-out,
-      box-shadow ${MICROINTERACTION.s} ease-out,
-      transform ${MICROINTERACTION.s} ease-out,
-      opacity ${MICROINTERACTION.s} ease-out;
 
-    display: flex;
-    flex-wrap: wrap;
+    transition:
+      background-color ${MICROINT.s} ease-out,
+      box-shadow ${MICROINT.s} ease-out,
+      scale ${MICROINT.s} ease-out,
+      opacity ${MICROINT.s} ease-out;
 
     :hover {
       background-color: ${COLOR.g_0};
       box-shadow: ${shadowAdapter(2)};
-      transform: scale(1.01);
+      scale: 1.005;
 
-      .group {
-        .icons .icon {
-          filter: initial !important;
-        }
-
-        .names {
-          color: ${COLOR.g_18};
-        }
+      .names {
+        color: ${COLOR.g_18};
       }
     }
 
@@ -93,80 +81,118 @@ export const Component = styled.div`
       opacity: 1;
     }
 
-    .group {
-      width: calc(
-        (${NOT_FONT_SIZE["4xl"]} - ${NOT_FONT_SIZE.xl}) -
-          (2.25rem * var(--level))
-      );
+    .separator {
+      width: ${NOT_FONT_SIZE["6xs"]};
+      height: ${NOT_FONT_SIZE["2xs"]};
+      border-radius: ${NOT_FONT_SIZE["6xl"]};
+      background-color: ${COLOR.g_10};
+
+      transition: background-color ${MICROINT.s} ease-out;
+    }
+
+    .names {
+      display: flex;
+      align-items: center;
+      gap: calc(${GAP} * 2);
+      /* TODO: comentar */
+      width: calc(10.5rem - var(--level) * 36px);
+
+      transition: color ${MICROINT.s} ease-out;
+
+      /* white-space: nowrap; */
+      /* overflow: hidden; */
+      /* outline: solid 1px coral; */
+
+      .name {
+        font-size: ${NAME_FONT_SIZE};
+        line-height: 1;
+
+        /* text-overflow: ellipsis; */
+      }
+    }
+
+    .graphics {
+      flex-grow: 0.5;
 
       display: flex;
       align-items: center;
       gap: calc(${GAP} * 3);
       justify-content: space-between;
 
-      .separator {
-        width: ${NOT_FONT_SIZE["6xs"]};
-        height: ${NOT_FONT_SIZE["2xs"]};
-        border-radius: ${NOT_FONT_SIZE["6xl"]};
-        background-color: ${COLOR.g_10};
-        transition: background-color ${MICROINTERACTION.s} ease-out;
-      }
-
-      .names {
-        display: flex;
-        align-items: center;
-        gap: calc(${GAP} * 2);
-        transition: color ${MICROINTERACTION.s} ease-out;
-
-        .name {
-          font-size: ${NAME_FONT_SIZE};
-          line-height: 1;
-        }
-      }
-
       .icons {
         display: flex;
         align-items: center;
+        justify-content: flex-end;
         gap: ${GAP};
+        /* TODO: comentar */
+        width: 4.0625rem;
+        filter: saturate(0.9);
 
         .icon {
-          height: ${ICON_SIZE};
           width: ${ICON_SIZE};
+          height: ${ICON_SIZE};
           object-fit: contain;
-          filter: invert(0.35);
-          transition: filter ${MICROINTERACTION.s} ease-out;
 
-          /* &[data-invert-in-bright-mode="true"] {
-            filter: grayscale(1) invert(var(--invert-in-bright-mode));
-          } */
+          transition: filter ${MICROINT.s} ease-out;
+        }
+
+        .invert-in-dark-mode {
+          --invert-in-dark-mode: invert(0.5) brightness(180%);
+        }
+      }
+
+      .level-bar {
+        flex-grow: 1;
+
+        position: relative;
+        min-width: calc(${NOT_FONT_SIZE.s} * 4);
+        height: ${NOT_FONT_SIZE.s};
+        border-radius: calc(${NOT_FONT_SIZE["2xs"]} - ${NOT_FONT_SIZE["3xs"]});
+        background-color: ${COLOR.g_2};
+
+        transition: background-color ${MICROINT.s} ease-out;
+
+        .bar {
+          position: relative;
+          height: 100%;
+          border-radius: calc(
+            ${NOT_FONT_SIZE["2xs"]} - ${NOT_FONT_SIZE["3xs"]}
+          );
+          background-color: ${COLOR.b};
+        }
+
+        .separators {
+          position: absolute;
+          right: 0.0625rem;
+          display: flex;
+          align-items: center;
+          justify-content: space-evenly;
+          width: 100%;
+          height: 100%;
         }
       }
     }
 
-    .level-bar {
-      flex-grow: 1;
-
-      position: relative;
-      height: ${NOT_FONT_SIZE.s};
-      border-radius: calc(${NOT_FONT_SIZE["2xs"]} - ${NOT_FONT_SIZE["3xs"]});
-      background-color: ${COLOR.g_2};
-      transition: background-color ${MICROINTERACTION.s} ease-out;
-
-      .bar {
-        position: relative;
-        height: 100%;
-        border-radius: calc(${NOT_FONT_SIZE["2xs"]} - ${NOT_FONT_SIZE["3xs"]});
-        background-color: ${COLOR.b};
+    @media (max-width: 30.875rem) {
+      .names {
+        display: none;
       }
 
-      .separators {
-        position: absolute;
-        right: 0.0625rem;
-        display: flex;
-        justify-content: space-evenly;
-        align-items: center;
-        width: 100%;
-        height: 100%;
+      .graphics {
+        flex-grow: 1;
+
+        .icons {
+          justify-content: flex-start;
+          /* TODO: comentar */
+          width: calc(
+            (${ICON_SIZE} * 2 + ${GAP} * 2 + 0.0625rem) - var(--level) * 2.25rem
+          );
+        }
+
+        .level-bar {
+          flex-grow: 0.875;
+          /* width: calc(${NOT_FONT_SIZE.s} * 4); */
+        }
       }
     }
   }
@@ -182,7 +208,8 @@ export const Component = styled.div`
       .line {
         width: ${NOT_FONT_SIZE["6xs"]};
         background-color: ${COLOR.g_6};
-        transition: background-color ${MICROINTERACTION.s} ease-out;
+
+        transition: background-color ${MICROINT.s} ease-out;
       }
 
       .child-group {
@@ -208,7 +235,8 @@ export const Component = styled.div`
             border-style: solid;
             border-color: ${COLOR.g_6};
             border-bottom-left-radius: ${NOT_FONT_SIZE["3xs"]};
-            transition: border-color ${MICROINTERACTION.s} ease-out;
+
+            transition: border-color ${MICROINT.s} ease-out;
           }
 
           .next-extension {
@@ -232,29 +260,27 @@ export const Component = styled.div`
   }
 
   body[data-dark-mode="true"] & {
-    .technology {
+    .tech {
       :hover {
         background-color: ${COLOR.g_12};
 
-        .group .names {
+        .names {
           color: ${COLOR.g_0};
         }
       }
 
-      .group {
-        .separator {
-          background-color: ${COLOR.g_6};
-        }
-
-        .icons .icon {
-          /* filter: grayscale(1) invert(var(--invert-in-dark-mode));
-          &[data-invert-in-dark-mode="true"] {
-          } */
-        }
+      .separator {
+        background-color: ${COLOR.g_6};
       }
 
-      .level-bar {
-        background-color: ${COLOR.g_15};
+      .graphics {
+        .icons .icon {
+          filter: var(--invert-in-dark-mode);
+        }
+
+        .level-bar {
+          background-color: ${COLOR.g_15};
+        }
       }
     }
 
@@ -268,17 +294,4 @@ export const Component = styled.div`
       }
     }
   }
-
-  /* @media (max-width: ${MEDIA.xs}) {
-    .technology {
-      grid-template-columns: none;
-      grid-template-rows: auto auto;
-      align-items: end;
-
-      .level-bar {
-        justify-self: end;
-        width: calc(${NOT_FONT_SIZE.s} * 3);
-      }
-    }
-  } */
 `;

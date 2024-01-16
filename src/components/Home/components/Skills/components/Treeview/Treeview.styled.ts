@@ -6,7 +6,6 @@ export const Component = styled.div`
 
   .glass-container {
     width: auto;
-    min-width: min-content;
 
     .items {
       display: flex;

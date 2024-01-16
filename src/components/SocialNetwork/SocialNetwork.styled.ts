@@ -1,7 +1,7 @@
 import {
   COLOR,
   GLASS_SET,
-  MICROINTERACTION,
+  MICROINT,
   NOT_FONT_SIZE,
   shadowAdapter,
 } from "@/styles";
@@ -33,8 +33,8 @@ export const Component = styled.a<{ p: Provider }>`
   text-decoration: none;
   box-shadow: ${shadowAdapter(2)};
   transition:
-    box-shadow ${MICROINTERACTION.xs} ease-out,
-    transform ${MICROINTERACTION.xs} ease-out;
+    box-shadow ${MICROINT.xs} ease-out,
+    transform ${MICROINT.xs} ease-out;
   ${GLASS_SET.this}
 
   :hover {

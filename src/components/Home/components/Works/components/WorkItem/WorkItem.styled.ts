@@ -5,7 +5,7 @@ import {
   FONT,
   FONT_SIZE,
   MEDIA,
-  MICROINTERACTION,
+  MICROINT,
   NOT_FONT_SIZE,
   Value,
 } from "@/styles";
@@ -104,7 +104,7 @@ export const Component = styled.div`
     grid-area: header;
 
     transform: ${cp.headerGlass.transform};
-    transition: transform ${MICROINTERACTION.l} ease-in-out;
+    transition: transform ${MICROINT.l} ease-in-out;
 
     .header {
       display: flex;

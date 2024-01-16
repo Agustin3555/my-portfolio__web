@@ -1,10 +1,4 @@
-import {
-  MAIN_GAP,
-  MEDIA,
-  MICROINTERACTION,
-  NOT_FONT_SIZE,
-  type Value,
-} from "@/styles";
+import { MAIN_GAP, MEDIA, MICROINT, NOT_FONT_SIZE, type Value } from "@/styles";
 import styled from "@emotion/styled";
 
 const GAP = MAIN_GAP;
@@ -36,7 +30,7 @@ export const Component = styled.div`
   display: flex;
   flex-direction: column;
   gap: ${cp.gap};
-  transition: left ${MICROINTERACTION.m} ease;
+  transition: left ${MICROINT.m} ease;
 
   @media (max-width: ${MEDIA.s}) {
     left: calc(${NOT_FONT_SIZE.m} * -1);
@@ -52,10 +46,10 @@ export const Component = styled.div`
       transform: translateX(-100%);
       filter: blur(${NOT_FONT_SIZE["5xs"]});
       transition:
-        opacity ${MICROINTERACTION.m} ease,
-        transform ${MICROINTERACTION.m} ease,
-        filter ${MICROINTERACTION.m} ease;
-      transition-delay: calc(${MICROINTERACTION.s} * var(--i));
+        opacity ${MICROINT.m} ease,
+        transform ${MICROINT.m} ease,
+        filter ${MICROINT.m} ease;
+      transition-delay: calc(${MICROINT.s} * var(--i));
 
       body[data-social-nets-in-left-nav="true"] & {
         opacity: 1;

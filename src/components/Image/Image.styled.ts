@@ -1,5 +1,5 @@
-import { MICROINTERACTION, NOT_FONT_SIZE } from '@/styles'
-import styled from '@emotion/styled'
+import { MICROINT, NOT_FONT_SIZE } from "@/styles";
+import styled from "@emotion/styled";
 
 export const Component = styled.figure`
   .loader-C {
@@ -9,21 +9,23 @@ export const Component = styled.figure`
     align-items: center;
     width: 100%;
     height: 100%;
-    transition: display ${MICROINTERACTION.s} linear ${MICROINTERACTION.s},
-      opacity ${MICROINTERACTION.s} ease-out;
+    transition:
+      display ${MICROINT.s} linear ${MICROINT.s},
+      opacity ${MICROINT.s} ease-out;
   }
 
   .img {
     width: 100%;
     height: 100%;
     object-fit: contain;
-    filter: blur(${NOT_FONT_SIZE['4xs']});
+    filter: blur(${NOT_FONT_SIZE["4xs"]});
     opacity: 0;
-    transition: filter ${MICROINTERACTION.s} ease-out ${MICROINTERACTION.s},
-      opacity ${MICROINTERACTION.s} ease-out ${MICROINTERACTION.s};
+    transition:
+      filter ${MICROINT.s} ease-out ${MICROINT.s},
+      opacity ${MICROINT.s} ease-out ${MICROINT.s};
   }
 
-  &[data-loaded='true'] {
+  &[data-loaded="true"] {
     .loader-C {
       opacity: 0;
       display: none;
@@ -34,4 +36,4 @@ export const Component = styled.figure`
       opacity: 1;
     }
   }
-`
+`;

@@ -2,7 +2,7 @@ import {
   COLOR,
   FONT_SIZE,
   GLASS_SET,
-  MICROINTERACTION,
+  MICROINT,
   NOT_FONT_SIZE,
   shadowAdapter,
 } from "@/styles";
@@ -27,10 +27,10 @@ export const Component = styled.div`
       border-radius: ${NOT_FONT_SIZE["3xs"]};
       background-color: ${COLOR.g_14};
       transition:
-        color ${MICROINTERACTION.s} ease-out,
-        background-color ${MICROINTERACTION.s} ease-out,
-        box-shadow ${MICROINTERACTION.m} ease-out,
-        transform ${MICROINTERACTION.m} ease-out;
+        color ${MICROINT.s} ease-out,
+        background-color ${MICROINT.s} ease-out,
+        box-shadow ${MICROINT.m} ease-out,
+        transform ${MICROINT.m} ease-out;
 
       :hover {
         box-shadow: ${shadowAdapter(2)};

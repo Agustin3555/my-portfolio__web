@@ -41,7 +41,7 @@
 body {
   font-family: var(--font-p);
   background-color: var(--color-g-1);
-  transition: background-color var(--time-microinteraction-s) ease-out;
+  transition: background-color var(--time-microint-s) ease-out;
 
   &::-webkit-scrollbar {
     width: var(--scrollbar-size);
@@ -121,7 +121,7 @@ ol {
   strong {
     font-weight: 600;
     color: var(--color-b-d2);
-    transition: color var(--time-microinteraction-s) ease-out;
+    transition: color var(--time-microint-s) ease-out;
 
     body[data-dark-mode="true"] & {
       color: var(--color-b-b2);
@@ -142,7 +142,7 @@ ol {
 .background-pictures {
   background-image: url("/bg_pattern.png");
   background-color: var(--color-g-2);
-  transition: background-color var(--time-microinteraction-s) ease-out;
+  transition: background-color var(--time-microint-s) ease-out;
 
   body[data-dark-mode="true"] & {
     background-image: url("/bg_pattern_dark.png");

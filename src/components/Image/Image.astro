@@ -1,7 +1,7 @@
 ---
 import * as ImageStyled from "./Image.styled";
 import { Loader } from "./components";
-import { HandlingClass, asClassName } from "@/tools";
+import { type HandlingClass, asClassName } from "@/tools";
 import { Image } from "astro:assets";
 
 interface Props {
@@ -10,7 +10,7 @@ interface Props {
   handlingClass: HandlingClass;
 }
 
-const { src, alt, handlingClass } = Astro.props;
+const { src, alt, handlingClass = [] } = Astro.props;
 
 // const [loading, setLoading] = useState(true)
 
@@ -20,7 +20,7 @@ const { src, alt, handlingClass } = Astro.props;
 ---
 
 <ImageStyled.Component
-  className={asClassName(handlingClass)}
+  className={asClassName(...handlingClass)}
   data-loaded={!loading}
 >
   {

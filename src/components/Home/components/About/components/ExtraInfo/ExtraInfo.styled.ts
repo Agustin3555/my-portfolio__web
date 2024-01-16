@@ -6,7 +6,7 @@ import {
   COLOR_DARK_A,
   FONT_SIZE,
   MAIN_GAP,
-  MICROINTERACTION,
+  MICROINT,
   NOT_FONT_SIZE,
   Value,
   colorAlphaAdapter,
@@ -101,14 +101,14 @@ export const Component = styled.div`
       border: none;
       cursor: pointer;
       opacity: 0;
-      transition: opacity ${MICROINTERACTION.s} ease-out;
+      transition: opacity ${MICROINT.s} ease-out;
 
       :hover {
         color: ${COLOR.g_0};
       }
 
       .button-icon {
-        transition: transform ${MICROINTERACTION.s} ease-out;
+        transition: transform ${MICROINT.s} ease-out;
       }
     }
 
@@ -156,7 +156,7 @@ export const Component = styled.div`
       height: 100%;
 
       .description {
-        transition: opacity ${MICROINTERACTION.m} ease-out;
+        transition: opacity ${MICROINT.m} ease-out;
       }
 
       .fade-enter {
@@ -191,8 +191,8 @@ export const Component = styled.div`
       border-radius: ${NOT_FONT_SIZE["6xl"]};
       background-color: ${BGC_BRIGHT_B};
       transition:
-        width ${MICROINTERACTION.l} ease-in-out,
-        background-color ${MICROINTERACTION.s} ease-out;
+        width ${MICROINT.l} ease-in-out,
+        background-color ${MICROINT.s} ease-out;
 
       &[data-activated="true"] {
         width: calc(${NOT_FONT_SIZE["2xs"]} * 3);

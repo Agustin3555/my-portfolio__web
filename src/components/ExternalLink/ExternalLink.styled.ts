@@ -1,7 +1,7 @@
 import {
   COLOR,
   GLASS_SET,
-  MICROINTERACTION,
+  MICROINT,
   NOT_FONT_SIZE,
   FONT_SIZE,
   Value,
@@ -22,8 +22,8 @@ export const Component = styled.a`
   text-decoration: none;
   box-shadow: ${shadowAdapter(2)};
   transition:
-    box-shadow ${MICROINTERACTION.xs} ease-out,
-    transform ${MICROINTERACTION.xs} ease-out;
+    box-shadow ${MICROINT.xs} ease-out,
+    transform ${MICROINT.xs} ease-out;
   ${GLASS_SET.this}
 
   :hover {
@@ -52,7 +52,7 @@ export const Component = styled.a`
     padding-right: ${c};
     font-size: ${TEXT_FONT_SIZE};
     border-radius: ${BORDER_RADIUS};
-    transition: color ${MICROINTERACTION.xs} ease-out;
+    transition: color ${MICROINT.xs} ease-out;
     ${GLASS_SET.content}
   }
 `;

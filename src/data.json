@@ -209,7 +209,8 @@
                       "names": ["Astro"],
                       "icons": [
                         {
-                          "fileName": "logo-astro.png"
+                          "fileName": "logo-astro.png",
+                          "invertInDarkMode": true
                         }
                       ],
                       "skillLevel": 1
@@ -251,11 +252,19 @@
                       "skillLevel": 1
                     },
                     {
+                      "names": ["Zustand"],
+                      "icons": [
+                        {
+                          "fileName": "logo-zustand.png"
+                        }
+                      ],
+                      "skillLevel": 1
+                    },
+                    {
                       "names": ["Redux"],
                       "icons": [
                         {
-                          "fileName": "logo-redux.svg",
-                          "invertInDarkMode": true
+                          "fileName": "logo-redux.svg"
                         }
                       ],
                       "skillLevel": 1
@@ -264,8 +273,7 @@
                       "names": ["NestJS"],
                       "icons": [
                         {
-                          "fileName": "logo-nest-js.svg",
-                          "invertInDarkMode": true
+                          "fileName": "logo-nest-js.svg"
                         }
                       ],
                       "skillLevel": 0
@@ -305,8 +313,7 @@
                       "names": ["Laravel"],
                       "icons": [
                         {
-                          "fileName": "logo-laravel.svg",
-                          "invertInDarkMode": true
+                          "fileName": "logo-laravel.svg"
                         }
                       ],
                       "skillLevel": 0
@@ -323,29 +330,10 @@
                   "skillLevel": 0
                 },
                 {
-                  "names": ["C#"],
-                  "icons": [
-                    {
-                      "fileName": "logo-csharp.svg"
-                    }
-                  ],
-                  "skillLevel": 0
-                },
-                {
-                  "names": ["Java"],
-                  "icons": [
-                    {
-                      "fileName": "logo-java.svg",
-                      "invertInDarkMode": true
-                    }
-                  ],
-                  "skillLevel": 0
-                },
-                {
                   "names": ["SQL"],
                   "icons": [
                     {
-                      "fileName": "logo-sql.png"
+                      "fileName": "logo-sql.svg"
                     }
                   ],
                   "skillLevel": 0

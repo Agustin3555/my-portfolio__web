@@ -3,7 +3,7 @@ import {
   FONT,
   FONT_SIZE,
   GLASS_SET,
-  MICROINTERACTION,
+  MICROINT,
   NOT_FONT_SIZE,
   shadowAdapter,
   type Value,
@@ -98,7 +98,7 @@ export const Component = styled.li`
         border-style: dashed;
         border-color: ${COLOR.g_6};
         border-radius: ${NOT_FONT_SIZE["6xl"]};
-        transition: border-color ${MICROINTERACTION.s} ease-out;
+        transition: border-color ${MICROINT.s} ease-out;
 
         .point-1 {
           width: ${POINT_1_SIZE};
@@ -213,7 +213,7 @@ export const Component = styled.li`
   .line {
     width: ${LINE_WIDTH};
     background-color: ${COLOR.g_6};
-    transition: background-color ${MICROINTERACTION.s} ease-out;
+    transition: background-color ${MICROINT.s} ease-out;
   }
 
   @media (max-width: 65.625rem) {

@@ -9,7 +9,7 @@ import {
   type ReactNode,
 } from "react";
 import { type HandlingClass, asClassName, sleep } from "@/tools";
-import { FONT_SIZE, MICROINTERACTION, getCSSVarValue } from "@/styles";
+import { FONT_SIZE, MICROINT, getCSSVarValue } from "@/styles";
 import { useFullscreen } from "@/hooks";
 
 const Slider = ({
@@ -17,7 +17,7 @@ const Slider = ({
   descContainerId,
   children,
   style = {},
-  handlingClass,
+  handlingClass = [],
 }: {
   picturesLength: number;
   descContainerId?: string;
@@ -75,7 +75,7 @@ const Slider = ({
 
     itemsContainer.style.transform = `translateX(-${childWidth}px)`;
     itemsContainer.style.transition = `transform ${getCSSVarValue(
-      MICROINTERACTION.l,
+      MICROINT.l,
     )} ease-out`;
 
     await sleep(1000);
@@ -116,7 +116,7 @@ const Slider = ({
 
     itemsContainer.style.transform = "initial";
     itemsContainer.style.transition = `transform ${getCSSVarValue(
-      MICROINTERACTION.l,
+      MICROINT.l,
     )} ease-out`;
 
     await sleep(1000);
@@ -129,7 +129,7 @@ const Slider = ({
 
   return (
     <SliderStyled.Component
-      className={`${asClassName(handlingClass)} background-pictures`}
+      className={asClassName(...handlingClass, "background-pictures")}
       ref={elementRef}
       data-fullscreen={isFullscreen}
       p={SliderStyled.adapter(style)}
@@ -142,10 +142,10 @@ const Slider = ({
           <GlassButton
             title="Retroceder"
             handleClick={changing ? undefined : leftButtonHandleClick}
-            handlingClass="control"
+            handlingClass={["control"]}
           >
             <Icon
-              handlingClass="button-icon"
+              handlingClass={["button-icon"]}
               iconName="fa-solid fa-chevron-left"
               style={{ size: FONT_SIZE.xs }}
             />
@@ -162,10 +162,10 @@ const Slider = ({
           <GlassButton
             title="Avanzar"
             handleClick={changing ? undefined : rightButtonHandleClick}
-            handlingClass="control"
+            handlingClass={["control"]}
           >
             <Icon
-              handlingClass="button-icon"
+              handlingClass={["button-icon"]}
               iconName="fa-solid fa-chevron-right"
               style={{ size: FONT_SIZE.xs }}
             />
@@ -174,7 +174,7 @@ const Slider = ({
             title={
               isFullscreen ? "Salir de pantalla completa" : "Pantalla completa"
             }
-            handlingClass="control"
+            handlingClass={["control"]}
             handleClick={toggleFullscreen}
           >
             <Icon

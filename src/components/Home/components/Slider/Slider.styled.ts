@@ -1,7 +1,7 @@
 import {
   COLOR,
   MAIN_GAP,
-  MICROINTERACTION,
+  MICROINT,
   NOT_FONT_SIZE,
   type Value,
   shadowAdapter,
@@ -146,8 +146,8 @@ export const Component = styled.div<{ p: Provider }>`
       .control {
         opacity: 0;
         transition:
-          box-shadow ${MICROINTERACTION.xs} ease-out,
-          opacity ${MICROINTERACTION.s} ease-out;
+          box-shadow ${MICROINT.xs} ease-out,
+          opacity ${MICROINT.s} ease-out;
 
         @media (hover: none) and (any-hover: none) {
           opacity: 1;
@@ -166,8 +166,8 @@ export const Component = styled.div<{ p: Provider }>`
           box-shadow: ${shadowAdapter(2)};
           opacity: 0.75;
           transition:
-            width ${MICROINTERACTION.l} ease-out,
-            background-color ${MICROINTERACTION.s} ease-out;
+            width ${MICROINT.l} ease-out,
+            background-color ${MICROINT.s} ease-out;
 
           &[data-activated="true"] {
             width: ${cp.controls.indicators.item.ACTIVATED.width};

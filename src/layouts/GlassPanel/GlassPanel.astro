@@ -7,12 +7,12 @@ interface Props {
   handlingClass?: HandlingClass;
 }
 
-const { style = {}, handlingClass } = Astro.props;
+const { style = {}, handlingClass = [] } = Astro.props;
 ---
 
 <GlassPanelStyled.Component
   p={GlassPanelStyled.adapter(style)}
-  className={asClassName(handlingClass)}
+  className={asClassName(...handlingClass)}
 >
   <div class="glass-refleccion"></div>
   <div class="content"><slot /></div>

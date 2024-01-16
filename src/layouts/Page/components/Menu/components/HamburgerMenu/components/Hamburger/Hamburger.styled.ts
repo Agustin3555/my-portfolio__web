@@ -3,7 +3,7 @@ import {
   COLOR_BRIGHT_A,
   COLOR_DARK_A,
   FONT_SIZE,
-  MICROINTERACTION,
+  MICROINT,
   NOT_FONT_SIZE,
   Value,
 } from "@/styles";
@@ -79,9 +79,9 @@ export const Component = styled.button`
     position: absolute;
     inset: 0;
     transition:
-      opacity ${MICROINTERACTION.s} ease,
-      scale ${MICROINTERACTION.s} ease,
-      filter ${MICROINTERACTION.s} ease;
+      opacity ${MICROINT.s} ease,
+      scale ${MICROINT.s} ease,
+      filter ${MICROINT.s} ease;
   }
 
   .bar {
@@ -89,7 +89,7 @@ export const Component = styled.button`
     height: ${cp.hamburgerAC.bar.height};
     border-radius: ${NOT_FONT_SIZE["6xl"]};
     background-color: ${COLOR_BRIGHT_A};
-    transition: background-color ${MICROINTERACTION.s} ease-out;
+    transition: background-color ${MICROINT.s} ease-out;
   }
 
   .hamburger-icon {

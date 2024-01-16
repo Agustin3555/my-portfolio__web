@@ -12,11 +12,11 @@ export interface Props {
   handlingClass?: HandlingClass;
 }
 
-const { url, iconName, text, title, handlingClass } = Astro.props;
+const { url, iconName, text, title, handlingClass = [] } = Astro.props;
 ---
 
 <ExternalLinkStyled.Component
-  className={asClassName(handlingClass)}
+  className={asClassName(...handlingClass)}
   title={title || `Ir a ${text.toLocaleLowerCase()}`}
   href={url}
   target="_blank"

@@ -16,6 +16,8 @@ export const COLOR_BRIGHT_A = COLOR.g_12;
 export const COLOR_DARK_B = COLOR.g_2;
 export const COLOR_BRIGHT_B = COLOR.g_14;
 
+// TODO: size-not-font-3xl * 4 = 1148, esto deberia ser el ancho del layout main
+
 export enum MEDIA {
   "2xs" = "23.4375rem",
   xs = "31.25rem",

@@ -1,9 +1,4 @@
-import {
-  COLOR,
-  COLOR_BRIGHT_A,
-  COLOR_DARK_A,
-  MICROINTERACTION,
-} from "@/styles";
+import { COLOR, COLOR_BRIGHT_A, COLOR_DARK_A, MICROINT } from "@/styles";
 import styled from "@emotion/styled";
 
 const SIZE = "3rem";
@@ -38,7 +33,7 @@ export const Component = styled.div`
   ::after {
     background-color: ${COLOR_BRIGHT_A};
     transform: scale(0.5) translate(0, 0);
-    transition: background-color ${MICROINTERACTION.s} ease-out;
+    transition: background-color ${MICROINT.s} ease-out;
     animation: loader ${ANIMATION_DURATION}s infinite ease-in-out;
   }
 

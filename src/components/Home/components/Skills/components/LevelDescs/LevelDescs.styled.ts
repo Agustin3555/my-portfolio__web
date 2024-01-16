@@ -2,7 +2,7 @@ import {
   COLOR,
   FONT_SIZE,
   MAIN_GAP,
-  MICROINTERACTION,
+  MICROINT,
   NOT_FONT_SIZE,
   type Value,
   shadowAdapter,
@@ -33,7 +33,7 @@ const cp: ConstProvider = {
 };
 
 export const Component = styled.fieldset`
-  flex-grow: 1;
+  flex-grow: 1.5;
   flex-basis: 13.125rem;
 
   container-type: inline-size;
@@ -52,9 +52,9 @@ export const Component = styled.fieldset`
     flex-direction: column;
     align-items: flex-start;
     gap: ${GAP};
-    text-wrap: balance;
+    text-wrap: pretty;
 
-    @container (width <= 43.75rem) {
+    @container (width <= 40.625rem) {
       flex-basis: 25rem;
     }
 
@@ -86,7 +86,7 @@ export const Component = styled.fieldset`
         height: ${TOGGLE_UI_HEIGHT};
         border-radius: ${NOT_FONT_SIZE["6xl"]};
         background-color: ${COLOR.g_10};
-        transition: background-color ${MICROINTERACTION.s} ease-out;
+        transition: background-color ${MICROINT.s} ease-out;
 
         ::before {
           content: "";
@@ -96,7 +96,7 @@ export const Component = styled.fieldset`
           border-top-left-radius: ${NOT_FONT_SIZE["6xl"]};
           border-bottom-left-radius: ${NOT_FONT_SIZE["6xl"]};
           background-color: ${COLOR.b};
-          transition: width ${MICROINTERACTION.s} ease;
+          transition: width ${MICROINT.s} ease;
         }
 
         ::after {
@@ -114,9 +114,9 @@ export const Component = styled.fieldset`
           background-color: ${COLOR.g_2};
           box-shadow: ${shadowAdapter(2)};
           transition:
-            border-color ${MICROINTERACTION.s} ease-out,
-            background-color ${MICROINTERACTION.s} ease-out,
-            transform ${MICROINTERACTION.s} ease;
+            border-color ${MICROINT.s} ease-out,
+            background-color ${MICROINT.s} ease-out,
+            transform ${MICROINT.s} ease;
         }
       }
     }

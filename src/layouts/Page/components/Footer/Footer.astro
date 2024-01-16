@@ -15,7 +15,7 @@ const { acknowledgments, othersPages } = sections;
       <p class="title">{acknowledgments.title}</p>
       <Separator
         style={{ invert: true, backgroundColor: { dark: COLOR.g_10 } }}
-        handlingClass="separator"
+        handlingClass={["separator"]}
       />
       <div class="acknowledgments paragraphs">
         <p class="text">{acknowledgments.data.text}</p>
@@ -35,14 +35,14 @@ const { acknowledgments, othersPages } = sections;
       <p class="title">{othersPages.title}</p>
       <Separator
         style={{ invert: true, backgroundColor: { dark: COLOR.g_10 } }}
-        handlingClass="separator"
+        handlingClass={["separator"]}
       />
-      <Link url="coffee" text="Not found" handlingClass="link-page" />
+      <Link url="coffee" text="Not found" handlingClass={["link-page"]} />
     </li>
   </ul>
   <Separator
     style={{ invert: true, backgroundColor: { dark: COLOR.g_10 } }}
-    handlingClass="separator"
+    handlingClass={["separator"]}
   />
   <span class="copyright text">{copyright}</span>
 </FooterStyled.Component>

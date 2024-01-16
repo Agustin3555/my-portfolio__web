@@ -1,10 +1,11 @@
-export type HandlingClass = string | number | (string | number)[]
+export type HandlingClass = (string | number)[];
 
-export const asClassName = (value?: HandlingClass) => {
-  if (!value) return
+export const asClassName = (...values: HandlingClass) => {
+  if (!values) return;
 
-  if (typeof value === 'string') return value
-  if (typeof value === 'number') return String(value)
+  const className = values.map((item) =>
+    typeof item === "string" ? item : String(item),
+  );
 
-  return value.join(' ')
-}
+  return className.join(" ");
+};

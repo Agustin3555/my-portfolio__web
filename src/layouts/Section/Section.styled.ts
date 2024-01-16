@@ -3,7 +3,7 @@ import {
   COLOR_DARK_B,
   FONT,
   FONT_SIZE,
-  MICROINTERACTION,
+  MICROINT,
   NOT_FONT_SIZE,
   Value,
 } from "@/styles";
@@ -42,7 +42,7 @@ export const Component = styled.section`
     font-family: ${FONT.s};
     font-size: ${FONT_SIZE.xl};
     color: ${cp.title.color};
-    transition: color ${MICROINTERACTION.s} ease-out;
+    transition: color ${MICROINT.s} ease-out;
   }
 
   body[data-dark-mode="true"] & {

@@ -66,14 +66,14 @@ const convertedDesc = descSlider.map((item) => highlightToHTMLTag(item.desc));
       <div class="x">
         <GlassPanel
           style={{ borderRadius: NOT_FONT_SIZE.xs, elevation: 2 }}
-          handlingClass="glass-panel"
+          handlingClass={["glass-panel"]}
         />
         <Slider
           client:load
           picturesLength={imgs.length}
           descContainerId="descContent"
           style={{ aspectRatio: [1, 1] }}
-          handlingClass="slider"
+          handlingClass={["slider"]}
         >
           {imgs.map((item) => <Image {...item} />)}
         </Slider>

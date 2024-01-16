@@ -2,16 +2,16 @@ import * as IconStyled from "./Icon.styled";
 import { type HandlingClass, asClassName } from "@/tools";
 
 const Icon = ({
-  handlingClass,
   iconName,
   style,
+  handlingClass = [],
 }: {
-  handlingClass?: HandlingClass;
   iconName: string;
   style?: IconStyled.Props;
+  handlingClass?: HandlingClass;
 }) => (
   <IconStyled.Component
-    className={asClassName(handlingClass)}
+    className={asClassName(...handlingClass)}
     p={IconStyled.adapter(style)}
   >
     <i className={`icon ${iconName}`} />

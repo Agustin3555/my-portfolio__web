@@ -12,7 +12,7 @@ interface Props {
   handlingClass?: HandlingClass;
 }
 
-const { url, iconName, title, style = {}, handlingClass } = Astro.props;
+const { url, iconName, title, style = {}, handlingClass = [] } = Astro.props;
 ---
 
 <SocialNetworkStyled.Component
@@ -21,7 +21,7 @@ const { url, iconName, title, style = {}, handlingClass } = Astro.props;
   target="_blank"
   rel="noopener"
   p={SocialNetworkStyled.adapter(style)}
-  className={asClassName(handlingClass)}
+  className={asClassName(...handlingClass)}
 >
   <div class="external-network__glass-refleccion"></div>
   <div class="external-network__content">

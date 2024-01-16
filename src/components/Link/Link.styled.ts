@@ -1,11 +1,11 @@
-import { COLOR, MICROINTERACTION } from "@/styles";
+import { COLOR, MICROINT } from "@/styles";
 import styled from "@emotion/styled";
 
 export const Component = styled.a`
   text-decoration: none;
   transition:
-    color ${MICROINTERACTION.s} ease-out,
-    translate ${MICROINTERACTION.s} ease-out;
+    color ${MICROINT.s} ease-out,
+    translate ${MICROINT.s} ease-out;
 
   :hover {
     translate: 0 -12.5%;

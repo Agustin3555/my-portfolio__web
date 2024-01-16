@@ -4,7 +4,7 @@ import {
   COLOR_DARK_A,
   MAIN_GAP,
   MEDIA,
-  MICROINTERACTION,
+  MICROINT,
   NOT_FONT_SIZE,
   STATIC_WIDTH,
 } from "@/styles";
@@ -17,7 +17,7 @@ export const Component = styled.div`
   justify-content: center;
   color: ${COLOR_BRIGHT_A};
   overflow: hidden;
-  transition: color ${MICROINTERACTION.s} ease-out;
+  transition: color ${MICROINT.s} ease-out;
 
   .static {
     display: flex;
@@ -26,8 +26,8 @@ export const Component = styled.div`
     width: ${STATIC_WIDTH};
     min-height: 100vh;
     transition:
-      width ${MICROINTERACTION.m} ease,
-      padding ${MICROINTERACTION.m} ease;
+      width ${MICROINT.m} ease,
+      padding ${MICROINT.m} ease;
 
     @media (max-width: ${MEDIA.m}) {
       width: 100%;
@@ -51,7 +51,7 @@ export const Component = styled.div`
       gap: calc(${NOT_FONT_SIZE.l} * 2);
       padding-top: calc(${PADDING} + ${NOT_FONT_SIZE.l});
       padding-bottom: ${PADDING};
-      transition: padding ${MICROINTERACTION.m} ease;
+      transition: padding ${MICROINT.m} ease;
 
       > *:nth-of-type(1) {
         scroll-margin-top: ${PADDING};

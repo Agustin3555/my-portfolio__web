@@ -3,7 +3,7 @@ import {
   FONT_SIZE,
   MAIN_GAP,
   MEDIA,
-  MICROINTERACTION,
+  MICROINT,
   NOT_FONT_SIZE,
   shadowAdapter,
 } from "@/styles";
@@ -24,9 +24,9 @@ export const Component = styled.footer`
   background-color: ${COLOR.g_6};
   box-shadow: ${shadowAdapter(2)};
   transition:
-    padding ${MICROINTERACTION.s} ease-out,
-    color ${MICROINTERACTION.s} ease-out,
-    background-color ${MICROINTERACTION.s} ease-out;
+    padding ${MICROINT.s} ease-out,
+    color ${MICROINT.s} ease-out,
+    background-color ${MICROINT.s} ease-out;
 
   @media (max-width: 23.4375rem) {
     padding-inline: ${GAP};
@@ -57,7 +57,7 @@ export const Component = styled.footer`
         width: max-content;
         font-weight: 500;
         color: ${COLOR.g_18};
-        transition: color ${MICROINTERACTION.s} ease-out;
+        transition: color ${MICROINT.s} ease-out;
       }
 
       .acknowledgments {

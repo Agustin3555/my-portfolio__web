@@ -4,7 +4,7 @@ import {
   FONT,
   FONT_SIZE,
   MEDIA,
-  MICROINTERACTION,
+  MICROINT,
   NOT_FONT_SIZE,
   type Value,
 } from "@/styles";
@@ -83,14 +83,14 @@ export const Component = styled.div`
 
     #descAdaptable {
       transition:
-        width ${MICROINTERACTION.m} ease,
-        height ${MICROINTERACTION.m} ease;
+        width ${MICROINT.m} ease,
+        height ${MICROINT.m} ease;
 
       #descContent {
         > * {
           display: none;
           opacity: 0;
-          transition: opacity ${MICROINTERACTION.m} ease;
+          transition: opacity ${MICROINT.m} ease;
         }
 
         .show {
@@ -108,10 +108,10 @@ export const Component = styled.div`
         transform: translateY(100%);
         filter: blur(${NOT_FONT_SIZE["5xs"]});
         transition:
-          opacity ${MICROINTERACTION.m} ease,
-          transform ${MICROINTERACTION.m} ease,
-          filter ${MICROINTERACTION.m} ease;
-        transition-delay: calc(${MICROINTERACTION.s} * var(--i));
+          opacity ${MICROINT.m} ease,
+          transform ${MICROINT.m} ease,
+          filter ${MICROINT.m} ease;
+        transition-delay: calc(${MICROINT.s} * var(--i));
 
         body[data-social-nets-in-left-nav="false"] & {
           opacity: 1;

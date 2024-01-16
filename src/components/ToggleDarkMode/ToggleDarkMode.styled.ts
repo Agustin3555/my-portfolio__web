@@ -2,7 +2,7 @@ import {
   BGC_BRIGHT_A,
   BGC_DARK_A,
   COLOR,
-  MICROINTERACTION,
+  MICROINT,
   NOT_FONT_SIZE,
   type Value,
 } from "@/styles";
@@ -64,7 +64,7 @@ export const Component = styled.button`
   background-color: ${cp.backgroundColor};
   cursor: pointer;
   overflow: hidden;
-  transition: background-color ${MICROINTERACTION.s} ease-out;
+  transition: background-color ${MICROINT.s} ease-out;
 
   :hover .fake-button {
     rotate: -22.5deg;
@@ -81,9 +81,9 @@ export const Component = styled.button`
     border-radius: ${NOT_FONT_SIZE["6xl"]};
     background-color: ${cp.fakeButton.backgroundColor};
     transition:
-      background-color ${MICROINTERACTION.s} ease-out,
-      scale ${MICROINTERACTION.xs} ease-out,
-      rotate ${MICROINTERACTION.m} ease-out;
+      background-color ${MICROINT.s} ease-out,
+      scale ${MICROINT.xs} ease-out,
+      rotate ${MICROINT.m} ease-out;
 
     .sun,
     .moon {
@@ -94,9 +94,9 @@ export const Component = styled.button`
       width: 100%;
       height: 100%;
       transition:
-        opacity ${MICROINTERACTION.m} ease-out,
-        scale ${MICROINTERACTION.m} ease-out,
-        rotate ${MICROINTERACTION.m} ease-out;
+        opacity ${MICROINT.m} ease-out,
+        scale ${MICROINT.m} ease-out,
+        rotate ${MICROINT.m} ease-out;
     }
 
     .sun {

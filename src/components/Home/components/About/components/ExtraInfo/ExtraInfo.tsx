@@ -9,7 +9,7 @@ import {
   COLOR,
   FONT_SIZE,
   MAIN_GAP,
-  MICROINTERACTION,
+  MICROINT,
   NOT_FONT_SIZE,
   getCSSVarValue,
 } from "@/styles";
@@ -31,7 +31,7 @@ const Slider = () => {
       {
         element: (
           <Image
-            handlingClass="item"
+            handlingClass={["item"]}
             src={myself}
             alt=""
             key="myself"
@@ -43,7 +43,7 @@ const Slider = () => {
       {
         element: (
           <Image
-            handlingClass="item logo"
+            handlingClass={["item", "logo"]}
             src={logo}
             alt=""
             key="logo"
@@ -80,7 +80,7 @@ const Slider = () => {
       SliderStyled.SLIDER_SIZE,
     )})`;
     itemsContainer.style.transition = `transform ${getCSSVarValue(
-      MICROINTERACTION.l,
+      MICROINT.l,
     )} ease-in-out`;
 
     await sleep(1000);
@@ -121,7 +121,7 @@ const Slider = () => {
 
     itemsContainer.style.transform = "initial";
     itemsContainer.style.transition = `transform ${getCSSVarValue(
-      MICROINTERACTION.l,
+      MICROINT.l,
     )} ease-in-out`;
 
     await sleep(1000);
@@ -132,11 +132,11 @@ const Slider = () => {
   return (
     <ExtraInfo.Component>
       <LBox
-        handlingClass="red-box"
+        handlingClass={["red-box"]}
         style={{ size: NOT_FONT_SIZE.xl, backgroundColor: COLOR.a }}
       />
       <GlassPanel
-        handlingClass="glass-description"
+        handlingClass={["glass-description"]}
         style={{
           padding: MAIN_GAP,
           borderRadius: NOT_FONT_SIZE.s,
@@ -148,7 +148,7 @@ const Slider = () => {
         </AnimateState>
       </GlassPanel>
       <LBox
-        handlingClass="blue-box"
+        handlingClass={["blue-box"]}
         style={{ size: NOT_FONT_SIZE["2xl"], backgroundColor: COLOR.b }}
       />
       <div className="slider">
@@ -161,7 +161,7 @@ const Slider = () => {
           onClick={changing ? undefined : leftButtonHandleClick}
         >
           <Icon
-            handlingClass="button-icon"
+            handlingClass={["button-icon"]}
             iconName="fa-solid fa-chevron-left"
             style={{ size: FONT_SIZE.m }}
           />
@@ -172,7 +172,7 @@ const Slider = () => {
           onClick={changing ? undefined : rightButtonHandleClick}
         >
           <Icon
-            handlingClass="button-icon"
+            handlingClass={["button-icon"]}
             iconName="fa-solid fa-chevron-right"
             style={{ size: FONT_SIZE.m }}
           />

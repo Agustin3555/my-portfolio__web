@@ -1,10 +1,4 @@
-import {
-  COLOR,
-  FONT,
-  FONT_SIZE,
-  MICROINTERACTION,
-  NOT_FONT_SIZE,
-} from "./enums";
+import { COLOR, FONT, FONT_SIZE, MICROINT, NOT_FONT_SIZE } from "./enums";
 import { type SerializedStyles } from "@emotion/react";
 
 export type Font = FONT;
@@ -17,7 +11,7 @@ export type Size = FontSize | NotFontSize;
 
 export type Color = COLOR;
 
-export type Microinteraction = MICROINTERACTION;
+export type Microint = MICROINT;
 
 export type Elevation = 0 | 1 | 2 | 3;
 

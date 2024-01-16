@@ -73,9 +73,9 @@
   --color-g-1: #f2f2f2;
   --color-g-0: #ffffff;
 
-  --time-microinteraction-xs: 0.125s;
-  --time-microinteraction-s: 0.25s;
-  --time-microinteraction-m: 0.5s;
-  --time-microinteraction-l: 1s;
-  --time-microinteraction-xl: 2s;
+  --time-microint-xs: 0.1s;
+  --time-microint-s: 0.2s;
+  --time-microint-m: 0.5s;
+  --time-microint-l: 1s;
+  --time-microint-xl: 2s;
 }

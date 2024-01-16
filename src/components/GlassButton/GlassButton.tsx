@@ -5,7 +5,7 @@ import { type ReactElement } from "react";
 const GlassButton = ({
   title,
   handleClick,
-  handlingClass,
+  handlingClass = [],
   children,
 }: {
   title: string;
@@ -15,7 +15,7 @@ const GlassButton = ({
 }) => {
   return (
     <GlassButtonStyled.Component
-      className={asClassName(handlingClass)}
+      className={asClassName(...handlingClass)}
       onClick={handleClick}
       title={title}
     >
