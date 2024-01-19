@@ -13,18 +13,22 @@ const GAP = MAIN_GAP;
 const PADDING = `calc(${NOT_FONT_SIZE.l} * 2)`;
 
 export const Component = styled.div`
+  position: relative;
   display: flex;
   justify-content: center;
   color: ${COLOR_BRIGHT_A};
   overflow: hidden;
+
   transition: color ${MICROINT.s} ease-out;
 
   .static {
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     width: ${STATIC_WIDTH};
     min-height: 100vh;
+
     transition:
       width ${MICROINT.m} ease,
       padding ${MICROINT.m} ease;
@@ -51,6 +55,7 @@ export const Component = styled.div`
       gap: calc(${NOT_FONT_SIZE.l} * 2);
       padding-top: calc(${PADDING} + ${NOT_FONT_SIZE.l});
       padding-bottom: ${PADDING};
+
       transition: padding ${MICROINT.m} ease;
 
       > *:nth-of-type(1) {

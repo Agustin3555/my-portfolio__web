@@ -7,7 +7,7 @@ import {
   MEDIA,
   MICROINT,
   NOT_FONT_SIZE,
-  Value,
+  type Value,
 } from "@/styles";
 import styled from "@emotion/styled";
 

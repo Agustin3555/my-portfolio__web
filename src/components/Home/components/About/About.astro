@@ -10,7 +10,7 @@ import { NOT_FONT_SIZE } from "@/styles";
 import { css } from "@emotion/react";
 import { highlightToHTMLTag } from "@/tools";
 import jsonData from "@/data.json";
-import Logo from "@/../public/logo.png";
+import FlatLogo from "@/../public/flat-logo.png";
 import MySelf from "@/../public/myself.jpg";
 
 const { externalNetwork, pages } = jsonData;
@@ -23,7 +23,7 @@ const { presentation, descSlider, residence } = about.data;
 
 const imgs = [
   { src: MySelf, alt: descSlider[0].img.alt },
-  { src: Logo, alt: descSlider[1].img.alt },
+  { src: FlatLogo, alt: descSlider[1].img.alt },
 ];
 
 const convertedDesc = descSlider.map((item) => highlightToHTMLTag(item.desc));
@@ -75,7 +75,7 @@ const convertedDesc = descSlider.map((item) => highlightToHTMLTag(item.desc));
           style={{ aspectRatio: [1, 1] }}
           handlingClass={["slider"]}
         >
-          {imgs.map((item) => <Image {...item} />)}
+          {imgs.map((item) => <Image loading="eager" {...item} />)}
         </Slider>
       </div>
       <ExternalLink

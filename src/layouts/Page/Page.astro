@@ -8,6 +8,7 @@ import Menu from "./components/Menu/Menu.astro";
 import LeftNav from "./components/LeftNav/LeftNav.astro";
 import SplashToScrollUp from "./components/SplashToScrollUp/SplashToScrollUp.astro";
 import jsonData from "@/data.json";
+import Background from "./components/Background/Background";
 
 interface Props {
   title?: string;
@@ -30,13 +31,14 @@ if (title) documentTitle += ` ${separator} ${title}`;
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
 
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="/favicon-logo-s.png" />
     <title>{documentTitle}</title>
 
     <script is:inline src="https://kit.fontawesome.com/7463805de7.js"></script>
   </head>
   <body>
     <PageStyled.Component>
+      <Background client:load />
       <div class="static">
         <main class="main">
           <slot />

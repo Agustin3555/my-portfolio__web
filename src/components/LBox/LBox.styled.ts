@@ -1,52 +1,57 @@
-import { COLOR, NOT_FONT_SIZE, shadowAdapter, Size, Value } from '@/styles'
-import { randomInt } from '@/tools'
-import styled from '@emotion/styled'
+import {
+  COLOR,
+  NOT_FONT_SIZE,
+  shadowAdapter,
+  type Size,
+  type Value,
+} from "@/styles";
+import { dropRandom, randomInt } from "@/tools";
+import styled from "@emotion/styled";
 
-const ANIMATION_DURATION = 8
-const ANIMATION_MISMATCH = NOT_FONT_SIZE.xs
+const ANIMATION_DURATION = 8;
+const ANIMATION_MISMATCH = NOT_FONT_SIZE.xs;
 
-type Color = COLOR.a | COLOR.b | COLOR.c | COLOR.d
+type Color = COLOR.a | COLOR.b | COLOR.c | COLOR.d;
 
 export interface Props {
-  size?: Size
-  borderRadius?: Size
-  backgroundColor?: Color
+  size?: Size;
+  borderRadius?: Size;
+  backgroundColor?: Color;
 }
 
 export interface NormalizedProps {
-  size: Size
-  borderRadius: Size
-  backgroundColor: Color
+  size: Size;
+  borderRadius: Size;
+  backgroundColor: Color;
 }
 
 interface Provider {
-  width: Value
-  height: Value
-  borderRadius: Value
-  backgroundColor: Value
-  animationDelay: Value
+  width: Value;
+  height: Value;
+  borderRadius: Value;
+  backgroundColor: Value;
+  animationDelay: Value;
 }
 
-const colors: Color[] = [COLOR.a, COLOR.b, COLOR.c, COLOR.d]
+const colors: Color[] = [COLOR.a, COLOR.b, COLOR.c, COLOR.d];
 
 export const adapter = (style?: Props): Provider => {
   const normalizedProps: NormalizedProps = {
     size: style?.size || NOT_FONT_SIZE.l,
     borderRadius: style?.borderRadius || NOT_FONT_SIZE.xs,
-    backgroundColor:
-      style?.backgroundColor || colors[randomInt(0, colors.length - 1)],
-  }
+    backgroundColor: style?.backgroundColor || dropRandom(colors),
+  };
 
-  const size = normalizedProps.size
+  const size = normalizedProps.size;
 
   return {
     width: size,
     height: size,
     borderRadius: normalizedProps.borderRadius,
     backgroundColor: normalizedProps.backgroundColor,
-    animationDelay: `${randomInt(0, ANIMATION_DURATION)}s`,
-  }
-}
+    animationDelay: `${randomInt({ max: ANIMATION_DURATION })}s`,
+  };
+};
 
 export const Component = styled.div<{ p: Provider }>`
   width: ${({ p }) => p.width};
@@ -66,4 +71,4 @@ export const Component = styled.div<{ p: Provider }>`
       transform: translateY(calc(${ANIMATION_MISMATCH} * -1));
     }
   }
-`
+`;
