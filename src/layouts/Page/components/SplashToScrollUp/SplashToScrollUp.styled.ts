@@ -52,7 +52,7 @@ export const Component = styled.a`
     }
   }
 
-  @media (max-width: ${MEDIA.s}) {
+  @media (max-width: ${MEDIA.m}) {
     @keyframes open-curtain {
       to {
         width: ${cp.width};

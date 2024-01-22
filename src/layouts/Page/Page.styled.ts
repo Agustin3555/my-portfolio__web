@@ -2,15 +2,16 @@ import styled from "@emotion/styled";
 import {
   COLOR_BRIGHT_A,
   COLOR_DARK_A,
+  GLASS_BUTTON_SIZE,
+  LAYOUT_WIDTH,
   MAIN_GAP,
+  MAIN_GAP_M,
   MEDIA,
   MICROINT,
   NOT_FONT_SIZE,
-  STATIC_WIDTH,
 } from "@/styles";
 
-const GAP = MAIN_GAP;
-const PADDING = `calc(${NOT_FONT_SIZE.l} * 2)`;
+const MARGIN = `calc(${MAIN_GAP} * 4 + ${GLASS_BUTTON_SIZE})`;
 
 export const Component = styled.div`
   position: relative;
@@ -26,26 +27,28 @@ export const Component = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: ${STATIC_WIDTH};
+    gap: calc(${NOT_FONT_SIZE.l} * 2);
+    margin: 0 ${MARGIN};
+    padding-top: ${NOT_FONT_SIZE.l};
+    max-width: ${LAYOUT_WIDTH};
     min-height: 100vh;
 
     transition:
-      width ${MICROINT.m} ease,
+      margin ${MICROINT.m} ease,
       padding ${MICROINT.m} ease;
 
     @media (max-width: ${MEDIA.m}) {
-      width: 100%;
-      padding-left: ${PADDING};
-      padding-right: ${PADDING};
-    }
-
-    @media (max-width: ${MEDIA.s}) {
-      padding-left: 0;
-      padding-right: 0;
+      margin: 0;
+      padding-top: calc(${NOT_FONT_SIZE.l} * 2);
 
       .main {
-        padding-left: ${GAP};
-        padding-right: ${GAP};
+        padding: 0 ${MAIN_GAP_M};
+      }
+    }
+
+    @media (max-width: ${MEDIA.xs}) {
+      .main {
+        padding: 0 ${MAIN_GAP};
       }
     }
 
@@ -53,17 +56,20 @@ export const Component = styled.div`
       display: flex;
       flex-direction: column;
       gap: calc(${NOT_FONT_SIZE.l} * 2);
-      padding-top: calc(${PADDING} + ${NOT_FONT_SIZE.l});
-      padding-bottom: ${PADDING};
 
       transition: padding ${MICROINT.m} ease;
 
-      > *:nth-of-type(1) {
-        scroll-margin-top: ${PADDING};
+      .immediate-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        min-height: calc(100vh - ${NOT_FONT_SIZE.l});
+
+        /* background-color: black; */
       }
 
       > *:not(:nth-of-type(1)) {
-        scroll-margin-top: ${GAP};
+        scroll-margin-top: ${MAIN_GAP};
       }
     }
   }

@@ -18,7 +18,7 @@ export const Component = styled.nav`
   top: 0;
   transition: top ${MICROINT.m} ease;
 
-  @media (max-width: ${MEDIA.s}) {
+  @media (max-width: ${MEDIA.m}) {
     display: none;
   }
 

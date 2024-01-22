@@ -3,12 +3,12 @@ import "@/styles/normalize.css";
 import "@/styles/vars.css";
 import "@/styles/style.css";
 import * as PageStyled from "./Page.styled";
+import Background from "./components/Background/Background.astro";
 import Footer from "./components/Footer/Footer.astro";
 import Menu from "./components/Menu/Menu.astro";
 import LeftNav from "./components/LeftNav/LeftNav.astro";
 import SplashToScrollUp from "./components/SplashToScrollUp/SplashToScrollUp.astro";
 import jsonData from "@/data.json";
-import Background from "./components/Background/Background";
 
 interface Props {
   title?: string;
@@ -37,10 +37,13 @@ if (title) documentTitle += ` ${separator} ${title}`;
     <script is:inline src="https://kit.fontawesome.com/7463805de7.js"></script>
   </head>
   <body>
+    <Background />
     <PageStyled.Component>
-      <Background client:load />
       <div class="static">
         <main class="main">
+          <div class="immediate-content">
+            <slot name="immediate-content" />
+          </div>
           <slot />
         </main>
         <Footer />

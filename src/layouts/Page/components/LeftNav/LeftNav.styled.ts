@@ -32,7 +32,7 @@ export const Component = styled.div`
   gap: ${cp.gap};
   transition: left ${MICROINT.m} ease;
 
-  @media (max-width: ${MEDIA.s}) {
+  @media (max-width: ${MEDIA.m}) {
     left: calc(${NOT_FONT_SIZE.m} * -1);
   }
 

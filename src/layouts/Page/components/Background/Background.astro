@@ -1,0 +1,14 @@
+---
+import * as BackgroundStyled from "./Background.styled";
+import ParticleMotion from "./components/ParticleMotion/ParticleMotion";
+---
+
+<BackgroundStyled.Component>
+  <ParticleMotion client:load />
+  <ParticleMotion
+    client:load
+    gapBetween={500}
+    handlingClass={["center-particles"]}
+  />
+  <ParticleMotion client:load />
+</BackgroundStyled.Component>

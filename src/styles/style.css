@@ -39,6 +39,7 @@
 }
 
 body {
+  position: relative;
   font-family: var(--font-p);
   background-color: var(--color-g-1);
   transition: background-color var(--time-microint-s) ease-out;

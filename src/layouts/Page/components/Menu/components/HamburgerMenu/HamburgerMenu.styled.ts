@@ -74,7 +74,7 @@ const cp: ConstProvider = {
 export const Component = styled.header<{ p: Provider }>`
   display: none;
 
-  @media (max-width: ${MEDIA.s}) {
+  @media (max-width: ${MEDIA.m}) {
     display: initial;
   }
 

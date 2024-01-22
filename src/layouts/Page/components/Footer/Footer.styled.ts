@@ -1,3 +1,4 @@
+import styled from "@emotion/styled";
 import {
   COLOR,
   FONT_SIZE,
@@ -7,7 +8,6 @@ import {
   NOT_FONT_SIZE,
   shadowAdapter,
 } from "@/styles";
-import styled from "@emotion/styled";
 
 const GAP = MAIN_GAP;
 
@@ -23,6 +23,7 @@ export const Component = styled.footer`
   border-top-right-radius: ${NOT_FONT_SIZE.xs};
   background-color: ${COLOR.g_6};
   box-shadow: ${shadowAdapter(2)};
+
   transition:
     padding ${MICROINT.s} ease-out,
     color ${MICROINT.s} ease-out,
@@ -57,6 +58,7 @@ export const Component = styled.footer`
         width: max-content;
         font-weight: 500;
         color: ${COLOR.g_18};
+
         transition: color ${MICROINT.s} ease-out;
       }
 

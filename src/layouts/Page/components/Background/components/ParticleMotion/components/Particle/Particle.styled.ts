@@ -1,9 +1,10 @@
 import {
   COLOR,
   NOT_FONT_SIZE,
+  FONT_SIZE,
   type Color,
-  type NotFontSize,
   type Value,
+  type Size,
   shadowAdapter,
 } from "@/styles";
 import { dropRandom, randomInt } from "@/tools";
@@ -13,12 +14,7 @@ const MAX_CENTER_OFFSET = 128;
 const MIN_DURATION = 30;
 const MAX_DURATION = 60;
 
-const DIMENSIONS: NotFontSize[] = [
-  NOT_FONT_SIZE.s,
-  NOT_FONT_SIZE.m,
-  NOT_FONT_SIZE.l,
-  NOT_FONT_SIZE.xl,
-];
+const DIMENSIONS: Size[] = [FONT_SIZE.l, NOT_FONT_SIZE.m, NOT_FONT_SIZE.l];
 
 interface Provider {
   left: Value;
@@ -30,26 +26,31 @@ interface Provider {
 
 export interface Props {
   xPosition: number;
+  distanceToGo: number;
 }
 
 const colors: Color[] = [COLOR.a, COLOR.b, COLOR.c, COLOR.d];
 
-export const adapter = (style: Props): Provider => {
-  const { xPosition } = style;
-
+export const adapter = ({ xPosition, distanceToGo }: Props): Provider => {
   let centerOffset = randomInt({ max: MAX_CENTER_OFFSET });
 
   if (randomInt({ max: 1 }) === 0) centerOffset *= -1;
 
   const dimensions = dropRandom(DIMENSIONS);
-  const duration = randomInt({ min: MIN_DURATION, max: MAX_DURATION });
+
+  const duration =
+    randomInt({ min: MIN_DURATION, max: MAX_DURATION }) *
+    distanceToGo *
+    0.000625;
+
+  const delay = randomInt({ max: duration });
 
   return {
     left: `${xPosition + centerOffset}px`,
     width: dimensions,
     height: dimensions,
     backgroundColor: dropRandom(colors),
-    animation: `lavaLampMotion ${duration}s ease-in infinite alternate`,
+    animation: `lavaLampMotion ${duration}s -${delay}s ease-in infinite alternate`,
   };
 };
 
@@ -58,7 +59,7 @@ export const Component = styled.div<{ p: Provider }>`
   left: ${({ p }) => p.left};
   width: ${({ p }) => p.width};
   height: ${({ p }) => p.height};
-  border-radius: ${NOT_FONT_SIZE["2xs"]};
+  border-radius: 15%;
   box-shadow: ${shadowAdapter(1)};
   background-color: ${({ p }) => p.backgroundColor};
   animation: ${({ p }) => p.animation};
