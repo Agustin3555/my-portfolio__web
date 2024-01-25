@@ -4,7 +4,6 @@ import {
   MICROINT,
   NOT_FONT_SIZE,
   FONT_SIZE,
-  Value,
   shadowAdapter,
 } from "@/styles";
 import styled from "@emotion/styled";
@@ -21,10 +20,11 @@ export const Component = styled.a`
   border-radius: ${BORDER_RADIUS};
   text-decoration: none;
   box-shadow: ${shadowAdapter(2)};
+  ${GLASS_SET.this}
+
   transition:
     box-shadow ${MICROINT.xs} ease-out,
     transform ${MICROINT.xs} ease-out;
-  ${GLASS_SET.this}
 
   :hover {
     color: ${COLOR.b};

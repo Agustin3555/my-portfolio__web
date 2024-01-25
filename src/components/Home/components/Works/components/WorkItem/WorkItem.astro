@@ -7,6 +7,7 @@ import Separator from "@/components/Separator/Separator.astro";
 import GlassPanel from "@/layouts/GlassPanel/GlassPanel.astro";
 import { COLOR, NOT_FONT_SIZE } from "@/styles";
 import { type Props as ExternalLinksProps } from "@/components/ExternalLink/ExternalLink.astro";
+import { highlightToHTMLTag } from "@/tools";
 
 interface Props {
   title: string;
@@ -100,19 +101,23 @@ if (links) {
       </ul>
     </div>
   </GlassPanel>
-  <p class="desc text">{desc}</p>
-  <div class="footer">
-    <ul class="technologies">
-      {technologies.map((item) => <li class="item">{item}</li>)}
-    </ul>
-    <ul class="links">
-      {
-        externalLinks.map((item) => (
-          <li>
-            <ExternalLink {...item} />
-          </li>
-        ))
-      }
-    </ul>
-  </div>
+  <p set:html={highlightToHTMLTag(desc)} class="desc text" />
+  <ul class="used-techs">
+    {
+      technologies.map((item) => (
+        <li class="item">
+          {item} <span>1.0.0</span>
+        </li>
+      ))
+    }
+  </ul>
+  <ul class="links">
+    {
+      externalLinks.map((item) => (
+        <li>
+          <ExternalLink {...item} />
+        </li>
+      ))
+    }
+  </ul>
 </WorkItemStyled.Component>

@@ -149,6 +149,7 @@ export const Component = styled.div`
         height: ${NOT_FONT_SIZE.s};
         border-radius: calc(${NOT_FONT_SIZE["2xs"]} - ${NOT_FONT_SIZE["3xs"]});
         background-color: ${COLOR.g_2};
+        background-color: transparent;
 
         transition: background-color ${MICROINT.s} ease-out;
 
@@ -262,7 +263,7 @@ export const Component = styled.div`
   body[data-dark-mode="true"] & {
     .tech {
       :hover {
-        background-color: ${COLOR.g_12};
+        background-color: ${COLOR.g_13};
 
         .names {
           color: ${COLOR.g_0};
@@ -279,7 +280,8 @@ export const Component = styled.div`
         }
 
         .level-bar {
-          background-color: ${COLOR.g_15};
+          background-color: ${COLOR.g_16};
+          background-color: transparent;
         }
       }
     }

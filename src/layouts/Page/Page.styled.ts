@@ -27,9 +27,9 @@ export const Component = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    gap: calc(${NOT_FONT_SIZE.l} * 2);
+    gap: calc(${NOT_FONT_SIZE.l} * 3);
     margin: 0 ${MARGIN};
-    padding-top: ${NOT_FONT_SIZE.l};
+    padding-top: calc(${NOT_FONT_SIZE.l} * 3);
     max-width: ${LAYOUT_WIDTH};
     min-height: 100vh;
 
@@ -55,21 +55,18 @@ export const Component = styled.div`
     .main {
       display: flex;
       flex-direction: column;
-      gap: calc(${NOT_FONT_SIZE.l} * 2);
+      gap: calc(${NOT_FONT_SIZE.l} * 3);
 
       transition: padding ${MICROINT.m} ease;
 
-      .immediate-content {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        min-height: calc(100vh - ${NOT_FONT_SIZE.l});
+      > * {
+        :nth-of-type(1) {
+          scroll-margin-top: ${NOT_FONT_SIZE["6xl"]};
+        }
 
-        /* background-color: black; */
-      }
-
-      > *:not(:nth-of-type(1)) {
-        scroll-margin-top: ${MAIN_GAP};
+        :not(:nth-of-type(1)) {
+          scroll-margin-top: ${MAIN_GAP};
+        }
       }
     }
   }

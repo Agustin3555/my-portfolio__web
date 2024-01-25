@@ -46,7 +46,7 @@ interface ConstProvider {
 
 const cp: ConstProvider = {
   headerGlass: {
-    transform: `translate(calc(${GAP} * -1), calc(${GAP} * 3))`,
+    transform: `translate(calc(${GAP} * -1), calc(${GAP} * 2))`,
     header: {
       types: {
         gap: `calc(${GAP} * 0.5)`,
@@ -80,20 +80,22 @@ export const Component = styled.div`
 
   grid-template:
     "header ." auto
-    "slider desc" auto
-    "footer desc" auto /
-    2fr 1fr;
+    "slider techs" auto
+    "slider links" 1fr
+    "desc   ." auto /
+    2.5fr 1fr;
 
   gap: ${GAP};
   padding-left: ${GAP};
 
   // TODO: esta medida es segun se rompa el texto en el grid
-  @media (max-width: 78.125rem) {
+  @media (max-width: 75rem) {
     grid-template:
       "header"
       "slider"
-      "footer"
-      "desc";
+      "techs"
+      "desc"
+      "links";
   }
 
   @media (max-width: ${MEDIA.xs}) {
@@ -104,6 +106,7 @@ export const Component = styled.div`
     grid-area: header;
 
     transform: ${cp.headerGlass.transform};
+
     transition: transform ${MICROINT.l} ease-in-out;
 
     .header {
@@ -137,39 +140,57 @@ export const Component = styled.div`
     }
   }
 
-  .footer {
-    grid-area: footer;
-
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: ${GAP};
-
-    .technologies {
-      display: flex;
-      align-content: flex-start;
-      gap: ${FONT_SIZE.s};
-      flex-wrap: wrap;
-      color: ${COLOR.b};
-
-      .item {
-        font-size: ${FONT_SIZE.xs};
-      }
-    }
-
-    .links {
-      display: flex;
-      gap: ${GAP};
-    }
-  }
-
   .desc {
     grid-area: desc;
+
+    text-wrap: pretty;
+  }
+
+  .links {
+    grid-area: links;
+
+    display: flex;
+    align-items: flex-start;
+    gap: ${FONT_SIZE.xs};
+  }
+
+  .used-techs {
+    grid-area: techs;
+
+    display: flex;
+    align-content: flex-start;
+    flex-wrap: wrap;
+    gap: ${FONT_SIZE.xs};
+
+    .item {
+      padding: 0.5313rem;
+      font-size: ${FONT_SIZE.xs};
+      color: ${COLOR.b_d2};
+      background-color: ${COLOR.g_1};
+      border-radius: ${NOT_FONT_SIZE["3xs"]};
+
+      transition: background-color ${MICROINT.s} ease-out;
+
+      span {
+        margin-left: ${NOT_FONT_SIZE["2xs"]};
+        font-size: ${FONT_SIZE.xs};
+        color: ${COLOR.g_10};
+      }
+    }
   }
 
   body[data-dark-mode="true"] & {
     .section__title {
       color: ${cp.DARK_MODE.title.color};
+    }
+
+    .used-techs .item {
+      color: ${COLOR.b_b2};
+      background-color: ${COLOR.g_16};
+
+      span {
+        color: ${COLOR.g_8};
+      }
     }
   }
 `;

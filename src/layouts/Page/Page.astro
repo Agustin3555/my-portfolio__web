@@ -2,6 +2,9 @@
 import "@/styles/normalize.css";
 import "@/styles/vars.css";
 import "@/styles/style.css";
+import "@fontsource-variable/onest";
+import "@fontsource-variable/roboto-mono";
+
 import * as PageStyled from "./Page.styled";
 import Background from "./components/Background/Background.astro";
 import Footer from "./components/Footer/Footer.astro";
@@ -41,9 +44,6 @@ if (title) documentTitle += ` ${separator} ${title}`;
     <PageStyled.Component>
       <div class="static">
         <main class="main">
-          <div class="immediate-content">
-            <slot name="immediate-content" />
-          </div>
           <slot />
         </main>
         <Footer />

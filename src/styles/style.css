@@ -4,19 +4,23 @@
   --scrollbar-size: calc(var(--scrollbar-width) + var(--scrollbar-padding) * 2);
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 * {
   box-sizing: border-box;
-  scroll-behavior: smooth;
   margin: 0;
   font-size: var(--size-font-s);
+  /* font-weight: 350; */
   line-height: 1;
   /* letter-spacing: calc(0.0625rem / 4); */
-  word-spacing: 0.0625rem;
+  word-spacing: 0.03125rem;
   color: inherit;
 }
 
 ::selection {
-  background-color: var(--color-d);
+  background-color: var(--color-b-d2);
   color: var(--color-g-0);
 }
 
@@ -41,7 +45,8 @@
 body {
   position: relative;
   font-family: var(--font-p);
-  background-color: var(--color-g-1);
+  background-color: var(--color-g-0);
+
   transition: background-color var(--time-microint-s) ease-out;
 
   &::-webkit-scrollbar {
@@ -54,7 +59,7 @@ body {
     border-radius: var(--size-not-font-6xl);
     border-width: var(--scrollbar-padding);
     border-style: solid;
-    border-color: var(--color-g-1);
+    border-color: var(--color-g-0);
     background-color: var(--color-g-6);
   }
 
@@ -67,10 +72,10 @@ body {
   }
 
   &[data-dark-mode="true"] {
-    background-color: var(--color-g-16);
+    background-color: var(--color-g-17);
 
     &::-webkit-scrollbar-thumb {
-      border-color: var(--color-g-16);
+      border-color: var(--color-g-17);
       background-color: var(--color-g-14);
     }
 
@@ -114,6 +119,10 @@ ul,
 ol {
   padding: 0;
   list-style: none;
+
+  li {
+    display: flex;
+  }
 }
 
 .text {
@@ -122,6 +131,7 @@ ol {
   strong {
     font-weight: 600;
     color: var(--color-b-d2);
+
     transition: color var(--time-microint-s) ease-out;
 
     body[data-dark-mode="true"] & {
@@ -143,6 +153,7 @@ ol {
 .background-pictures {
   background-image: url("/bg_pattern.png");
   background-color: var(--color-g-2);
+
   transition: background-color var(--time-microint-s) ease-out;
 
   body[data-dark-mode="true"] & {

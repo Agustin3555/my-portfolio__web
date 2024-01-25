@@ -52,12 +52,14 @@ export const Component = styled.div`
   display: flex;
   justify-content: center;
   align-items: flex-start;
+  align-content: center;
   flex-wrap: wrap;
   gap: ${NOT_FONT_SIZE.l};
+  min-height: calc(100vh - ${NOT_FONT_SIZE.l} * 5.5);
 
   .desc {
     flex-grow: 1;
-    flex-basis: calc(${NOT_FONT_SIZE["4xl"]} - ${NOT_FONT_SIZE.xl});
+    flex-basis: calc(${NOT_FONT_SIZE["4xl"]} - ${NOT_FONT_SIZE.l} * 2);
 
     display: flex;
     flex-direction: column;
@@ -90,6 +92,7 @@ export const Component = styled.div`
         > * {
           display: none;
           opacity: 0;
+
           transition: opacity ${MICROINT.m} ease;
         }
 
@@ -125,7 +128,9 @@ export const Component = styled.div`
   .extra-info {
     --gap: ${NOT_FONT_SIZE.m};
 
-    flex-basis: calc(${NOT_FONT_SIZE["4xl"]} + var(--gap));
+    flex-basis: calc(
+      ${NOT_FONT_SIZE["4xl"]} - ${NOT_FONT_SIZE["m"]} + var(--gap)
+    );
 
     display: flex;
     flex-direction: column;
