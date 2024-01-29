@@ -5,7 +5,7 @@ import {
   FONT_SIZE,
   GLASS_SET,
   MEDIA,
-  MICROINT,
+  TIME,
   NOT_FONT_SIZE,
   type Value,
   // colorAlphaAdapter,
@@ -83,12 +83,12 @@ export const Component = styled.header<{ p: Provider }>`
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: ${COLOR.g_19};
+    background-color: ${COLOR.gs_19};
     border: none;
     opacity: 0;
     cursor: pointer;
     pointer-events: none;
-    transition: opacity ${MICROINT.s} ease-out;
+    transition: opacity ${TIME.s} ease-out;
   }
 
   .glass-menu {
@@ -100,8 +100,8 @@ export const Component = styled.header<{ p: Provider }>`
     border-top-right-radius: 0;
     box-shadow: ${shadowAdapter(2)};
     transition:
-      background-color ${MICROINT.s} ease-out,
-      top ${MICROINT.m} ease;
+      background-color ${TIME.s} ease-out,
+      top ${TIME.m} ease;
     ${GLASS_SET.this}
 
     .glass-refleccion {
@@ -124,12 +124,12 @@ export const Component = styled.header<{ p: Provider }>`
       border-top-right-radius: 0;
       ${GLASS_SET.content}
       border-top-width: 0;
-      transition: padding ${MICROINT.m} ease;
+      transition: padding ${TIME.m} ease;
 
       .MC {
         transition:
-          width ${MICROINT.m} ease,
-          height ${MICROINT.m} ease;
+          width ${TIME.m} ease,
+          height ${TIME.m} ease;
 
         body[data-hamburger-menu-is-open="false"] & {
           width: ${FONT_SIZE.xl} !important;
@@ -149,8 +149,8 @@ export const Component = styled.header<{ p: Provider }>`
             opacity: 0;
             transform: translateX(37.5%);
             transition:
-              opacity ${MICROINT.xs} ease,
-              transform ${MICROINT.xs} ease;
+              opacity ${TIME.xs} ease,
+              transform ${TIME.xs} ease;
 
             .toggle-expand {
               padding: 0;
@@ -193,8 +193,8 @@ export const Component = styled.header<{ p: Provider }>`
             opacity: 1;
             transform: translateX(0);
             transition:
-              opacity ${MICROINT.s} ${MICROINT.m} ease,
-              transform ${MICROINT.s} ${MICROINT.m} ease;
+              opacity ${TIME.s} ${TIME.m} ease,
+              transform ${TIME.s} ${TIME.m} ease;
           }
         }
       }

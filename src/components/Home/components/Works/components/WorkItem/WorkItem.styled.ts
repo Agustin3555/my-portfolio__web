@@ -5,7 +5,7 @@ import {
   FONT,
   FONT_SIZE,
   MEDIA,
-  MICROINT,
+  TIME,
   NOT_FONT_SIZE,
   type Value,
 } from "@/styles";
@@ -107,7 +107,7 @@ export const Component = styled.div`
 
     transform: ${cp.headerGlass.transform};
 
-    transition: transform ${MICROINT.l} ease-in-out;
+    transition: transform ${TIME.l} ease-in-out;
 
     .header {
       display: flex;
@@ -115,7 +115,7 @@ export const Component = styled.div`
       gap: ${FONT_SIZE.s};
 
       .title {
-        font-family: ${FONT.s};
+        font-family: ${FONT.b};
         font-size: ${FONT_SIZE.l};
       }
 
@@ -166,15 +166,15 @@ export const Component = styled.div`
       padding: 0.5313rem;
       font-size: ${FONT_SIZE.xs};
       color: ${COLOR.b_d2};
-      background-color: ${COLOR.g_1};
+      background-color: ${COLOR.gs_1};
       border-radius: ${NOT_FONT_SIZE["3xs"]};
 
-      transition: background-color ${MICROINT.s} ease-out;
+      transition: background-color ${TIME.s} ease-out;
 
       span {
         margin-left: ${NOT_FONT_SIZE["2xs"]};
         font-size: ${FONT_SIZE.xs};
-        color: ${COLOR.g_10};
+        color: ${COLOR.gs_10};
       }
     }
   }
@@ -185,11 +185,11 @@ export const Component = styled.div`
     }
 
     .used-techs .item {
-      color: ${COLOR.b_b2};
-      background-color: ${COLOR.g_16};
+      color: ${COLOR.b_l2};
+      background-color: ${COLOR.gs_16};
 
       span {
-        color: ${COLOR.g_8};
+        color: ${COLOR.gs_8};
       }
     }
   }

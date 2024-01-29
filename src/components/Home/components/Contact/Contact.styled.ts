@@ -2,7 +2,7 @@ import {
   COLOR,
   FONT_SIZE,
   GLASS_SET,
-  MICROINT,
+  TIME,
   NOT_FONT_SIZE,
   shadowAdapter,
 } from "@/styles";
@@ -21,20 +21,23 @@ export const Component = styled.div`
     .link {
       display: inline-block;
       padding: ${FONT_SIZE.s} calc(${FONT_SIZE.s} * 2);
-      text-decoration: none;
-      color: ${COLOR.g_0};
-      ${GLASS_SET.content};
       border-radius: ${NOT_FONT_SIZE["3xs"]};
-      background-color: ${COLOR.g_14};
+
+      text-decoration: none;
+      color: ${COLOR.gs_0};
+      background-color: ${COLOR.gs_14};
+
+      ${GLASS_SET.content};
+
       transition:
-        color ${MICROINT.s} ease-out,
-        background-color ${MICROINT.s} ease-out,
-        box-shadow ${MICROINT.m} ease-out,
-        transform ${MICROINT.m} ease-out;
+        color ${TIME.s} ease-out,
+        background-color ${TIME.s} ease-out,
+        box-shadow ${TIME.m} ease-out,
+        scale ${TIME.m} ease-out;
 
       :hover {
         box-shadow: ${shadowAdapter(2)};
-        transform: scale(1.06);
+        scale: 1.06;
       }
     }
 
@@ -57,6 +60,7 @@ export const Component = styled.div`
 
     .box {
       position: absolute;
+
       transition:
         top 1.5s ease-in-out,
         bottom 1.5s ease-in-out,
@@ -82,8 +86,8 @@ export const Component = styled.div`
 
   body[data-dark-mode="true"] & {
     .email-link .link {
-      color: ${COLOR.g_19};
-      background-color: ${COLOR.g_4};
+      color: ${COLOR.gs_19};
+      background-color: ${COLOR.gs_4};
     }
   }
 `;

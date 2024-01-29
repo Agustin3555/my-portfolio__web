@@ -9,7 +9,7 @@ import {
   type ReactNode,
 } from "react";
 import { type HandlingClass, asClassName, sleep } from "@/tools";
-import { FONT_SIZE, MICROINT, getCSSVarValue } from "@/styles";
+import { FONT_SIZE, TIME, getCSSVarValue } from "@/styles";
 import { useFullscreen } from "@/hooks";
 
 const Slider = ({
@@ -75,7 +75,7 @@ const Slider = ({
 
     itemsContainer.style.transform = `translateX(-${childWidth}px)`;
     itemsContainer.style.transition = `transform ${getCSSVarValue(
-      MICROINT.l,
+      TIME.l,
     )} ease-out`;
 
     await sleep(1000);
@@ -116,7 +116,7 @@ const Slider = ({
 
     itemsContainer.style.transform = "initial";
     itemsContainer.style.transition = `transform ${getCSSVarValue(
-      MICROINT.l,
+      TIME.l,
     )} ease-out`;
 
     await sleep(1000);

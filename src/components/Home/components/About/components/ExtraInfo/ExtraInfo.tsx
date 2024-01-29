@@ -9,7 +9,7 @@ import {
   COLOR,
   FONT_SIZE,
   MAIN_GAP,
-  MICROINT,
+  TIME,
   NOT_FONT_SIZE,
   getCSSVarValue,
 } from "@/styles";
@@ -80,7 +80,7 @@ const Slider = () => {
       SliderStyled.SLIDER_SIZE,
     )})`;
     itemsContainer.style.transition = `transform ${getCSSVarValue(
-      MICROINT.l,
+      TIME.l,
     )} ease-in-out`;
 
     await sleep(1000);
@@ -121,7 +121,7 @@ const Slider = () => {
 
     itemsContainer.style.transform = "initial";
     itemsContainer.style.transition = `transform ${getCSSVarValue(
-      MICROINT.l,
+      TIME.l,
     )} ease-in-out`;
 
     await sleep(1000);

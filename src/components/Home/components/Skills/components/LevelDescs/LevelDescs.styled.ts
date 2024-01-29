@@ -2,7 +2,7 @@ import {
   COLOR,
   FONT_SIZE,
   MAIN_GAP,
-  MICROINT,
+  TIME,
   NOT_FONT_SIZE,
   type Value,
   shadowAdapter,
@@ -85,8 +85,8 @@ export const Component = styled.fieldset`
         width: ${cp.item.toggle.toggleUI.width};
         height: ${TOGGLE_UI_HEIGHT};
         border-radius: ${NOT_FONT_SIZE["6xl"]};
-        background-color: ${COLOR.g_10};
-        transition: background-color ${MICROINT.s} ease-out;
+        background-color: ${COLOR.gs_10};
+        transition: background-color ${TIME.s} ease-out;
 
         ::before {
           content: "";
@@ -96,7 +96,7 @@ export const Component = styled.fieldset`
           border-top-left-radius: ${NOT_FONT_SIZE["6xl"]};
           border-bottom-left-radius: ${NOT_FONT_SIZE["6xl"]};
           background-color: ${COLOR.b};
-          transition: width ${MICROINT.s} ease;
+          transition: width ${TIME.s} ease;
         }
 
         ::after {
@@ -110,24 +110,24 @@ export const Component = styled.fieldset`
           border-radius: 50%;
           border-width: ${NOT_FONT_SIZE["6xs"]};
           border-style: solid;
-          border-color: ${COLOR.g_6};
-          background-color: ${COLOR.g_2};
+          border-color: ${COLOR.gs_6};
+          background-color: ${COLOR.gs_2};
           box-shadow: ${shadowAdapter(2)};
           transition:
-            border-color ${MICROINT.s} ease-out,
-            background-color ${MICROINT.s} ease-out,
-            transform ${MICROINT.s} ease;
+            border-color ${TIME.s} ease-out,
+            background-color ${TIME.s} ease-out,
+            transform ${TIME.s} ease;
         }
       }
     }
   }
 
   body[data-dark-mode="true"] & .item .toggle .ui {
-    background-color: ${COLOR.g_12};
+    background-color: ${COLOR.gs_12};
 
     ::after {
-      border-color: ${COLOR.g_10};
-      background-color: ${COLOR.g_4};
+      border-color: ${COLOR.gs_10};
+      background-color: ${COLOR.gs_4};
     }
   }
 `;

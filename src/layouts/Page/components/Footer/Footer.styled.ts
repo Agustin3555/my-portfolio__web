@@ -4,7 +4,7 @@ import {
   FONT_SIZE,
   MAIN_GAP,
   MEDIA,
-  MICROINT,
+  TIME,
   NOT_FONT_SIZE,
   shadowAdapter,
 } from "@/styles";
@@ -18,16 +18,16 @@ export const Component = styled.footer`
   align-items: center;
   padding: calc(${GAP} * 2);
   padding-bottom: ${GAP};
-  color: ${COLOR.g_15};
+  color: ${COLOR.gs_15};
   border-top-left-radius: ${NOT_FONT_SIZE.xs};
   border-top-right-radius: ${NOT_FONT_SIZE.xs};
-  background-color: ${COLOR.g_6};
+  background-color: ${COLOR.gs_6};
   box-shadow: ${shadowAdapter(2)};
 
   transition:
-    padding ${MICROINT.s} ease-out,
-    color ${MICROINT.s} ease-out,
-    background-color ${MICROINT.s} ease-out;
+    padding ${TIME.s} ease-out,
+    color ${TIME.s} ease-out,
+    background-color ${TIME.s} ease-out;
 
   @media (max-width: 23.4375rem) {
     padding-inline: ${GAP};
@@ -57,9 +57,9 @@ export const Component = styled.footer`
       .title {
         width: max-content;
         font-weight: 500;
-        color: ${COLOR.g_18};
+        color: ${COLOR.gs_18};
 
-        transition: color ${MICROINT.s} ease-out;
+        transition: color ${TIME.s} ease-out;
       }
 
       .acknowledgments {
@@ -94,11 +94,11 @@ export const Component = styled.footer`
   }
 
   body[data-dark-mode="true"] & {
-    color: ${COLOR.g_4};
-    background-color: ${COLOR.g_14};
+    color: ${COLOR.gs_4};
+    background-color: ${COLOR.gs_14};
 
     .sections .item .title {
-      color: ${COLOR.g_0};
+      color: ${COLOR.gs_0};
     }
   }
 `;

@@ -3,7 +3,7 @@ import {
   FONT,
   FONT_SIZE,
   GLASS_SET,
-  MICROINT,
+  TIME,
   NOT_FONT_SIZE,
   shadowAdapter,
   type Value,
@@ -96,9 +96,9 @@ export const Component = styled.li`
         padding: ${POINT_3_PADDING};
         border-width: ${LINE_WIDTH};
         border-style: dashed;
-        border-color: ${COLOR.g_6};
+        border-color: ${COLOR.gs_6};
         border-radius: ${NOT_FONT_SIZE["6xl"]};
-        transition: border-color ${MICROINT.s} ease-out;
+        transition: border-color ${TIME.s} ease-out;
 
         .point-1 {
           width: ${POINT_1_SIZE};
@@ -181,7 +181,7 @@ export const Component = styled.li`
             gap: ${GAP};
 
             .title {
-              font-family: ${FONT.s};
+              font-family: ${FONT.b};
               font-size: ${FONT_SIZE.l};
               line-height: 1.25;
             }
@@ -212,8 +212,8 @@ export const Component = styled.li`
 
   .line {
     width: ${LINE_WIDTH};
-    background-color: ${COLOR.g_6};
-    transition: background-color ${MICROINT.s} ease-out;
+    background-color: ${COLOR.gs_6};
+    transition: background-color ${TIME.s} ease-out;
   }
 
   @media (max-width: 65.625rem) {
@@ -266,12 +266,12 @@ export const Component = styled.li`
   body[data-dark-mode="true"] & {
     .item {
       .pointer .point-3 {
-        border-color: ${COLOR.g_10};
+        border-color: ${COLOR.gs_10};
       }
     }
 
     .line {
-      background-color: ${COLOR.g_10};
+      background-color: ${COLOR.gs_10};
     }
   }
 `;

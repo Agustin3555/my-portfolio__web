@@ -1,4 +1,4 @@
-import { MICROINT, NOT_FONT_SIZE } from "@/styles";
+import { TIME, NOT_FONT_SIZE } from "@/styles";
 import styled from "@emotion/styled";
 
 export const Component = styled.figure`
@@ -10,8 +10,8 @@ export const Component = styled.figure`
     width: 100%;
     height: 100%;
     transition:
-      display ${MICROINT.s} linear ${MICROINT.s},
-      opacity ${MICROINT.s} ease-out;
+      display ${TIME.s} linear ${TIME.s},
+      opacity ${TIME.s} ease-out;
   }
 
   .img {
@@ -21,8 +21,8 @@ export const Component = styled.figure`
     filter: blur(${NOT_FONT_SIZE["4xs"]});
     opacity: 0;
     transition:
-      filter ${MICROINT.s} ease-out ${MICROINT.s},
-      opacity ${MICROINT.s} ease-out ${MICROINT.s};
+      filter ${TIME.s} ease-out ${TIME.s},
+      opacity ${TIME.s} ease-out ${TIME.s};
   }
 
   &[data-loaded="true"] {

@@ -1,7 +1,7 @@
 import {
   COLOR,
   GLASS_SET,
-  MICROINT,
+  TIME,
   NOT_FONT_SIZE,
   FONT_SIZE,
   shadowAdapter,
@@ -23,8 +23,8 @@ export const Component = styled.a`
   ${GLASS_SET.this}
 
   transition:
-    box-shadow ${MICROINT.xs} ease-out,
-    transform ${MICROINT.xs} ease-out;
+    box-shadow ${TIME.xs} ease-out,
+    transform ${TIME.xs} ease-out;
 
   :hover {
     color: ${COLOR.b};
@@ -52,7 +52,7 @@ export const Component = styled.a`
     padding-right: ${c};
     font-size: ${TEXT_FONT_SIZE};
     border-radius: ${BORDER_RADIUS};
-    transition: color ${MICROINT.xs} ease-out;
+    transition: color ${TIME.xs} ease-out;
     ${GLASS_SET.content}
   }
 `;

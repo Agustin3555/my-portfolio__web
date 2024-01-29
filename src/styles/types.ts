@@ -1,4 +1,4 @@
-import { COLOR, FONT, FONT_SIZE, MICROINT, NOT_FONT_SIZE } from "./enums";
+import { COLOR, FONT, FONT_SIZE, TIME, NOT_FONT_SIZE } from "./palette";
 import { type SerializedStyles } from "@emotion/react";
 
 export type Font = FONT;
@@ -11,7 +11,7 @@ export type Size = FontSize | NotFontSize;
 
 export type Color = COLOR;
 
-export type Microint = MICROINT;
+export type Time = TIME;
 
 export type Elevation = 0 | 1 | 2 | 3;
 

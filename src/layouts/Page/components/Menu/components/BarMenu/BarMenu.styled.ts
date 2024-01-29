@@ -1,4 +1,4 @@
-import { MEDIA, MICROINT, NOT_FONT_SIZE, type Value } from "@/styles";
+import { MEDIA, TIME, NOT_FONT_SIZE, type Value } from "@/styles";
 import styled from "@emotion/styled";
 
 interface ConstProvider {
@@ -16,7 +16,7 @@ const cp: ConstProvider = {
 export const Component = styled.nav`
   position: fixed;
   top: 0;
-  transition: top ${MICROINT.m} ease;
+  transition: top ${TIME.m} ease;
 
   @media (max-width: ${MEDIA.m}) {
     display: none;
@@ -33,8 +33,8 @@ export const Component = styled.nav`
       > * {
         opacity: 0;
         transform: translateY(calc(${NOT_FONT_SIZE["2xl"]} * -1));
-        animation: fadeIn ${MICROINT.l} ease forwards;
-        animation-delay: calc(${MICROINT.xs} * var(--i));
+        animation: fadeIn ${TIME.l} ease forwards;
+        animation-delay: calc(${TIME.xs} * var(--i));
 
         @keyframes fadeIn {
           to {

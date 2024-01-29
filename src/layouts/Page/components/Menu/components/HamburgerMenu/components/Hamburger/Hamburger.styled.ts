@@ -3,7 +3,7 @@ import {
   COLOR_BRIGHT_A,
   COLOR_DARK_A,
   FONT_SIZE,
-  MICROINT,
+  TIME,
   NOT_FONT_SIZE,
   Value,
 } from "@/styles";
@@ -79,9 +79,9 @@ export const Component = styled.button`
     position: absolute;
     inset: 0;
     transition:
-      opacity ${MICROINT.s} ease,
-      scale ${MICROINT.s} ease,
-      filter ${MICROINT.s} ease;
+      opacity ${TIME.s} ease,
+      scale ${TIME.s} ease,
+      filter ${TIME.s} ease;
   }
 
   .bar {
@@ -89,7 +89,7 @@ export const Component = styled.button`
     height: ${cp.hamburgerAC.bar.height};
     border-radius: ${NOT_FONT_SIZE["6xl"]};
     background-color: ${COLOR_BRIGHT_A};
-    transition: background-color ${MICROINT.s} ease-out;
+    transition: background-color ${TIME.s} ease-out;
   }
 
   .hamburger-icon {
@@ -144,7 +144,7 @@ export const Component = styled.button`
   }
 
   :hover .bar {
-    background-color: ${COLOR.g_19};
+    background-color: ${COLOR.gs_19};
   }
 
   body[data-dark-mode="true"] & {
@@ -153,7 +153,7 @@ export const Component = styled.button`
     }
 
     :hover .bar {
-      background-color: ${COLOR.g_0};
+      background-color: ${COLOR.gs_0};
     }
   }
 `;

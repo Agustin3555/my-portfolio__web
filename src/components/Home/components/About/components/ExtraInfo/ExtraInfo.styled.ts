@@ -6,7 +6,7 @@ import {
   COLOR_DARK_A,
   FONT_SIZE,
   MAIN_GAP,
-  MICROINT,
+  TIME,
   NOT_FONT_SIZE,
   Value,
   colorAlphaAdapter,
@@ -97,18 +97,18 @@ export const Component = styled.div`
       padding: 0;
       width: ${NOT_FONT_SIZE.xl};
       height: 100%;
-      color: ${COLOR.g_4};
+      color: ${COLOR.gs_4};
       border: none;
       cursor: pointer;
       opacity: 0;
-      transition: opacity ${MICROINT.s} ease-out;
+      transition: opacity ${TIME.s} ease-out;
 
       :hover {
-        color: ${COLOR.g_0};
+        color: ${COLOR.gs_0};
       }
 
       .button-icon {
-        transition: transform ${MICROINT.s} ease-out;
+        transition: transform ${TIME.s} ease-out;
       }
     }
 
@@ -117,7 +117,7 @@ export const Component = styled.div`
       padding-left: ${NOT_FONT_SIZE.xs};
       background: linear-gradient(
         90deg,
-        ${colorAlphaAdapter(COLOR.g_19, 0.375)} 0%,
+        ${colorAlphaAdapter(COLOR.gs_19, 0.375)} 0%,
         rgba(0, 0, 0, 0) 100%
       );
 
@@ -133,7 +133,7 @@ export const Component = styled.div`
       background: linear-gradient(
         90deg,
         rgba(0, 0, 0, 0) 0%,
-        ${colorAlphaAdapter(COLOR.g_19, 0.375)} 100%
+        ${colorAlphaAdapter(COLOR.gs_19, 0.375)} 100%
       );
 
       :active .button-icon {
@@ -156,7 +156,7 @@ export const Component = styled.div`
       height: 100%;
 
       .description {
-        transition: opacity ${MICROINT.m} ease-out;
+        transition: opacity ${TIME.m} ease-out;
       }
 
       .fade-enter {
@@ -191,8 +191,8 @@ export const Component = styled.div`
       border-radius: ${NOT_FONT_SIZE["6xl"]};
       background-color: ${BGC_BRIGHT_B};
       transition:
-        width ${MICROINT.l} ease-in-out,
-        background-color ${MICROINT.s} ease-out;
+        width ${TIME.l} ease-in-out,
+        background-color ${TIME.s} ease-out;
 
       &[data-activated="true"] {
         width: calc(${NOT_FONT_SIZE["2xs"]} * 3);

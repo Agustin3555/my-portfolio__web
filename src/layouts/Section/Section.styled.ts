@@ -3,7 +3,7 @@ import {
   COLOR_DARK_B,
   FONT,
   FONT_SIZE,
-  MICROINT,
+  TIME,
   NOT_FONT_SIZE,
   Value,
 } from "@/styles";
@@ -39,10 +39,10 @@ export const Component = styled.section`
   gap: ${NOT_FONT_SIZE.l};
 
   .section__title {
-    font-family: ${FONT.s};
+    font-family: ${FONT.b};
     font-size: ${FONT_SIZE.xl};
     color: ${cp.title.color};
-    transition: color ${MICROINT.s} ease-out;
+    transition: color ${TIME.s} ease-out;
   }
 
   body[data-dark-mode="true"] & {

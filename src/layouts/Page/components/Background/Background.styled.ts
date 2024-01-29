@@ -26,8 +26,8 @@ export const Component = styled.div`
     [data-dark-mode="true"] & {
       background-size: initial;
       background-image: radial-gradient(
-        ellipse 87.5% 75% at 50% 0,
-        rgba(153, 138, 229, 0.225),
+        ellipse 87.5% 87.5% at 50% 0,
+        rgba(153, 138, 229, 0.25),
         hsla(0, 0%, 100%, 0)
       );
       mask-image: initial;

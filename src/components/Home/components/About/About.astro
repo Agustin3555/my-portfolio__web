@@ -5,6 +5,7 @@ import { Image } from "astro:assets";
 import GlassPanel from "@/layouts/GlassPanel/GlassPanel.astro";
 import SocialNetwork from "@/components/SocialNetwork/SocialNetwork.astro";
 import ExternalLink from "@/components/ExternalLink/ExternalLink.astro";
+import ContactLink from "@/components/ContactLink/ContactLink.astro";
 import Slider from "../../components/Slider/Slider";
 import { NOT_FONT_SIZE } from "@/styles";
 import { css } from "@emotion/react";
@@ -62,6 +63,9 @@ const convertedDesc = descSlider.map((item) => highlightToHTMLTag(item.desc));
               />
             ))
         }
+        <div>
+          <ContactLink />
+        </div>
       </nav>
     </div>
     <div class="extra-info">

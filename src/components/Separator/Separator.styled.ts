@@ -1,6 +1,6 @@
 import {
   type Color,
-  MICROINT,
+  TIME,
   NOT_FONT_SIZE,
   type Size,
   type Value,
@@ -68,7 +68,7 @@ export const Component = styled.div<{ p: Provider }>`
   height: ${({ p }) => p.height};
   border-radius: ${NOT_FONT_SIZE["6xl"]};
   background-color: ${({ p }) => p.backgroundColor};
-  transition: background-color ${MICROINT.s} ease-out;
+  transition: background-color ${TIME.s} ease-out;
 
   body[data-dark-mode="true"] & {
     background-color: ${({ p }) => p.DARK_MODE.backgroundColor};

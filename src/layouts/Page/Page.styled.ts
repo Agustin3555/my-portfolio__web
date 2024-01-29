@@ -7,7 +7,7 @@ import {
   MAIN_GAP,
   MAIN_GAP_M,
   MEDIA,
-  MICROINT,
+  TIME,
   NOT_FONT_SIZE,
 } from "@/styles";
 
@@ -20,7 +20,7 @@ export const Component = styled.div`
   color: ${COLOR_BRIGHT_A};
   overflow: hidden;
 
-  transition: color ${MICROINT.s} ease-out;
+  transition: color ${TIME.s} ease-out;
 
   .static {
     position: relative;
@@ -34,8 +34,8 @@ export const Component = styled.div`
     min-height: 100vh;
 
     transition:
-      margin ${MICROINT.m} ease,
-      padding ${MICROINT.m} ease;
+      margin ${TIME.m} ease,
+      padding ${TIME.m} ease;
 
     @media (max-width: ${MEDIA.m}) {
       margin: 0;
@@ -57,7 +57,7 @@ export const Component = styled.div`
       flex-direction: column;
       gap: calc(${NOT_FONT_SIZE.l} * 3);
 
-      transition: padding ${MICROINT.m} ease;
+      transition: padding ${TIME.m} ease;
 
       > * {
         :nth-of-type(1) {

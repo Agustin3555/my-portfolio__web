@@ -2,7 +2,7 @@ import {
   COLOR,
   FONT_SIZE,
   GLASS_SET,
-  MICROINT,
+  TIME,
   NOT_FONT_SIZE,
   type Value,
   shadowAdapter,
@@ -50,11 +50,11 @@ export const Component = styled.button`
   background-color: transparent;
   box-shadow: ${shadowAdapter(2)};
   cursor: pointer;
-  transition: box-shadow ${MICROINT.xs} ease-out;
+  transition: box-shadow ${TIME.xs} ease-out;
   ${GLASS_SET.this}
 
   :hover {
-    color: ${COLOR.g_0};
+    color: ${COLOR.gs_0};
   }
 
   :active {

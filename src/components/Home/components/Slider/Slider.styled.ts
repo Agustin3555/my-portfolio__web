@@ -1,7 +1,7 @@
 import {
   COLOR,
   MAIN_GAP,
-  MICROINT,
+  TIME,
   NOT_FONT_SIZE,
   type Value,
   shadowAdapter,
@@ -69,13 +69,13 @@ interface ConstProvider {
 
 const patternBackgroundBright = `
   radial-gradient(
-    ${COLOR.g_6} ${PATTERN_DOT_SIZE}, transparent ${PATTERN_DOT_SIZE}
+    ${COLOR.gs_6} ${PATTERN_DOT_SIZE}, transparent ${PATTERN_DOT_SIZE}
   )
 `;
 
 const patternBackgroundDark = `
   radial-gradient(
-    ${COLOR.g_12} ${PATTERN_DOT_SIZE}, transparent ${PATTERN_DOT_SIZE}
+    ${COLOR.gs_12} ${PATTERN_DOT_SIZE}, transparent ${PATTERN_DOT_SIZE}
   )
 `;
 
@@ -135,7 +135,7 @@ export const Component = styled.div<{ p: Provider }>`
     align-items: flex-end;
     width: 100%;
     height: 100%;
-    color: ${COLOR.g_4};
+    color: ${COLOR.gs_4};
 
     .controls {
       display: flex;
@@ -146,8 +146,8 @@ export const Component = styled.div<{ p: Provider }>`
       .control {
         opacity: 0;
         transition:
-          box-shadow ${MICROINT.xs} ease-out,
-          opacity ${MICROINT.s} ease-out;
+          box-shadow ${TIME.xs} ease-out,
+          opacity ${TIME.s} ease-out;
 
         @media (hover: none) and (any-hover: none) {
           opacity: 1;
@@ -162,16 +162,16 @@ export const Component = styled.div<{ p: Provider }>`
           width: ${INDICATOR_SIZE};
           height: ${INDICATOR_SIZE};
           border-radius: ${NOT_FONT_SIZE["6xl"]};
-          background-color: ${COLOR.g_12};
+          background-color: ${COLOR.gs_12};
           box-shadow: ${shadowAdapter(2)};
           opacity: 0.75;
           transition:
-            width ${MICROINT.l} ease-out,
-            background-color ${MICROINT.s} ease-out;
+            width ${TIME.l} ease-out,
+            background-color ${TIME.s} ease-out;
 
           &[data-activated="true"] {
             width: ${cp.controls.indicators.item.ACTIVATED.width};
-            background-color: ${COLOR.g_4};
+            background-color: ${COLOR.gs_4};
           }
         }
       }

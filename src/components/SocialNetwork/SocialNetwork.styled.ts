@@ -1,10 +1,4 @@
-import {
-  COLOR,
-  GLASS_SET,
-  MICROINT,
-  NOT_FONT_SIZE,
-  shadowAdapter,
-} from "@/styles";
+import { COLOR, GLASS_SET, TIME, NOT_FONT_SIZE, shadowAdapter } from "@/styles";
 import { type SerializedStyles } from "@emotion/react";
 import styled from "@emotion/styled";
 
@@ -33,8 +27,8 @@ export const Component = styled.a<{ p: Provider }>`
   text-decoration: none;
   box-shadow: ${shadowAdapter(2)};
   transition:
-    box-shadow ${MICROINT.xs} ease-out,
-    transform ${MICROINT.xs} ease-out;
+    box-shadow ${TIME.xs} ease-out,
+    transform ${TIME.xs} ease-out;
   ${GLASS_SET.this}
 
   :hover {

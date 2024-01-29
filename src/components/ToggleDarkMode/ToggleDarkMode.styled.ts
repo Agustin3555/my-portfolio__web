@@ -2,7 +2,7 @@ import {
   BGC_BRIGHT_A,
   BGC_DARK_A,
   COLOR,
-  MICROINT,
+  TIME,
   NOT_FONT_SIZE,
   type Value,
 } from "@/styles";
@@ -38,7 +38,7 @@ const cp: ConstProvider = {
   width: SIZE,
   height: SIZE,
   padding: GAP,
-  backgroundColor: COLOR.g_8,
+  backgroundColor: COLOR.gs_8,
 
   fakeButton: {
     width: buttonDimension,
@@ -47,7 +47,7 @@ const cp: ConstProvider = {
   },
 
   DARK_MODE: {
-    backgroundColor: COLOR.g_18,
+    backgroundColor: COLOR.gs_18,
 
     fakeButton: {
       backgroundColor: BGC_DARK_A,
@@ -64,7 +64,7 @@ export const Component = styled.button`
   background-color: ${cp.backgroundColor};
   cursor: pointer;
   overflow: hidden;
-  transition: background-color ${MICROINT.s} ease-out;
+  transition: background-color ${TIME.s} ease-out;
 
   :hover .fake-button {
     rotate: -22.5deg;
@@ -81,9 +81,9 @@ export const Component = styled.button`
     border-radius: ${NOT_FONT_SIZE["6xl"]};
     background-color: ${cp.fakeButton.backgroundColor};
     transition:
-      background-color ${MICROINT.s} ease-out,
-      scale ${MICROINT.xs} ease-out,
-      rotate ${MICROINT.m} ease-out;
+      background-color ${TIME.s} ease-out,
+      scale ${TIME.xs} ease-out,
+      rotate ${TIME.m} ease-out;
 
     .sun,
     .moon {
@@ -94,20 +94,20 @@ export const Component = styled.button`
       width: 100%;
       height: 100%;
       transition:
-        opacity ${MICROINT.m} ease-out,
-        scale ${MICROINT.m} ease-out,
-        rotate ${MICROINT.m} ease-out;
+        opacity ${TIME.m} ease-out,
+        scale ${TIME.m} ease-out,
+        rotate ${TIME.m} ease-out;
     }
 
     .sun {
-      color: ${COLOR.g_4};
+      color: ${COLOR.gs_4};
       opacity: 0;
       scale: 0;
       rotate: 135deg;
     }
 
     .moon {
-      color: ${COLOR.g_12};
+      color: ${COLOR.gs_12};
       opacity: 1;
       scale: initial;
       rotate: initial;

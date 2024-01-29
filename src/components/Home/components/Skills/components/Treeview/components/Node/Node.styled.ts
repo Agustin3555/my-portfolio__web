@@ -1,7 +1,7 @@
 import {
   COLOR,
   FONT_SIZE,
-  MICROINT,
+  TIME,
   NOT_FONT_SIZE,
   shadowAdapter,
   type Value,
@@ -62,18 +62,18 @@ export const Component = styled.div`
     opacity: 0.25;
 
     transition:
-      background-color ${MICROINT.s} ease-out,
-      box-shadow ${MICROINT.s} ease-out,
-      scale ${MICROINT.s} ease-out,
-      opacity ${MICROINT.s} ease-out;
+      background-color ${TIME.s} ease-out,
+      box-shadow ${TIME.s} ease-out,
+      scale ${TIME.s} ease-out,
+      opacity ${TIME.s} ease-out;
 
     :hover {
-      background-color: ${COLOR.g_0};
+      background-color: ${COLOR.gs_0};
       box-shadow: ${shadowAdapter(2)};
       scale: 1.005;
 
       .names {
-        color: ${COLOR.g_18};
+        color: ${COLOR.gs_18};
       }
     }
 
@@ -85,9 +85,9 @@ export const Component = styled.div`
       width: ${NOT_FONT_SIZE["6xs"]};
       height: ${NOT_FONT_SIZE["2xs"]};
       border-radius: ${NOT_FONT_SIZE["6xl"]};
-      background-color: ${COLOR.g_10};
+      background-color: ${COLOR.gs_10};
 
-      transition: background-color ${MICROINT.s} ease-out;
+      transition: background-color ${TIME.s} ease-out;
     }
 
     .names {
@@ -97,7 +97,7 @@ export const Component = styled.div`
       /* TODO: comentar */
       width: calc(10.5rem - var(--level) * 36px);
 
-      transition: color ${MICROINT.s} ease-out;
+      transition: color ${TIME.s} ease-out;
 
       /* white-space: nowrap; */
       /* overflow: hidden; */
@@ -133,7 +133,7 @@ export const Component = styled.div`
           height: ${ICON_SIZE};
           object-fit: contain;
 
-          transition: filter ${MICROINT.s} ease-out;
+          transition: filter ${TIME.s} ease-out;
         }
 
         .invert-in-dark-mode {
@@ -148,10 +148,10 @@ export const Component = styled.div`
         min-width: calc(${NOT_FONT_SIZE.s} * 4);
         height: ${NOT_FONT_SIZE.s};
         border-radius: calc(${NOT_FONT_SIZE["2xs"]} - ${NOT_FONT_SIZE["3xs"]});
-        background-color: ${COLOR.g_2};
+        background-color: ${COLOR.gs_2};
         background-color: transparent;
 
-        transition: background-color ${MICROINT.s} ease-out;
+        transition: background-color ${TIME.s} ease-out;
 
         .bar {
           position: relative;
@@ -208,9 +208,9 @@ export const Component = styled.div`
 
       .line {
         width: ${NOT_FONT_SIZE["6xs"]};
-        background-color: ${COLOR.g_6};
+        background-color: ${COLOR.gs_6};
 
-        transition: background-color ${MICROINT.s} ease-out;
+        transition: background-color ${TIME.s} ease-out;
       }
 
       .child-group {
@@ -234,10 +234,10 @@ export const Component = styled.div`
             border-left-width: ${NOT_FONT_SIZE["6xs"]};
             border-bottom-width: ${NOT_FONT_SIZE["6xs"]};
             border-style: solid;
-            border-color: ${COLOR.g_6};
+            border-color: ${COLOR.gs_6};
             border-bottom-left-radius: ${NOT_FONT_SIZE["3xs"]};
 
-            transition: border-color ${MICROINT.s} ease-out;
+            transition: border-color ${TIME.s} ease-out;
           }
 
           .next-extension {
@@ -263,15 +263,15 @@ export const Component = styled.div`
   body[data-dark-mode="true"] & {
     .tech {
       :hover {
-        background-color: ${COLOR.g_13};
+        background-color: ${COLOR.gs_13};
 
         .names {
-          color: ${COLOR.g_0};
+          color: ${COLOR.gs_0};
         }
       }
 
       .separator {
-        background-color: ${COLOR.g_6};
+        background-color: ${COLOR.gs_6};
       }
 
       .graphics {
@@ -280,7 +280,7 @@ export const Component = styled.div`
         }
 
         .level-bar {
-          background-color: ${COLOR.g_16};
+          background-color: ${COLOR.gs_16};
           background-color: transparent;
         }
       }
@@ -288,11 +288,11 @@ export const Component = styled.div`
 
     .child-tech .item {
       .line {
-        background-color: ${COLOR.g_11};
+        background-color: ${COLOR.gs_11};
       }
 
       .child-group .bullet-point-container .box {
-        border-color: ${COLOR.g_11};
+        border-color: ${COLOR.gs_11};
       }
     }
   }

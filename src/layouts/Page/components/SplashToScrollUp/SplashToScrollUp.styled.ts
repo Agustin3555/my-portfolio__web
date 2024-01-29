@@ -1,7 +1,7 @@
 import {
   COLOR,
   MEDIA,
-  MICROINT,
+  TIME,
   NOT_FONT_SIZE,
   Value,
   shadowAdapter,
@@ -42,7 +42,7 @@ export const Component = styled.a`
   box-shadow: ${shadowAdapter(2)};
   cursor: pointer;
   overflow: hidden;
-  transition: left ${MICROINT.m} ease;
+  transition: left ${TIME.m} ease;
   animation: open-curtain 1s 1s ease forwards;
 
   @keyframes open-curtain {

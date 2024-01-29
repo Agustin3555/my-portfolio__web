@@ -4,7 +4,7 @@ import {
   FONT,
   FONT_SIZE,
   MEDIA,
-  MICROINT,
+  TIME,
   NOT_FONT_SIZE,
   type Value,
 } from "@/styles";
@@ -41,7 +41,7 @@ const cp: ConstProvider = {
     description: {
       titleGroup: {
         name: {
-          color: COLOR.g_1,
+          color: COLOR.gs_1,
         },
       },
     },
@@ -68,7 +68,7 @@ export const Component = styled.div`
     .title-group {
       .name {
         margin-bottom: ${NOT_FONT_SIZE.xs};
-        font-family: ${FONT.s};
+        font-family: ${FONT.b};
         font-size: ${FONT_SIZE["2xl"]};
         line-height: 1.25;
         word-spacing: initial;
@@ -76,7 +76,7 @@ export const Component = styled.div`
       }
 
       .rol {
-        font-family: ${FONT.s};
+        font-family: ${FONT.b};
         font-size: ${FONT_SIZE.l};
         word-spacing: initial;
         color: ${COLOR.b};
@@ -85,15 +85,15 @@ export const Component = styled.div`
 
     #descAdaptable {
       transition:
-        width ${MICROINT.m} ease,
-        height ${MICROINT.m} ease;
+        width ${TIME.m} ease,
+        height ${TIME.m} ease;
 
       #descContent {
         > * {
           display: none;
           opacity: 0;
 
-          transition: opacity ${MICROINT.m} ease;
+          transition: opacity ${TIME.m} ease;
         }
 
         .show {
@@ -110,11 +110,12 @@ export const Component = styled.div`
         opacity: 0;
         transform: translateY(100%);
         filter: blur(${NOT_FONT_SIZE["5xs"]});
+
         transition:
-          opacity ${MICROINT.m} ease,
-          transform ${MICROINT.m} ease,
-          filter ${MICROINT.m} ease;
-        transition-delay: calc(${MICROINT.s} * var(--i));
+          opacity ${TIME.m} ease,
+          transform ${TIME.m} ease,
+          filter ${TIME.m} ease;
+        transition-delay: calc(${TIME.s} * var(--i));
 
         body[data-social-nets-in-left-nav="false"] & {
           opacity: 1;

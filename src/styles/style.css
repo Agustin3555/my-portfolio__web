@@ -1,6 +1,6 @@
 :root {
-  --scrollbar-width: var(--size-not-font-3xs);
-  --scrollbar-padding: var(--size-not-font-3xs);
+  --scrollbar-width: var(--palette-size-not-font-3xs);
+  --scrollbar-padding: var(--palette-size-not-font-3xs);
   --scrollbar-size: calc(var(--scrollbar-width) + var(--scrollbar-padding) * 2);
 }
 
@@ -11,30 +11,32 @@ html {
 * {
   box-sizing: border-box;
   margin: 0;
-  font-size: var(--size-font-s);
-  /* font-weight: 350; */
+  font-size: var(--palette-size-font-s);
   line-height: 1;
   /* letter-spacing: calc(0.0625rem / 4); */
   word-spacing: 0.03125rem;
+
+  /* font-weight: 350; */
   color: inherit;
 }
 
 ::selection {
-  background-color: var(--color-b-d2);
-  color: var(--color-g-0);
+  background-color: var(--palette-color-b-d2);
+  color: var(--palette-color-gs-0);
 }
 
 :is(h2, h5),
 :is(h2, h5) > * {
-  color: var(--color-b);
+  color: var(--palette-color-b);
 }
 
 :is(h1, h2, h3, h4),
 :is(h1, h2, h3, h4) > * {
-  font-family: var(--font-s);
-  font-weight: 700;
   letter-spacing: initial;
   word-spacing: initial;
+
+  font-family: var(--palette-font-b);
+  font-weight: 700;
 }
 
 :is(h1, h2, h3, h4, h5),
@@ -44,80 +46,85 @@ html {
 
 body {
   position: relative;
-  font-family: var(--font-p);
-  background-color: var(--color-g-0);
 
-  transition: background-color var(--time-microint-s) ease-out;
+  font-family: var(--palette-font-a);
+  background-color: var(--palette-color-gs-0);
+
+  transition: background-color var(--palette-time-s) ease-out;
 
   &::-webkit-scrollbar {
     width: var(--scrollbar-size);
     height: var(--scrollbar-size);
+
     background-color: transparent;
   }
 
   &::-webkit-scrollbar-thumb {
-    border-radius: var(--size-not-font-6xl);
+    border-radius: var(--palette-size-not-font-6xl);
     border-width: var(--scrollbar-padding);
+
     border-style: solid;
-    border-color: var(--color-g-0);
-    background-color: var(--color-g-6);
+    border-color: var(--palette-color-gs-0);
+    background-color: var(--palette-color-gs-6);
   }
 
   &::-webkit-scrollbar-thumb:hover {
-    background-color: var(--color-g-10);
+    background-color: var(--palette-color-gs-10);
   }
 
   &::-webkit-scrollbar-thumb:active {
-    background-color: var(--color-g-19);
+    background-color: var(--palette-color-gs-19);
   }
 
   &[data-dark-mode="true"] {
-    background-color: var(--color-g-17);
+    background-color: var(--palette-color-gs-17);
 
     &::-webkit-scrollbar-thumb {
-      border-color: var(--color-g-17);
-      background-color: var(--color-g-14);
+      border-color: var(--palette-color-gs-17);
+      background-color: var(--palette-color-gs-14);
     }
 
     &::-webkit-scrollbar-thumb:hover {
-      background-color: var(--color-g-12);
+      background-color: var(--palette-color-gs-12);
     }
 
     &::-webkit-scrollbar-thumb:active {
-      background-color: var(--color-g-0);
+      background-color: var(--palette-color-gs-0);
     }
   }
 }
 
 h1,
 h1 > * {
-  font-size: var(--size-font-2xl);
+  font-size: var(--palette-size-font-2xl);
 }
 
 h2,
 h2 > * {
-  font-size: var(--size-font-l);
+  font-size: var(--palette-size-font-l);
 }
 
 h3,
 h3 > * {
-  font-size: var(--size-font-xl);
+  font-size: var(--palette-size-font-xl);
 }
 
 h4,
 h4 > * {
-  font-size: var(--size-font-l);
+  font-size: var(--palette-size-font-l);
 }
 
 h5,
 h5 > * {
-  font-size: var(--size-font-xs);
+  font-size: var(--palette-size-font-xs);
+
   font-weight: normal;
 }
 
 ul,
 ol {
   padding: 0;
+
   list-style: none;
 
   li {
@@ -130,12 +137,12 @@ ol {
 
   strong {
     font-weight: 600;
-    color: var(--color-b-d2);
+    color: var(--palette-color-b-d2);
 
-    transition: color var(--time-microint-s) ease-out;
+    transition: color var(--palette-time-s) ease-out;
 
     body[data-dark-mode="true"] & {
-      color: var(--color-b-b2);
+      color: var(--palette-color-b-l2);
     }
   }
 }
@@ -152,12 +159,12 @@ ol {
 
 .background-pictures {
   background-image: url("/bg_pattern.png");
-  background-color: var(--color-g-2);
+  background-color: var(--palette-color-gs-2);
 
-  transition: background-color var(--time-microint-s) ease-out;
+  transition: background-color var(--palette-time-s) ease-out;
 
   body[data-dark-mode="true"] & {
     background-image: url("/bg_pattern_dark.png");
-    background-color: var(--color-g-15);
+    background-color: var(--palette-color-gs-15);
   }
 }
