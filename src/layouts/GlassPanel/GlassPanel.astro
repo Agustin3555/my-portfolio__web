@@ -10,6 +10,7 @@ interface Props {
 const { style = {}, handlingClass = [] } = Astro.props;
 ---
 
+<!-- TODO: semantica HTML -->
 <GlassPanelStyled.Component
   p={GlassPanelStyled.adapter(style)}
   className={asClassName(...handlingClass)}

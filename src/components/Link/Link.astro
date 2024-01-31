@@ -11,6 +11,7 @@ export interface Props {
 const { url, text, handlingClass = [] } = Astro.props;
 ---
 
+<!-- TODO: semantica HTML -->
 <ButtonSectionStyled.Component
   href={`/${url}`}
   className={asClassName(...handlingClass)}

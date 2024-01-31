@@ -9,6 +9,7 @@ interface Props {
 const { sectionKey, title } = Astro.props;
 ---
 
+<!-- TODO: semantica HTML -->
 <SectionStyled.Component id={sectionKey}>
   {title && <h2 class="section__title">{title}</h2>}
   <slot />

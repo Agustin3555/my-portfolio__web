@@ -80,6 +80,10 @@ export enum TIME {
   xl = "var(--palette-time-xl)",
 }
 
+export enum TIMING_FUNC {
+  a = "var(--palette-timing-func-a)",
+}
+
 export enum FONT {
   a = "var(--palette-font-a)",
   b = "var(--palette-font-b)",

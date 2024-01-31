@@ -1,0 +1,5 @@
+:root {
+  --global-font-size: var(--palette-size-font-s);
+  --component-button-s-padding: var(--palette-size-not-font-2xs);
+  --component-button-s-border-radius: var(--palette-size-not-font-3xs);
+}

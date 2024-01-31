@@ -4,6 +4,7 @@ import { type HandlingClass, asClassName } from "@/tools";
 
 interface Props {
   iconName: string;
+  alt?: string;
   style?: IconStyled.Props;
   handlingClass?: HandlingClass;
 }
@@ -11,6 +12,7 @@ interface Props {
 const { iconName, style, handlingClass = [] } = Astro.props;
 ---
 
+<!-- TODO: semantica HTML -->
 <IconStyled.Component
   className={asClassName(...handlingClass)}
   p={IconStyled.adapter(style)}

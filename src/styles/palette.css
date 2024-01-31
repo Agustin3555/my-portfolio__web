@@ -81,6 +81,10 @@
   --palette-time-l: 1s;
   --palette-time-xl: 2s;
 
+  /* TIMING_FUNC */
+
+  --palette-timing-func-a: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
   /* FONT */
 
   --palette-font-a: "Onest Variable", sans-serif;

@@ -2,43 +2,49 @@ import { css } from "@emotion/react";
 import { COLOR, FONT, NOT_FONT_SIZE, FONT_SIZE } from "./palette";
 
 export const VARS = {
-  color: {
-    bg: {
-      a: {
-        dark: "var(--var-color-bg-a-dark)",
-        bright: "var(--var-color-bg-a-bright)",
-      },
-      b: {
-        dark: "var(--var-color-bg-b-dark)",
-        bright: "var(--var-color-bg-b-bright)",
-      },
+  bg: {
+    a: {
+      dark: "var(--color-bg-a-dark)",
+      bright: "var(--color-bg-a-bright)",
     },
-    font: {
-      a: {
-        dark: "var(--var-color-font-a-dark)",
-        bright: "var(--var-color-font-a-bright)",
-      },
-      b: {
-        dark: "var(--var-color-font-b-dark)",
-        bright: "var(--var-color-font-b-bright)",
-      },
+    b: {
+      dark: "var(--color-bg-b-dark)",
+      bright: "var(--color-bg-b-bright)",
+    },
+  },
+  font: {
+    a: {
+      dark: "var(--color-font-a-dark)",
+      bright: "var(--color-font-a-bright)",
+    },
+    b: {
+      dark: "var(--color-font-b-dark)",
+      bright: "var(--color-font-b-bright)",
     },
   },
   size: {
     main: {
-      gold: "var(--var-size-main-gold)",
-      silver: "var(--var-size-main-silver)",
+      gold: "var(--size-main-gold)",
+      silver: "var(--size-main-silver)",
     },
     layout: {
-      with: "var(--var-size-layout-with)",
-    },
-    component: {
-      glassButton: "var(--var-size-component-glass-button)",
+      with: "var(--size-layout-with)",
     },
     screen: {
-      xs: "var(--var-size-screen-xs)",
-      s: "var(--var-size-screen-s)",
-      m: "var(--var-size-screen-m)",
+      xs: "var(--size-screen-xs)",
+      s: "var(--size-screen-s)",
+      m: "var(--size-screen-m)",
+    },
+  },
+  global: {
+    fontSize: "var(--global-font-size)",
+  },
+  component: {
+    button: {
+      s: {
+        padding: "var(--component-button-s-padding)",
+        borderRadius: "var(--component-button-s-border-radius)",
+      },
     },
   },
 };

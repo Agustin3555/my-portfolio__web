@@ -4,10 +4,17 @@ import Icon from "../Icon/Icon.astro";
 import { FONT_SIZE } from "@/styles";
 import jsonData from "@/data.json";
 
+export interface Props {
+  href?: string;
+}
+
+const { href } = Astro.props;
+
 const { sections } = jsonData.pages.home;
 const sectionKey: keyof typeof sections = "contact";
 ---
 
-<ContactLinkStyled.Component href={`/#${sectionKey}`}>
+<!-- TODO: semantica HTML -->
+<ContactLinkStyled.Component href={href || `/#${sectionKey}`}>
   <Icon iconName="fa-solid fa-paper-plane" style={{ size: FONT_SIZE.m }} />
 </ContactLinkStyled.Component>

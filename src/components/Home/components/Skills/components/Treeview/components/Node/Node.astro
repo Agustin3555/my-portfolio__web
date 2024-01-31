@@ -24,6 +24,7 @@ const { dataNode, level = 0 } = Astro.props;
 const { names, icons, skillLevel, technologies } = dataNode;
 ---
 
+<!-- TODO: semantica HTML -->
 <NodeStyled.Component>
   <div class={`tech skill-level-${skillLevel}`} style={`--level: ${level};`}>
     <div class="names">

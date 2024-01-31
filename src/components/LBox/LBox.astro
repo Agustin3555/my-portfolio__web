@@ -10,6 +10,7 @@ interface Props {
 const { style, handlingClass = [] } = Astro.props;
 ---
 
+<!-- TODO: semantica HTML -->
 <LBoxStyled.Component
   className={asClassName(...handlingClass)}
   p={LBoxStyled.adapter(style)}

@@ -16,14 +16,14 @@
     "@emotion/styled": "^11.11.0",
     "@fontsource-variable/onest": "^5.0.2",
     "@fontsource-variable/roboto-mono": "^5.0.17",
-    "astro": "^4.1.1",
+    "astro": "^4.2.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@types/react": "^18.2.47",
+    "@types/react": "^18.2.48",
     "@types/react-dom": "^18.2.18",
-    "prettier": "^3.1.1",
-    "prettier-plugin-astro": "^0.12.3"
+    "prettier": "^3.2.4",
+    "prettier-plugin-astro": "^0.13.0"
   }
 }

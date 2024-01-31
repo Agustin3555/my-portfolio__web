@@ -379,7 +379,7 @@
           "buttonTitle": "Contáctame",
           "title": "Contáctame",
           "data": {
-            "desc": "Si eres un reclutador y deseas hablar de oportunidades de trabajo, te dejo mi contacto. O bien, si eres un programador y necesitas ayuda con tu código o buscas orientación en algún aspecto técnico, ¡estaré encantado de ayudarte! No dudes en ponerte en contacto a través del siguiente botón que te hará escribirme un correo.",
+            "desc": "Si eres un [reclutador] y deseas hablar de [oportunidades de trabajo], te dejo mi contacto. O bien, si eres un [programador] y necesitas ayuda con tu código o [buscas orientación] en algún aspecto técnico, ¡estaré encantado de ayudarte! 😉",
             "email": "Agustin3555@hotmail.com"
           }
         }

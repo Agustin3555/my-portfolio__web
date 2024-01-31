@@ -1,10 +1,11 @@
 import {
   COLOR,
   FONT_SIZE,
-  GLASS_SET,
   TIME,
   NOT_FONT_SIZE,
   shadowAdapter,
+  VARS,
+  TIMING_FUNC,
 } from "@/styles";
 import styled from "@emotion/styled";
 
@@ -14,80 +15,115 @@ export const Component = styled.div`
   align-items: center;
   gap: ${NOT_FONT_SIZE["2xl"]};
 
-  .email-link {
-    position: relative;
-    margin-bottom: ${NOT_FONT_SIZE.xl};
+  .bar {
+    --padding-gap: ${NOT_FONT_SIZE["3xs"]};
+    --padding-gap-compensated: calc(
+      (
+          (${VARS.component.button.s.padding} * 2 + ${FONT_SIZE.m}) -
+            ${VARS.global.fontSize}
+        ) / 2 + var(--padding-gap)
+    );
 
-    .link {
-      display: inline-block;
-      padding: ${FONT_SIZE.s} calc(${FONT_SIZE.s} * 2);
-      border-radius: ${NOT_FONT_SIZE["3xs"]};
+    display: flex;
+    align-items: center;
+    gap: calc(var(--padding-gap-compensated) * 2);
+    padding: var(--padding-gap);
+    padding-left: var(--padding-gap-compensated);
+    border-radius: calc(
+      ${VARS.component.button.s.borderRadius} + var(--padding-gap)
+    );
 
-      text-decoration: none;
-      color: ${COLOR.gs_0};
-      background-color: ${COLOR.gs_14};
+    color: ${COLOR.gs_1};
+    background-color: ${COLOR.gs_14};
+    box-shadow: ${shadowAdapter(2)};
 
-      ${GLASS_SET.content};
+    transition: background-color ${TIME.s} ease-out;
 
-      transition:
-        color ${TIME.s} ease-out,
-        background-color ${TIME.s} ease-out,
-        box-shadow ${TIME.m} ease-out,
-        scale ${TIME.m} ease-out;
+    /* TODO: responsive */
+    /* width: 250px; */
 
-      :hover {
-        box-shadow: ${shadowAdapter(2)};
-        scale: 1.06;
+    span {
+      flex-grow: 1;
+
+      font-weight: 500;
+      line-height: initial;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+
+    .controls {
+      display: flex;
+      gap: var(--padding-gap);
+
+      button {
+        --size: calc(${VARS.component.button.s.padding} * 2 + ${FONT_SIZE.m});
+
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: var(--size);
+        height: var(--size);
+        border-radius: ${VARS.component.button.s.borderRadius};
+
+        color: ${COLOR.gs_14};
+        background-color: ${COLOR.gs_1};
+
+        transition:
+          background-color ${TIME.s} ease-out,
+          box-shadow ${TIME.m} ${TIMING_FUNC.a},
+          translate ${TIME.m} ${TIMING_FUNC.a};
+
+        :hover {
+          box-shadow: ${shadowAdapter(2)};
+          translate: 0 -0.0625rem;
+        }
+
+        > * {
+          position: absolute;
+
+          transition:
+            opacity ${TIME.m} ease-out,
+            scale ${TIME.m} ${TIMING_FUNC.a},
+            filter ${TIME.m} ${TIMING_FUNC.a};
+        }
+
+        .check {
+          opacity: 0;
+          scale: 0;
+          filter: blur(${NOT_FONT_SIZE["4xs"]});
+        }
+
+        &[data-copying="true"] {
+          box-shadow: initial;
+          translate: initial;
+
+          .copy {
+            opacity: 0;
+            scale: 0;
+            filter: blur(${NOT_FONT_SIZE["4xs"]});
+          }
+
+          .check {
+            opacity: 1;
+            scale: 1;
+            filter: initial;
+          }
+        }
       }
-    }
-
-    :hover {
-      .b-1 {
-        bottom: -3rem;
-        left: -4.5rem;
-      }
-
-      .b-2 {
-        top: -4rem;
-        right: -2rem;
-      }
-
-      .b-3 {
-        bottom: -5rem;
-        left: 60%;
-      }
-    }
-
-    .box {
-      position: absolute;
-
-      transition:
-        top 1.5s ease-in-out,
-        bottom 1.5s ease-in-out,
-        left 1.5s ease-in-out,
-        right 1.5s ease-in-out;
-    }
-
-    .b-1 {
-      bottom: -2rem;
-      left: -3.5rem;
-    }
-
-    .b-2 {
-      top: -3rem;
-      right: -1rem;
-    }
-
-    .b-3 {
-      bottom: -4rem;
-      left: 50%;
     }
   }
 
   body[data-dark-mode="true"] & {
-    .email-link .link {
-      color: ${COLOR.gs_19};
+    .bar {
+      color: ${COLOR.gs_14};
       background-color: ${COLOR.gs_4};
+
+      .controls button {
+        color: ${COLOR.gs_4};
+        background-color: ${COLOR.gs_14};
+      }
     }
   }
 `;

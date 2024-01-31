@@ -15,6 +15,7 @@ export interface Props {
 const { url, iconName, text, title, handlingClass = [] } = Astro.props;
 ---
 
+<!-- TODO: semantica HTML -->
 <ExternalLinkStyled.Component
   className={asClassName(...handlingClass)}
   title={title || `Ir a ${text.toLocaleLowerCase()}`}

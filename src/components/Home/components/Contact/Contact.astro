@@ -1,8 +1,10 @@
 ---
 import Section from "@/layouts/Section/Section.astro";
 import * as ContactStyled from "./Contact.styled";
-import LBox from "@/components/LBox/LBox.astro";
-import { NOT_FONT_SIZE } from "@/styles";
+import Icon from "@/components/Icon/Icon.astro";
+import ContactLink from "@/components/ContactLink/ContactLink.astro";
+import { FONT_SIZE } from "@/styles";
+import { highlightToHTMLTag } from "@/tools";
 import jsonData from "@/data.json";
 
 const { sections } = jsonData.pages.home;
@@ -13,25 +15,58 @@ const { title } = contact;
 const { desc, email } = contact.data;
 ---
 
+<!-- TODO: semantica HTML -->
 <Section sectionKey={sectionKey} title={title}>
   <ContactStyled.Component>
-    <p class="text">{desc}</p>
-    <div class="email-link">
-      <a class="link" href={`mailto:${email}`} target="_blank" rel="noopener">
-        Contáctame
-      </a>
-      <LBox
-        style={{ borderRadius: NOT_FONT_SIZE["3xs"], size: NOT_FONT_SIZE.m }}
-        handlingClass={["box", "b-1"]}
-      />
-      <LBox
-        style={{ borderRadius: NOT_FONT_SIZE["4xs"], size: NOT_FONT_SIZE.s }}
-        handlingClass={["box", "b-2"]}
-      />
-      <LBox
-        style={{ borderRadius: NOT_FONT_SIZE["4xs"], size: NOT_FONT_SIZE.s }}
-        handlingClass={["box", "b-3"]}
-      />
+    <p class="text" set:html={highlightToHTMLTag(desc)} />
+    <div class="bar">
+      <span>{email}</span>
+      <div class="controls">
+        <button id="buttonCopyEmail" title="Copiar">
+          <Icon
+            iconName="fa-solid fa-copy"
+            style={{ size: FONT_SIZE.m }}
+            handlingClass={["copy"]}
+          />
+          <Icon
+            iconName="fa-solid fa-check"
+            style={{ size: FONT_SIZE.m }}
+            handlingClass={["check"]}
+          />
+        </button>
+        <ContactLink href={`mailto:${email}`} />
+      </div>
     </div>
   </ContactStyled.Component>
 </Section>
+
+<script>
+  import { sleep } from "@/tools";
+  import jsonData from "@/data.json";
+
+  const { email } = jsonData.pages.home.sections.contact.data;
+
+  const buttonCopyEmail = window.buttonCopyEmail as
+    | HTMLButtonElement
+    | undefined;
+
+  if (buttonCopyEmail) {
+    buttonCopyEmail.dataset.copying = String(false);
+
+    const handleClick = async () => {
+      if (buttonCopyEmail.dataset.copying === String(false)) {
+        try {
+          await navigator.clipboard.writeText(email);
+
+          buttonCopyEmail.dataset.copying = String(true);
+
+          await sleep(2000);
+
+          buttonCopyEmail.dataset.copying = String(false);
+        } catch (error) {}
+      }
+    };
+
+    buttonCopyEmail.addEventListener("click", handleClick);
+  }
+</script>
