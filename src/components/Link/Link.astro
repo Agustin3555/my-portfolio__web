@@ -1,20 +1,19 @@
 ---
 import { type HandlingClass, asClassName } from "@/tools";
-import * as ButtonSectionStyled from "./Link.styled";
+import * as LinkStyled from "./Link.styled";
 
 export interface Props {
-  url: string;
+  href: string;
   text: string;
   handlingClass?: HandlingClass;
 }
 
-const { url, text, handlingClass = [] } = Astro.props;
+const { href, text, handlingClass = [] } = Astro.props;
 ---
 
-<!-- TODO: semantica HTML -->
-<ButtonSectionStyled.Component
-  href={`/${url}`}
+<LinkStyled.Component
+  href={`/${href}`}
   className={asClassName(...handlingClass)}
 >
   {text}
-</ButtonSectionStyled.Component>
+</LinkStyled.Component>

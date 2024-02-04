@@ -10,7 +10,6 @@ interface Props {
 const { style, handlingClass = [] } = Astro.props;
 ---
 
-<!-- TODO: semantica HTML -->
 <SeparatorStyled.Component
   p={SeparatorStyled.adapter(style)}
   className={asClassName(...handlingClass)}

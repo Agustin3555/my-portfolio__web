@@ -1,7 +1,7 @@
 ---
 import * as FooterStyled from "./Footer.styled";
-import Link from "@/components/Link/Link.astro";
 import Separator from "@/components/Separator/Separator.astro";
+import Link from "@/components/Link/Link.astro";
 import { COLOR } from "@/styles";
 import jsonData from "@/data.json";
 
@@ -9,13 +9,12 @@ const { copyright, sections } = jsonData.footer;
 const { acknowledgments, othersPages } = sections;
 ---
 
-<!-- TODO: semantica HTML -->
 <FooterStyled.Component>
-  <ul class="sections">
-    <li class="item">
-      <p class="title">{acknowledgments.title}</p>
+  <div class="sections">
+    <article>
+      <h4>{acknowledgments.title}</h4>
       <Separator
-        style={{ invert: true, backgroundColor: { dark: COLOR.gs_10 } }}
+        style={{ backgroundColor: { dark: COLOR.gs_10 } }}
         handlingClass={["separator"]}
       />
       <div class="acknowledgments paragraphs">
@@ -23,27 +22,29 @@ const { acknowledgments, othersPages } = sections;
         <ul>
           {
             acknowledgments.data.items.map((item) => (
-              <li class="text">
-                <span class="emoji">{item.emoji}</span>
-                {item.text}
+              <li>
+                <p class="text">
+                  <span class="emoji">{item.emoji}</span>
+                  {item.text}
+                </p>
               </li>
             ))
           }
         </ul>
       </div>
-    </li>
-    <li class="item">
-      <p class="title">{othersPages.title}</p>
+    </article>
+    <article>
+      <h4>{othersPages.title}</h4>
       <Separator
-        style={{ invert: true, backgroundColor: { dark: COLOR.gs_10 } }}
+        style={{ backgroundColor: { dark: COLOR.gs_10 } }}
         handlingClass={["separator"]}
       />
-      <Link url="coffee" text="Not found" handlingClass={["link-page"]} />
-    </li>
-  </ul>
+      <Link href="coffee" text="Not found" />
+    </article>
+  </div>
   <Separator
-    style={{ invert: true, backgroundColor: { dark: COLOR.gs_10 } }}
+    style={{ backgroundColor: { dark: COLOR.gs_10 } }}
     handlingClass={["separator"]}
   />
-  <span class="copyright text">{copyright}</span>
+  <small class="copyright text">{copyright}</small>
 </FooterStyled.Component>

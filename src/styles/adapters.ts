@@ -1,5 +1,5 @@
 import { getCSSVarValue } from "./tools";
-import type { Color, Elevation, Knob } from "./types";
+import type { Color, Knob } from "./types";
 
 export const colorVars = [
   "a-d2",
@@ -107,70 +107,4 @@ export const colorAlphaAdapter = (
   }
 
   return "";
-};
-
-export const shadowAdapter = (value: Elevation, asFilter = false) => {
-  if (value === 0) return "";
-
-  if (asFilter) {
-    const dropShadows = {
-      1: [
-        "0.3px 0.5px 0.7px rgba(0, 0, 0, 0.1)",
-        "0.4px 0.8px 1px rgba(0, 0, 0, 0.1)",
-        "1px 2px 2.5px rgba(0, 0, 0, 0.1)",
-      ],
-      2: [
-        "0.3px 0.5px 0.7px rgba(0, 0, 0, 0.09)",
-        "0.7px 1.3px 1.7px rgba(0, 0, 0, 0.09)",
-        "1.3px 2.6px 3.3px rgba(0, 0, 0, 0.09)",
-        "2.6px 5.2px 6.5px rgba(0, 0, 0, 0.09)",
-        "5px 10px 12.6px rgba(0, 0, 0, 0.09)",
-      ],
-      3: [
-        "0.3px 0.5px 0.7px rgba(0, 0, 0, 0.08)",
-        "1.2px 2.4px 3px rgba(0, 0, 0, 0.08)",
-        "2.1px 4.3px 5.4px rgba(0, 0, 0, 0.08)",
-        "3.2px 6.5px 8.2px rgba(0, 0, 0, 0.08)",
-        "4.7px 9.4px 11.8px rgba(0, 0, 0, 0.08)",
-        "6.8px 13.6px 17.1px rgba(0, 0, 0, 0.08)",
-        "9.6px 19.3px 24.3px rgba(0, 0, 0, 0.08)",
-        "13.5px 27px 34px rgba(0, 0, 0, 0.08)",
-        "18.5px 37.1px 46.6px rgba(0, 0, 0, 0.08)",
-        "25px 50px 62.9px rgba(0, 0, 0, 0.08)",
-      ],
-    };
-
-    return dropShadows[value]
-      .map((shadow) => `drop-shadow(${shadow})`)
-      .join(" ");
-  }
-
-  const boxShadows = {
-    1: [
-      "0.3px 0.5px 0.7px rgba(0, 0, 0, 0.1)",
-      "0.4px 0.8px 1px -1.2px rgba(0, 0, 0, 0.1)",
-      "1px 2px 2.5px -2.5px rgba(0, 0, 0, 0.1)",
-    ],
-    2: [
-      "0.3px 0.5px 0.7px rgba(0, 0, 0, 0.09)",
-      "0.7px 1.3px 1.7px -0.6px rgba(0, 0, 0, 0.09)",
-      "1.3px 2.6px 3.3px -1.2px rgba(0, 0, 0, 0.09)",
-      "2.6px 5.2px 6.5px -1.9px rgba(0, 0, 0, 0.09)",
-      "5px 10px 12.6px -2.5px rgba(0, 0, 0, 0.09)",
-    ],
-    3: [
-      "0.3px 0.5px 0.7px rgba(0, 0, 0, 0.08)",
-      "1.2px 2.4px 3px -0.3px rgba(0, 0, 0, 0.08)",
-      "2.1px 4.3px 5.4px -0.6px rgba(0, 0, 0, 0.08)",
-      "3.2px 6.5px 8.2px -0.8px rgba(0, 0, 0, 0.08)",
-      "4.7px 9.4px 11.8px -1.1px rgba(0, 0, 0, 0.08)",
-      "6.8px 13.6px 17.1px -1.4px rgba(0, 0, 0, 0.08)",
-      "9.6px 19.3px 24.3px -1.7px rgba(0, 0, 0, 0.08)",
-      "13.5px 27px 34px -1.9px rgba(0, 0, 0, 0.08)",
-      "18.5px 37.1px 46.6px -2.2px rgba(0, 0, 0, 0.08)",
-      "25px 50px 62.9px -2.5px rgba(0, 0, 0, 0.08)",
-    ],
-  };
-
-  return boxShadows[value].join(", ");
 };

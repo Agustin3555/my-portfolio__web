@@ -1,31 +1,33 @@
 ---
 import * as SocialNetworkStyled from "./SocialNetwork.styled";
 import Icon from "@/components/Icon/Icon.astro";
-import { FONT_SIZE } from "@/styles";
+import GlassPanel from "@/layouts/GlassPanel/GlassPanel.astro";
+import { FONT_SIZE, VARS } from "@/styles";
 import { type HandlingClass, asClassName } from "@/tools";
 
 interface Props {
-  url: string;
+  href: string;
   iconName: string;
   title: string;
-  style?: SocialNetworkStyled.Props;
   handlingClass?: HandlingClass;
 }
 
-const { url, iconName, title, style = {}, handlingClass = [] } = Astro.props;
+const { href, iconName, title, handlingClass = [] } = Astro.props;
 ---
 
-<!-- TODO: semantica HTML -->
 <SocialNetworkStyled.Component
+  className={asClassName(...handlingClass)}
   title={title}
-  href={url}
+  href={href}
   target="_blank"
   rel="noopener"
-  p={SocialNetworkStyled.adapter(style)}
-  className={asClassName(...handlingClass)}
 >
-  <div class="external-network__glass-refleccion"></div>
-  <div class="external-network__content">
+  <GlassPanel
+    style={{
+      padding: VARS.component.button.s.padding,
+      borderRadius: VARS.component.button.s.borderRadius,
+    }}
+  >
     <Icon iconName={iconName} style={{ size: FONT_SIZE.m }} />
-  </div>
+  </GlassPanel>
 </SocialNetworkStyled.Component>

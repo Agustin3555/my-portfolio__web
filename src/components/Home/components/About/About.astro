@@ -8,7 +8,6 @@ import ExternalLink from "@/components/ExternalLink/ExternalLink.astro";
 import ContactLink from "@/components/ContactLink/ContactLink.astro";
 import Slider from "../../components/Slider/Slider";
 import { NOT_FONT_SIZE } from "@/styles";
-import { css } from "@emotion/react";
 import { highlightToHTMLTag } from "@/tools";
 import jsonData from "@/data.json";
 import MySelf from "@/../public/myself.jpg";
@@ -39,6 +38,7 @@ const convertedDesc = descSlider.map((item) => highlightToHTMLTag(item.desc));
       <p class="hello">{presentation[0]}</p>
       <div class="title-group">
         <h1 class="name">{presentation[1]}</h1>
+        <!-- TODO: no creo que sea correcto el h2 aqui -->
         <h2 class="rol">{presentation[2]}</h2>
       </div>
       <div id="descAdaptable">
@@ -48,31 +48,26 @@ const convertedDesc = descSlider.map((item) => highlightToHTMLTag(item.desc));
       </div>
       <nav class="nav" id="socialNetsInAbout">
         {
-          externalNetwork
-            .slice()
-            .reverse()
-            .map((item, index) => (
-              <SocialNetwork
-                iconName={item.iconName}
-                url={item.url}
-                title={item.title}
-                style={{
-                  styled: css`
-                    --i: ${index};
-                  `,
-                }}
-              />
-            ))
+          [
+            ...externalNetwork
+              .slice()
+              .reverse()
+              .map((item) => (
+                <SocialNetwork
+                  iconName={item.iconName}
+                  href={item.url}
+                  title={item.title}
+                />
+              )),
+            <ContactLink />,
+          ].map((item, index) => <div style={`--i: ${index}`}>{item}</div>)
         }
-        <div>
-          <ContactLink />
-        </div>
       </nav>
     </div>
     <div class="extra-info">
       <div class="x">
         <GlassPanel
-          style={{ borderRadius: NOT_FONT_SIZE.xs, elevation: 2 }}
+          style={{ borderRadius: NOT_FONT_SIZE.xs }}
           handlingClass={["glass-panel"]}
         />
         <Slider

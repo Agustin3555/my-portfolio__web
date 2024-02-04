@@ -1,14 +1,13 @@
+import styled from "@emotion/styled";
 import {
   COLOR,
-  FONT,
   FONT_SIZE,
   GLASS_SET,
   TIME,
   NOT_FONT_SIZE,
-  shadowAdapter,
   type Value,
+  VARS,
 } from "@/styles";
-import styled from "@emotion/styled";
 
 const GAP = NOT_FONT_SIZE.s;
 const ITEM_GAP = NOT_FONT_SIZE.l;
@@ -154,7 +153,7 @@ export const Component = styled.li`
         aspect-ratio: 16 / 9;
         border-radius: ${NOT_FONT_SIZE["2xs"]};
         ${GLASS_SET.content}
-        box-shadow: ${shadowAdapter(2)};
+        box-shadow: ${VARS.decorator.shadow[1]};
         overflow: hidden;
 
         img {
@@ -181,8 +180,6 @@ export const Component = styled.li`
             gap: ${GAP};
 
             .title {
-              font-family: ${FONT.b};
-              font-size: ${FONT_SIZE.l};
               line-height: 1.25;
             }
 

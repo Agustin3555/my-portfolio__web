@@ -1,12 +1,6 @@
-import {
-  COLOR,
-  NOT_FONT_SIZE,
-  shadowAdapter,
-  type Size,
-  type Value,
-} from "@/styles";
-import { dropRandom, randomInt } from "@/tools";
 import styled from "@emotion/styled";
+import { COLOR, NOT_FONT_SIZE, VARS, type Size, type Value } from "@/styles";
+import { dropRandom, randomInt } from "@/tools";
 
 const ANIMATION_DURATION = 8;
 const ANIMATION_MISMATCH = NOT_FONT_SIZE.xs;
@@ -58,7 +52,7 @@ export const Component = styled.div<{ p: Provider }>`
   height: ${({ p }) => p.height};
   border-radius: ${({ p }) => p.borderRadius};
   background-color: ${({ p }) => p.backgroundColor};
-  box-shadow: ${shadowAdapter(2)};
+  box-shadow: ${VARS.decorator.shadow[1]};
   transform: translateY(${ANIMATION_MISMATCH});
   animation: levitation ${ANIMATION_DURATION}s ease-in-out infinite alternate;
   animation-delay: ${({ p }) => p.animationDelay};

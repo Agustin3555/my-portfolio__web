@@ -1,11 +1,8 @@
 import {
   COLOR_BRIGHT_B,
   COLOR_DARK_B,
-  FONT,
-  FONT_SIZE,
-  TIME,
   NOT_FONT_SIZE,
-  Value,
+  type Value,
 } from "@/styles";
 import styled from "@emotion/styled";
 
@@ -37,13 +34,6 @@ export const Component = styled.section`
   display: flex;
   flex-direction: column;
   gap: ${NOT_FONT_SIZE.l};
-
-  .section__title {
-    font-family: ${FONT.b};
-    font-size: ${FONT_SIZE.xl};
-    color: ${cp.title.color};
-    transition: color ${TIME.s} ease-out;
-  }
 
   body[data-dark-mode="true"] & {
     .section__title {

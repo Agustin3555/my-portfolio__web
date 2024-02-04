@@ -31,7 +31,6 @@ const { externalNetwork } = jsonData;
           <div class="group">
             <Separator
               style={{
-                invert: true,
                 backgroundColor: {
                   dark: COLOR_DARK_A,
                   bright: COLOR_BRIGHT_A,
@@ -42,7 +41,6 @@ const { externalNetwork } = jsonData;
               {home.map((item) => <Link {...item} />)}
               <Separator
                 style={{
-                  invert: true,
                   backgroundColor: {
                     dark: COLOR_DARK_A,
                     bright: COLOR_BRIGHT_A,
@@ -53,7 +51,6 @@ const { externalNetwork } = jsonData;
             </nav>
             <Separator
               style={{
-                invert: true,
                 backgroundColor: {
                   dark: COLOR_DARK_A,
                   bright: COLOR_BRIGHT_A,
@@ -65,7 +62,7 @@ const { externalNetwork } = jsonData;
                 externalNetwork.map((item) => (
                   <SocialNetwork
                     iconName={item.iconName}
-                    url={item.url}
+                    href={item.url}
                     title={item.title}
                   />
                 ))
@@ -73,7 +70,6 @@ const { externalNetwork } = jsonData;
             </nav>
             <Separator
               style={{
-                invert: true,
                 backgroundColor: {
                   dark: COLOR_DARK_A,
                   bright: COLOR_BRIGHT_A,

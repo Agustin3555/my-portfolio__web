@@ -1,3 +1,4 @@
+import styled from "@emotion/styled";
 import {
   BGC_BRIGHT_A,
   BGC_DARK_A,
@@ -9,9 +10,8 @@ import {
   NOT_FONT_SIZE,
   type Value,
   // colorAlphaAdapter,
-  shadowAdapter,
+  VARS,
 } from "@/styles";
-import styled from "@emotion/styled";
 
 const BORDER_RADIUS = NOT_FONT_SIZE["2xs"];
 
@@ -98,7 +98,7 @@ export const Component = styled.header<{ p: Provider }>`
     border-radius: ${cp.glassMenu.borderRadius};
     border-top-left-radius: 0;
     border-top-right-radius: 0;
-    box-shadow: ${shadowAdapter(2)};
+    box-shadow: ${VARS.decorator.shadow[1]};
     transition:
       background-color ${TIME.s} ease-out,
       top ${TIME.m} ease;

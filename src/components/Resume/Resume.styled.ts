@@ -1,5 +1,5 @@
-import { FONT_SIZE, MAIN_GAP, NOT_FONT_SIZE, shadowAdapter } from "@/styles";
 import styled from "@emotion/styled";
+import { FONT_SIZE, MAIN_GAP, NOT_FONT_SIZE, VARS } from "@/styles";
 
 const GAP = MAIN_GAP;
 
@@ -16,6 +16,6 @@ export const Component = styled.section`
     width: 100%;
     height: 1174px;
     border-radius: ${NOT_FONT_SIZE["2xs"]};
-    box-shadow: ${shadowAdapter(2)};
+    box-shadow: ${VARS.decorator.shadow[1]};
   }
 `;

@@ -1,12 +1,12 @@
+import styled from "@emotion/styled";
 import {
   COLOR,
   MAIN_GAP,
   TIME,
   NOT_FONT_SIZE,
   type Value,
-  shadowAdapter,
+  VARS,
 } from "@/styles";
-import styled from "@emotion/styled";
 
 const INDICATOR_SIZE = "0.6875rem";
 const GAP = `calc(${MAIN_GAP} * 0.5)`;
@@ -101,7 +101,7 @@ export const Component = styled.div<{ p: Provider }>`
   position: relative;
   aspect-ratio: ${({ p }) => p.aspectRatio};
   border-radius: ${NOT_FONT_SIZE.xs};
-  box-shadow: ${shadowAdapter(2)};
+  box-shadow: ${VARS.decorator.shadow[1]};
   overflow: hidden;
 
   :hover .controls-C .controls .control {
@@ -163,7 +163,7 @@ export const Component = styled.div<{ p: Provider }>`
           height: ${INDICATOR_SIZE};
           border-radius: ${NOT_FONT_SIZE["6xl"]};
           background-color: ${COLOR.gs_12};
-          box-shadow: ${shadowAdapter(2)};
+          box-shadow: ${VARS.decorator.shadow[1]};
           opacity: 0.75;
           transition:
             width ${TIME.l} ease-out,

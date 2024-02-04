@@ -1,12 +1,5 @@
-import {
-  COLOR,
-  MEDIA,
-  TIME,
-  NOT_FONT_SIZE,
-  Value,
-  shadowAdapter,
-} from "@/styles";
 import styled from "@emotion/styled";
+import { COLOR, MEDIA, TIME, NOT_FONT_SIZE, type Value, VARS } from "@/styles";
 
 const DIMENSION = NOT_FONT_SIZE.l;
 
@@ -39,7 +32,7 @@ export const Component = styled.a`
   height: 100%;
   border-bottom-right-radius: ${NOT_FONT_SIZE["2xs"]};
   background-color: ${COLOR.a};
-  box-shadow: ${shadowAdapter(2)};
+  box-shadow: ${VARS.decorator.shadow[1]};
   cursor: pointer;
   overflow: hidden;
   transition: left ${TIME.m} ease;

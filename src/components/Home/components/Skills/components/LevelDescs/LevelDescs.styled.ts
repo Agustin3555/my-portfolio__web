@@ -1,3 +1,4 @@
+import styled from "@emotion/styled";
 import {
   COLOR,
   FONT_SIZE,
@@ -5,9 +6,8 @@ import {
   TIME,
   NOT_FONT_SIZE,
   type Value,
-  shadowAdapter,
+  VARS,
 } from "@/styles";
-import styled from "@emotion/styled";
 
 const GAP = MAIN_GAP;
 const TOGGLE_UI_HEIGHT = FONT_SIZE.s;
@@ -112,7 +112,7 @@ export const Component = styled.fieldset`
           border-style: solid;
           border-color: ${COLOR.gs_6};
           background-color: ${COLOR.gs_2};
-          box-shadow: ${shadowAdapter(2)};
+          box-shadow: ${VARS.decorator.shadow[1]};
           transition:
             border-color ${TIME.s} ease-out,
             background-color ${TIME.s} ease-out,

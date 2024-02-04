@@ -27,7 +27,6 @@ const { home, resume } = Astro.props.linksData;
     style={{
       padding: MAIN_GAP,
       borderRadius: NOT_FONT_SIZE["2xs"],
-      elevation: 2,
       styled: css`
         &,
         .glass-refleccion,
@@ -47,6 +46,7 @@ const { home, resume } = Astro.props.linksData;
         {home.map((item) => <Link {...item} />)}
         <Separator
           style={{
+            invert: true,
             backgroundColor: { dark: COLOR_DARK_A, bright: COLOR_BRIGHT_A },
           }}
         />

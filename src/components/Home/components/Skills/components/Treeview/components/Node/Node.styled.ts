@@ -1,12 +1,12 @@
+import styled from "@emotion/styled";
 import {
   COLOR,
   FONT_SIZE,
   TIME,
   NOT_FONT_SIZE,
-  shadowAdapter,
   type Value,
+  VARS,
 } from "@/styles";
-import styled from "@emotion/styled";
 
 const GAP = NOT_FONT_SIZE["3xs"];
 const NAME_FONT_SIZE = FONT_SIZE.xs;
@@ -69,7 +69,7 @@ export const Component = styled.div`
 
     :hover {
       background-color: ${COLOR.gs_0};
-      box-shadow: ${shadowAdapter(2)};
+      box-shadow: ${VARS.decorator.shadow[1]};
       scale: 1.005;
 
       .names {

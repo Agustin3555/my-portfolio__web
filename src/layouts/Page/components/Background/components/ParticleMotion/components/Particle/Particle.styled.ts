@@ -1,3 +1,4 @@
+import styled from "@emotion/styled";
 import {
   COLOR,
   NOT_FONT_SIZE,
@@ -5,10 +6,9 @@ import {
   type Color,
   type Value,
   type Size,
-  shadowAdapter,
+  VARS,
 } from "@/styles";
 import { dropRandom, randomInt } from "@/tools";
-import styled from "@emotion/styled";
 
 const MAX_CENTER_OFFSET = 128;
 const MIN_DURATION = 30;
@@ -60,7 +60,7 @@ export const Component = styled.div<{ p: Provider }>`
   width: ${({ p }) => p.width};
   height: ${({ p }) => p.height};
   border-radius: 15%;
-  box-shadow: ${shadowAdapter(1)};
+  box-shadow: ${VARS.decorator.shadow[0]};
   background-color: ${({ p }) => p.backgroundColor};
   animation: ${({ p }) => p.animation};
 

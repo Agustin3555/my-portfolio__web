@@ -1,79 +1,61 @@
-import {
-  Elevation,
-  shadowAdapter,
-  NOT_FONT_SIZE,
-  Size,
-  Value,
-  GLASS_SET,
-} from '@/styles'
-import { SerializedStyles } from '@emotion/react'
-import styled from '@emotion/styled'
+import styled from "@emotion/styled";
+import { NOT_FONT_SIZE, type Size, type Value, VARS } from "@/styles";
+import { type SerializedStyles } from "@emotion/react";
 
 interface Provider {
-  borderRadius: Value
-  boxShadow: Value
-  glassRefleccion: {
-    borderRadius: Value
-  }
+  borderRadius: Value;
+
+  before: {
+    borderRadius: Value;
+  };
+
   content: {
-    padding: Value
-    borderRadius: Value
-  }
-  styled?: Value
+    padding: Value;
+    borderRadius: Value;
+  };
+
+  styled?: Value;
 }
 
 export interface Props {
-  padding?: Size
-  borderRadius?: Size
-  elevation?: Elevation
-  styled?: SerializedStyles
+  padding?: Size;
+  borderRadius?: Size;
+  styled?: SerializedStyles;
 }
 
 export const adapter = ({
-  padding = NOT_FONT_SIZE['3xs'],
-  borderRadius = NOT_FONT_SIZE['4xs'],
-  elevation = 1,
+  padding = NOT_FONT_SIZE["3xs"],
+  borderRadius = NOT_FONT_SIZE["4xs"],
   styled,
 }: Props): Provider => {
   return {
     borderRadius,
-    boxShadow: shadowAdapter(elevation),
 
-    glassRefleccion: {
+    before: {
       borderRadius,
     },
 
     content: {
-      padding: `calc(${padding} - ${NOT_FONT_SIZE['6xs']})`,
+      padding,
       borderRadius,
     },
 
     styled,
-  }
-}
+  };
+};
 
 export const Component = styled.div<{ p: Provider }>`
-  position: relative;
-  width: fit-content;
-  height: fit-content;
   border-radius: ${({ p }) => p.borderRadius};
-  box-shadow: ${({ p }) => p.boxShadow};
-  ${GLASS_SET.this}
+  box-shadow: ${VARS.decorator.shadow[1]};
 
-  .glass-refleccion {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    border-radius: ${({ p }) => p.glassRefleccion.borderRadius};
-    ${GLASS_SET.refleccion}
+  ::before {
+    border-radius: ${({ p }) => p.before.borderRadius};
   }
 
-  .content {
-    position: relative;
+  > div {
     padding: ${({ p }) => p.content.padding};
     border-radius: ${({ p }) => p.content.borderRadius};
-    ${GLASS_SET.content}
   }
 
   ${({ p }) => p.styled};
-`
+`;

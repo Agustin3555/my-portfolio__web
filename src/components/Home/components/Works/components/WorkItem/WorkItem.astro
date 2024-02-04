@@ -77,17 +77,16 @@ if (links) {
     style={{
       padding: NOT_FONT_SIZE.s,
       borderRadius: NOT_FONT_SIZE["2xs"],
-      elevation: 2,
     }}
     handlingClass={["header-glass"]}
   >
     <div class="header">
-      <h4 class="title">{title}</h4>
+      <h3 class="title">{title}</h3>
       <ul class="types">
         {
           types.map((item, index) => (
             <li class="item-C">
-              <h5 class="item">{item}</h5>
+              <p class="item">{item}</p>
               {index !== types.length - 1 && (
                 <Separator
                   style={{

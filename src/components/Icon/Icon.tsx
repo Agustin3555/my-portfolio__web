@@ -11,11 +11,9 @@ const Icon = ({
   handlingClass?: HandlingClass;
 }) => (
   <IconStyled.Component
-    className={asClassName(...handlingClass)}
+    className={asClassName(iconName, ...handlingClass)}
     p={IconStyled.adapter(style)}
-  >
-    <i className={`icon ${iconName}`} />
-  </IconStyled.Component>
+  />
 );
 
 export default Icon;

@@ -1,12 +1,12 @@
+import styled from "@emotion/styled";
 import {
   COLOR,
   GLASS_SET,
   TIME,
   NOT_FONT_SIZE,
   FONT_SIZE,
-  shadowAdapter,
+  VARS,
 } from "@/styles";
-import styled from "@emotion/styled";
 
 const BORDER_RADIUS = NOT_FONT_SIZE["4xs"];
 const TEXT_FONT_SIZE = FONT_SIZE.xs;
@@ -19,7 +19,7 @@ export const Component = styled.a`
   position: relative;
   border-radius: ${BORDER_RADIUS};
   text-decoration: none;
-  box-shadow: ${shadowAdapter(2)};
+  box-shadow: ${VARS.decorator.shadow[1]};
   ${GLASS_SET.this}
 
   transition:
@@ -31,7 +31,7 @@ export const Component = styled.a`
   }
 
   :active {
-    box-shadow: ${shadowAdapter(1)};
+    box-shadow: ${VARS.decorator.shadow[0]};
   }
 
   .external-link__glass-refleccion {

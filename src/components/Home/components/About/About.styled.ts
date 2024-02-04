@@ -108,18 +108,18 @@ export const Component = styled.div`
 
       > * {
         opacity: 0;
-        transform: translateY(100%);
+        translate: 0 100%;
         filter: blur(${NOT_FONT_SIZE["5xs"]});
 
         transition:
           opacity ${TIME.m} ease,
-          transform ${TIME.m} ease,
+          translate ${TIME.m} ease,
           filter ${TIME.m} ease;
         transition-delay: calc(${TIME.s} * var(--i));
 
         body[data-social-nets-in-left-nav="false"] & {
           opacity: 1;
-          transform: initial;
+          translate: initial;
           filter: initial;
         }
       }

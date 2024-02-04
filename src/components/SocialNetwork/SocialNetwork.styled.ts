@@ -1,62 +1,16 @@
-import { COLOR, GLASS_SET, TIME, NOT_FONT_SIZE, shadowAdapter } from "@/styles";
-import { type SerializedStyles } from "@emotion/react";
 import styled from "@emotion/styled";
+import { COLOR, TIME, TIMING_FUNC } from "@/styles";
 
-const BORDER_RADIUS = NOT_FONT_SIZE["3xs"];
-const SIZE = NOT_FONT_SIZE.m;
-
-export interface Props {
-  styled?: SerializedStyles;
-}
-
-interface Provider {
-  styled?: SerializedStyles;
-}
-
-export const adapter = ({ styled }: Props): Provider => {
-  return {
-    styled,
-  };
-};
-
-export const Component = styled.a<{ p: Provider }>`
-  position: relative;
-  width: ${SIZE};
-  height: ${SIZE};
-  border-radius: ${BORDER_RADIUS};
+export const Component = styled.a`
   text-decoration: none;
-  box-shadow: ${shadowAdapter(2)};
+
+  /* TODO: no se aplica el translate */
   transition:
-    box-shadow ${TIME.xs} ease-out,
-    transform ${TIME.xs} ease-out;
-  ${GLASS_SET.this}
+    color ${TIME.s} ease-out,
+    translate ${TIME.m} ${TIMING_FUNC.a};
 
   :hover {
-    color: ${COLOR.b};
+    color: ${COLOR.b_l2};
+    translate: 0 -12.5%;
   }
-
-  :active {
-    box-shadow: ${shadowAdapter(1)};
-  }
-
-  .external-network__glass-refleccion {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    border-radius: ${BORDER_RADIUS};
-    ${GLASS_SET.refleccion}
-  }
-
-  .external-network__content {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    border-radius: ${BORDER_RADIUS};
-    ${GLASS_SET.content}
-  }
-
-  ${({ p }) => p.styled};
 `;

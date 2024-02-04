@@ -344,32 +344,35 @@
             "items": [
               {
                 "title": "Tecnicatura Universitaria en Programación",
+                "institutionName": "Universidad Tecnológica Nacional FRRe",
+                "duration": "2 años y medio",
                 "endDate": "2023-12-06",
-                "eduInstitutionName": "Universidad Tecnológica Nacional FRRe",
-                "url": "https://www.frre.utn.edu.ar/tsp/paginas/view/item/Incumbencias",
-                "certificateImg": {
-                  "title": "Título otorgado por la Universidad Tecnológica Nacional FRRe",
-                  "alt": "Título otorgado por la Universidad Tecnológica Nacional FRRe por finalizar la carrera de Técnico Universitario en Programación"
+                "moreInfoUrl": "https://www.frre.utn.edu.ar/tsp/paginas/view/item/Incumbencias",
+                "logo": {
+                  "title": "Logo Universidad Tecnológica Nacional",
+                  "alt": "Logo de la Universidad Tecnológica Nacional, Argentina"
                 }
               },
               {
                 "title": "Curso de Desarrollo Web",
+                "institutionName": "Informatorio",
+                "duration": "2 meses",
                 "endDate": "2021-03-27",
-                "eduInstitutionName": "Informatorio",
-                "url": "https://empleo.chaco.gob.ar/capacitaciones/Programaci%C3%B3n-y-Desarrollo-Web",
-                "certificateImg": {
-                  "title": "Certificado otorgado por el Informatorio",
-                  "alt": "Certificado otorgado por el Informatorio por finalizar el Curso de Desarrollo Web"
+                "moreInfoUrl": "https://empleo.chaco.gob.ar/capacitaciones/Programaci%C3%B3n-y-Desarrollo-Web",
+                "logo": {
+                  "title": "Logo Informatorio",
+                  "alt": "Logo del programa Informatorio, Argentina, Chaco"
                 }
               },
               {
                 "title": "Curso de Introducción a la Programación",
+                "institutionName": "Informatorio",
+                "duration": "1 mes",
                 "endDate": "2020-08-31",
-                "eduInstitutionName": "Informatorio",
-                "url": "https://empleo.chaco.gob.ar/capacitaciones/Introducci%C3%B3n-a-la-Programaci%C3%B3n",
-                "certificateImg": {
-                  "title": "Certificado otorgado por el Informatorio",
-                  "alt": "Certificado otorgado por el Informatorio por finalizar el Curso de Introducción a la Programación"
+                "moreInfoUrl": "https://empleo.chaco.gob.ar/capacitaciones/Introducci%C3%B3n-a-la-Programaci%C3%B3n",
+                "logo": {
+                  "title": "Logo de Informatorio",
+                  "alt": "Logo del programa Informatorio, Argentina, Chaco"
                 }
               }
             ]

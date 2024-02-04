@@ -16,6 +16,7 @@ const cp: ConstProvider = {
 export const Component = styled.nav`
   position: fixed;
   top: 0;
+
   transition: top ${TIME.m} ease;
 
   @media (max-width: ${MEDIA.m}) {

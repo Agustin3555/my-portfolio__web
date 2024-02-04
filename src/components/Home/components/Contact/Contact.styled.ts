@@ -1,13 +1,12 @@
+import styled from "@emotion/styled";
 import {
   COLOR,
   FONT_SIZE,
   TIME,
   NOT_FONT_SIZE,
-  shadowAdapter,
   VARS,
   TIMING_FUNC,
 } from "@/styles";
-import styled from "@emotion/styled";
 
 export const Component = styled.div`
   display: flex;
@@ -35,7 +34,7 @@ export const Component = styled.div`
 
     color: ${COLOR.gs_1};
     background-color: ${COLOR.gs_14};
-    box-shadow: ${shadowAdapter(2)};
+    box-shadow: ${VARS.decorator.shadow[1]}, ${VARS.decorator.bevelHighlight};
 
     transition: background-color ${TIME.s} ease-out;
 
@@ -76,7 +75,7 @@ export const Component = styled.div`
           translate ${TIME.m} ${TIMING_FUNC.a};
 
         :hover {
-          box-shadow: ${shadowAdapter(2)};
+          box-shadow: ${VARS.decorator.shadow[1]};
           translate: 0 -0.0625rem;
         }
 

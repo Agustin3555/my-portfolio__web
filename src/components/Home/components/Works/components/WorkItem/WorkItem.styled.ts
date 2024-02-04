@@ -114,11 +114,6 @@ export const Component = styled.div`
       flex-direction: column;
       gap: ${FONT_SIZE.s};
 
-      .title {
-        font-family: ${FONT.b};
-        font-size: ${FONT_SIZE.l};
-      }
-
       .types {
         display: flex;
         gap: ${cp.headerGlass.header.types.gap};

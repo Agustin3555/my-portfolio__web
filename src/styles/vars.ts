@@ -2,31 +2,20 @@ import { css } from "@emotion/react";
 import { COLOR, FONT, NOT_FONT_SIZE, FONT_SIZE } from "./palette";
 
 export const VARS = {
-  bg: {
+  color: {
     a: {
-      dark: "var(--color-bg-a-dark)",
-      bright: "var(--color-bg-a-bright)",
-    },
-    b: {
-      dark: "var(--color-bg-b-dark)",
-      bright: "var(--color-bg-b-bright)",
-    },
-  },
-  font: {
-    a: {
-      dark: "var(--color-font-a-dark)",
-      bright: "var(--color-font-a-bright)",
-    },
-    b: {
-      dark: "var(--color-font-b-dark)",
-      bright: "var(--color-font-b-bright)",
+      bg: {
+        light: "var(--color-a-bg-light)",
+        dark: "var(--color-a-bg-dark)",
+      },
+      font: {
+        light: "var(--color-a-font-light)",
+        dark: "var(--color-a-font-dark)",
+      },
     },
   },
   size: {
-    main: {
-      gold: "var(--size-main-gold)",
-      silver: "var(--size-main-silver)",
-    },
+    gold: "var(--size-gold)",
     layout: {
       with: "var(--size-layout-with)",
     },
@@ -38,6 +27,14 @@ export const VARS = {
   },
   global: {
     fontSize: "var(--global-font-size)",
+  },
+  decorator: {
+    shadow: {
+      0: "var(--decorator-shadow-0)",
+      1: "var(--decorator-shadow-1)",
+      2: "var(--decorator-shadow-2)",
+    },
+    bevelHighlight: "var(--decorator-bevel-highlight)",
   },
   component: {
     button: {

@@ -1,3 +1,4 @@
+import styled from "@emotion/styled";
 import {
   type Color,
   TIME,
@@ -5,7 +6,6 @@ import {
   type Size,
   type Value,
 } from "@/styles";
-import styled from "@emotion/styled";
 
 export interface Props {
   long?: Size;
@@ -53,8 +53,8 @@ export const adapter = (style: Props): Provider => {
   const longAux = long || "100%";
 
   return {
-    width: invert ? longAux : thickness,
-    height: invert ? thickness : longAux,
+    width: invert ? thickness : longAux,
+    height: invert ? longAux : thickness,
     backgroundColor: backgroundColor.bright,
 
     DARK_MODE: {
@@ -63,12 +63,15 @@ export const adapter = (style: Props): Provider => {
   };
 };
 
-export const Component = styled.div<{ p: Provider }>`
+export const Component = styled.hr<{ p: Provider }>`
   width: ${({ p }) => p.width};
   height: ${({ p }) => p.height};
+
+  border: none;
   border-radius: ${NOT_FONT_SIZE["6xl"]};
   background-color: ${({ p }) => p.backgroundColor};
-  transition: background-color ${TIME.s} ease-out;
+
+  transition: ${TIME.s} ease-out;
 
   body[data-dark-mode="true"] & {
     background-color: ${({ p }) => p.DARK_MODE.backgroundColor};

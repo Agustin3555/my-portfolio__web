@@ -1,28 +1,18 @@
 import styled from "@emotion/styled";
-import {
-  COLOR,
-  FONT_SIZE,
-  MAIN_GAP,
-  MEDIA,
-  TIME,
-  NOT_FONT_SIZE,
-  shadowAdapter,
-} from "@/styles";
-
-const GAP = MAIN_GAP;
+import { COLOR, FONT_SIZE, MEDIA, TIME, NOT_FONT_SIZE, VARS } from "@/styles";
 
 export const Component = styled.footer`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  padding: calc(${GAP} * 2);
-  padding-bottom: ${GAP};
+  padding: calc(${VARS.size.gold} * 2);
+  padding-bottom: ${VARS.size.gold};
+
   color: ${COLOR.gs_15};
+  background-color: ${COLOR.gs_6};
   border-top-left-radius: ${NOT_FONT_SIZE.xs};
   border-top-right-radius: ${NOT_FONT_SIZE.xs};
-  background-color: ${COLOR.gs_6};
-  box-shadow: ${shadowAdapter(2)};
+  box-shadow: ${VARS.decorator.shadow[1]}, ${VARS.decorator.bevelHighlight};
 
   transition:
     padding ${TIME.s} ease-out,
@@ -30,7 +20,8 @@ export const Component = styled.footer`
     background-color ${TIME.s} ease-out;
 
   @media (max-width: 23.4375rem) {
-    padding-inline: ${GAP};
+    padding: ${VARS.size.gold};
+    padding-top: calc(${VARS.size.gold} * 2);
   }
 
   .text {
@@ -38,46 +29,50 @@ export const Component = styled.footer`
   }
 
   .separator {
-    margin-block: ${GAP};
+    margin: ${VARS.size.gold} 0;
   }
 
   .sections {
     display: flex;
-    gap: calc(${GAP} * 2);
-    padding-bottom: ${GAP};
+    gap: calc(${VARS.size.gold} * 2);
+    padding-bottom: ${VARS.size.gold};
 
     @media (max-width: ${MEDIA.xs}) {
       flex-direction: column;
     }
 
-    .item {
+    > *:first-of-type {
+      flex-grow: 1;
+    }
+
+    article {
       display: flex;
       flex-direction: column;
 
-      .title {
-        width: max-content;
-        font-weight: 500;
+      h4 {
+        text-wrap: nowrap;
         color: ${COLOR.gs_18};
-
-        transition: color ${TIME.s} ease-out;
       }
 
       .acknowledgments {
         column-width: calc(${NOT_FONT_SIZE["3xl"]} + ${NOT_FONT_SIZE.xs});
         column-gap: ${FONT_SIZE.xs};
-        text-wrap: pretty;
 
         li {
-          display: flex;
-          gap: ${NOT_FONT_SIZE["2xs"]};
+          p {
+            display: flex;
+            gap: ${NOT_FONT_SIZE["2xs"]};
+            text-wrap: initial;
 
-          .emoji {
-            flex-shrink: 0;
+            .emoji {
+              flex-shrink: 0;
 
-            display: inline-flex;
-            justify-content: center;
-            width: ${FONT_SIZE.l};
-            filter: grayscale(0.25);
+              display: inline-flex;
+              justify-content: center;
+              width: ${FONT_SIZE.l};
+
+              filter: grayscale(0.25);
+            }
           }
         }
       }
@@ -97,7 +92,7 @@ export const Component = styled.footer`
     color: ${COLOR.gs_4};
     background-color: ${COLOR.gs_14};
 
-    .sections .item .title {
+    .sections article h4 {
       color: ${COLOR.gs_0};
     }
   }

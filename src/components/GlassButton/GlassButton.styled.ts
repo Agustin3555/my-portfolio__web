@@ -1,3 +1,4 @@
+import styled from "@emotion/styled";
 import {
   COLOR,
   FONT_SIZE,
@@ -5,9 +6,8 @@ import {
   TIME,
   NOT_FONT_SIZE,
   type Value,
-  shadowAdapter,
+  VARS,
 } from "@/styles";
-import styled from "@emotion/styled";
 
 const SIZE = FONT_SIZE.xl;
 const BORDER_RADIUS = NOT_FONT_SIZE["3xs"];
@@ -48,7 +48,7 @@ export const Component = styled.button`
   border: none;
   border-radius: ${cp.borderRadius};
   background-color: transparent;
-  box-shadow: ${shadowAdapter(2)};
+  box-shadow: ${VARS.decorator.shadow[1]};
   cursor: pointer;
   transition: box-shadow ${TIME.xs} ease-out;
   ${GLASS_SET.this}
@@ -58,7 +58,7 @@ export const Component = styled.button`
   }
 
   :active {
-    box-shadow: ${shadowAdapter(1)};
+    box-shadow: ${VARS.decorator.shadow[0]};
   }
 
   .glass-button__glass-refleccion {

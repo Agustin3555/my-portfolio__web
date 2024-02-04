@@ -1,6 +1,6 @@
-import { FONT_SIZE, TIME, type Size, type Value } from "@/styles";
-import type { SerializedStyles } from "@emotion/react";
 import styled from "@emotion/styled";
+import { FONT_SIZE, type Size, type Value } from "@/styles";
+import { type SerializedStyles } from "@emotion/react";
 
 export interface Props {
   size?: Size;
@@ -8,12 +8,7 @@ export interface Props {
 }
 
 interface Provider {
-  width: Value;
-  height: Value;
-
-  icon: {
-    fontSize: Value;
-  };
+  size: Value;
 
   styled?: SerializedStyles;
 }
@@ -23,37 +18,27 @@ interface NormalizedProps {
 }
 
 export const adapter = (style?: Props): Provider => {
-  const normalizedProps: NormalizedProps = {
+  const { size }: NormalizedProps = {
     size: style?.size || FONT_SIZE.xs,
   };
 
-  const size = normalizedProps.size;
-  const dimensions = size === FONT_SIZE.xs ? FONT_SIZE["2xs"] : size;
-
   return {
-    width: dimensions,
-    height: dimensions,
-
-    icon: {
-      fontSize: size,
-    },
+    size,
 
     styled: style?.styled,
   };
 };
 
-export const Component = styled.div<{ p: Provider }>`
+export const Component = styled.i<{ p: Provider }>`
+  --size: ${({ p }) => p.size};
+
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: ${({ p }) => p.width};
-  height: ${({ p }) => p.height};
-
-  .icon {
-    font-size: ${({ p }) => p.icon.fontSize};
-    transition: color ${TIME.xs} ease-out;
-  }
+  width: var(--size);
+  height: var(--size);
+  font-size: var(--size);
 
   ${({ p }) => p.styled};
 `;
