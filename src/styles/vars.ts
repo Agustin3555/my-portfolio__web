@@ -36,9 +36,17 @@ export const VARS = {
     },
     bevelHighlight: "var(--decorator-bevel-highlight)",
   },
+  media: {
+    // TODO: comentar el no uso variables
+    xs: "23.4375rem",
+    s: "26.5625rem",
+    m: "56.25rem",
+    l: "calc(47rem + (1.625rem * 4 + 2.625rem) * 2)",
+  },
   component: {
     button: {
       s: {
+        iconSize: "var(--component-button-s-icon-size)",
         padding: "var(--component-button-s-padding)",
         borderRadius: "var(--component-button-s-border-radius)",
       },
@@ -60,7 +68,7 @@ export const COLOR_BRIGHT_B = COLOR.gs_14;
 
 export const MAIN_GAP = NOT_FONT_SIZE.s;
 export const MAIN_GAP_M = `calc(${MAIN_GAP} * 2)`;
-export const LAYOUT_WIDTH = `calc(${NOT_FONT_SIZE["3xl"]} * 4)`;
+export const LAYOUT_WIDTH = `calc(${NOT_FONT_SIZE["2xl"]} * 6)`;
 export const GLASS_BUTTON_SIZE = NOT_FONT_SIZE.m;
 
 export enum MEDIA {

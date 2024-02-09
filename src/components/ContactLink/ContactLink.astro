@@ -1,20 +1,28 @@
 ---
 import * as ContactLinkStyled from "./ContactLink.styled";
 import Icon from "../Icon/Icon.astro";
-import { FONT_SIZE } from "@/styles";
+import { VARS } from "@/styles";
 import jsonData from "@/data.json";
 
 export interface Props {
-  href?: string;
+  emailSender?: boolean;
 }
 
-const { href } = Astro.props;
+const { emailSender = false } = Astro.props;
 
 const { sections } = jsonData.pages.home;
 const sectionKey: keyof typeof sections = "contact";
+
+const { email } = sections.contact.data;
 ---
 
-<!-- TODO: semantica HTML -->
-<ContactLinkStyled.Component href={href || `/#${sectionKey}`}>
-  <Icon iconName="fa-solid fa-paper-plane" style={{ size: FONT_SIZE.m }} />
+<ContactLinkStyled.Component
+  href={emailSender ? `mailto:${email}` : `/#${sectionKey}`}
+  title={emailSender ? "Enviar correo" : "Contáctame"}
+  data-email-sender={emailSender}
+>
+  <Icon
+    iconName="fa-solid fa-paper-plane"
+    style={{ size: VARS.component.button.s.iconSize }}
+  />
 </ContactLinkStyled.Component>

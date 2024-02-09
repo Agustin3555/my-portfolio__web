@@ -1,4 +1,4 @@
-import { COLOR, NOT_FONT_SIZE, TIME, VARS } from "@/styles";
+import { COLOR, TIME, TIMING_FUNC, VARS } from "@/styles";
 import styled from "@emotion/styled";
 
 export const Component = styled.a`
@@ -9,9 +9,12 @@ export const Component = styled.a`
 
   text-decoration: none;
   color: ${COLOR.gs_0};
+  box-shadow: ${VARS.decorator.shadow[1]}, ${VARS.decorator.bevelHighlight};
   overflow: hidden;
 
-  transition: translate ${TIME.s} ease-out;
+  transition:
+    box-shadow ${TIME.m} ${TIMING_FUNC.a},
+    translate ${TIME.m} ${TIMING_FUNC.a};
 
   &::before {
     content: "";
@@ -24,7 +27,7 @@ export const Component = styled.a`
   }
 
   :hover {
-    translate: 0 calc((${NOT_FONT_SIZE["3xs"]} / 2) * -1);
+    translate: 0 -12.5%;
 
     ::before {
       animation: spin ${TIME.l} linear infinite;
@@ -34,6 +37,15 @@ export const Component = styled.a`
           rotate: 360deg;
         }
       }
+    }
+  }
+
+  &[data-email-sender="true"] {
+    box-shadow: ${VARS.decorator.bevelHighlight};
+
+    :hover {
+      box-shadow: ${VARS.decorator.shadow[0]}, ${VARS.decorator.bevelHighlight};
+      translate: 0 -0.0625rem;
     }
   }
 `;

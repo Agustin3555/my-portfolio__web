@@ -2,21 +2,15 @@ import styled from "@emotion/styled";
 import {
   COLOR,
   FONT_SIZE,
-  GLASS_SET,
   TIME,
   NOT_FONT_SIZE,
   type Value,
   VARS,
 } from "@/styles";
 
-const GAP = NOT_FONT_SIZE.s;
-const ITEM_GAP = NOT_FONT_SIZE.l;
-const DATE_WIDTH = "6rem";
-const HEADING_MIN_WIDTH = `calc(${GAP} * 12)`;
 const POINT_3_PADDING = `calc(${NOT_FONT_SIZE["2xs"]} - ${NOT_FONT_SIZE["6xs"]})`;
 export const POINT_2_PADDING = NOT_FONT_SIZE["3xs"];
 const POINT_1_SIZE = NOT_FONT_SIZE["2xs"];
-const LINE_WIDTH = NOT_FONT_SIZE["6xs"];
 
 interface ConstProvider {
   item: {
@@ -32,7 +26,7 @@ interface ConstProvider {
     paddingLeft: Value;
   };
 
-  MEDIA_74: {
+  MEDIA_405: {
     itemGap: {
       paddingLeft: Value;
     };
@@ -40,7 +34,7 @@ interface ConstProvider {
 }
 
 const pointRadius = `calc(${POINT_3_PADDING} + ${POINT_2_PADDING} + ${POINT_1_SIZE} * 0.5)`;
-const halfLineWidth = `calc(${LINE_WIDTH} * 0.5)`;
+const halfLineWidth = `calc(var(--line-thickness) * 0.5)`;
 
 const cp: ConstProvider = {
   item: {
@@ -53,24 +47,31 @@ const cp: ConstProvider = {
   },
 
   itemGap: {
-    paddingLeft: `calc(${DATE_WIDTH} + ${GAP} + ${pointRadius} + ${halfLineWidth})`,
+    paddingLeft: `calc(var(--time-width) + var(--gap) + ${pointRadius} + ${halfLineWidth})`,
   },
 
-  MEDIA_74: {
+  MEDIA_405: {
     itemGap: {
       paddingLeft: `calc(${pointRadius} + ${halfLineWidth})`,
     },
   },
 };
 
-enum ITEM_L {
-  date = "date",
-  pointer = "pointer",
-  line = "line",
-  layout = "layout",
+// TODO: Eliminar todo lo anterior
+
+enum GRID_L {
+  header = "header",
+  aboutTime = "about-time",
+  links = "links",
+  bullet = "bullet",
+  lineExtensionLayout = "line-extension-layout",
 }
 
 export const Component = styled.li`
+  --gap: ${VARS.size.gold};
+  --time-width: 7rem;
+  --line-thickness: ${NOT_FONT_SIZE["6xs"]};
+
   display: flex;
   flex-direction: column;
 
@@ -78,13 +79,61 @@ export const Component = styled.li`
     display: grid;
 
     grid-template:
-      "${ITEM_L.date} ${ITEM_L.pointer} ${ITEM_L.layout}" auto /
-      ${DATE_WIDTH} auto 1fr;
+      "${GRID_L.aboutTime}  ${GRID_L.bullet}              ${GRID_L.header}" auto
+      ".                    ${GRID_L.lineExtensionLayout} ${GRID_L.links}" auto /
+      var(--time-width) auto 1fr;
 
-    column-gap: ${GAP};
+    column-gap: var(--gap);
 
-    .pointer {
-      grid-area: ${ITEM_L.pointer};
+    header {
+      grid-area: ${GRID_L.header};
+      justify-self: flex-start;
+
+      .header-content {
+        display: flex;
+        flex-direction: column;
+        gap: var(--gap);
+
+        .institution-name {
+          font-size: ${FONT_SIZE.xs};
+
+          color: ${COLOR.b};
+        }
+      }
+    }
+
+    .about-time {
+      grid-area: ${GRID_L.aboutTime};
+      align-self: center;
+
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      word-spacing: calc(0.0625rem / 4);
+
+      > * {
+        font-size: ${FONT_SIZE.xs};
+      }
+
+      .end-date {
+        color: ${COLOR.b_d2};
+      }
+
+      .duration {
+        color: ${COLOR.gs_10};
+      }
+    }
+
+    .links {
+      grid-area: ${GRID_L.links};
+
+      display: flex;
+      align-items: flex-start;
+      margin-top: var(--gap);
+    }
+
+    .bullet {
+      grid-area: ${GRID_L.bullet};
 
       position: relative;
       display: flex;
@@ -93,15 +142,18 @@ export const Component = styled.li`
 
       .point-3 {
         padding: ${POINT_3_PADDING};
-        border-width: ${LINE_WIDTH};
+        border-width: var(--line-thickness);
+
         border-style: dashed;
-        border-color: ${COLOR.gs_6};
         border-radius: ${NOT_FONT_SIZE["6xl"]};
+        border-color: ${COLOR.gs_8};
+
         transition: border-color ${TIME.s} ease-out;
 
         .point-1 {
           width: ${POINT_1_SIZE};
           height: ${POINT_1_SIZE};
+
           border-radius: ${NOT_FONT_SIZE["6xl"]};
           background-color: ${COLOR.b};
         }
@@ -122,84 +174,14 @@ export const Component = styled.li`
       }
     }
 
-    .extension-line {
-      grid-area: ${ITEM_L.line};
+    .line-extension-layout {
+      grid-area: ${GRID_L.lineExtensionLayout};
       justify-self: center;
-
-      display: none;
-    }
-
-    .date {
-      grid-area: ${ITEM_L.date};
-
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      font-size: ${FONT_SIZE.xs};
-      word-spacing: calc(0.0625rem / 4);
-    }
-
-    .layout {
-      grid-area: ${ITEM_L.layout};
-
-      display: flex;
-      gap: ${GAP};
-
-      .certificate {
-        flex-grow: 1.5;
-        flex-basis: 0;
-
-        display: flex;
-        aspect-ratio: 16 / 9;
-        border-radius: ${NOT_FONT_SIZE["2xs"]};
-        ${GLASS_SET.content}
-        box-shadow: ${VARS.decorator.shadow[1]};
-        overflow: hidden;
-
-        img {
-          width: 100%;
-          height: 100%;
-          object-fit: contain;
-        }
-      }
-
-      .group {
-        flex-grow: 3;
-        flex-basis: 0;
-
-        display: flex;
-        flex-direction: column;
-        gap: ${GAP};
-
-        .heading {
-          /* min-width: ${HEADING_MIN_WIDTH}; */
-
-          .heading-content {
-            display: flex;
-            flex-direction: column;
-            gap: ${GAP};
-
-            .title {
-              line-height: 1.25;
-            }
-
-            .subtitle {
-              color: ${COLOR.b};
-              font-size: ${FONT_SIZE.xs};
-            }
-          }
-        }
-
-        .links {
-          display: flex;
-          align-items: flex-start;
-        }
-      }
     }
   }
 
   .item-gap {
-    height: ${ITEM_GAP};
+    height: calc(var(--gap) * 3);
     padding-left: ${cp.itemGap.paddingLeft};
 
     .gap-line {
@@ -208,62 +190,53 @@ export const Component = styled.li`
   }
 
   .line {
-    width: ${LINE_WIDTH};
+    width: var(--line-thickness);
     background-color: ${COLOR.gs_6};
     transition: background-color ${TIME.s} ease-out;
   }
 
-  @media (max-width: 65.625rem) {
+  @media (max-width: 40.5rem) {
     .item {
       grid-template:
-        "${ITEM_L.pointer}  ${ITEM_L.date}" auto
-        "${ITEM_L.line}     ${ITEM_L.layout}" auto /
+        "${GRID_L.bullet}               ${GRID_L.aboutTime}" auto
+        "${GRID_L.lineExtensionLayout}  ${GRID_L.header}" auto
+        "${GRID_L.lineExtensionLayout}  ${GRID_L.links}" auto /
         auto 1fr;
 
-      .extension-line {
-        display: initial;
+      header {
+        margin: var(--gap) 0;
       }
 
-      .date {
+      .links {
+        margin: 0;
+      }
+
+      .about-time {
         justify-self: flex-start;
-      }
 
-      .layout {
-        margin-top: calc(${GAP} - ((2.625rem - ${FONT_SIZE.xs}) / 2));
-
-        .certificate {
-          flex-grow: 2;
-        }
+        align-items: flex-start;
       }
     }
 
     .item-gap {
-      padding-left: ${cp.MEDIA_74.itemGap.paddingLeft};
-    }
-  }
-
-  @media (max-width: 32.8125rem) {
-    .item {
-      .layout {
-        flex-direction: column;
-
-        .certificate {
-          flex-grow: 1;
-          flex-basis: initial;
-
-          /*
-            TODO: en cierta medida (para algunos items) se podria mejorar la visual.
-            El "certificate" podria ser igual de largo que el "heading".
-          */
-        }
-      }
+      padding-left: ${cp.MEDIA_405.itemGap.paddingLeft};
     }
   }
 
   body[data-dark-mode="true"] & {
     .item {
-      .pointer .point-3 {
-        border-color: ${COLOR.gs_10};
+      .about-time {
+        .end-date {
+          color: ${COLOR.b_l2};
+        }
+
+        .duration {
+          color: ${COLOR.gs_6};
+        }
+      }
+
+      .bullet .point-3 {
+        border-color: ${COLOR.gs_9};
       }
     }
 

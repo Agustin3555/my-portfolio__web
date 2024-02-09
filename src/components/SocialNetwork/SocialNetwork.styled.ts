@@ -4,7 +4,7 @@ import { COLOR, TIME, TIMING_FUNC } from "@/styles";
 export const Component = styled.a`
   text-decoration: none;
 
-  /* TODO: no se aplica el translate */
+  /* TODO: no se aplica el translate en todas las partes */
   transition:
     color ${TIME.s} ease-out,
     translate ${TIME.m} ${TIMING_FUNC.a};

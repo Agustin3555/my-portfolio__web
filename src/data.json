@@ -41,7 +41,7 @@
         "title": "Otras páginas"
       }
     },
-    "copyright": "© 2023 Juan Agustín Lovera. Todos los derechos reservados."
+    "copyright": "© 2024 Juan Agustín Lovera. Todos los derechos reservados."
   },
   "pages": {
     "home": {
@@ -345,8 +345,14 @@
               {
                 "title": "Tecnicatura Universitaria en Programación",
                 "institutionName": "Universidad Tecnológica Nacional FRRe",
-                "duration": "2 años y medio",
-                "endDate": "2023-12-06",
+                "endDate": {
+                  "machine": "2023-12",
+                  "human": "Diciembre 2023"
+                },
+                "duration": {
+                  "machine": "P2Y6M",
+                  "human": "2 años y medio"
+                },
                 "moreInfoUrl": "https://www.frre.utn.edu.ar/tsp/paginas/view/item/Incumbencias",
                 "logo": {
                   "title": "Logo Universidad Tecnológica Nacional",
@@ -356,8 +362,14 @@
               {
                 "title": "Curso de Desarrollo Web",
                 "institutionName": "Informatorio",
-                "duration": "2 meses",
-                "endDate": "2021-03-27",
+                "endDate": {
+                  "machine": "2021-03",
+                  "human": "Marzo 2021"
+                },
+                "duration": {
+                  "machine": "P2M",
+                  "human": "2 meses"
+                },
                 "moreInfoUrl": "https://empleo.chaco.gob.ar/capacitaciones/Programaci%C3%B3n-y-Desarrollo-Web",
                 "logo": {
                   "title": "Logo Informatorio",
@@ -367,8 +379,14 @@
               {
                 "title": "Curso de Introducción a la Programación",
                 "institutionName": "Informatorio",
-                "duration": "1 mes",
-                "endDate": "2020-08-31",
+                "endDate": {
+                  "machine": "2020-08",
+                  "human": "Agosto 2020"
+                },
+                "duration": {
+                  "machine": "P1M",
+                  "human": "1 mes"
+                },
                 "moreInfoUrl": "https://empleo.chaco.gob.ar/capacitaciones/Introducci%C3%B3n-a-la-Programaci%C3%B3n",
                 "logo": {
                   "title": "Logo de Informatorio",

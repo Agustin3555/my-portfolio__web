@@ -3,13 +3,18 @@ import * as EducationItemStyled from "./EducationItem.styled";
 import { Image } from "astro:assets";
 import GlassPanel from "@/layouts/GlassPanel/GlassPanel.astro";
 import ExternalLink from "@/components/ExternalLink/ExternalLink.astro";
-import { NOT_FONT_SIZE } from "@/styles";
+import { NOT_FONT_SIZE, VARS } from "@/styles";
+
+interface DateData {
+  machine: string;
+  human: string;
+}
 
 interface Props {
   title: string;
   institutionName: string;
-  duration: string;
-  endDate: string;
+  endDate: DateData;
+  duration: DateData;
   moreInfoUrl: string;
   logo: {
     img: ImageMetadata;
@@ -23,23 +28,47 @@ interface Props {
 const {
   title,
   institutionName,
-  duration,
   endDate,
+  duration,
   moreInfoUrl,
   logo,
   firstItem = false,
   lastItem = false,
 } = Astro.props;
-
-const formattedDate = new Date(`${endDate}T00:00`)
-  .toLocaleDateString()
-  .replace(/\//g, " · ");
 ---
 
-<!-- TODO: semantica HTML -->
 <EducationItemStyled.Component>
-  <div class="item">
-    <div class="pointer">
+  <article class="item">
+    <header>
+      <GlassPanel
+        style={{
+          padding: VARS.size.gold,
+          borderRadius: NOT_FONT_SIZE["2xs"],
+        }}
+        handlingClass={["heading"]}
+      >
+        <div class="header-content" aria-labelledby="education-title">
+          <h3 id="education-title" class="text">{title}</h3>
+          <p class="institution-name text">{institutionName}</p>
+        </div>
+      </GlassPanel>
+    </header>
+    <div class="about-time">
+      <time class="end-date text" datetime={endDate.machine}
+        >{endDate.human}</time
+      >
+      <time class="duration text" datetime={duration.machine}
+        >{duration.human}</time
+      >
+    </div>
+    <div class="links">
+      <ExternalLink
+        url={moreInfoUrl}
+        text="Más información"
+        iconName="fa-solid fa-square-arrow-up-right"
+      />
+    </div>
+    <span class="bullet">
       {!firstItem && <div class="pointer-line line top" />}
       <div class="point-3">
         <GlassPanel
@@ -53,36 +82,9 @@ const formattedDate = new Date(`${endDate}T00:00`)
         </GlassPanel>
       </div>
       <div class="pointer-line line bot"></div>
-    </div>
-    <div class="extension-line line"></div>
-    <span class="date">{formattedDate}</span>
-    <div class="layout">
-      <div class="certificate background-pictures">
-        <Image src={logo.img} title={logo.title} alt={logo.alt} />
-      </div>
-      <div class="group">
-        <GlassPanel
-          style={{
-            padding: NOT_FONT_SIZE.s,
-            borderRadius: NOT_FONT_SIZE["2xs"],
-          }}
-          handlingClass={["heading"]}
-        >
-          <div class="heading-content">
-            <h3 class="title">{title}</h3>
-            <p class="subtitle text">{institutionName}</p>
-          </div>
-        </GlassPanel>
-        <div class="links">
-          <ExternalLink
-            url={moreInfoUrl}
-            text="Más información"
-            iconName="fa-solid fa-square-arrow-up-right"
-          />
-        </div>
-      </div>
-    </div>
-  </div>
+    </span>
+    <span class="line-extension-layout line"></span>
+  </article>
   {
     !lastItem && (
       <div class="item-gap">

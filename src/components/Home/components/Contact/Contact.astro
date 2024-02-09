@@ -3,7 +3,7 @@ import Section from "@/layouts/Section/Section.astro";
 import * as ContactStyled from "./Contact.styled";
 import Icon from "@/components/Icon/Icon.astro";
 import ContactLink from "@/components/ContactLink/ContactLink.astro";
-import { FONT_SIZE } from "@/styles";
+import { VARS } from "@/styles";
 import { highlightToHTMLTag } from "@/tools";
 import jsonData from "@/data.json";
 
@@ -15,26 +15,25 @@ const { title } = contact;
 const { desc, email } = contact.data;
 ---
 
-<!-- TODO: semantica HTML -->
 <Section sectionKey={sectionKey} title={title}>
   <ContactStyled.Component>
     <p class="text" set:html={highlightToHTMLTag(desc)} />
-    <div class="bar">
-      <span>{email}</span>
+    <div class="email-bar">
+      <p class="email">{email}</p>
       <div class="controls">
-        <button id="buttonCopyEmail" title="Copiar">
+        <button id="button-copy-email" title="Copiar">
           <Icon
             iconName="fa-solid fa-copy"
-            style={{ size: FONT_SIZE.m }}
+            style={{ size: VARS.component.button.s.iconSize }}
             handlingClass={["copy"]}
           />
           <Icon
             iconName="fa-solid fa-check"
-            style={{ size: FONT_SIZE.m }}
+            style={{ size: VARS.component.button.s.iconSize }}
             handlingClass={["check"]}
           />
         </button>
-        <ContactLink href={`mailto:${email}`} />
+        <ContactLink emailSender />
       </div>
     </div>
   </ContactStyled.Component>
@@ -46,7 +45,7 @@ const { desc, email } = contact.data;
 
   const { email } = jsonData.pages.home.sections.contact.data;
 
-  const buttonCopyEmail = window.buttonCopyEmail as
+  const buttonCopyEmail = window["button-copy-email"] as
     | HTMLButtonElement
     | undefined;
 

@@ -1,12 +1,5 @@
 import styled from "@emotion/styled";
-import {
-  COLOR,
-  FONT_SIZE,
-  TIME,
-  NOT_FONT_SIZE,
-  VARS,
-  TIMING_FUNC,
-} from "@/styles";
+import { COLOR, TIME, NOT_FONT_SIZE, VARS, TIMING_FUNC } from "@/styles";
 
 export const Component = styled.div`
   display: flex;
@@ -14,23 +7,23 @@ export const Component = styled.div`
   align-items: center;
   gap: ${NOT_FONT_SIZE["2xl"]};
 
-  .bar {
-    --padding-gap: ${NOT_FONT_SIZE["3xs"]};
-    --padding-gap-compensated: calc(
-      (
-          (${VARS.component.button.s.padding} * 2 + ${FONT_SIZE.m}) -
-            ${VARS.global.fontSize}
-        ) / 2 + var(--padding-gap)
+  .email-bar {
+    --button-size: calc(
+      ${VARS.component.button.s.padding} * 2 +
+        ${VARS.component.button.s.iconSize}
+    );
+    --gap: ${NOT_FONT_SIZE["3xs"]};
+    --gap-compensated: calc(
+      (var(--button-size) - ${VARS.global.fontSize}) / 2 + var(--gap)
     );
 
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
-    gap: calc(var(--padding-gap-compensated) * 2);
-    padding: var(--padding-gap);
-    padding-left: var(--padding-gap-compensated);
-    border-radius: calc(
-      ${VARS.component.button.s.borderRadius} + var(--padding-gap)
-    );
+    gap: calc(var(--gap-compensated) * 1.25);
+    padding: var(--gap);
+    padding-left: var(--gap-compensated);
+    border-radius: calc(${VARS.component.button.s.borderRadius} + var(--gap));
 
     color: ${COLOR.gs_1};
     background-color: ${COLOR.gs_14};
@@ -38,14 +31,13 @@ export const Component = styled.div`
 
     transition: background-color ${TIME.s} ease-out;
 
-    /* TODO: responsive */
-    /* width: 250px; */
-
-    span {
+    .email {
       flex-grow: 1;
+      flex-basis: 0;
+
+      line-height: initial;
 
       font-weight: 500;
-      line-height: initial;
       white-space: nowrap;
       text-overflow: ellipsis;
       overflow: hidden;
@@ -53,21 +45,20 @@ export const Component = styled.div`
 
     .controls {
       display: flex;
-      gap: var(--padding-gap);
+      gap: var(--gap);
 
-      button {
-        --size: calc(${VARS.component.button.s.padding} * 2 + ${FONT_SIZE.m});
-
+      #button-copy-email {
         position: relative;
         display: flex;
         align-items: center;
         justify-content: center;
-        width: var(--size);
-        height: var(--size);
-        border-radius: ${VARS.component.button.s.borderRadius};
+        width: var(--button-size);
+        height: var(--button-size);
 
         color: ${COLOR.gs_14};
+        border-radius: ${VARS.component.button.s.borderRadius};
         background-color: ${COLOR.gs_1};
+        box-shadow: ${VARS.decorator.bevelHighlight};
 
         transition:
           background-color ${TIME.s} ease-out,
@@ -75,7 +66,8 @@ export const Component = styled.div`
           translate ${TIME.m} ${TIMING_FUNC.a};
 
         :hover {
-          box-shadow: ${VARS.decorator.shadow[1]};
+          box-shadow: ${VARS.decorator.shadow[0]},
+            ${VARS.decorator.bevelHighlight};
           translate: 0 -0.0625rem;
         }
 
@@ -115,11 +107,11 @@ export const Component = styled.div`
   }
 
   body[data-dark-mode="true"] & {
-    .bar {
+    .email-bar {
       color: ${COLOR.gs_14};
       background-color: ${COLOR.gs_4};
 
-      .controls button {
+      .controls #button-copy-email {
         color: ${COLOR.gs_4};
         background-color: ${COLOR.gs_14};
       }
