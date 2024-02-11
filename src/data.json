@@ -353,11 +353,16 @@
                   "machine": "P2Y6M",
                   "human": "2 años y medio"
                 },
-                "moreInfoUrl": "https://www.frre.utn.edu.ar/tsp/paginas/view/item/Incumbencias",
+                "moreInfoLink": {
+                  "url": "https://www.frre.utn.edu.ar/tsp/paginas/view/item/Incumbencias",
+                  "text": "Sobre la tecnicatura",
+                  "title": "Mas información sobre la Tecnicatura Universitaria en Programación"
+                },
                 "logo": {
                   "title": "Logo Universidad Tecnológica Nacional",
                   "alt": "Logo de la Universidad Tecnológica Nacional, Argentina"
-                }
+                },
+                "faIcon": "fa-solid fa-star"
               },
               {
                 "title": "Curso de Desarrollo Web",
@@ -370,11 +375,16 @@
                   "machine": "P2M",
                   "human": "2 meses"
                 },
-                "moreInfoUrl": "https://empleo.chaco.gob.ar/capacitaciones/Programaci%C3%B3n-y-Desarrollo-Web",
+                "moreInfoLink": {
+                  "url": "https://empleo.chaco.gob.ar/capacitaciones/Programaci%C3%B3n-y-Desarrollo-Web",
+                  "text": "Sobre el curso",
+                  "title": "Mas información sobre el Curso de Desarrollo Web"
+                },
                 "logo": {
                   "title": "Logo Informatorio",
                   "alt": "Logo del programa Informatorio, Argentina, Chaco"
-                }
+                },
+                "faIcon": "fa-solid fa-laptop-code"
               },
               {
                 "title": "Curso de Introducción a la Programación",
@@ -387,11 +397,16 @@
                   "machine": "P1M",
                   "human": "1 mes"
                 },
-                "moreInfoUrl": "https://empleo.chaco.gob.ar/capacitaciones/Introducci%C3%B3n-a-la-Programaci%C3%B3n",
+                "moreInfoLink": {
+                  "url": "https://empleo.chaco.gob.ar/capacitaciones/Introducci%C3%B3n-a-la-Programaci%C3%B3n",
+                  "text": "Sobre el curso",
+                  "title": "Mas información sobre el Curso de Introducción a la Programación"
+                },
                 "logo": {
                   "title": "Logo de Informatorio",
                   "alt": "Logo del programa Informatorio, Argentina, Chaco"
-                }
+                },
+                "faIcon": "fa-solid fa-shapes"
               }
             ]
           }

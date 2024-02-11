@@ -4,6 +4,7 @@ import { Image } from "astro:assets";
 import GlassPanel from "@/layouts/GlassPanel/GlassPanel.astro";
 import ExternalLink from "@/components/ExternalLink/ExternalLink.astro";
 import { NOT_FONT_SIZE, VARS } from "@/styles";
+import Icon from "@/components/Icon/Icon.astro";
 
 interface DateData {
   machine: string;
@@ -15,12 +16,17 @@ interface Props {
   institutionName: string;
   endDate: DateData;
   duration: DateData;
-  moreInfoUrl: string;
+  moreInfoLink: {
+    url: string;
+    text: string;
+    title: string;
+  };
   logo: {
     img: ImageMetadata;
     title: string;
     alt: string;
   };
+  faIcon: string;
   firstItem?: boolean;
   lastItem?: boolean;
 }
@@ -30,14 +36,18 @@ const {
   institutionName,
   endDate,
   duration,
-  moreInfoUrl,
+  moreInfoLink,
   logo,
+  faIcon,
   firstItem = false,
   lastItem = false,
 } = Astro.props;
 ---
 
-<EducationItemStyled.Component>
+<EducationItemStyled.Component
+  data-first-item={firstItem}
+  data-last-item={lastItem}
+>
   <article class="item">
     <header>
       <GlassPanel
@@ -61,35 +71,23 @@ const {
         >{duration.human}</time
       >
     </div>
-    <div class="links">
-      <ExternalLink
-        url={moreInfoUrl}
-        text="Más información"
-        iconName="fa-solid fa-square-arrow-up-right"
-      />
-    </div>
+    <ul class="links">
+      <li>
+        <ExternalLink
+          {...moreInfoLink}
+          iconName="fa-solid fa-square-arrow-up-right"
+        />
+      </li>
+    </ul>
     <span class="bullet">
-      {!firstItem && <div class="pointer-line line top" />}
-      <div class="point-3">
-        <GlassPanel
-          style={{
-            padding: EducationItemStyled.POINT_2_PADDING,
-            borderRadius: NOT_FONT_SIZE["6xl"],
-          }}
-          handlingClass={["glass-point"]}
-        >
-          <div class="point-1"></div>
-        </GlassPanel>
-      </div>
-      <div class="pointer-line line bot"></div>
+      <span class="line"></span>
+      <span class="encapsulator"></span>
+      <span class="line"></span>
+      <Icon iconName={faIcon} handlingClass={["icon"]} />
     </span>
     <span class="line-extension-layout line"></span>
   </article>
-  {
-    !lastItem && (
-      <div class="item-gap">
-        <div class="gap-line line" />
-      </div>
-    )
-  }
+  <span class="item-gap">
+    <span class="line"></span>
+  </span>
 </EducationItemStyled.Component>

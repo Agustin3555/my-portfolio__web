@@ -1,63 +1,5 @@
 import styled from "@emotion/styled";
-import {
-  COLOR,
-  FONT_SIZE,
-  TIME,
-  NOT_FONT_SIZE,
-  type Value,
-  VARS,
-} from "@/styles";
-
-const POINT_3_PADDING = `calc(${NOT_FONT_SIZE["2xs"]} - ${NOT_FONT_SIZE["6xs"]})`;
-export const POINT_2_PADDING = NOT_FONT_SIZE["3xs"];
-const POINT_1_SIZE = NOT_FONT_SIZE["2xs"];
-
-interface ConstProvider {
-  item: {
-    pointer: {
-      pointerLine: {
-        left: Value;
-        height: Value;
-      };
-    };
-  };
-
-  itemGap: {
-    paddingLeft: Value;
-  };
-
-  MEDIA_405: {
-    itemGap: {
-      paddingLeft: Value;
-    };
-  };
-}
-
-const pointRadius = `calc(${POINT_3_PADDING} + ${POINT_2_PADDING} + ${POINT_1_SIZE} * 0.5)`;
-const halfLineWidth = `calc(var(--line-thickness) * 0.5)`;
-
-const cp: ConstProvider = {
-  item: {
-    pointer: {
-      pointerLine: {
-        left: `calc(50% - ${halfLineWidth})`,
-        height: `calc(50% - ${pointRadius})`,
-      },
-    },
-  },
-
-  itemGap: {
-    paddingLeft: `calc(var(--time-width) + var(--gap) + ${pointRadius} + ${halfLineWidth})`,
-  },
-
-  MEDIA_405: {
-    itemGap: {
-      paddingLeft: `calc(${pointRadius} + ${halfLineWidth})`,
-    },
-  },
-};
-
-// TODO: Eliminar todo lo anterior
+import { COLOR, FONT_SIZE, TIME, NOT_FONT_SIZE, VARS } from "@/styles";
 
 enum GRID_L {
   header = "header",
@@ -70,7 +12,9 @@ enum GRID_L {
 export const Component = styled.li`
   --gap: ${VARS.size.gold};
   --time-width: 7rem;
+  --encapsulator-size: 2.125rem;
   --line-thickness: ${NOT_FONT_SIZE["6xs"]};
+  --compensation-to-align: 0.0625rem / 2;
 
   display: flex;
   flex-direction: column;
@@ -137,40 +81,37 @@ export const Component = styled.li`
 
       position: relative;
       display: flex;
-      justify-items: center;
+      flex-direction: column;
       align-items: center;
+      justify-content: center;
 
-      .point-3 {
-        padding: ${POINT_3_PADDING};
+      color: ${COLOR.b_d2};
+
+      .line {
+        flex-grow: 1;
+      }
+
+      .encapsulator {
+        width: var(--encapsulator-size);
+        height: var(--encapsulator-size);
         border-width: var(--line-thickness);
 
         border-style: dashed;
         border-radius: ${NOT_FONT_SIZE["6xl"]};
-        border-color: ${COLOR.gs_8};
+        border-color: ${COLOR.gs_10};
+        animation: spin 16.18s linear infinite;
 
         transition: border-color ${TIME.s} ease-out;
 
-        .point-1 {
-          width: ${POINT_1_SIZE};
-          height: ${POINT_1_SIZE};
-
-          border-radius: ${NOT_FONT_SIZE["6xl"]};
-          background-color: ${COLOR.b};
+        @keyframes spin {
+          to {
+            rotate: 360deg;
+          }
         }
       }
 
-      .pointer-line {
+      .icon {
         position: absolute;
-        left: ${cp.item.pointer.pointerLine.left};
-        height: ${cp.item.pointer.pointerLine.height};
-      }
-
-      .top {
-        top: 0;
-      }
-
-      .bot {
-        bottom: 0;
       }
     }
 
@@ -182,20 +123,27 @@ export const Component = styled.li`
 
   .item-gap {
     height: calc(var(--gap) * 3);
-    padding-left: ${cp.itemGap.paddingLeft};
 
-    .gap-line {
+    .line {
+      display: block;
+      margin-left: calc(
+        var(--time-width) + var(--gap) + var(--encapsulator-size) / 2 - var(
+            --compensation-to-align
+          )
+      );
       height: 100%;
     }
   }
 
   .line {
     width: var(--line-thickness);
+
     background-color: ${COLOR.gs_6};
+
     transition: background-color ${TIME.s} ease-out;
   }
 
-  @media (max-width: 40.5rem) {
+  @media (max-width: 40.8125rem) {
     .item {
       grid-template:
         "${GRID_L.bullet}               ${GRID_L.aboutTime}" auto
@@ -218,8 +166,10 @@ export const Component = styled.li`
       }
     }
 
-    .item-gap {
-      padding-left: ${cp.MEDIA_405.itemGap.paddingLeft};
+    .item-gap .line {
+      margin-left: calc(
+        var(--encapsulator-size) / 2 - var(--compensation-to-align)
+      );
     }
   }
 
@@ -235,13 +185,29 @@ export const Component = styled.li`
         }
       }
 
-      .bullet .point-3 {
-        border-color: ${COLOR.gs_9};
+      .bullet {
+        color: ${COLOR.b_l2};
+
+        .encapsulator {
+          border-color: ${COLOR.gs_8};
+        }
       }
     }
 
     .line {
       background-color: ${COLOR.gs_10};
+    }
+  }
+
+  &[data-first-item="true"] {
+    .item .bullet > *.line:nth-of-type(1) {
+      opacity: 0;
+    }
+  }
+
+  &[data-last-item="true"] {
+    .item-gap {
+      display: none;
     }
   }
 `;
