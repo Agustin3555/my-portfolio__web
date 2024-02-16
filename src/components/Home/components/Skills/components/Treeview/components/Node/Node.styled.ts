@@ -81,15 +81,6 @@ export const Component = styled.div`
       opacity: 1;
     }
 
-    .separator {
-      width: ${NOT_FONT_SIZE["6xs"]};
-      height: ${NOT_FONT_SIZE["2xs"]};
-      border-radius: ${NOT_FONT_SIZE["6xl"]};
-      background-color: ${COLOR.gs_10};
-
-      transition: background-color ${TIME.s} ease-out;
-    }
-
     .names {
       display: flex;
       align-items: center;
@@ -160,16 +151,6 @@ export const Component = styled.div`
             ${NOT_FONT_SIZE["2xs"]} - ${NOT_FONT_SIZE["3xs"]}
           );
           background-color: ${COLOR.b};
-        }
-
-        .separators {
-          position: absolute;
-          right: 0.0625rem;
-          display: flex;
-          align-items: center;
-          justify-content: space-evenly;
-          width: 100%;
-          height: 100%;
         }
       }
     }
@@ -268,10 +249,6 @@ export const Component = styled.div`
         .names {
           color: ${COLOR.gs_0};
         }
-      }
-
-      .separator {
-        background-color: ${COLOR.gs_6};
       }
 
       .graphics {

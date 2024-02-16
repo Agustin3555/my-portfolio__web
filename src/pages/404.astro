@@ -1,26 +1,11 @@
 ---
 import Page from "@/layouts/Page/Page.astro";
-import * as NotFoundStyled from "@/components/NotFound/NotFound.styled";
+import BasicHeader from "@/layouts/BasicHeader/BasicHeader.astro";
 import jsonData from "@/data.json";
 
 const { pageTitle, data } = jsonData.pages.notFound;
-const { desc } = data;
 ---
 
-<!-- TODO: semantica HTML -->
 <Page title={pageTitle}>
-  <NotFoundStyled.Component>
-    <h1 class="title">
-      {desc[0]}
-      <span>,</span>
-    </h1>
-    <h2 class="subtitle">
-      {desc[1]}
-      <span>.</span>
-    </h2>
-    <div class="paragraphs">
-      <p class="text">{desc[2]}</p>
-      <p class="text">{desc[3]}</p>
-    </div>
-  </NotFoundStyled.Component>
+  <BasicHeader {...data} />
 </Page>

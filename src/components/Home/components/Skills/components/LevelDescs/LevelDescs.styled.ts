@@ -130,4 +130,8 @@ export const Component = styled.fieldset`
       background-color: ${COLOR.gs_4};
     }
   }
+
+  @media (max-width: 51.0625rem) {
+    order: -1;
+  }
 `;

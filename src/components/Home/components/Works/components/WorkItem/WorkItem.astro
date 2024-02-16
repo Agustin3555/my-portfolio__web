@@ -63,7 +63,6 @@ if (links) {
 }
 ---
 
-<!-- TODO: semantica HTML -->
 <WorkItemStyled.Component>
   <Slider
     client:load
@@ -73,44 +72,50 @@ if (links) {
   >
     {imgs.map((item) => <Image {...item} />)}
   </Slider>
-  <GlassPanel
-    style={{
-      padding: NOT_FONT_SIZE.s,
-      borderRadius: NOT_FONT_SIZE["2xs"],
-    }}
-    handlingClass={["header-glass"]}
-  >
-    <div class="header">
-      <h3 class="title">{title}</h3>
-      <ul class="types">
-        {
-          types.map((item, index) => (
-            <li class="item-C">
-              <p class="item">{item}</p>
-              {index !== types.length - 1 && (
-                <Separator
-                  style={{
-                    long: NOT_FONT_SIZE["2xs"],
-                    backgroundColor: { dark: COLOR.gs_10 },
-                  }}
-                />
-              )}
-            </li>
-          ))
-        }
-      </ul>
-    </div>
-  </GlassPanel>
-  <p set:html={highlightToHTMLTag(desc)} class="desc text" />
-  <ul class="used-techs">
+  <header>
+    <GlassPanel
+      style={{
+        padding: NOT_FONT_SIZE.s,
+        borderRadius: NOT_FONT_SIZE["2xs"],
+      }}
+    >
+      <div class="header-content">
+        <h3 class="text">{title}</h3>
+        <ul class="types">
+          {
+            types.map((item, index) => (
+              <>
+                <li>
+                  <p class="text">{item}</p>
+                </li>
+                {index !== types.length - 1 && (
+                  <Separator
+                    style={{
+                      invert: true,
+                      long: NOT_FONT_SIZE["2xs"],
+                      backgroundColor: { dark: COLOR.gs_10 },
+                    }}
+                  />
+                )}
+              </>
+            ))
+          }
+        </ul>
+      </div>
+    </GlassPanel>
+  </header>
+  <ul class="techs">
     {
       technologies.map((item) => (
-        <li class="item">
-          {item} <span>1.0.0</span>
+        <li>
+          <p>
+            {item} <small>1.0.0</small>
+          </p>
         </li>
       ))
     }
   </ul>
+  <p set:html={highlightToHTMLTag(desc)} class="desc text" />
   <ul class="links">
     {
       externalLinks.map((item) => (

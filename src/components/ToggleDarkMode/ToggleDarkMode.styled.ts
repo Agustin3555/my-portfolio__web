@@ -60,7 +60,7 @@ export const Component = styled.button`
   height: ${cp.height};
   padding: ${cp.padding};
   border: none;
-  border-radius: ${NOT_FONT_SIZE["6xl"]};
+  border-radius: 100%;
   background-color: ${cp.backgroundColor};
   cursor: pointer;
   overflow: hidden;
@@ -78,7 +78,7 @@ export const Component = styled.button`
     position: relative;
     width: ${cp.fakeButton.width};
     height: ${cp.fakeButton.height};
-    border-radius: ${NOT_FONT_SIZE["6xl"]};
+    border-radius: 100%;
     background-color: ${cp.fakeButton.backgroundColor};
     transition:
       background-color ${TIME.s} ease-out,

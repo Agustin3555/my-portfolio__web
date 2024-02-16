@@ -1,4 +1,5 @@
 ---
+import * as WorkStyled from "./Work.styled";
 import Section from "@/layouts/Section/Section.astro";
 import WorkItem from "./components/WorkItem/WorkItem.astro";
 import jsonData from "@/data.json";
@@ -19,21 +20,22 @@ const srcImgs = [
 ];
 ---
 
-<!-- TODO: semantica HTML -->
 <Section sectionKey={sectionKey} title={title}>
-  {
-    works.map((work, i) => {
-      const { imgs, ...remainingWork } = work;
+  <WorkStyled.Component>
+    {
+      works.map((work, i) => {
+        const { imgs, ...remainingWork } = work;
 
-      return (
-        <WorkItem
-          {...remainingWork}
-          imgs={imgs.map((img, j) => ({
-            src: srcImgs[i][j],
-            alt: img.alt,
-          }))}
-        />
-      );
-    })
-  }
+        return (
+          <WorkItem
+            {...remainingWork}
+            imgs={imgs.map((img, j) => ({
+              src: srcImgs[i][j],
+              alt: img.alt,
+            }))}
+          />
+        );
+      })
+    }
+  </WorkStyled.Component>
 </Section>

@@ -10,6 +10,7 @@ interface Props {
 const { style, handlingClass = [] } = Astro.props;
 ---
 
+<!-- TODO: tener la posibilidad de cambiar de hr a span -->
 <SeparatorStyled.Component
   p={SeparatorStyled.adapter(style)}
   className={asClassName(...handlingClass)}

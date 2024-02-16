@@ -151,11 +151,11 @@ const Slider = ({
             />
           </GlassButton>
           <div className="indicators">
-            {Array.from({ length: picturesLength }, (_, i) => (
+            {Array.from({ length: picturesLength }, (_, index) => (
               <div
                 className="item"
-                key={i}
-                data-activated={i === currentIndex}
+                key={index}
+                data-activated={index === currentIndex}
               />
             ))}
           </div>

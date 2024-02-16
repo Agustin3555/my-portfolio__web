@@ -1,7 +1,7 @@
 ---
 import * as NodeStyled from "./Node.styled";
 import Separator from "@/components/Separator/Separator.astro";
-import { COLOR, NOT_FONT_SIZE } from "@/styles";
+import { COLOR, FONT_SIZE } from "@/styles";
 import { asClassName } from "@/tools";
 
 interface DataNode {
@@ -32,7 +32,15 @@ const { names, icons, skillLevel, technologies } = dataNode;
         names.map((name, index) => (
           <>
             <div class="name">{name}</div>
-            {index !== names.length - 1 && <div class="separator" />}
+            {index !== names.length - 1 && (
+              <Separator
+                style={{
+                  invert: true,
+                  long: FONT_SIZE.xs,
+                  backgroundColor: { dark: COLOR.gs_10 },
+                }}
+              />
+            )}
           </>
         ))
       }
@@ -50,26 +58,20 @@ const { names, icons, skillLevel, technologies } = dataNode;
                 src={`/skills/${icon.fileName}`}
                 alt={`Logo de ${names[index]}`}
               />
-              {index !== names.length - 1 && <div class="separator" />}
+              {index !== names.length - 1 && (
+                <Separator
+                  style={{
+                    invert: true,
+                    long: FONT_SIZE.xs,
+                    backgroundColor: { dark: COLOR.gs_10 },
+                  }}
+                />
+              )}
             </>
           ))
         }
       </div>
       <div class="level-bar">
-        <div class="separators">
-          {
-            Array(2)
-              .fill(undefined)
-              .map(() => (
-                <Separator
-                  style={{
-                    long: NOT_FONT_SIZE["2xs"],
-                    backgroundColor: { dark: COLOR.gs_10 },
-                  }}
-                />
-              ))
-          }
-        </div>
         <div class="bar" style={{ width: `${((skillLevel + 1) / 3) * 100}%` }}>
         </div>
       </div>

@@ -103,7 +103,16 @@ body {
 
 h1,
 h1 > * {
+  display: block;
   font-size: var(--palette-size-font-2xl);
+  line-height: 1.25;
+
+  strong {
+    margin-top: calc(var(--size-gold) / 2);
+    font-size: var(--palette-size-font-l);
+
+    color: var(--palette-color-b);
+  }
 }
 
 h2,
@@ -205,4 +214,11 @@ button {
 
     box-shadow: var(--decorator-bevel-highlight);
   }
+}
+
+.cv {
+  width: 100%;
+  height: 1174px;
+  border-radius: var(--palette-size-not-font-xs);
+  box-shadow: var(--decorator-shadow-1), var(--decorator-bevel-highlight);
 }

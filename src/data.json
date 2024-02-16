@@ -41,7 +41,7 @@
         "title": "Otras páginas"
       }
     },
-    "copyright": "© 2024 Juan Agustín Lovera. Todos los derechos reservados."
+    "copyright": "© 2024 Juan Agustín Lovera."
   },
   "pages": {
     "home": {
@@ -94,31 +94,6 @@
                   "Firebase"
                 ],
                 "imgs": [{ "alt": "" }, { "alt": "" }]
-              },
-              {
-                "title": "Sequence",
-                "types": ["Web"],
-                "desc": "...",
-                "technologies": [
-                  "TypeScript",
-                  "Astro",
-                  "React",
-                  "Zustand",
-                  "Emotion"
-                ],
-                "imgs": [{ "alt": "" }, { "alt": "" }],
-                "links": {
-                  "srcCode": {
-                    "url": "https://github.com/Agustin3555",
-                    "host": "GitHub"
-                  },
-                  "others": [
-                    {
-                      "url": "https://www.instagram.com/agustin_lovera2",
-                      "text": "PAGINA 1"
-                    }
-                  ]
-                }
               },
               {
                 "title": "Hydro Saving",
@@ -425,17 +400,21 @@
       "buttonTitle": "Currículum",
       "pageTitle": "Currículum",
       "data": {
-        "desc": ["Mi currículum", "un resumen"]
+        "title": "Currículum",
+        "titleStrong": "Resumen o CV",
+        "desc": [
+          "Normalmente, [personalizo] mi CV según el [puesto] y la [empresa] para destacar cómo puedo contribuir específicamente a sus necesidades. Por lo tanto, el siguiente documento es una [muestra genérica] de mis [habilidades] y [experiencia] 🤓."
+        ]
       }
     },
     "notFound": {
       "pageTitle": "Página no encontrada",
       "data": {
+        "title": "Error 404",
+        "titleStrong": "Página no encontrada",
         "desc": [
-          "Error 404",
-          "página no encontrada",
-          "Creo que no es el programador que buscas.",
-          "El error 404 es un mensaje que se muestra cuando intentas acceder a una página que no existe en un sitio web. Esto puede suceder por varias razones, como una URL incorrecta o una página que ha sido eliminada."
+          "Creo que no es el programador que buscas 🫠.",
+          "El [error 404] ocurre cuando se intenta acceder a una página que no existe en un sitio web. Este problema puede surgir debido a una [URL incorrecta], una [página eliminada] o [problemas de redirección]."
         ]
       }
     }

@@ -1,0 +1,23 @@
+---
+import * as BasicHeaderStyled from "./BasicHeader.styled";
+import { highlightToHTMLTag } from "@/tools";
+
+interface Props {
+  title: string;
+  titleStrong: string;
+  desc: string[];
+}
+
+const { title, titleStrong, desc } = Astro.props;
+---
+
+<BasicHeaderStyled.Component>
+  <h1>
+    {title}
+    <strong>{titleStrong}</strong>
+  </h1>
+  <div class="paragraphs">
+    {desc.map((item) => <p class="text" set:html={highlightToHTMLTag(item)} />)}
+  </div>
+  <slot />
+</BasicHeaderStyled.Component>

@@ -97,7 +97,7 @@ export const Component = styled.li`
         border-width: var(--line-thickness);
 
         border-style: dashed;
-        border-radius: ${NOT_FONT_SIZE["6xl"]};
+        border-radius: 100%;
         border-color: ${COLOR.gs_10};
         animation: spin 16.18s linear infinite;
 

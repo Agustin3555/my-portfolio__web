@@ -1,190 +1,140 @@
-import {
-  COLOR,
-  COLOR_BRIGHT_B,
-  COLOR_DARK_B,
-  FONT,
-  FONT_SIZE,
-  MEDIA,
-  TIME,
-  NOT_FONT_SIZE,
-  type Value,
-} from "@/styles";
 import styled from "@emotion/styled";
+import { COLOR, FONT_SIZE, TIME, VARS } from "@/styles";
 
-const GAP = NOT_FONT_SIZE.s;
-
-interface ConstProvider {
-  headerGlass: {
-    transform: Value;
-    header: {
-      types: {
-        gap: Value;
-        itemC: {
-          gap: Value;
-        };
-      };
-    };
-  };
-  slider: {
-    hover: {
-      headerGlass: {
-        transform: Value;
-      };
-    };
-  };
-
-  title: {
-    color: Value;
-  };
-
-  DARK_MODE: {
-    title: {
-      color: Value;
-    };
-  };
+enum GRID_L {
+  header = "header",
+  slider = "slider",
+  techs = "techs",
+  desc = "desc",
+  links = "links",
 }
 
-const cp: ConstProvider = {
-  headerGlass: {
-    transform: `translate(calc(${GAP} * -1), calc(${GAP} * 2))`,
-    header: {
-      types: {
-        gap: `calc(${GAP} * 0.5)`,
-        itemC: {
-          gap: `calc(${GAP} * 0.5)`,
-        },
-      },
-    },
-  },
-  slider: {
-    hover: {
-      headerGlass: {
-        transform: `translate(calc(${GAP} * -1), 0)`,
-      },
-    },
-  },
+export const Component = styled.li`
+  --gap: ${VARS.size.gold};
 
-  title: {
-    color: COLOR_BRIGHT_B,
-  },
-
-  DARK_MODE: {
-    title: {
-      color: COLOR_DARK_B,
-    },
-  },
-};
-
-export const Component = styled.div`
   display: grid;
 
   grid-template:
-    "header ." auto
-    "slider techs" auto
-    "slider links" 1fr
-    "desc   ." auto /
+    "${GRID_L.header} ." auto
+    "${GRID_L.slider} ${GRID_L.techs}" auto
+    "${GRID_L.slider} ${GRID_L.links}" 1fr
+    "${GRID_L.desc}   ." auto /
     2.5fr 1fr;
 
-  gap: ${GAP};
-  padding-left: ${GAP};
+  /* grid-template:
+    "${GRID_L.header} ${GRID_L.slider}" auto
+    "${GRID_L.techs}  ${GRID_L.slider}" auto
+    "${GRID_L.links}  ${GRID_L.slider}" 1fr
+    "${GRID_L.desc}   ${GRID_L.desc}" auto /
+    10rem 2.5fr; */
 
-  // TODO: esta medida es segun se rompa el texto en el grid
-  @media (max-width: 75rem) {
-    grid-template:
-      "header"
-      "slider"
-      "techs"
-      "desc"
-      "links";
-  }
+  gap: var(--gap);
 
-  @media (max-width: ${MEDIA.xs}) {
-    padding-left: 0;
-  }
+  header {
+    grid-area: ${GRID_L.header};
+    justify-self: flex-start;
+    width: max-content;
 
-  .header-glass {
-    grid-area: header;
-
-    transform: ${cp.headerGlass.transform};
-
-    transition: transform ${TIME.l} ease-in-out;
-
-    .header {
+    .header-content {
       display: flex;
       flex-direction: column;
-      gap: ${FONT_SIZE.s};
+      gap: var(--gap);
 
       .types {
         display: flex;
-        gap: ${cp.headerGlass.header.types.gap};
+        align-items: center;
+        gap: ${VARS.global.fontSize};
 
-        .item-C {
-          display: flex;
-          gap: ${cp.headerGlass.header.types.itemC.gap};
-          align-items: center;
+        li p {
+          font-size: ${FONT_SIZE.xs};
+
+          color: ${COLOR.b};
         }
       }
     }
   }
 
   .slider {
-    grid-area: slider;
-
-    :hover ~ .header-glass {
-      transform: ${cp.slider.hover.headerGlass.transform};
-    }
+    grid-area: ${GRID_L.slider};
   }
 
-  .desc {
-    grid-area: desc;
+  .techs {
+    --techs-gap: calc(var(--gap) / 2);
 
-    text-wrap: pretty;
-  }
-
-  .links {
-    grid-area: links;
+    grid-area: ${GRID_L.techs};
 
     display: flex;
-    align-items: flex-start;
-    gap: ${FONT_SIZE.xs};
-  }
-
-  .used-techs {
-    grid-area: techs;
-
-    display: flex;
-    align-content: flex-start;
     flex-wrap: wrap;
-    gap: ${FONT_SIZE.xs};
+    gap: var(--techs-gap);
 
-    .item {
-      padding: 0.5313rem;
-      font-size: ${FONT_SIZE.xs};
-      color: ${COLOR.b_d2};
+    li {
+      padding: ${VARS.component.button.xs.padding};
+
       background-color: ${COLOR.gs_1};
-      border-radius: ${NOT_FONT_SIZE["3xs"]};
+      border-radius: ${VARS.component.button.xs.borderRadius};
 
       transition: background-color ${TIME.s} ease-out;
 
-      span {
-        margin-left: ${NOT_FONT_SIZE["2xs"]};
-        font-size: ${FONT_SIZE.xs};
-        color: ${COLOR.gs_10};
+      p {
+        font-size: ${VARS.component.button.xs.fontSize};
+
+        color: ${COLOR.b_d2};
+
+        small {
+          margin-left: ${VARS.component.button.xs.fontSize};
+          font-size: ${VARS.component.button.xs.fontSize};
+
+          color: ${COLOR.gs_10};
+        }
       }
     }
   }
 
-  body[data-dark-mode="true"] & {
-    .section__title {
-      color: ${cp.DARK_MODE.title.color};
-    }
+  .desc {
+    grid-area: ${GRID_L.desc};
+  }
 
-    .used-techs .item {
-      color: ${COLOR.b_l2};
+  .links {
+    grid-area: ${GRID_L.links};
+
+    display: flex;
+    align-items: flex-start;
+    gap: calc(var(--gap) / 2);
+  }
+
+  @media (max-width: 75rem) {
+    grid-template:
+      "${GRID_L.header}"
+      "${GRID_L.slider}"
+      "${GRID_L.techs}"
+      "${GRID_L.desc}"
+      "${GRID_L.links}";
+
+    /* TODO: hacer scrolleable */
+    /* .techs {
+      --rows: 2;
+
+      align-items: flex-start;
+      max-height: calc(
+        ${VARS.component.button.xs.height} * var(--rows) + var(--techs-gap) *
+          (var(--rows) - 1)
+      );
+      scrollbar-width: none;
+
+      overflow-y: auto;
+    } */
+  }
+
+  body[data-dark-mode="true"] & {
+    .techs li {
       background-color: ${COLOR.gs_16};
 
-      span {
-        color: ${COLOR.gs_8};
+      p {
+        color: ${COLOR.b_l2};
+
+        small {
+          color: ${COLOR.gs_8};
+        }
       }
     }
   }

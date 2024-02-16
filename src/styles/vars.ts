@@ -1,5 +1,5 @@
 import { css } from "@emotion/react";
-import { COLOR, FONT, NOT_FONT_SIZE, FONT_SIZE } from "./palette";
+import { COLOR, NOT_FONT_SIZE } from "./palette";
 
 export const VARS = {
   color: {
@@ -45,6 +45,12 @@ export const VARS = {
   },
   component: {
     button: {
+      xs: {
+        fontSize: "var(--component-button-xs-font-size)",
+        padding: "var(--component-button-xs-padding)",
+        height: "var(--component-button-xs-height)",
+        borderRadius: "var(--component-button-xs-border-radius)",
+      },
       s: {
         iconSize: "var(--component-button-s-icon-size)",
         padding: "var(--component-button-s-padding)",
