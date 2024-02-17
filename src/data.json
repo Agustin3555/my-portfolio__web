@@ -56,14 +56,25 @@
             ],
             "descSlider": [
               {
-                "img": { "alt": "Fotografía de perfil de Juan Agustín Lovera" },
+                "img": {
+                  "file": "myself-1.webp",
+                  "alt": "Fotografía de perfil de Juan Agustín Lovera"
+                },
                 "desc": "Recién graduado con sólidas bases en la [creación de software]. Durante mi trayectoria universitaria, complementé mis estudios con cursos y [aprendizaje autodidacta], enfocándome en [tecnologías web] y [diseño UI]."
               },
               {
                 "img": {
+                  "file": "myself-2.jpg",
                   "alt": "Logo de Juan Agustín Lovera como profesional en la programación"
                 },
                 "desc": "Emocionado por integrarme a un equipo de desarrollo web y dominar el ámbito profesional. Destaco por [aprender rápidamente], [idear proyectos innovadores] y mi sólido conocimiento en [TypeScript]. Comprometido a potenciar mi inglés para ampliar oportunidades laborales y apasionado por mantenerme al tanto de las [últimas tendencias tecnológicas] que mejoran la eficiencia del desarrollo."
+              },
+              {
+                "img": {
+                  "file": "flat-logo.png",
+                  "alt": "Fotografía de perfil de Juan Agustín Lovera"
+                },
+                "desc": "Recién graduado con sólidas bases en la [creación de software]. Durante mi trayectoria universitaria, complementé mis estudios con cursos y [aprendizaje autodidacta], enfocándome en [tecnologías web] y [diseño UI]."
               }
             ],
             "residence": {
@@ -76,7 +87,7 @@
           "buttonTitle": "Trabajos",
           "title": "Trabajos",
           "data": {
-            "works": [
+            "items": [
               {
                 "title": "Goicoechea Admin",
                 "types": ["Web App", "API", "Data Base"],
@@ -93,15 +104,23 @@
                   "PostgreSQL",
                   "Firebase"
                 ],
-                "imgs": [{ "alt": "" }, { "alt": "" }]
+                "imgs": [
+                  { "file": "ui-example-1.png", "alt": "" },
+                  { "file": "ui-example-2.png", "alt": "" },
+                  { "file": "ui-example-3.png", "alt": "" }
+                ]
               },
               {
                 "title": "Hydro Saving",
                 "types": ["Mobile App"],
                 "desc": "Ayudé en un proyecto de estudiantes de secundaria para promover el cuidado del agua. Desarrollé una [app móvil] que, integrada con un dispositivo conectado a la red domiciliaria, [monitorea] y [almacena] el consumo en [tiempo real].",
                 "technologies": ["TypeScript", "React Native", "Zustand"],
-                "imgs": [{ "alt": "" }, { "alt": "" }],
-                "sliderAspectRatio": [4, 3],
+                "imgs": [
+                  { "file": "ui-example-1.png", "alt": "" },
+                  { "file": "ui-example-2.png", "alt": "" },
+                  { "file": "ui-example-3.png", "alt": "" }
+                ],
+                "sliderAspectRatio": "4 / 3",
                 "links": {
                   "srcCode": {
                     "url": "https://github.com/Agustin3555",
@@ -114,7 +133,11 @@
                 "types": ["Web"],
                 "desc": "Diseñé y desarrollé mi propio portafolio desde cero, aprovechando mis habilidades en diseño y la asistencia de ChatGPT para la elaboración de su descripción. El sitio web refleja mi estilo único y presenta de manera efectiva mi experiencia y habilidades como programador.",
                 "technologies": ["TypeScript", "Astro", "React", "Emotion"],
-                "imgs": [{ "alt": "" }, { "alt": "" }],
+                "imgs": [
+                  { "file": "ui-example-1.png", "alt": "" },
+                  { "file": "ui-example-2.png", "alt": "" },
+                  { "file": "ui-example-3.png", "alt": "" }
+                ],
                 "links": {
                   "srcCode": {
                     "url": "https://github.com/Agustin3555",

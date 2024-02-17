@@ -6,7 +6,8 @@ import GlassPanel from "@/layouts/GlassPanel/GlassPanel.astro";
 import SocialNetwork from "@/components/SocialNetwork/SocialNetwork.astro";
 import ExternalLink from "@/components/ExternalLink/ExternalLink.astro";
 import ContactLink from "@/components/ContactLink/ContactLink.astro";
-import Slider from "../../components/Slider/Slider";
+// import Slider from "../../components/Slider/Slider";
+import NewSlider from "../NewSlider/NewSlider.astro";
 import { NOT_FONT_SIZE } from "@/styles";
 import { highlightToHTMLTag } from "@/tools";
 import jsonData from "@/data.json";
@@ -22,13 +23,9 @@ const sectionKey: keyof typeof sections = "about";
 const { about } = sections;
 const { presentation, descSlider, residence } = about.data;
 
-const imgs = [
-  { src: MySelf, alt: descSlider[0].img.alt },
-  { src: FlatLogo, alt: descSlider[1].img.alt },
-  { src: FlatLogoN, alt: descSlider[1].img.alt },
-];
+const imgs = descSlider.map(({ img }) => ({ ...img }));
 
-const convertedDesc = descSlider.map((item) => highlightToHTMLTag(item.desc));
+const convertedDesc = descSlider.map(({ desc }) => highlightToHTMLTag(desc));
 ---
 
 <!-- TODO: semantica HTML -->
@@ -70,15 +67,13 @@ const convertedDesc = descSlider.map((item) => highlightToHTMLTag(item.desc));
           style={{ borderRadius: NOT_FONT_SIZE.xs }}
           handlingClass={["glass-panel"]}
         />
-        <Slider
-          client:load
-          picturesLength={imgs.length}
-          descContainerId="descContent"
-          style={{ aspectRatio: [1, 1] }}
+        <NewSlider
+          folder="about"
+          imgs={imgs}
+          eager
+          style={{ aspectRatio: "1 / 1" }}
           handlingClass={["slider"]}
-        >
-          {imgs.map((item) => <Image loading="eager" {...item} />)}
-        </Slider>
+        />
       </div>
       <ExternalLink
         text={residence.text}

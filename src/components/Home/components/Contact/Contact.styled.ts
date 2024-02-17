@@ -7,7 +7,7 @@ export const Component = styled.div`
   align-items: center;
   gap: ${NOT_FONT_SIZE["2xl"]};
 
-  .email-bar {
+  address {
     --button-size: calc(
       ${VARS.component.button.s.padding} * 2 +
         ${VARS.component.button.s.iconSize}
@@ -107,7 +107,7 @@ export const Component = styled.div`
   }
 
   body[data-dark-mode="true"] & {
-    .email-bar {
+    address {
       color: ${COLOR.gs_14};
       background-color: ${COLOR.gs_4};
 

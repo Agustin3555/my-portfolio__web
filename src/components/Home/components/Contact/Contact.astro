@@ -18,7 +18,7 @@ const { desc, email } = contact.data;
 <Section sectionKey={sectionKey} title={title}>
   <ContactStyled.Component>
     <p class="text" set:html={highlightToHTMLTag(desc)} />
-    <div class="email-bar">
+    <address>
       <p class="email">{email}</p>
       <div class="controls">
         <button id="button-copy-email" title="Copiar">
@@ -35,7 +35,7 @@ const { desc, email } = contact.data;
         </button>
         <ContactLink emailSender />
       </div>
-    </div>
+    </address>
   </ContactStyled.Component>
 </Section>
 

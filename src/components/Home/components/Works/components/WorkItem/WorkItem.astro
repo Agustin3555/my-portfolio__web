@@ -1,13 +1,12 @@
 ---
 import * as WorkItemStyled from "./WorkItem.styled";
-import { Image } from "astro:assets";
-import Slider from "../../../Slider/Slider";
+import NewSlider from "../../../NewSlider/NewSlider.astro";
 import ExternalLink from "@/components/ExternalLink/ExternalLink.astro";
 import Separator from "@/components/Separator/Separator.astro";
 import GlassPanel from "@/layouts/GlassPanel/GlassPanel.astro";
 import { COLOR, NOT_FONT_SIZE } from "@/styles";
-import { type Props as ExternalLinksProps } from "@/components/ExternalLink/ExternalLink.astro";
 import { highlightToHTMLTag } from "@/tools";
+import { type Props as ExternalLinksProps } from "@/components/ExternalLink/ExternalLink.astro";
 
 interface Props {
   title: string;
@@ -15,10 +14,10 @@ interface Props {
   desc: string;
   technologies: string[];
   imgs: {
-    src: ImageMetadata;
+    file: string;
     alt: string;
   }[];
-  sliderAspectRatio?: number[];
+  sliderAspectRatio?: string;
   links?: {
     srcCode?: {
       url: string;
@@ -64,14 +63,15 @@ if (links) {
 ---
 
 <WorkItemStyled.Component>
-  <Slider
-    client:load
-    picturesLength={imgs.length}
-    style={{ aspectRatio: sliderAspectRatio }}
+  <NewSlider
+    folder="works"
+    imgs={imgs}
+    style={{
+      aspectRatio: sliderAspectRatio,
+      borderRadius: NOT_FONT_SIZE["2xs"],
+    }}
     handlingClass={["slider"]}
-  >
-    {imgs.map((item) => <Image {...item} />)}
-  </Slider>
+  />
   <header>
     <GlassPanel
       style={{

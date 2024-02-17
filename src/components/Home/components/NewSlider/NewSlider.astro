@@ -1,0 +1,129 @@
+---
+import * as NewSliderStyled from "./NewSlider.styled";
+import { Image } from "astro:assets";
+import Icon from "@/components/Icon/Icon.astro";
+import { FONT_SIZE } from "@/styles";
+import { type ImageMetadata } from "astro";
+import { type HandlingClass, asClassName } from "@/tools";
+
+type Folder = "about" | "skills" | "works";
+
+interface Props {
+  folder: Folder;
+  imgs: { file: string; alt: string }[];
+  eager?: boolean;
+  style?: NewSliderStyled.Props;
+  handlingClass?: HandlingClass;
+}
+
+const {
+  folder,
+  imgs,
+  eager = false,
+  style = {},
+  handlingClass = [],
+} = Astro.props;
+
+/*
+  "glob" necesita un literal como parametro, por lo tanto no se puedo
+  refactorizar y usar los template string.
+*/
+const assets: Record<Folder, any> = {
+  about: import.meta.glob<{ default: ImageMetadata }>(
+    "/src/assets/about/*.{jpeg,jpg,png,gif,webp}",
+  ),
+  skills: import.meta.glob<{ default: ImageMetadata }>(
+    "/src/assets/skills/*.{jpeg,jpg,png,gif,webp}",
+  ),
+  works: import.meta.glob<{ default: ImageMetadata }>(
+    "/src/assets/works/*.{jpeg,jpg,png,gif,webp}",
+  ),
+};
+
+const getImgMetadata = (folder: Folder, file: string) =>
+  assets[folder][`/src/assets/${folder}/${file}`];
+
+// Validación de los paths de las imágenes
+imgs.forEach((item) => {
+  const { file } = item;
+
+  if (!getImgMetadata(folder, file))
+    throw new Error(
+      `"${file}" does not exist in glob: "src/assets/${folder}/"`,
+    );
+});
+---
+
+<NewSliderStyled.Component
+  className={asClassName("slider", ...handlingClass)}
+  p={NewSliderStyled.adapter(style)}
+>
+  <div class="controls">
+    <Icon
+      iconName="fa-solid fa-right-left"
+      style={{ size: FONT_SIZE.xs }}
+      handlingClass={["scroll-indicator"]}
+    />
+    <p class="position-counter"><strong>1</strong> / {imgs.length}</p>
+    <button class="toggle-fullscreen" title="Ver en pantalla completa">
+      <Icon
+        iconName="fa-solid fa-compress"
+        style={{ size: FONT_SIZE.m }}
+        handlingClass={["compress"]}
+      />
+      <Icon
+        iconName="fa-solid fa-expand"
+        style={{ size: FONT_SIZE.m }}
+        handlingClass={["expand"]}
+      />
+    </button>
+  </div>
+  <ol class="imgs">
+    {
+      imgs.map(({ file, alt }) => (
+        <li>
+          <Image
+            src={getImgMetadata(folder, file)()}
+            alt={alt}
+            loading={eager ? "eager" : "lazy"}
+          />
+        </li>
+      ))
+    }
+  </ol>
+</NewSliderStyled.Component>
+
+<script>
+  const FULLSCREEN_DS_KEY = "fullscreen";
+
+  const handleClick =
+    (thisButton: HTMLButtonElement, slider: HTMLDivElement) => async () => {
+      const fullscreen = slider.dataset[FULLSCREEN_DS_KEY] === "true";
+      const reverseFullscreen = !fullscreen;
+
+      slider.dataset[FULLSCREEN_DS_KEY] = String(reverseFullscreen);
+
+      if (reverseFullscreen) {
+        thisButton.title = "Salir de pantalla completa";
+        await slider.requestFullscreen();
+      } else {
+        thisButton.title = "Ver en pantalla completa";
+        await window.document.exitFullscreen();
+      }
+    };
+
+  const sliders = window.document.querySelectorAll<HTMLDivElement>(".slider");
+
+  sliders.forEach((slider) => {
+    slider.dataset[FULLSCREEN_DS_KEY] = String(false);
+
+    const toggleFullscreen =
+      slider.querySelector<HTMLButtonElement>(".toggle-fullscreen");
+
+    toggleFullscreen &&
+      toggleFullscreen.addEventListener(
+        "click",
+        handleClick(toggleFullscreen, slider),
+      );
+  });
+</script>

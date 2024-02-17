@@ -3,8 +3,6 @@ import Section from "@/layouts/Section/Section.astro";
 import * as EducationStyled from "./Education.styled";
 import EducationItem from "./components/EducationItem/EducationItem.astro";
 import jsonData from "@/data.json";
-import certificateCIP from "@/../public/education/certificate_CIP.webp";
-import certificateCDW from "@/../public/education/certificate_CDW.webp";
 
 const { sections } = jsonData.pages.home;
 const sectionKey: keyof typeof sections = "education";
@@ -12,25 +10,18 @@ const sectionKey: keyof typeof sections = "education";
 const { education } = sections;
 const { title } = education;
 const { items } = education.data;
-
-const educationItemsImgs = [certificateCIP, certificateCDW, certificateCIP];
 ---
 
 <Section sectionKey={sectionKey} title={title}>
   <EducationStyled.Component>
     {
-      items.map((item, index) => {
-        const { logo, ...remaining } = item;
-
-        return (
-          <EducationItem
-            {...remaining}
-            logo={{ img: educationItemsImgs[index], ...logo }}
-            firstItem={index === 0}
-            lastItem={index === items.length - 1}
-          />
-        );
-      })
+      items.map((item, index) => (
+        <EducationItem
+          {...item}
+          firstItem={index === 0}
+          lastItem={index === items.length - 1}
+        />
+      ))
     }
   </EducationStyled.Component>
 </Section>
