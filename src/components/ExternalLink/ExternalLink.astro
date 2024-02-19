@@ -1,31 +1,32 @@
 ---
 import * as ExternalLinkStyled from "./ExternalLink.styled";
 import Icon from "@/components/Icon/Icon.astro";
+import { VARS } from "@/styles";
 import { type HandlingClass, asClassName } from "@/tools";
-import { FONT_SIZE } from "@/styles";
 
 export interface Props {
   url: string;
   iconName: string;
   text: string;
-  title?: string;
+  title: string;
   handlingClass?: HandlingClass;
 }
 
 const { url, iconName, text, title, handlingClass = [] } = Astro.props;
 ---
 
-<!-- TODO: semantica HTML -->
 <ExternalLinkStyled.Component
-  className={asClassName(...handlingClass)}
-  title={title || `Ir a ${text.toLocaleLowerCase()}`}
+  className={asClassName("glass", ...handlingClass)}
   href={url}
+  title={title}
   target="_blank"
   rel="noopener"
 >
-  <div class="external-link__glass-refleccion"></div>
-  <div class="external-link__content">
-    <Icon iconName={iconName} style={{ size: FONT_SIZE.s }} />
-    {text}
+  <div class="content">
+    <Icon
+      iconName={iconName}
+      style={{ size: VARS.component.button.xs.fontSize }}
+    />
+    <p>{text}</p>
   </div>
 </ExternalLinkStyled.Component>

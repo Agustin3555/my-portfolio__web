@@ -1,58 +1,38 @@
 import styled from "@emotion/styled";
-import {
-  COLOR,
-  GLASS_SET,
-  TIME,
-  NOT_FONT_SIZE,
-  FONT_SIZE,
-  VARS,
-} from "@/styles";
-
-const BORDER_RADIUS = NOT_FONT_SIZE["4xs"];
-const TEXT_FONT_SIZE = FONT_SIZE.xs;
-
-const b = `calc((${FONT_SIZE.s} - ${TEXT_FONT_SIZE}) / 2)`;
-const a = `calc((${TEXT_FONT_SIZE} - ${b}) / 2)`;
-const c = `calc(${a} + ${b})`;
+import { COLOR, TIME, VARS, TIMING_FUNC } from "@/styles";
 
 export const Component = styled.a`
-  position: relative;
-  border-radius: ${BORDER_RADIUS};
+  border-radius: ${VARS.component.button.xs.borderRadius};
+
   text-decoration: none;
   box-shadow: ${VARS.decorator.shadow[1]};
-  ${GLASS_SET.this}
 
   transition:
-    box-shadow ${TIME.xs} ease-out,
-    transform ${TIME.xs} ease-out;
+    color ${TIME.s} ease-out,
+    translate ${TIME.m} ${TIMING_FUNC.a};
+
+  ::before {
+    border-radius: ${VARS.component.button.xs.borderRadius};
+  }
 
   :hover {
     color: ${COLOR.b};
+    translate: 0 -0.1875rem;
   }
 
-  :active {
-    box-shadow: ${VARS.decorator.shadow[0]};
-  }
-
-  .external-link__glass-refleccion {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    border-radius: ${BORDER_RADIUS};
-    ${GLASS_SET.refleccion}
-  }
-
-  .external-link__content {
-    position: relative;
+  .content {
     display: flex;
-    justify-content: center;
     align-items: center;
-    gap: ${c};
-    padding: ${a};
-    padding-right: ${c};
-    font-size: ${TEXT_FONT_SIZE};
-    border-radius: ${BORDER_RADIUS};
-    transition: color ${TIME.xs} ease-out;
-    ${GLASS_SET.content}
+    gap: calc(${VARS.component.button.xs.padding} * 1.25);
+    padding: 0 ${VARS.component.button.xs.padding};
+    height: calc(
+      ${VARS.component.button.xs.padding} * 2 +
+        ${VARS.component.button.xs.fontSize}
+    );
+    border-radius: ${VARS.component.button.xs.borderRadius};
+
+    p {
+      font-size: ${VARS.component.button.xs.fontSize};
+    }
   }
 `;

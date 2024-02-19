@@ -34,7 +34,7 @@
     var(--component-button-xs-padding) * 2 +
       var(--component-button-xs-font-size)
   );
-  --component-button-xs-border-radius: var(--palette-size-not-font-4xs);
+  --component-button-xs-border-radius: 0.3125rem;
 
   --component-button-s-icon-size: var(--palette-size-font-m);
   --component-button-s-padding: var(--palette-size-not-font-2xs);

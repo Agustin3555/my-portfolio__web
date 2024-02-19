@@ -8,14 +8,14 @@ const { levels } = jsonData.pages.home.sections.skills.subsections;
 <!-- TODO: semantica HTML -->
 <LevelDescsStyled.Component>
   {
-    levels.map((item) => (
+    levels.map(({ level, desc }) => (
       <div class="item">
         <label class="toggle">
           <input class="toggle-skill" type="checkbox" checked />
           <div class="ui" />
-          {item.level}
+          {level}
         </label>
-        <p class="text">{item.desc}</p>
+        <p class="text">{desc}</p>
       </div>
     ))
   }

@@ -15,11 +15,11 @@ const { externalNetwork } = jsonData;
   <nav class="nav">
     {
       [
-        ...externalNetwork.map((item) => (
+        ...externalNetwork.map(({ url, iconName, title }) => (
           <SocialNetwork
-            iconName={item.iconName}
-            href={item.url}
-            title={`Ir a perfil de ${item.title}`}
+            href={url}
+            iconName={iconName}
+            title={`Ir al perfil de ${title}`}
           />
         )),
         <ContactLink />,

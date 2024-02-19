@@ -21,11 +21,11 @@ const { acknowledgments, othersPages } = sections;
         <p class="text">{acknowledgments.data.text}</p>
         <ul>
           {
-            acknowledgments.data.items.map((item) => (
+            acknowledgments.data.items.map(({ emoji, text }) => (
               <li>
                 <p class="text">
-                  <span class="emoji">{item.emoji}</span>
-                  {item.text}
+                  <span class="emoji">{emoji}</span>
+                  {text}
                 </p>
               </li>
             ))

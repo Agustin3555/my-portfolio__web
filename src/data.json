@@ -5,18 +5,18 @@
   },
   "externalNetwork": [
     {
-      "iconName": "fa-brands fa-linkedin",
       "url": "https://www.linkedin.com/in/agust%C3%ADn-lovera-b27528212/",
+      "iconName": "fa-brands fa-linkedin",
       "title": "LinkedIn"
     },
     {
-      "iconName": "fa-brands fa-github",
       "url": "https://github.com/Agustin3555",
+      "iconName": "fa-brands fa-github",
       "title": "GitHub"
     },
     {
-      "iconName": "fa-brands fa-instagram",
       "url": "https://www.instagram.com/agustin_lovera2",
+      "iconName": "fa-brands fa-instagram",
       "title": "Instagram"
     }
   ],
@@ -122,9 +122,9 @@
                 ],
                 "sliderAspectRatio": "4 / 3",
                 "links": {
-                  "srcCode": {
+                  "repo": {
                     "url": "https://github.com/Agustin3555",
-                    "host": "GitHub"
+                    "host": "github"
                   }
                 }
               },
@@ -139,9 +139,9 @@
                   { "file": "ui-example-3.png", "alt": "" }
                 ],
                 "links": {
-                  "srcCode": {
+                  "repo": {
                     "url": "https://github.com/Agustin3555",
-                    "host": "GitHub"
+                    "host": "github"
                   }
                 }
               }

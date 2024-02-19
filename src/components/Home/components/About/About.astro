@@ -1,19 +1,14 @@
 ---
 import Section from "@/layouts/Section/Section.astro";
 import * as AboutStyled from "./About.styled";
-import { Image } from "astro:assets";
 import GlassPanel from "@/layouts/GlassPanel/GlassPanel.astro";
 import SocialNetwork from "@/components/SocialNetwork/SocialNetwork.astro";
 import ExternalLink from "@/components/ExternalLink/ExternalLink.astro";
 import ContactLink from "@/components/ContactLink/ContactLink.astro";
-// import Slider from "../../components/Slider/Slider";
 import NewSlider from "../NewSlider/NewSlider.astro";
 import { NOT_FONT_SIZE } from "@/styles";
 import { highlightToHTMLTag } from "@/tools";
 import jsonData from "@/data.json";
-import MySelf from "@/../public/about/myself.webp";
-import FlatLogo from "@/../public/flat-logo.png";
-import FlatLogoN from "@/../public/flat-logo-n.png";
 
 const { externalNetwork, pages } = jsonData;
 
@@ -24,7 +19,6 @@ const { about } = sections;
 const { presentation, descSlider, residence } = about.data;
 
 const imgs = descSlider.map(({ img }) => ({ ...img }));
-
 const convertedDesc = descSlider.map(({ desc }) => highlightToHTMLTag(desc));
 ---
 
@@ -49,11 +43,11 @@ const convertedDesc = descSlider.map(({ desc }) => highlightToHTMLTag(desc));
             ...externalNetwork
               .slice()
               .reverse()
-              .map((item) => (
+              .map(({ url, iconName, title }) => (
                 <SocialNetwork
-                  iconName={item.iconName}
-                  href={item.url}
-                  title={item.title}
+                  href={url}
+                  iconName={iconName}
+                  title={`Ir al perfil de ${title}`}
                 />
               )),
             <ContactLink />,
@@ -76,9 +70,10 @@ const convertedDesc = descSlider.map(({ desc }) => highlightToHTMLTag(desc));
         />
       </div>
       <ExternalLink
-        text={residence.text}
         url={residence.mapsUrl}
         iconName="fa-solid fa-location-dot"
+        text={residence.text}
+        title={`Visitar ${residence.text} en Maps`}
       />
     </div>
   </AboutStyled.Component>

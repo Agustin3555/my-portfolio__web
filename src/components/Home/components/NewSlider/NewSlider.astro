@@ -44,9 +44,7 @@ const getImgMetadata = (folder: Folder, file: string) =>
   assets[folder][`/src/assets/${folder}/${file}`];
 
 // Validación de los paths de las imágenes
-imgs.forEach((item) => {
-  const { file } = item;
-
+imgs.forEach(({ file }) => {
   if (!getImgMetadata(folder, file))
     throw new Error(
       `"${file}" does not exist in glob: "src/assets/${folder}/"`,
