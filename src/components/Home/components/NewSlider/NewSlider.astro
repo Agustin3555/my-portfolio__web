@@ -92,28 +92,32 @@ imgs.forEach(({ file }) => {
 </NewSliderStyled.Component>
 
 <script>
-  const FULLSCREEN_DS_KEY = "fullscreen";
-
-  const handleClick =
-    (thisButton: HTMLButtonElement, slider: HTMLDivElement) => async () => {
-      const fullscreen = slider.dataset[FULLSCREEN_DS_KEY] === "true";
-      const reverseFullscreen = !fullscreen;
-
-      slider.dataset[FULLSCREEN_DS_KEY] = String(reverseFullscreen);
-
-      if (reverseFullscreen) {
-        thisButton.title = "Salir de pantalla completa";
-        await slider.requestFullscreen();
-      } else {
-        thisButton.title = "Ver en pantalla completa";
-        await window.document.exitFullscreen();
-      }
-    };
+  import { onScreen } from "@/tools";
 
   const sliders = window.document.querySelectorAll<HTMLDivElement>(".slider");
 
   sliders.forEach((slider) => {
+    // Sobre el toggle-fullscreen
+
+    const FULLSCREEN_DS_KEY = "fullscreen";
+
     slider.dataset[FULLSCREEN_DS_KEY] = String(false);
+
+    const handleClick =
+      (thisButton: HTMLButtonElement, slider: HTMLDivElement) => async () => {
+        const fullscreen = slider.dataset[FULLSCREEN_DS_KEY] === "true";
+        const reverseFullscreen = !fullscreen;
+
+        slider.dataset[FULLSCREEN_DS_KEY] = String(reverseFullscreen);
+
+        if (reverseFullscreen) {
+          thisButton.title = "Salir de pantalla completa";
+          await slider.requestFullscreen();
+        } else {
+          thisButton.title = "Ver en pantalla completa";
+          await window.document.exitFullscreen();
+        }
+      };
 
     const toggleFullscreen =
       slider.querySelector<HTMLButtonElement>(".toggle-fullscreen");
@@ -123,5 +127,25 @@ imgs.forEach(({ file }) => {
         "click",
         handleClick(toggleFullscreen, slider),
       );
+
+    // Sobre el position-counter
+
+    const imgContainers = slider.querySelectorAll<HTMLLIElement>("li");
+
+    const positionCounter = slider.querySelector<HTMLElement>(
+      ".position-counter strong",
+    );
+
+    imgContainers.forEach((item, index) => {
+      onScreen({
+        observed: item,
+        containerObserver: slider,
+        margin: "-50%",
+        onIntersectionChange: (isIntersecting) => {
+          if (isIntersecting && positionCounter)
+            positionCounter.innerText = String(index + 1);
+        },
+      });
+    });
   });
 </script>

@@ -83,20 +83,20 @@ if (title) documentTitle += ` ${separator} ${title}`;
 <script>
   import { NOT_FONT_SIZE, getCSSVarValue } from "@/styles";
   import { bodyManager } from "@/tools/elementManagers.tool";
-  import { onScreen } from "./tools";
+  import { onScreen } from "@/tools";
 
-  const ROOT_MARGIN = NOT_FONT_SIZE.m;
+  const MARGIN = NOT_FONT_SIZE.m;
 
-  let rootMargin = getCSSVarValue(ROOT_MARGIN);
-  rootMargin = rootMargin.slice(0, -3);
-  rootMargin = `-${parseFloat(rootMargin) * 16}px`;
+  let margin = getCSSVarValue(MARGIN);
+  margin = margin.slice(0, -3);
+  margin = `-${parseFloat(margin) * 16}px`;
 
   const { socialNetsInAbout } = window;
 
   if (socialNetsInAbout)
     onScreen({
-      element: socialNetsInAbout,
-      options: { rootMargin },
+      observed: socialNetsInAbout,
+      margin,
       onIntersectionChange: (isIntersecting) => {
         bodyManager.setData("socialNetsInLeftNav", String(!isIntersecting));
       },
