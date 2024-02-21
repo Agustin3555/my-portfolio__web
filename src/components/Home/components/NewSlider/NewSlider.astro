@@ -30,13 +30,13 @@ const {
 */
 const assets: Record<Folder, any> = {
   about: import.meta.glob<{ default: ImageMetadata }>(
-    "/src/assets/about/*.{jpeg,jpg,png,gif,webp}",
+    "/src/assets/about/*.{jpeg,jpg,png,gif,webp,svg}",
   ),
   skills: import.meta.glob<{ default: ImageMetadata }>(
-    "/src/assets/skills/*.{jpeg,jpg,png,gif,webp}",
+    "/src/assets/skills/*.{jpeg,jpg,png,gif,webp,svg}",
   ),
   works: import.meta.glob<{ default: ImageMetadata }>(
-    "/src/assets/works/*.{jpeg,jpg,png,gif,webp}",
+    "/src/assets/works/*.{jpeg,jpg,png,gif,webp,svg}",
   ),
 };
 
@@ -56,12 +56,34 @@ imgs.forEach(({ file }) => {
   className={asClassName("slider", ...handlingClass)}
   p={NewSliderStyled.adapter(style)}
 >
+  <ol class="imgs">
+    {
+      imgs.map(({ file, alt }) => (
+        <li>
+          <Image
+            class="background"
+            src={getImgMetadata(folder, file)()}
+            alt={alt}
+            loading={eager ? "eager" : "lazy"}
+          />
+          <Image
+            class="image"
+            src={getImgMetadata(folder, file)()}
+            alt={alt}
+            loading={eager ? "eager" : "lazy"}
+          />
+        </li>
+      ))
+    }
+  </ol>
   <div class="controls">
-    <Icon
-      iconName="fa-solid fa-right-left"
-      style={{ size: FONT_SIZE.xs }}
-      handlingClass={["scroll-indicator"]}
-    />
+    <span class="scroll-indicator">
+      <Icon
+        iconName="fa-solid fa-right-left"
+        style={{ size: FONT_SIZE.xs }}
+        handlingClass={["icon"]}
+      />
+    </span>
     <p class="position-counter"><strong>1</strong> / {imgs.length}</p>
     <button class="toggle-fullscreen" title="Ver en pantalla completa">
       <Icon
@@ -76,19 +98,6 @@ imgs.forEach(({ file }) => {
       />
     </button>
   </div>
-  <ol class="imgs">
-    {
-      imgs.map(({ file, alt }) => (
-        <li>
-          <Image
-            src={getImgMetadata(folder, file)()}
-            alt={alt}
-            loading={eager ? "eager" : "lazy"}
-          />
-        </li>
-      ))
-    }
-  </ol>
 </NewSliderStyled.Component>
 
 <script>

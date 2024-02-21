@@ -36,38 +36,92 @@ export const adapter = ({
 };
 
 export const Component = styled.div<{ p: Provider }>`
-  position: relative;
-  border-radius: ${({ p }) => p.borderRadius};
+  --border-radius: ${({ p }) => p.borderRadius};
 
+  position: relative;
+  border-radius: var(--border-radius);
+
+  background-color: hsl(0, 0%, 50%);
   box-shadow: ${VARS.decorator.shadow[1]};
   overflow: hidden;
 
+  :hover .controls .scroll-indicator::before {
+    animation: initial;
+  }
+
   .controls {
-    --padding: 0.75rem;
-    --extra-padding: calc(var(--padding) * 1.5);
-    --background-gradient: transparent, rgba(0, 0, 0, 0.3) 32.5%,
-      rgba(0, 0, 0, 0.5) 60%, rgba(0, 0, 0, 0.75) 100%;
+    --padding: var(--border-radius);
+    --button-size: calc(var(--padding) * 2 + ${FONT_SIZE.m});
 
     position: absolute;
-    right: 0;
+    bottom: 0;
     display: flex;
-    flex-direction: column;
     align-items: flex-end;
     justify-content: space-between;
-    padding: var(--padding);
-    padding-left: var(--extra-padding);
-    height: 100%;
+    padding-top: calc(var(--padding) * 0.25);
+    width: 100%;
 
     color: ${COLOR.b_l2};
-    background: linear-gradient(90deg, var(--background-gradient));
+    background: linear-gradient(
+      transparent,
+      rgba(0, 0, 0, 0.3) 32.5%,
+      rgba(0, 0, 0, 0.5) 60%,
+      rgba(0, 0, 0, 0.75) 100%
+    );
 
     .scroll-indicator {
-      rotate: 90deg;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: var(--button-size);
+      height: var(--button-size);
+
+      ::before {
+        --max-size: 90%;
+        --border-width: ${NOT_FONT_SIZE["6xs"]};
+
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-radius: var(--border-radius);
+        border-width: var(--border-width);
+
+        border-style: solid;
+        border-color: ${COLOR.b_l2};
+        opacity: 0;
+
+        animation: alert 9s ease-out infinite;
+
+        @keyframes alert {
+          90% {
+            width: 0;
+            height: 0;
+
+            opacity: 0;
+          }
+          95% {
+            opacity: 0.375;
+          }
+          100% {
+            width: var(--max-size);
+            height: var(--max-size);
+
+            opacity: 0;
+          }
+        }
+      }
+
+      .icon {
+        rotate: 90deg;
+      }
     }
 
     .position-counter {
       font-size: ${FONT_SIZE.xs};
-      word-spacing: calc(0.09375rem * -1);
+      word-spacing: calc(0.03125rem * -1);
+      margin-bottom: var(--padding);
 
       strong {
         font-size: ${FONT_SIZE.xs};
@@ -78,12 +132,13 @@ export const Component = styled.div<{ p: Provider }>`
     }
 
     .toggle-fullscreen {
-      --size: ${FONT_SIZE.m};
-
       position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       padding: 0;
-      width: var(--size);
-      height: var(--size);
+      width: var(--button-size);
+      height: var(--button-size);
 
       transition: color ${TIME.xs} ease-out;
 
@@ -93,7 +148,6 @@ export const Component = styled.div<{ p: Provider }>`
 
       > * {
         position: absolute;
-        top: 0;
       }
 
       .compress {
@@ -119,17 +173,28 @@ export const Component = styled.div<{ p: Provider }>`
     scrollbar-width: none;
 
     li {
+      position: relative;
       flex-shrink: 0;
 
       aspect-ratio: var(--aspect-ratio);
       width: 100%;
       height: 100%;
 
+      overflow: hidden;
       scroll-snap-align: start;
 
       img {
         width: 100%;
         height: 100%;
+      }
+
+      .background {
+        object-fit: fill;
+        filter: blur(8rem);
+      }
+
+      .image {
+        position: absolute;
 
         object-fit: contain;
       }
@@ -157,17 +222,12 @@ export const Component = styled.div<{ p: Provider }>`
 
   // Para dispositivos táctiles
   @media (hover: none) and (any-hover: none) {
-    .controls {
-      bottom: 0;
-      flex-direction: row;
-      padding: var(--padding);
-      padding-top: var(--extra-padding);
-      width: 100%;
-      height: auto;
+    .controls .scroll-indicator {
+      ::before {
+        animation: initial;
+      }
 
-      background: linear-gradient(var(--background-gradient) 100%);
-
-      .scroll-indicator {
+      .icon {
         rotate: initial;
       }
     }
