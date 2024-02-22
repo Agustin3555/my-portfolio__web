@@ -7,48 +7,15 @@ import {
   TIME,
   NOT_FONT_SIZE,
   type Value,
+  VARS,
 } from "@/styles";
 import styled from "@emotion/styled";
 
-interface ConstProvider {
-  description: {
-    titleGroup: {
-      name: {
-        color: Value;
-      };
-    };
-  };
-  DARK_MODE: {
-    description: {
-      titleGroup: {
-        name: {
-          color: Value;
-        };
-      };
-    };
-  };
-}
-
-const cp: ConstProvider = {
-  description: {
-    titleGroup: {
-      name: {
-        color: COLOR_BRIGHT_B,
-      },
-    },
-  },
-  DARK_MODE: {
-    description: {
-      titleGroup: {
-        name: {
-          color: COLOR.gs_1,
-        },
-      },
-    },
-  },
-};
-
 export const Component = styled.div`
+  --gap-xs: calc(var(--gap-s) / 2);
+  --gap-s: ${VARS.size.gold};
+  --gap-m: calc(var(--gap-s) * 3);
+
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -57,76 +24,84 @@ export const Component = styled.div`
   gap: ${NOT_FONT_SIZE.l};
   min-height: calc(100vh - ${NOT_FONT_SIZE.l} * 5.5);
 
-  .desc {
+  .a {
     flex-grow: 1;
     flex-basis: calc(${NOT_FONT_SIZE["4xl"]} - ${NOT_FONT_SIZE.l} * 2);
 
     display: flex;
     flex-direction: column;
-    gap: ${NOT_FONT_SIZE.l};
+    gap: var(--gap-m);
 
-    .title-group {
-      .name {
-        margin-bottom: ${NOT_FONT_SIZE.xs};
-        font-family: ${FONT.b};
-        font-size: ${FONT_SIZE["2xl"]};
-        line-height: 1.25;
-        word-spacing: initial;
-        color: ${cp.description.titleGroup.name.color};
-      }
-
-      .rol {
-        font-family: ${FONT.b};
-        font-size: ${FONT_SIZE.l};
-        word-spacing: initial;
-        color: ${COLOR.b};
+    header {
+      .hello {
+        margin-bottom: var(--gap-m);
       }
     }
 
-    #descAdaptable {
+    .subsections {
+      gap: calc(${VARS.size.gold} * 2);
+      padding-right: var(--gap-xs);
+      padding-left: var(--gap-s);
+      border-width: 0;
+      border-left-width: ${NOT_FONT_SIZE["6xs"]};
+
+      border-style: solid;
+      border-color: ${COLOR.gs_8};
+      scrollbar-width: thin;
+      scrollbar-color: ${COLOR.gs_4} transparent;
+
       transition:
-        width ${TIME.m} ease,
-        height ${TIME.m} ease;
+        border-color ${TIME.s} ease-out,
+        scrollbar-color ${TIME.s} ease-out;
 
-      #descContent {
-        > * {
-          display: none;
-          opacity: 0;
-
-          transition: opacity ${TIME.m} ease;
-        }
-
-        .show {
-          opacity: 1;
-        }
+      h4 {
+        color: ${COLOR.gs_14};
       }
-    }
 
-    .nav {
-      display: flex;
-      gap: ${NOT_FONT_SIZE.s};
+      > li > :is(article, div) {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: ${VARS.size.gold};
+      }
 
-      > * {
-        opacity: 0;
-        translate: 0 100%;
-        filter: blur(${NOT_FONT_SIZE["5xs"]});
+      .hobbies-and-likes {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--gap-xs);
 
-        transition:
-          opacity ${TIME.m} ease,
-          translate ${TIME.m} ease,
-          filter ${TIME.m} ease;
-        transition-delay: calc(${TIME.s} * var(--i));
+        li {
+          --compensated-padding: calc(${VARS.component.button.s.padding} * 1.5);
 
-        body[data-social-nets-in-left-nav="false"] & {
-          opacity: 1;
-          translate: initial;
-          filter: initial;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: var(--compensated-padding);
+          padding: ${VARS.component.button.s.padding};
+          padding-right: var(--compensated-padding);
+          border-radius: ${VARS.component.button.s.borderRadius};
+
+          background-color: ${VARS.color.a.bg.light};
+
+          transition: background-color ${TIME.s} ease-out;
+
+          span {
+            font-size: ${FONT_SIZE.l};
+          }
+
+          p {
+            font-size: ${FONT_SIZE.xs};
+
+            color: ${VARS.color.a.font.light};
+
+            transition: color ${TIME.s} ease-out;
+          }
         }
       }
     }
   }
 
-  .extra-info {
+  .b {
     --gap: ${NOT_FONT_SIZE.m};
 
     flex-basis: calc(
@@ -162,11 +137,47 @@ export const Component = styled.div`
         --gap: ${NOT_FONT_SIZE.s};
       }
     }
+
+    .nav {
+      display: flex;
+      gap: ${NOT_FONT_SIZE.s};
+
+      > * {
+        opacity: 0;
+        translate: 0 100%;
+        filter: blur(${NOT_FONT_SIZE["5xs"]});
+
+        transition:
+          opacity ${TIME.m} ease,
+          translate ${TIME.m} ease,
+          filter ${TIME.m} ease;
+        transition-delay: calc(${TIME.s} * var(--i));
+
+        body[data-social-nets-in-left-nav="false"] & {
+          opacity: 1;
+          translate: initial;
+          filter: initial;
+        }
+      }
+    }
   }
 
   body[data-dark-mode="true"] & {
-    .desc .title-group .name {
-      color: ${cp.DARK_MODE.description.titleGroup.name.color};
+    .a .subsections {
+      border-color: ${COLOR.gs_10};
+      scrollbar-color: ${COLOR.gs_14} transparent;
+
+      h4 {
+        color: ${COLOR.gs_1};
+      }
+
+      .hobbies-and-likes li {
+        background-color: ${VARS.color.a.bg.dark};
+
+        p {
+          color: ${VARS.color.a.font.dark};
+        }
+      }
     }
   }
 `;

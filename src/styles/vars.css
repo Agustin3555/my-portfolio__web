@@ -1,8 +1,9 @@
 :root {
-  /* --color-a-bg-light: ;
-  --color-a-bg-dark: ;
-  --color-a-font-light: ;
-  --color-a-font-dark: ; */
+  --color-a-bg-light: var(--palette-color-gs-1);
+  --color-a-bg-dark: var(--palette-color-gs-16);
+  --color-a-font-light: var(--palette-color-b-d2);
+  --color-a-font-dark: var(--palette-color-b-l2);
+
   --size-gold: var(--palette-size-not-font-s);
   --global-font-size: var(--palette-size-font-s);
 

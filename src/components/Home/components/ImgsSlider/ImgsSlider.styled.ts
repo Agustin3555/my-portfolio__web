@@ -42,11 +42,52 @@ export const Component = styled.div<{ p: Provider }>`
   border-radius: var(--border-radius);
 
   background-color: hsl(0, 0%, 50%);
-  box-shadow: ${VARS.decorator.shadow[1]};
+  box-shadow: ${VARS.decorator.bevelHighlight};
   overflow: hidden;
 
   :hover .controls .scroll-indicator::before {
     animation: initial;
+  }
+
+  .imgs {
+    --aspect-ratio: ${({ p }) => p.imgs.aspectRatio};
+
+    display: flex;
+    flex-direction: column;
+    aspect-ratio: var(--aspect-ratio);
+
+    overflow: hidden auto;
+    scroll-snap-type: y mandatory;
+    scrollbar-width: none;
+
+    li {
+      position: relative;
+      flex-shrink: 0;
+
+      aspect-ratio: var(--aspect-ratio);
+      width: 100%;
+      height: 100%;
+
+      overflow: hidden;
+      scroll-snap-align: start;
+
+      img,
+      span {
+        width: 100%;
+        height: 100%;
+      }
+
+      .background {
+        object-fit: cover;
+        filter: blur(8rem);
+      }
+
+      .image {
+        position: absolute;
+
+        object-fit: contain;
+      }
+    }
   }
 
   .controls {
@@ -156,47 +197,6 @@ export const Component = styled.div<{ p: Provider }>`
 
       .expand {
         display: flex;
-      }
-    }
-  }
-
-  .imgs {
-    --aspect-ratio: ${({ p }) => p.imgs.aspectRatio};
-
-    display: flex;
-    flex-direction: column;
-    aspect-ratio: var(--aspect-ratio);
-
-    overflow: hidden auto;
-    scroll-snap-type: y mandatory;
-    scroll-behavior: smooth;
-    scrollbar-width: none;
-
-    li {
-      position: relative;
-      flex-shrink: 0;
-
-      aspect-ratio: var(--aspect-ratio);
-      width: 100%;
-      height: 100%;
-
-      overflow: hidden;
-      scroll-snap-align: start;
-
-      img {
-        width: 100%;
-        height: 100%;
-      }
-
-      .background {
-        object-fit: fill;
-        filter: blur(8rem);
-      }
-
-      .image {
-        position: absolute;
-
-        object-fit: contain;
       }
     }
   }

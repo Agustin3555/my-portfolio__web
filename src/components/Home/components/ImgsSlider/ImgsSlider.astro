@@ -1,5 +1,5 @@
 ---
-import * as NewSliderStyled from "./NewSlider.styled";
+import * as ImgsSliderStyled from "./ImgsSlider.styled";
 import { Image } from "astro:assets";
 import Icon from "@/components/Icon/Icon.astro";
 import { FONT_SIZE } from "@/styles";
@@ -12,7 +12,7 @@ interface Props {
   folder: Folder;
   imgs: { file: string; alt: string }[];
   eager?: boolean;
-  style?: NewSliderStyled.Props;
+  style?: ImgsSliderStyled.Props;
   handlingClass?: HandlingClass;
 }
 
@@ -52,20 +52,22 @@ imgs.forEach(({ file }) => {
 });
 ---
 
-<NewSliderStyled.Component
+<ImgsSliderStyled.Component
   className={asClassName("slider", ...handlingClass)}
-  p={NewSliderStyled.adapter(style)}
+  p={ImgsSliderStyled.adapter(style)}
 >
   <ol class="imgs">
     {
       imgs.map(({ file, alt }) => (
         <li>
-          <Image
-            class="background"
-            src={getImgMetadata(folder, file)()}
-            alt={alt}
-            loading={eager ? "eager" : "lazy"}
-          />
+          <span>
+            <Image
+              class="background"
+              src={getImgMetadata(folder, file)()}
+              alt={alt}
+              loading={eager ? "eager" : "lazy"}
+            />
+          </span>
           <Image
             class="image"
             src={getImgMetadata(folder, file)()}
@@ -98,7 +100,7 @@ imgs.forEach(({ file }) => {
       />
     </button>
   </div>
-</NewSliderStyled.Component>
+</ImgsSliderStyled.Component>
 
 <script>
   import { onScreen } from "@/tools";
