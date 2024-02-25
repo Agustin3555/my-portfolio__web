@@ -45,10 +45,6 @@ export const Component = styled.div<{ p: Provider }>`
   box-shadow: ${VARS.decorator.bevelHighlight};
   overflow: hidden;
 
-  :hover .controls .scroll-indicator::before {
-    animation: initial;
-  }
-
   .imgs {
     --aspect-ratio: ${({ p }) => p.imgs.aspectRatio};
 
@@ -111,52 +107,8 @@ export const Component = styled.div<{ p: Provider }>`
     );
 
     .scroll-indicator {
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
       width: var(--button-size);
       height: var(--button-size);
-
-      ::before {
-        --max-size: 90%;
-        --border-width: ${NOT_FONT_SIZE["6xs"]};
-
-        content: "";
-        position: absolute;
-        width: 0;
-        height: 0;
-        border-radius: var(--border-radius);
-        border-width: var(--border-width);
-
-        border-style: solid;
-        border-color: ${COLOR.b_l2};
-        opacity: 0;
-
-        animation: alert 9s ease-out infinite;
-
-        @keyframes alert {
-          90% {
-            width: 0;
-            height: 0;
-
-            opacity: 0;
-          }
-          95% {
-            opacity: 0.375;
-          }
-          100% {
-            width: var(--max-size);
-            height: var(--max-size);
-
-            opacity: 0;
-          }
-        }
-      }
-
-      .icon {
-        rotate: 90deg;
-      }
     }
 
     .position-counter {
@@ -222,16 +174,6 @@ export const Component = styled.div<{ p: Provider }>`
 
   // Para dispositivos táctiles
   @media (hover: none) and (any-hover: none) {
-    .controls .scroll-indicator {
-      ::before {
-        animation: initial;
-      }
-
-      .icon {
-        rotate: initial;
-      }
-    }
-
     .imgs {
       flex-direction: row;
 

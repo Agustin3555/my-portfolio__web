@@ -8,10 +8,7 @@ export const Component = styled.div`
   gap: ${NOT_FONT_SIZE["2xl"]};
 
   address {
-    --button-size: calc(
-      ${VARS.component.button.s.padding} * 2 +
-        ${VARS.component.button.s.iconSize}
-    );
+    --button-size: ${VARS.component.button.s.size};
     --gap: ${NOT_FONT_SIZE["3xs"]};
     --gap-compensated: calc(
       (var(--button-size) - ${VARS.global.fontSize}) / 2 + var(--gap)

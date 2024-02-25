@@ -27,7 +27,10 @@ const { externalNetwork } = jsonData;
     <div class="content">
       <div class="MC" id="adaptable">
         <div class="C" id="content">
-          <Hamburger />
+          <div class="top">
+            <Hamburger />
+            <ToggleDarkMode />
+          </div>
           <div class="group">
             <Separator
               style={{
@@ -68,15 +71,6 @@ const { externalNetwork } = jsonData;
                 ))
               }
             </nav>
-            <Separator
-              style={{
-                backgroundColor: {
-                  dark: COLOR_DARK_A,
-                  bright: COLOR_BRIGHT_A,
-                },
-              }}
-            />
-            <ToggleDarkMode />
           </div>
         </div>
       </div>

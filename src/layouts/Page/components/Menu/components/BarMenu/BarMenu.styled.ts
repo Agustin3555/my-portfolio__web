@@ -1,77 +1,46 @@
-import { MEDIA, TIME, NOT_FONT_SIZE, type Value } from "@/styles";
 import styled from "@emotion/styled";
-
-interface ConstProvider {
-  HIDDEN: {
-    top: Value;
-  };
-}
-
-const cp: ConstProvider = {
-  HIDDEN: {
-    top: `calc((${NOT_FONT_SIZE.l} + ${NOT_FONT_SIZE["6xs"]}) * -1)`,
-  },
-};
+import { MEDIA, TIME, NOT_FONT_SIZE, VARS } from "@/styles";
 
 export const Component = styled.nav`
+  --padding: ${VARS.size.gold};
+  --gap: calc(var(--padding) * 1.5);
+  --border-radius: ${NOT_FONT_SIZE["2xs"]};
+
   position: fixed;
   top: 0;
+  border-bottom-right-radius: var(--border-radius);
+  border-bottom-left-radius: var(--border-radius);
 
-  transition: top ${TIME.m} ease;
+  box-shadow: ${VARS.decorator.shadow[1]};
+
+  transition:
+    top ${TIME.m} ease,
+    box-shadow ${TIME.m} ease;
 
   @media (max-width: ${MEDIA.m}) {
     display: none;
   }
 
-  .container {
+  &::before {
+    border-bottom-right-radius: var(--border-radius);
+    border-bottom-left-radius: var(--border-radius);
+  }
+
+  nav {
     display: flex;
+    gap: var(--gap);
+    padding: var(--padding) var(--gap);
+    border-bottom-right-radius: var(--border-radius);
+    border-bottom-left-radius: var(--border-radius);
 
-    .nav {
-      display: flex;
-      align-items: center;
-      gap: calc(${NOT_FONT_SIZE.s} * 1.5);
-
-      > * {
-        opacity: 0;
-        transform: translateY(calc(${NOT_FONT_SIZE["2xl"]} * -1));
-        animation: fadeIn ${TIME.l} ease forwards;
-        animation-delay: calc(${TIME.xs} * var(--i));
-
-        @keyframes fadeIn {
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
-        :nth-of-type(1) {
-          --i: 0;
-        }
-
-        :nth-of-type(2) {
-          --i: 1;
-        }
-
-        :nth-of-type(3) {
-          --i: 2;
-        }
-
-        :nth-of-type(4) {
-          --i: 3;
-        }
-
-        :nth-of-type(5) {
-          --i: 4;
-        }
-
-        :nth-of-type(6) {
-          --i: 5;
-        }
-      }
-    }
+    box-shadow: ${VARS.decorator.bevelHighlightLeft},
+      ${VARS.decorator.bevelHighlightRight},
+      ${VARS.decorator.bevelHighlightBottom};
   }
 
   body[data-vertical-scroll="true"] & {
-    top: ${cp.HIDDEN.top};
+    top: calc((var(--padding) * 2 + ${VARS.global.fontSize}) * -1);
+
+    box-shadow: initial;
   }
 `;

@@ -203,7 +203,7 @@ button {
     );
   }
 
-  > div {
+  > * {
     position: relative;
 
     box-shadow: var(--decorator-bevel-highlight);

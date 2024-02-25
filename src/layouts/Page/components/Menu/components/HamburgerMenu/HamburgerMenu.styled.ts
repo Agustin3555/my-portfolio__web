@@ -142,6 +142,11 @@ export const Component = styled.header<{ p: Provider }>`
           gap: calc(${FONT_SIZE.s} * 2);
           width: fit-content;
 
+          .top {
+            display: flex;
+            justify-content: space-between;
+          }
+
           .group {
             display: flex;
             flex-direction: column;

@@ -35,6 +35,10 @@ export const VARS = {
       2: "var(--decorator-shadow-2)",
     },
     bevelHighlight: "var(--decorator-bevel-highlight)",
+    bevelHighlightTop: "var(--decorator-bevel-highlight-top)",
+    bevelHighlightLeft: "var(--decorator-bevel-highlight-left)",
+    bevelHighlightRight: "var(--decorator-bevel-highlight-right)",
+    bevelHighlightBottom: "var(--decorator-bevel-highlight-bottom)",
   },
   media: {
     // TODO: comentar el no uso variables
@@ -52,8 +56,9 @@ export const VARS = {
         borderRadius: "var(--component-button-xs-border-radius)",
       },
       s: {
-        iconSize: "var(--component-button-s-icon-size)",
+        size: "var(--component-button-s-size)",
         padding: "var(--component-button-s-padding)",
+        iconSize: "var(--component-button-s-icon-size)",
         borderRadius: "var(--component-button-s-border-radius)",
       },
     },

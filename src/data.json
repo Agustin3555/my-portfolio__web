@@ -76,15 +76,15 @@
             "imgs": [
               {
                 "file": "myself-1.webp",
-                "alt": "Fotografía de perfil de Juan Agustín Lovera"
+                "alt": "Fotografía de Juan Agustín Lovera, cara frontal sonriente, cuerpo frontal y brazos cruzados"
               },
               {
-                "file": "myself-2.jpg",
-                "alt": "Logo de Juan Agustín Lovera como profesional en la programación"
+                "file": "myself-2.webp",
+                "alt": "Fotografía de Juan Agustín Lovera, cara lateral seria y cuerpo semi lateral"
               },
               {
                 "file": "flat-logo.svg",
-                "alt": "Fotografía de perfil de Juan Agustín Lovera"
+                "alt": "Logo de Juan Agustín Lovera, Full Stack Web Dev"
               }
             ],
             "residence": {
