@@ -62,6 +62,12 @@ export const VARS = {
         borderRadius: "var(--component-button-s-border-radius)",
       },
     },
+    link: {
+      translate: {
+        value: "var(--component-link-translate-value)",
+        transition: "var(--component-link-translate-transition)",
+      },
+    },
   },
 };
 

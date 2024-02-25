@@ -1,60 +1,44 @@
-import { MAIN_GAP, MEDIA, TIME, NOT_FONT_SIZE, type Value } from "@/styles";
 import styled from "@emotion/styled";
-
-const GAP = MAIN_GAP;
-
-interface ConstProvider {
-  left: Value;
-  bottom: Value;
-  gap: Value;
-
-  nav: {
-    gap: Value;
-  };
-}
-
-const cp: ConstProvider = {
-  left: GAP,
-  bottom: GAP,
-  gap: GAP,
-
-  nav: {
-    gap: GAP,
-  },
-};
+import { MEDIA, TIME, NOT_FONT_SIZE, VARS } from "@/styles";
 
 export const Component = styled.div`
+  --gap: ${VARS.size.gold};
+
   position: fixed;
-  left: ${cp.left};
-  bottom: ${cp.bottom};
+  left: var(--gap);
+  bottom: var(--gap);
   display: flex;
   flex-direction: column;
-  gap: ${cp.gap};
-  transition: left ${TIME.m} ease;
+  gap: var(--gap);
+
+  transition:
+    left ${TIME.m} ease,
+    opacity ${TIME.m} ease;
 
   @media (max-width: ${MEDIA.m}) {
     left: calc(${NOT_FONT_SIZE.m} * -1);
+
+    opacity: 0;
   }
 
-  .nav {
+  nav {
     display: flex;
     flex-direction: column;
-    gap: ${cp.nav.gap};
+    gap: var(--gap);
 
     > * {
+      display: flex;
+      translate: -100%;
       opacity: 0;
-      transform: translateX(-100%);
-      filter: blur(${NOT_FONT_SIZE["5xs"]});
+
       transition:
-        opacity ${TIME.m} ease,
-        transform ${TIME.m} ease,
-        filter ${TIME.m} ease;
-      transition-delay: calc(${TIME.s} * var(--i));
+        translate ${TIME.m} ease,
+        opacity ${TIME.m} ease;
+      transition-delay: calc(0.15s * var(--i));
 
       body[data-social-nets-in-left-nav="true"] & {
+        translate: initial;
         opacity: 1;
-        transform: initial;
-        filter: initial;
       }
     }
   }

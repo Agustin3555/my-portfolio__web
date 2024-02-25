@@ -3,20 +3,17 @@ import * as SocialNetworkStyled from "./SocialNetwork.styled";
 import Icon from "@/components/Icon/Icon.astro";
 import GlassPanel from "@/layouts/GlassPanel/GlassPanel.astro";
 import { FONT_SIZE, VARS } from "@/styles";
-import { type HandlingClass, asClassName } from "@/tools";
 
 interface Props {
   href: string;
   iconName: string;
   title: string;
-  handlingClass?: HandlingClass;
 }
 
-const { href, iconName, title, handlingClass = [] } = Astro.props;
+const { href, iconName, title } = Astro.props;
 ---
 
 <SocialNetworkStyled.Component
-  className={asClassName(...handlingClass)}
   title={title}
   href={href}
   target="_blank"

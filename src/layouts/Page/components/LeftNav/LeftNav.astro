@@ -10,9 +10,8 @@ import jsonData from "@/data.json";
 const { externalNetwork } = jsonData;
 ---
 
-<!-- TODO: semantica HTML -->
 <LeftNavStyled.Component>
-  <nav class="nav">
+  <nav>
     {
       [
         ...externalNetwork.map(({ url, iconName, title }) => (
@@ -24,7 +23,7 @@ const { externalNetwork } = jsonData;
         )),
         <ContactLink />,
       ].map((item, index) => (
-        <div style={`--i: ${externalNetwork.length - index}`}>{item}</div>
+        <div style={`--i: ${externalNetwork.length - index + 1}`}>{item}</div>
       ))
     }
     <Separator

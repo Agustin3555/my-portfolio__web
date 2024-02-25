@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { COLOR, TIME, VARS, TIMING_FUNC } from "@/styles";
+import { COLOR, TIME, VARS } from "@/styles";
 
 export const Component = styled.a`
   border-radius: ${VARS.component.button.xs.borderRadius};
@@ -9,7 +9,7 @@ export const Component = styled.a`
 
   transition:
     color ${TIME.s} ease-out,
-    translate ${TIME.m} ${TIMING_FUNC.a};
+    ${VARS.component.link.translate.transition};
 
   ::before {
     border-radius: ${VARS.component.button.xs.borderRadius};
@@ -17,7 +17,7 @@ export const Component = styled.a`
 
   :hover {
     color: ${COLOR.b};
-    translate: 0 -0.1875rem;
+    translate: ${VARS.component.link.translate.value};
   }
 
   .content {

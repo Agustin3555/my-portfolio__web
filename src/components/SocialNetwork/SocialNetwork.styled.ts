@@ -1,16 +1,15 @@
 import styled from "@emotion/styled";
-import { COLOR, TIME, TIMING_FUNC } from "@/styles";
+import { COLOR, TIME, VARS } from "@/styles";
 
 export const Component = styled.a`
   text-decoration: none;
 
-  /* TODO: no se aplica el translate en todas las partes */
   transition:
     color ${TIME.s} ease-out,
-    translate ${TIME.m} ${TIMING_FUNC.a};
+    ${VARS.component.link.translate.transition};
 
   :hover {
     color: ${COLOR.b_l2};
-    translate: 0 -12.5%;
+    translate: ${VARS.component.link.translate.value};
   }
 `;

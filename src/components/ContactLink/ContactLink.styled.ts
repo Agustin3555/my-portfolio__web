@@ -1,5 +1,5 @@
-import { COLOR, TIME, TIMING_FUNC, VARS } from "@/styles";
 import styled from "@emotion/styled";
+import { COLOR, TIME, TIMING_FUNC, VARS } from "@/styles";
 
 export const Component = styled.a`
   position: relative;
@@ -14,7 +14,7 @@ export const Component = styled.a`
 
   transition:
     box-shadow ${TIME.m} ${TIMING_FUNC.a},
-    translate ${TIME.m} ${TIMING_FUNC.a};
+    ${VARS.component.link.translate.transition};
 
   &::before {
     content: "";
@@ -27,7 +27,7 @@ export const Component = styled.a`
   }
 
   :hover {
-    translate: 0 -12.5%;
+    translate: ${VARS.component.link.translate.value};
 
     ::before {
       animation: spin ${TIME.l} linear infinite;

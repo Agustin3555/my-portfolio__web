@@ -20,6 +20,7 @@ export const Component = styled.button`
 
   color: ${COLOR.gs_12};
   background-color: ${COLOR.gs_8};
+  overflow: hidden;
 
   transition:
     color ${TIME.s} ease-out,
@@ -43,6 +44,7 @@ export const Component = styled.button`
     border-radius: 100%;
 
     background-color: ${BGC_BRIGHT_A};
+    box-shadow: ${VARS.decorator.shadow[2]};
 
     transition:
       background-color ${TIME.s} ease-out,

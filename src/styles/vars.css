@@ -52,4 +52,8 @@
   --component-button-s-padding: var(--palette-size-not-font-2xs);
   --component-button-s-icon-size: var(--palette-size-font-m);
   --component-button-s-border-radius: var(--palette-size-not-font-3xs);
+
+  --component-link-translate-value: 0 -0.1875rem;
+  --component-link-translate-transition: translate var(--palette-time-m)
+    var(--palette-timing-func-a);
 }
