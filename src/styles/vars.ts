@@ -1,4 +1,3 @@
-import { css } from "@emotion/react";
 import { COLOR, NOT_FONT_SIZE } from "./palette";
 
 export const VARS = {
@@ -16,6 +15,7 @@ export const VARS = {
   },
   size: {
     gold: "var(--size-gold)",
+    silver: "var(--size-silver)",
     layout: {
       with: "var(--size-layout-with)",
     },
@@ -34,11 +34,13 @@ export const VARS = {
       1: "var(--decorator-shadow-1)",
       2: "var(--decorator-shadow-2)",
     },
-    bevelHighlight: "var(--decorator-bevel-highlight)",
-    bevelHighlightTop: "var(--decorator-bevel-highlight-top)",
-    bevelHighlightLeft: "var(--decorator-bevel-highlight-left)",
-    bevelHighlightRight: "var(--decorator-bevel-highlight-right)",
-    bevelHighlightBottom: "var(--decorator-bevel-highlight-bottom)",
+    bevelHighlight: {
+      full: "var(--decorator-bevel-highlight)",
+      top: "var(--decorator-bevel-highlight-top)",
+      left: "var(--decorator-bevel-highlight-left)",
+      right: "var(--decorator-bevel-highlight-right)",
+      bottom: "var(--decorator-bevel-highlight-bottom)",
+    },
   },
   media: {
     // TODO: comentar el no uso variables
@@ -50,9 +52,9 @@ export const VARS = {
   component: {
     button: {
       xs: {
-        fontSize: "var(--component-button-xs-font-size)",
         padding: "var(--component-button-xs-padding)",
         height: "var(--component-button-xs-height)",
+        fontSize: "var(--component-button-xs-font-size)",
         borderRadius: "var(--component-button-xs-border-radius)",
       },
       s: {
@@ -60,6 +62,12 @@ export const VARS = {
         padding: "var(--component-button-s-padding)",
         iconSize: "var(--component-button-s-icon-size)",
         borderRadius: "var(--component-button-s-border-radius)",
+      },
+      m: {
+        size: "var(--component-button-m-size)",
+        padding: "var(--component-button-m-padding)",
+        iconSize: "var(--component-button-m-icon-size)",
+        borderRadius: "var(--component-button-m-border-radius)",
       },
     },
     link: {
@@ -94,24 +102,3 @@ export enum MEDIA {
   s = "56.25rem",
   m = `calc(47rem + (1.625rem * 4 + 2.625rem) * 2)`,
 }
-
-export const GLASS_SET = {
-  this: css`
-    backdrop-filter: blur(15px);
-  `,
-  refleccion: css`
-    background: linear-gradient(
-      -30deg,
-      rgba(160, 160, 160, 0.0375) 25%,
-      rgba(160, 160, 160, 0.075) 75%,
-      rgba(160, 160, 160, 0.1875) 100%
-    );
-  `,
-  content: css`
-    border-width: ${NOT_FONT_SIZE["6xs"]};
-    border-style: solid;
-    border-color: rgba(176, 176, 176, 0.025);
-    border-top-color: rgba(176, 176, 176, 0.1);
-    border-left-color: rgba(176, 176, 176, 0.05);
-  `,
-};

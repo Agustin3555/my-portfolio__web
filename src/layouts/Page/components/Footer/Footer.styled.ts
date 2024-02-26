@@ -12,8 +12,9 @@ export const Component = styled.footer`
   background-color: ${COLOR.gs_6};
   border-top-left-radius: ${NOT_FONT_SIZE.xs};
   border-top-right-radius: ${NOT_FONT_SIZE.xs};
-  box-shadow: ${VARS.decorator.shadow[1]}, ${VARS.decorator.bevelHighlightTop},
-    ${VARS.decorator.bevelHighlightLeft}, ${VARS.decorator.bevelHighlightRight};
+  box-shadow: ${VARS.decorator.shadow[1]}, ${VARS.decorator.bevelHighlight.top},
+    ${VARS.decorator.bevelHighlight.left},
+    ${VARS.decorator.bevelHighlight.right};
 
   transition:
     padding ${TIME.s} ease-out,

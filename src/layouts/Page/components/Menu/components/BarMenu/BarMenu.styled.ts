@@ -3,7 +3,7 @@ import { MEDIA, TIME, NOT_FONT_SIZE, VARS } from "@/styles";
 
 export const Component = styled.nav`
   --padding: ${VARS.size.gold};
-  --gap: calc(var(--padding) * 1.5);
+  --gap: ${VARS.size.silver};
   --border-radius: ${NOT_FONT_SIZE["2xs"]};
 
   position: fixed;
@@ -33,9 +33,9 @@ export const Component = styled.nav`
     border-bottom-right-radius: var(--border-radius);
     border-bottom-left-radius: var(--border-radius);
 
-    box-shadow: ${VARS.decorator.bevelHighlightLeft},
-      ${VARS.decorator.bevelHighlightRight},
-      ${VARS.decorator.bevelHighlightBottom};
+    box-shadow: ${VARS.decorator.bevelHighlight.left},
+      ${VARS.decorator.bevelHighlight.right},
+      ${VARS.decorator.bevelHighlight.bottom};
   }
 
   body[data-vertical-scroll="true"] & {

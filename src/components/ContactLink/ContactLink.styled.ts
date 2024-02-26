@@ -9,7 +9,7 @@ export const Component = styled.a`
 
   text-decoration: none;
   color: ${COLOR.gs_0};
-  box-shadow: ${VARS.decorator.shadow[1]}, ${VARS.decorator.bevelHighlight};
+  box-shadow: ${VARS.decorator.shadow[1]}, ${VARS.decorator.bevelHighlight.full};
   overflow: hidden;
 
   transition:
@@ -41,11 +41,12 @@ export const Component = styled.a`
   }
 
   &[data-email-sender="true"] {
-    box-shadow: ${VARS.decorator.bevelHighlight};
+    box-shadow: ${VARS.decorator.bevelHighlight.full};
 
     :hover {
-      box-shadow: ${VARS.decorator.shadow[0]}, ${VARS.decorator.bevelHighlight};
       translate: 0 -0.0625rem;
+      box-shadow: ${VARS.decorator.shadow[0]},
+        ${VARS.decorator.bevelHighlight.full};
     }
   }
 `;

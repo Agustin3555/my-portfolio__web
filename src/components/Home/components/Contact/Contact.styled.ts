@@ -24,7 +24,8 @@ export const Component = styled.div`
 
     color: ${COLOR.gs_1};
     background-color: ${COLOR.gs_14};
-    box-shadow: ${VARS.decorator.shadow[1]}, ${VARS.decorator.bevelHighlight};
+    box-shadow: ${VARS.decorator.shadow[1]},
+      ${VARS.decorator.bevelHighlight.full};
 
     transition: background-color ${TIME.s} ease-out;
 
@@ -55,7 +56,7 @@ export const Component = styled.div`
         color: ${COLOR.gs_14};
         border-radius: ${VARS.component.button.s.borderRadius};
         background-color: ${COLOR.gs_1};
-        box-shadow: ${VARS.decorator.bevelHighlight};
+        box-shadow: ${VARS.decorator.bevelHighlight.full};
 
         transition:
           background-color ${TIME.s} ease-out,
@@ -63,9 +64,9 @@ export const Component = styled.div`
           translate ${TIME.m} ${TIMING_FUNC.a};
 
         :hover {
-          box-shadow: ${VARS.decorator.shadow[0]},
-            ${VARS.decorator.bevelHighlight};
           translate: 0 -0.0625rem;
+          box-shadow: ${VARS.decorator.shadow[0]},
+            ${VARS.decorator.bevelHighlight.full};
         }
 
         > * {

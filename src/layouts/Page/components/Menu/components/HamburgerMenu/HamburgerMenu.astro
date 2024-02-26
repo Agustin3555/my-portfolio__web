@@ -17,69 +17,49 @@ interface Props {
 
 const { home, resume } = Astro.props.linksData;
 const { externalNetwork } = jsonData;
+
+const separatorStyle = {
+  backgroundColor: {
+    dark: COLOR_DARK_A,
+    bright: COLOR_BRIGHT_A,
+  },
+};
 ---
 
 <!-- TODO: semantica HTML -->
-<HamburgerMenuStyled.Component p={HamburgerMenuStyled.adapter(100, 100)}>
+<HamburgerMenuStyled.Component>
   <button class="deep-touch" id="deepTouch" title="Cerrar menú"></button>
-  <div class="glass-menu">
-    <div class="glass-refleccion"></div>
-    <div class="content">
-      <div class="MC" id="adaptable">
-        <div class="C" id="content">
-          <div class="top">
-            <Hamburger />
-            <ToggleDarkMode />
-          </div>
-          <div class="group">
-            <Separator
-              style={{
-                backgroundColor: {
-                  dark: COLOR_DARK_A,
-                  bright: COLOR_BRIGHT_A,
-                },
-              }}
-            />
-            <nav class="nav">
-              {home.map((item) => <Link {...item} />)}
-              <Separator
-                style={{
-                  backgroundColor: {
-                    dark: COLOR_DARK_A,
-                    bright: COLOR_BRIGHT_A,
-                  },
-                }}
-              />
-              <Link {...resume} />
-            </nav>
-            <Separator
-              style={{
-                backgroundColor: {
-                  dark: COLOR_DARK_A,
-                  bright: COLOR_BRIGHT_A,
-                },
-              }}
-            />
-            <nav class="nav nav--external-network">
-              {
-                externalNetwork.map(({ url, iconName, title }) => (
-                  <SocialNetwork
-                    href={url}
-                    iconName={iconName}
-                    title={`Ir al perfil de ${title}`}
-                  />
-                ))
-              }
-            </nav>
-          </div>
+  <header class="glass">
+    <div class="adaptable">
+      <div class="content">
+        <div class="controls">
+          <Hamburger />
+          <ToggleDarkMode />
         </div>
+        <Separator style={separatorStyle} />
+        <nav>
+          {home.map((item) => <Link {...item} />)}
+          <Separator style={separatorStyle} />
+          <Link {...resume} />
+          <Separator style={separatorStyle} />
+          <div class="external-networks">
+            {
+              externalNetwork.map(({ url, iconName, title }) => (
+                <SocialNetwork
+                  href={url}
+                  iconName={iconName}
+                  title={`Ir al perfil de ${title}`}
+                />
+              ))
+            }
+          </div>
+        </nav>
       </div>
     </div>
-  </div>
+  </header>
 </HamburgerMenuStyled.Component>
 
 <script>
-  import { adaptable } from "@/tools/adaptable.tool";
   import { bodyManager } from "@/tools/elementManagers.tool";
 
   const deepTouch = window.deepTouch as HTMLButtonElement;
@@ -89,6 +69,4 @@ const { externalNetwork } = jsonData;
   };
 
   deepTouch.addEventListener("click", deepTouchHandleClick);
-
-  adaptable(window.adaptable, window.content);
 </script>

@@ -2,144 +2,87 @@ import {
   COLOR,
   COLOR_BRIGHT_A,
   COLOR_DARK_A,
-  FONT_SIZE,
   TIME,
   NOT_FONT_SIZE,
-  Value,
+  VARS,
 } from "@/styles";
 import styled from "@emotion/styled";
 
-const SIZE = FONT_SIZE.xl;
-const THICKNESS = "0.1875rem";
-
-interface ConstProvider {
-  width: Value;
-  height: Value;
-  hamburgerAC: {
-    bar: {
-      height: Value;
-      hamburgerIcon: {
-        top: {
-          top: Value;
-        };
-        mid: {
-          top: Value;
-        };
-        bot: {
-          bottom: Value;
-        };
-      };
-      xIcon: {
-        xBar: {
-          top: Value;
-        };
-      };
-    };
-  };
-}
-
-const midTop = `calc(50% - ${THICKNESS} * 0.5)`;
-
-const cp: ConstProvider = {
-  width: SIZE,
-  height: SIZE,
-  hamburgerAC: {
-    bar: {
-      height: THICKNESS,
-      hamburgerIcon: {
-        top: {
-          top: THICKNESS,
-        },
-        mid: {
-          top: midTop,
-        },
-        bot: {
-          bottom: THICKNESS,
-        },
-      },
-      xIcon: {
-        xBar: {
-          top: midTop,
-        },
-      },
-    },
-  },
-};
-
 export const Component = styled.button`
-  position: relative;
-  width: ${cp.width};
-  height: ${cp.height};
-  padding: 0;
-  border: none;
-  background-color: transparent;
-  cursor: pointer;
+  --size: ${VARS.component.button.m.size};
+  --thickness: 0.1875rem;
+  --mid-top: calc(50% - var(--thickness) * 0.5);
 
-  > * {
-    position: absolute;
-    inset: 0;
-    transition:
-      opacity ${TIME.s} ease,
-      scale ${TIME.s} ease,
-      filter ${TIME.s} ease;
-  }
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  width: var(--size);
+  height: var(--size);
+
+  transition:
+    width ${TIME.m} ease,
+    height ${TIME.m} ease;
 
   .bar {
     position: absolute;
-    height: ${cp.hamburgerAC.bar.height};
+    height: var(--thickness);
     border-radius: ${NOT_FONT_SIZE["6xl"]};
+
     background-color: ${COLOR_BRIGHT_A};
+
     transition: background-color ${TIME.s} ease-out;
   }
 
+  > * {
+    --icon-size: ${VARS.component.button.m.iconSize};
+
+    position: absolute;
+    width: var(--icon-size);
+    height: var(--icon-size);
+
+    transition:
+      scale ${TIME.s} ease,
+      filter ${TIME.s} ease,
+      opacity ${TIME.s} ease;
+  }
+
   .hamburger-icon {
-    width: 100%;
-    height: 100%;
-
-    body[data-hamburger-menu-is-open="true"] & {
-      opacity: 0;
-      scale: 0;
-      filter: blur(${NOT_FONT_SIZE["4xs"]});
-    }
-
     .top {
-      top: ${cp.hamburgerAC.bar.hamburgerIcon.top.top};
+      top: var(--thickness);
       width: 50%;
     }
 
     .mid {
-      top: ${cp.hamburgerAC.bar.hamburgerIcon.mid.top};
+      top: var(--mid-top);
       width: 100%;
     }
 
     .bot {
-      bottom: ${cp.hamburgerAC.bar.hamburgerIcon.bot.bottom};
+      bottom: var(--thickness);
       width: 75%;
     }
   }
 
   .x-icon {
-    left: -0.2656rem;
-    width: 100%;
-    height: 100%;
+    left: -0.265625rem;
 
-    body[data-hamburger-menu-is-open="false"] & {
-      opacity: 0;
-      scale: 0;
-      filter: blur(${NOT_FONT_SIZE["4xs"]});
-    }
+    scale: 0;
+    filter: blur(${NOT_FONT_SIZE["4xs"]});
+    opacity: 0;
 
-    .x-bar {
-      top: ${cp.hamburgerAC.bar.xIcon.xBar.top};
+    > * {
+      top: var(--mid-top);
       width: 109%;
     }
 
     .a {
-      transform: rotate(45deg);
+      rotate: 45deg;
     }
 
     .b {
-      transform: rotate(-45deg);
+      rotate: -45deg;
     }
   }
 
@@ -147,13 +90,29 @@ export const Component = styled.button`
     background-color: ${COLOR.gs_19};
   }
 
-  body[data-dark-mode="true"] & {
-    .bar {
-      background-color: ${COLOR_DARK_A};
+  body[data-hamburger-menu-is-open="true"] & {
+    --size: ${VARS.component.button.m.iconSize};
+
+    .hamburger-icon {
+      scale: 0;
+      filter: blur(${NOT_FONT_SIZE["4xs"]});
+      opacity: 0;
     }
 
+    .x-icon {
+      scale: initial;
+      filter: initial;
+      opacity: initial;
+    }
+  }
+
+  body[data-dark-mode="true"] & {
     :hover .bar {
       background-color: ${COLOR.gs_0};
+    }
+
+    .bar {
+      background-color: ${COLOR_DARK_A};
     }
   }
 `;

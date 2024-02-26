@@ -1,6 +1,5 @@
 import styled from "@emotion/styled";
 import { NOT_FONT_SIZE, type Size, type Value, VARS } from "@/styles";
-import { type SerializedStyles } from "@emotion/react";
 
 interface Provider {
   borderRadius: Value;
@@ -13,20 +12,16 @@ interface Provider {
     padding: Value;
     borderRadius: Value;
   };
-
-  styled?: Value;
 }
 
 export interface Props {
   padding?: Size;
   borderRadius?: Size;
-  styled?: SerializedStyles;
 }
 
 export const adapter = ({
   padding = NOT_FONT_SIZE["3xs"],
   borderRadius = NOT_FONT_SIZE["4xs"],
-  styled,
 }: Props): Provider => {
   return {
     borderRadius,
@@ -39,8 +34,6 @@ export const adapter = ({
       padding,
       borderRadius,
     },
-
-    styled,
   };
 };
 
@@ -56,6 +49,4 @@ export const Component = styled.div<{ p: Provider }>`
     padding: ${({ p }) => p.content.padding};
     border-radius: ${({ p }) => p.content.borderRadius};
   }
-
-  ${({ p }) => p.styled};
 `;

@@ -42,7 +42,7 @@ export const Component = styled.div<{ p: Provider }>`
   border-radius: var(--border-radius);
 
   background-color: hsl(0, 0%, 50%);
-  box-shadow: ${VARS.decorator.bevelHighlight};
+  box-shadow: ${VARS.decorator.bevelHighlight.full};
   overflow: hidden;
 
   .imgs {

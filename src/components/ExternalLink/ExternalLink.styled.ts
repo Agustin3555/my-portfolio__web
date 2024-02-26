@@ -2,7 +2,9 @@ import styled from "@emotion/styled";
 import { COLOR, TIME, VARS } from "@/styles";
 
 export const Component = styled.a`
-  border-radius: ${VARS.component.button.xs.borderRadius};
+  --border-radius: ${VARS.component.button.xs.borderRadius};
+
+  border-radius: var(--border-radius);
 
   text-decoration: none;
   box-shadow: ${VARS.decorator.shadow[1]};
@@ -12,7 +14,7 @@ export const Component = styled.a`
     ${VARS.component.link.translate.transition};
 
   ::before {
-    border-radius: ${VARS.component.button.xs.borderRadius};
+    border-radius: var(--border-radius);
   }
 
   :hover {
@@ -29,7 +31,7 @@ export const Component = styled.a`
       ${VARS.component.button.xs.padding} * 2 +
         ${VARS.component.button.xs.fontSize}
     );
-    border-radius: ${VARS.component.button.xs.borderRadius};
+    border-radius: var(--border-radius);
 
     p {
       font-size: ${VARS.component.button.xs.fontSize};

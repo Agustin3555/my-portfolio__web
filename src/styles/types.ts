@@ -1,5 +1,4 @@
 import { COLOR, FONT, FONT_SIZE, TIME, NOT_FONT_SIZE } from "./palette";
-import { type SerializedStyles } from "@emotion/react";
 
 export type Font = FONT | string;
 
@@ -15,4 +14,4 @@ export type Time = TIME | string;
 
 export type Knob = 0 | 0.125 | 0.25 | 0.375 | 0.5 | 0.625 | 0.75 | 0.875 | 1;
 
-export type Value = number | string | SerializedStyles;
+export type Value = number | string;

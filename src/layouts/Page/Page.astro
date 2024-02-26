@@ -36,11 +36,6 @@ if (title) documentTitle += ` ${separator} ${title}`;
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
 
-    <meta
-      name="google-site-verification"
-      content="YYKIvWV2nOIwchh9AOzo4kwVG5FWKATc4FVCH2h2pH0"
-    />
-
     <link rel="icon" href="/favicon-logo-s.ico" />
     <title>{documentTitle}</title>
 
@@ -173,4 +168,24 @@ if (title) documentTitle += ` ${separator} ${title}`;
   */
   await sleep(50);
   elementSliders.forEach((elementSlider) => (elementSlider.scrollTop = 0));
+</script>
+
+<script>
+  const adaptables =
+    window.document.querySelectorAll<HTMLElement>(".adaptable");
+
+  adaptables.forEach((adaptable) => {
+    const content = adaptable.querySelector("& > *");
+
+    const resizeObserver = new ResizeObserver((entries) => {
+      if (entries.length > 0) {
+        const { width, height } = entries[0].contentRect;
+
+        adaptable.style.setProperty("--content-width", `${width}px`);
+        adaptable.style.setProperty("--content-height", `${height}px`);
+      }
+    });
+
+    content && resizeObserver.observe(content);
+  });
 </script>
