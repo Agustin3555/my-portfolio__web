@@ -1,8 +1,7 @@
 ---
 import * as SocialNetworkStyled from "./SocialNetwork.styled";
 import Icon from "@/components/Icon/Icon.astro";
-import GlassPanel from "@/layouts/GlassPanel/GlassPanel.astro";
-import { FONT_SIZE, VARS } from "@/styles";
+import { FONT_SIZE } from "@/styles";
 
 interface Props {
   href: string;
@@ -14,17 +13,13 @@ const { href, iconName, title } = Astro.props;
 ---
 
 <SocialNetworkStyled.Component
+  className="glass"
   title={title}
   href={href}
   target="_blank"
   rel="noopener"
 >
-  <GlassPanel
-    style={{
-      padding: VARS.component.button.s.padding,
-      borderRadius: VARS.component.button.s.borderRadius,
-    }}
-  >
+  <div class="content">
     <Icon iconName={iconName} style={{ size: FONT_SIZE.m }} />
-  </GlassPanel>
+  </div>
 </SocialNetworkStyled.Component>

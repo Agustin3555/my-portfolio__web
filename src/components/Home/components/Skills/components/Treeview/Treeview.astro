@@ -1,30 +1,19 @@
 ---
 import * as TreeviewStyled from "./Treeview.styled";
-import GlassPanel from "@/layouts/GlassPanel/GlassPanel.astro";
 import Node from "./components/Node/Node.astro";
-import { NOT_FONT_SIZE } from "@/styles";
 import jsonData from "@/data.json";
 
 const { data } = jsonData.pages.home.sections.skills.subsections.technologies;
 ---
 
-<!-- TODO: semantica HTML -->
-<TreeviewStyled.Component id="skillsTreeview">
-  <GlassPanel
-    style={{
-      padding: NOT_FONT_SIZE.s,
-      borderRadius: NOT_FONT_SIZE.xs,
-    }}
-    handlingClass={["glass-container"]}
-  >
-    <ul class="items">
-      {
-        data.map((item) => (
-          <li>
-            <Node dataNode={item} />
-          </li>
-        ))
-      }
-    </ul>
-  </GlassPanel>
+<TreeviewStyled.Component className="glass" id="skillsTreeview">
+  <ul class="items">
+    {
+      data.map((item) => (
+        <li>
+          <Node dataNode={item} />
+        </li>
+      ))
+    }
+  </ul>
 </TreeviewStyled.Component>

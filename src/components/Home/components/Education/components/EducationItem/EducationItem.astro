@@ -1,8 +1,6 @@
 ---
 import * as EducationItemStyled from "./EducationItem.styled";
-import GlassPanel from "@/layouts/GlassPanel/GlassPanel.astro";
 import ExternalLink from "@/components/ExternalLink/ExternalLink.astro";
-import { NOT_FONT_SIZE, VARS } from "@/styles";
 import Icon from "@/components/Icon/Icon.astro";
 
 interface DateData {
@@ -42,18 +40,11 @@ const {
   data-last-item={lastItem}
 >
   <article class="item">
-    <header>
-      <GlassPanel
-        style={{
-          padding: VARS.size.gold,
-          borderRadius: NOT_FONT_SIZE["2xs"],
-        }}
-      >
-        <div class="header-content" aria-labelledby="education-title">
-          <h3 id="education-title" class="text">{title}</h3>
-          <p class="institution-name text">{institutionName}</p>
-        </div>
-      </GlassPanel>
+    <header class="glass">
+      <div class="content" aria-labelledby="education-title">
+        <h3 id="education-title" class="text">{title}</h3>
+        <p class="institution-name text">{institutionName}</p>
+      </div>
     </header>
     <div class="about-time">
       <time class="end-date text" datetime={endDate.machine}
@@ -86,7 +77,8 @@ const {
           cy="17"
           r="16.5"
           stroke="currentColor"
-          stroke-linecap="round"
+          stroke-width="0.75"
+          stroke-linecap="square"
           stroke-dasharray="4 4"></circle>
       </svg>
       <span class="line"></span>

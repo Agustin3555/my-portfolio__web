@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { COLOR, FONT_SIZE, TIME, VARS } from "@/styles";
+import { COLOR, FONT_SIZE, NOT_FONT_SIZE, TIME, VARS } from "@/styles";
 
 enum GRID_L {
   header = "header",
@@ -31,14 +31,25 @@ export const Component = styled.li`
   gap: var(--gap);
 
   header {
+    --border-radius: ${NOT_FONT_SIZE["2xs"]};
+
     grid-area: ${GRID_L.header};
     justify-self: flex-start;
-    width: max-content;
 
-    .header-content {
+    border-radius: var(--border-radius);
+
+    box-shadow: ${VARS.decorator.shadow[1]};
+
+    ::before {
+      border-radius: var(--border-radius);
+    }
+
+    .content {
       display: flex;
       flex-direction: column;
       gap: var(--gap);
+      padding: var(--gap);
+      border-radius: var(--border-radius);
 
       .types {
         display: flex;

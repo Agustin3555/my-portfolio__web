@@ -117,10 +117,6 @@ export const Component = styled.div`
         bottom: 0;
         aspect-ratio: 1 / 1;
         width: calc(100% - var(--gap));
-
-        .content {
-          height: 100%;
-        }
       }
 
       @media (max-width: ${MEDIA["2xs"]}) {

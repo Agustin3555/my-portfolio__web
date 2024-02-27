@@ -5,7 +5,6 @@ import ExternalLink, {
   type Props as ExternalLinksProps,
 } from "@/components/ExternalLink/ExternalLink.astro";
 import Separator from "@/components/Separator/Separator.astro";
-import GlassPanel from "@/layouts/GlassPanel/GlassPanel.astro";
 import { NOT_FONT_SIZE, VARS } from "@/styles";
 import { highlightToHTMLTag } from "@/tools";
 
@@ -84,40 +83,34 @@ if (links) {
     }}
     handlingClass={["slider"]}
   />
-  <header>
-    <GlassPanel
-      style={{
-        padding: NOT_FONT_SIZE.s,
-        borderRadius: NOT_FONT_SIZE["2xs"],
-      }}
-    >
-      <div class="header-content">
-        <h3 class="text">{title}</h3>
-        <ul class="types">
-          {
-            types.map((item, index) => (
-              <>
-                <li>
-                  <p class="text">{item}</p>
-                </li>
-                {index !== types.length - 1 && (
-                  <Separator
-                    style={{
-                      invert: true,
-                      long: NOT_FONT_SIZE["2xs"],
-                      color: {
-                        light: VARS.color.a.line.light,
-                        dark: VARS.color.a.line.dark,
-                      },
-                    }}
-                  />
-                )}
-              </>
-            ))
-          }
-        </ul>
-      </div>
-    </GlassPanel>
+  <header class="glass">
+    <div class="content">
+      <h3 class="text">{title}</h3>
+      <ul class="types">
+        {
+          types.map((item, index) => (
+            <>
+              <li>
+                <p class="text">{item}</p>
+              </li>
+              {index !== types.length - 1 && (
+                <Separator
+                  asSpan
+                  style={{
+                    invert: true,
+                    long: NOT_FONT_SIZE["2xs"],
+                    color: {
+                      light: VARS.color.a.line.light,
+                      dark: VARS.color.a.line.dark,
+                    },
+                  }}
+                />
+              )}
+            </>
+          ))
+        }
+      </ul>
+    </div>
   </header>
   <ul class="techs">
     {

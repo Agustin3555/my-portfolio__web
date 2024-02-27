@@ -1,12 +1,11 @@
 ---
 import Section from "@/layouts/Section/Section.astro";
 import * as AboutStyled from "./About.styled";
-import GlassPanel from "@/layouts/GlassPanel/GlassPanel.astro";
+import GlassPanel from "@/components/GlassPanel/GlassPanel.astro";
 import SocialNetwork from "@/components/SocialNetwork/SocialNetwork.astro";
 import ExternalLink from "@/components/ExternalLink/ExternalLink.astro";
 import ContactLink from "@/components/ContactLink/ContactLink.astro";
 import ImgsSlider from "../ImgsSlider/ImgsSlider.astro";
-import { NOT_FONT_SIZE } from "@/styles";
 import { highlightToHTMLTag } from "@/tools";
 import jsonData from "@/data.json";
 
@@ -68,10 +67,7 @@ const { intro, profProfile, hobbiesAndLikes } = subsections;
     </div>
     <div class="b">
       <div class="x">
-        <GlassPanel
-          style={{ borderRadius: NOT_FONT_SIZE.xs }}
-          handlingClass={["glass-panel"]}
-        />
+        <GlassPanel handlingClass={["glass-panel"]} />
         <ImgsSlider
           folder="about"
           imgs={imgs}

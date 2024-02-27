@@ -39,13 +39,24 @@ export const Component = styled.li`
     column-gap: var(--gap);
 
     header {
+      --border-radius: ${NOT_FONT_SIZE["2xs"]};
+
       grid-area: ${GRID_L.header};
       justify-self: flex-start;
+      border-radius: var(--border-radius);
 
-      .header-content {
+      box-shadow: ${VARS.decorator.shadow[1]};
+
+      ::before {
+        border-radius: var(--border-radius);
+      }
+
+      .content {
         display: flex;
         flex-direction: column;
         gap: var(--gap);
+        padding: var(--gap);
+        border-radius: var(--border-radius);
 
         .institution-name {
           font-size: ${FONT_SIZE.xs};
@@ -70,10 +81,6 @@ export const Component = styled.li`
 
       .end-date {
         color: ${COLOR.b_d2};
-      }
-
-      .duration {
-        color: ${COLOR.gs_10};
       }
     }
 
@@ -175,10 +182,6 @@ export const Component = styled.li`
       .about-time {
         .end-date {
           color: ${COLOR.b_l2};
-        }
-
-        .duration {
-          color: ${COLOR.gs_6};
         }
       }
 
