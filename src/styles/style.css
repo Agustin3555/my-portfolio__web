@@ -1,9 +1,3 @@
-:root {
-  --scrollbar-width: var(--palette-size-not-font-3xs);
-  --scrollbar-padding: var(--palette-size-not-font-3xs);
-  --scrollbar-size: calc(var(--scrollbar-width) + var(--scrollbar-padding) * 2);
-}
-
 * {
   box-sizing: border-box;
   margin: 0;
@@ -30,10 +24,15 @@
 }
 
 body {
+  --scrollbar-width: var(--palette-size-not-font-3xs);
+  --scrollbar-padding: var(--palette-size-not-font-3xs);
+  --scrollbar-size: calc(var(--scrollbar-width) + var(--scrollbar-padding) * 2);
+
   position: relative;
 
   font-family: var(--palette-font-a);
-  background-color: var(--palette-color-gs-0);
+  color: var(--color-a-content-light);
+  background-color: var(--color-a-bg-light);
 
   transition: background-color var(--palette-time-s) ease-out;
 
@@ -62,7 +61,8 @@ body {
   }
 
   &[data-dark-mode="true"] {
-    background-color: var(--palette-color-gs-17);
+    color: var(--color-a-content-dark);
+    background-color: var(--color-a-bg-dark);
 
     &::-webkit-scrollbar-thumb {
       border-color: var(--palette-color-gs-17);
@@ -191,7 +191,7 @@ button {
 .glass {
   position: relative;
 
-  backdrop-filter: blur(15px);
+  backdrop-filter: blur(0.9375rem);
 
   &::before {
     content: "";
@@ -201,9 +201,18 @@ button {
 
     background: linear-gradient(
       -30deg,
-      rgba(160, 160, 160, 0.0375) 25%,
-      rgba(160, 160, 160, 0.075) 75%,
-      rgba(160, 160, 160, 0.1875) 100%
+      rgba(160, 160, 160, 0.05625) 25%,
+      rgba(160, 160, 160, 0.1125) 75%,
+      rgba(160, 160, 160, 0.28125) 100%
+    );
+  }
+
+  body[data-dark-mode="true"] &::before {
+    background: linear-gradient(
+      -30deg,
+      rgba(160, 160, 160, 0.028125) 25%,
+      rgba(160, 160, 160, 0.05625) 75%,
+      rgba(160, 160, 160, 0.140625) 100%
     );
   }
 

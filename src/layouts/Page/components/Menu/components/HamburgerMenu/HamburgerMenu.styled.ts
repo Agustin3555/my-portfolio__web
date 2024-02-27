@@ -22,63 +22,59 @@ export const Component = styled.div`
   }
 
   header {
+    --padding: 0;
+    --size: ${VARS.component.button.m.size};
     --gap: ${VARS.size.gold};
     --border-radius: ${VARS.component.button.m.borderRadius};
 
     position: fixed;
     top: 0;
     right: 0;
+    padding: var(--padding);
+    width: var(--size);
+    height: var(--size);
     border-bottom-right-radius: var(--border-radius);
     border-bottom-left-radius: var(--border-radius);
 
-    box-shadow: ${VARS.decorator.shadow[1]};
+    color: ${VARS.color.b.content.light};
+    background-color: ${VARS.color.b.bg.light};
+    box-shadow: ${VARS.decorator.shadow[1]},
+      ${VARS.decorator.bevelHighlight.left},
+      ${VARS.decorator.bevelHighlight.right},
+      ${VARS.decorator.bevelHighlight.bottom};
+    overflow: hidden;
 
-    &::before {
-      border-bottom-right-radius: var(--border-radius);
-      border-bottom-left-radius: var(--border-radius);
+    transition:
+      padding ${TIME.m} ease,
+      width ${TIME.m} ease,
+      height ${TIME.m} ease,
+      border-radius ${TIME.m} ease,
+      background-color ${TIME.s} ease-out;
+
+    body[data-dark-mode="true"] & {
+      color: ${VARS.color.b.content.dark};
+      background-color: ${VARS.color.b.bg.dark};
     }
 
-    .adaptable {
-      --size: ${VARS.component.button.m.size};
-      --padding: 0;
+    .content {
+      display: flex;
+      flex-direction: column;
+      gap: var(--gap);
+      width: fit-content;
 
-      position: relative;
-      padding: var(--padding);
-      width: var(--size);
-      height: var(--size);
-      border-bottom-right-radius: var(--border-radius);
-      border-bottom-left-radius: var(--border-radius);
+      .controls {
+        display: flex;
+        justify-content: space-between;
+      }
 
-      box-shadow: ${VARS.decorator.bevelHighlight.left},
-        ${VARS.decorator.bevelHighlight.right},
-        ${VARS.decorator.bevelHighlight.bottom};
-      overflow: hidden;
-
-      transition:
-        padding ${TIME.m} ease,
-        width ${TIME.m} ease,
-        height ${TIME.m} ease;
-
-      .content {
+      nav {
         display: flex;
         flex-direction: column;
         gap: var(--gap);
-        width: fit-content;
 
-        .controls {
+        .external-networks {
           display: flex;
-          justify-content: space-between;
-        }
-
-        nav {
-          display: flex;
-          flex-direction: column;
           gap: var(--gap);
-
-          .external-networks {
-            display: flex;
-            gap: var(--gap);
-          }
         }
       }
     }
@@ -86,20 +82,17 @@ export const Component = styled.div`
 
   body[data-hamburger-menu-is-open="true"] & {
     .deep-touch {
-      opacity: 0.5;
+      opacity: 0.25;
       pointer-events: initial;
     }
 
     header {
+      --padding: ${VARS.size.silver};
+      --total-linear-padding: calc(var(--padding) * 2);
       --border-radius: ${NOT_FONT_SIZE.xs};
 
-      .adaptable {
-        --padding: ${VARS.size.silver};
-        --total-linear-padding: calc(var(--padding) * 2);
-
-        width: calc(var(--total-linear-padding) + var(--content-width));
-        height: calc(var(--total-linear-padding) + var(--content-height));
-      }
+      width: calc(var(--total-linear-padding) + var(--content-width));
+      height: calc(var(--total-linear-padding) + var(--content-height));
     }
   }
 `;

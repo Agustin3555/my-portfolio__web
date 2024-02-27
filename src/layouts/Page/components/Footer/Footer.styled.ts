@@ -8,8 +8,8 @@ export const Component = styled.footer`
   padding: calc(${VARS.size.gold} * 2);
   padding-bottom: ${VARS.size.gold};
 
-  color: ${COLOR.gs_15};
-  background-color: ${COLOR.gs_6};
+  color: ${VARS.color.b.content.light};
+  background-color: ${VARS.color.b.bg.light};
   border-top-left-radius: ${NOT_FONT_SIZE.xs};
   border-top-right-radius: ${NOT_FONT_SIZE.xs};
   box-shadow: ${VARS.decorator.shadow[1]}, ${VARS.decorator.bevelHighlight.top},
@@ -91,8 +91,8 @@ export const Component = styled.footer`
   }
 
   body[data-dark-mode="true"] & {
-    color: ${COLOR.gs_4};
-    background-color: ${COLOR.gs_14};
+    color: ${VARS.color.b.content.dark};
+    background-color: ${VARS.color.b.bg.dark};
 
     .sections article h4 {
       color: ${COLOR.gs_0};

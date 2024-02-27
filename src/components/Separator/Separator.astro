@@ -2,16 +2,24 @@
 import * as SeparatorStyled from "./Separator.styled";
 import { type HandlingClass, asClassName } from "@/tools";
 
-interface Props {
+export interface Props {
+  asSpan?: boolean;
   style: SeparatorStyled.Props;
   handlingClass?: HandlingClass;
 }
 
-const { style, handlingClass = [] } = Astro.props;
+const { asSpan = false, style, handlingClass = [] } = Astro.props;
+
+const props = {
+  p: SeparatorStyled.adapter(style),
+  className: asClassName(...handlingClass),
+};
 ---
 
-<!-- TODO: tener la posibilidad de cambiar de hr a span -->
-<SeparatorStyled.Component
-  p={SeparatorStyled.adapter(style)}
-  className={asClassName(...handlingClass)}
-/>
+{
+  asSpan ? (
+    <SeparatorStyled.SpanComponent {...props} />
+  ) : (
+    <SeparatorStyled.HrComponent {...props} />
+  )
+}

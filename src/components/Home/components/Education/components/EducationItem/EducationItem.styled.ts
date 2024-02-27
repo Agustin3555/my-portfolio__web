@@ -14,10 +14,19 @@ export const Component = styled.li`
   --time-width: 7rem;
   --encapsulator-size: 2.125rem;
   --line-thickness: ${NOT_FONT_SIZE["6xs"]};
+  --line-color: ${VARS.color.a.line.light};
   --compensation-to-align: 0.0625rem / 2;
 
   display: flex;
   flex-direction: column;
+
+  .line {
+    width: var(--line-thickness);
+
+    background-color: var(--line-color);
+
+    transition: background-color ${TIME.s} ease-out;
+  }
 
   .item {
     display: grid;
@@ -92,16 +101,10 @@ export const Component = styled.li`
       }
 
       .encapsulator {
-        width: var(--encapsulator-size);
-        height: var(--encapsulator-size);
-        border-width: var(--line-thickness);
+        color: ${COLOR.gs_10};
 
-        border-style: dashed;
-        border-radius: 100%;
-        border-color: ${COLOR.gs_10};
+        transition: color ${TIME.s} ease-out;
         animation: spin 16.18s linear infinite;
-
-        transition: border-color ${TIME.s} ease-out;
 
         @keyframes spin {
           to {
@@ -135,14 +138,6 @@ export const Component = styled.li`
     }
   }
 
-  .line {
-    width: var(--line-thickness);
-
-    background-color: ${COLOR.gs_6};
-
-    transition: background-color ${TIME.s} ease-out;
-  }
-
   @media (max-width: 40.8125rem) {
     .item {
       grid-template:
@@ -174,6 +169,8 @@ export const Component = styled.li`
   }
 
   body[data-dark-mode="true"] & {
+    --line-color: ${VARS.color.a.line.dark};
+
     .item {
       .about-time {
         .end-date {
@@ -189,13 +186,9 @@ export const Component = styled.li`
         color: ${COLOR.b_l2};
 
         .encapsulator {
-          border-color: ${COLOR.gs_8};
+          color: ${COLOR.gs_8};
         }
       }
-    }
-
-    .line {
-      background-color: ${COLOR.gs_10};
     }
   }
 

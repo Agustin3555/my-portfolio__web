@@ -1,22 +1,31 @@
 ---
 import * as FooterStyled from "./Footer.styled";
-import Separator from "@/components/Separator/Separator.astro";
+import Separator, {
+  type Props as SeparatorProps,
+} from "@/components/Separator/Separator.astro";
 import Link from "@/components/Link/Link.astro";
-import { COLOR } from "@/styles";
+import { VARS } from "@/styles";
 import jsonData from "@/data.json";
 
 const { copyright, sections } = jsonData.footer;
 const { acknowledgments, othersPages } = sections;
+
+const separatorProps: SeparatorProps = {
+  style: {
+    color: {
+      light: VARS.color.b.line.light,
+      dark: VARS.color.b.line.dark,
+    },
+  },
+  handlingClass: ["separator"],
+};
 ---
 
 <FooterStyled.Component>
   <div class="sections">
     <article>
       <h4>{acknowledgments.title}</h4>
-      <Separator
-        style={{ backgroundColor: { dark: COLOR.gs_10 } }}
-        handlingClass={["separator"]}
-      />
+      <Separator {...separatorProps} />
       <div class="acknowledgments paragraphs">
         <p class="text">{acknowledgments.data.text}</p>
         <ul>
@@ -35,16 +44,10 @@ const { acknowledgments, othersPages } = sections;
     </article>
     <article>
       <h4>{othersPages.title}</h4>
-      <Separator
-        style={{ backgroundColor: { dark: COLOR.gs_10 } }}
-        handlingClass={["separator"]}
-      />
-      <Link href="coffee" text="Not found" />
+      <Separator {...separatorProps} />
+      <Link href="cat" text="Not found" />
     </article>
   </div>
-  <Separator
-    style={{ backgroundColor: { dark: COLOR.gs_10 } }}
-    handlingClass={["separator"]}
-  />
+  <Separator {...separatorProps} />
   <small class="copyright text">{copyright}</small>
 </FooterStyled.Component>

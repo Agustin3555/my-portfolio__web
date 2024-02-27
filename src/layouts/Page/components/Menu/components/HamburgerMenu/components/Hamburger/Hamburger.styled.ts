@@ -1,12 +1,5 @@
-import {
-  COLOR,
-  COLOR_BRIGHT_A,
-  COLOR_DARK_A,
-  TIME,
-  NOT_FONT_SIZE,
-  VARS,
-} from "@/styles";
 import styled from "@emotion/styled";
+import { COLOR, TIME, NOT_FONT_SIZE, VARS } from "@/styles";
 
 export const Component = styled.button`
   --size: ${VARS.component.button.m.size};
@@ -25,12 +18,22 @@ export const Component = styled.button`
     width ${TIME.m} ease,
     height ${TIME.m} ease;
 
+  body[data-dark-mode="true"] & {
+    :hover .bar {
+      background-color: ${COLOR.gs_0};
+    }
+
+    .bar {
+      background-color: ${VARS.color.b.content.dark};
+    }
+  }
+
   .bar {
     position: absolute;
     height: var(--thickness);
     border-radius: ${NOT_FONT_SIZE["6xl"]};
 
-    background-color: ${COLOR_BRIGHT_A};
+    background-color: ${VARS.color.b.content.light};
 
     transition: background-color ${TIME.s} ease-out;
   }
@@ -103,16 +106,6 @@ export const Component = styled.button`
       scale: initial;
       filter: initial;
       opacity: initial;
-    }
-  }
-
-  body[data-dark-mode="true"] & {
-    :hover .bar {
-      background-color: ${COLOR.gs_0};
-    }
-
-    .bar {
-      background-color: ${COLOR_DARK_A};
     }
   }
 `;

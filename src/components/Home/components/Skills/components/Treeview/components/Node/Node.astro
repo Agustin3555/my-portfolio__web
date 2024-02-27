@@ -1,7 +1,9 @@
 ---
 import * as NodeStyled from "./Node.styled";
-import Separator from "@/components/Separator/Separator.astro";
-import { COLOR, FONT_SIZE } from "@/styles";
+import Separator, {
+  type Props as SeparatorProps,
+} from "@/components/Separator/Separator.astro";
+import { FONT_SIZE, VARS } from "@/styles";
 import { asClassName } from "@/tools";
 
 interface DataNode {
@@ -22,6 +24,17 @@ interface Props {
 
 const { dataNode, level = 0 } = Astro.props;
 const { names, icons, skillLevel, technologies } = dataNode;
+
+const separatorProps: SeparatorProps = {
+  style: {
+    invert: true,
+    long: FONT_SIZE.xs,
+    color: {
+      light: VARS.color.a.line.light,
+      dark: VARS.color.a.line.dark,
+    },
+  },
+};
 ---
 
 <!-- TODO: semantica HTML -->
@@ -32,15 +45,7 @@ const { names, icons, skillLevel, technologies } = dataNode;
         names.map((name, index) => (
           <>
             <div class="name">{name}</div>
-            {index !== names.length - 1 && (
-              <Separator
-                style={{
-                  invert: true,
-                  long: FONT_SIZE.xs,
-                  backgroundColor: { dark: COLOR.gs_10 },
-                }}
-              />
-            )}
+            {index !== names.length - 1 && <Separator {...separatorProps} />}
           </>
         ))
       }
@@ -58,15 +63,7 @@ const { names, icons, skillLevel, technologies } = dataNode;
                 src={`/skills/${icon.fileName}`}
                 alt={`Logo de ${names[index]}`}
               />
-              {index !== names.length - 1 && (
-                <Separator
-                  style={{
-                    invert: true,
-                    long: FONT_SIZE.xs,
-                    backgroundColor: { dark: COLOR.gs_10 },
-                  }}
-                />
-              )}
+              {index !== names.length - 1 && <Separator {...separatorProps} />}
             </>
           ))
         }

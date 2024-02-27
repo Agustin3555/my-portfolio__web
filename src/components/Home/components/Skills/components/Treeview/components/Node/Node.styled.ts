@@ -189,7 +189,7 @@ export const Component = styled.div`
 
       .line {
         width: ${NOT_FONT_SIZE["6xs"]};
-        background-color: ${COLOR.gs_6};
+        background-color: ${VARS.color.a.line.light};
 
         transition: background-color ${TIME.s} ease-out;
       }
@@ -215,7 +215,7 @@ export const Component = styled.div`
             border-left-width: ${NOT_FONT_SIZE["6xs"]};
             border-bottom-width: ${NOT_FONT_SIZE["6xs"]};
             border-style: solid;
-            border-color: ${COLOR.gs_6};
+            border-color: ${VARS.color.a.line.light};
             border-bottom-left-radius: ${NOT_FONT_SIZE["3xs"]};
 
             transition: border-color ${TIME.s} ease-out;
@@ -265,11 +265,11 @@ export const Component = styled.div`
 
     .child-tech .item {
       .line {
-        background-color: ${COLOR.gs_11};
+        background-color: ${VARS.color.a.line.dark};
       }
 
       .child-group .bullet-point-container .box {
-        border-color: ${COLOR.gs_11};
+        border-color: ${VARS.color.a.line.dark};
       }
     }
   }

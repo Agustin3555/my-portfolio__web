@@ -1,8 +1,22 @@
 :root {
-  --color-a-bg-light: var(--palette-color-gs-1);
-  --color-a-bg-dark: var(--palette-color-gs-16);
-  --color-a-font-light: var(--palette-color-b-d2);
-  --color-a-font-dark: var(--palette-color-b-l2);
+  --color-a-bg-light: var(--palette-color-gs-0);
+  --color-a-bg-dark: var(--palette-color-gs-17);
+  --color-a-content-light: var(--palette-color-gs-13);
+  --color-a-content-dark: var(--palette-color-gs-5);
+  --color-a-line-light: var(--palette-color-gs-7);
+  --color-a-line-dark: var(--palette-color-gs-11);
+
+  --color-b-bg-light: var(--palette-color-gs-3);
+  --color-b-bg-dark: var(--palette-color-gs-14);
+  --color-b-content-light: var(--palette-color-gs-14);
+  --color-b-content-dark: var(--palette-color-gs-3);
+  --color-b-line-light: var(--palette-color-gs-8);
+  --color-b-line-dark: var(--palette-color-gs-9);
+
+  --color-c-bg-light: var(--palette-color-gs-1);
+  --color-c-bg-dark: var(--palette-color-gs-16);
+  --color-c-content-light: var(--palette-color-b-d2);
+  --color-c-content-dark: var(--palette-color-b-l2);
 
   --size-gold: var(--palette-size-not-font-s);
   --size-silver: calc(var(--size-gold) * 1.5);

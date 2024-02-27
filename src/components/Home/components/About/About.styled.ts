@@ -1,15 +1,5 @@
-import {
-  COLOR,
-  COLOR_BRIGHT_B,
-  FONT,
-  FONT_SIZE,
-  MEDIA,
-  TIME,
-  NOT_FONT_SIZE,
-  type Value,
-  VARS,
-} from "@/styles";
 import styled from "@emotion/styled";
+import { COLOR, FONT_SIZE, MEDIA, TIME, NOT_FONT_SIZE, VARS } from "@/styles";
 
 export const Component = styled.div`
   --gap-xs: calc(var(--gap-s) / 2);
@@ -46,7 +36,7 @@ export const Component = styled.div`
       border-left-width: ${NOT_FONT_SIZE["6xs"]};
 
       border-style: solid;
-      border-color: ${COLOR.gs_8};
+      border-color: ${VARS.color.a.line.light};
       scrollbar-width: thin;
       scrollbar-color: ${COLOR.gs_4} transparent;
 
@@ -81,7 +71,7 @@ export const Component = styled.div`
           padding-right: var(--compensated-padding);
           border-radius: ${VARS.component.button.s.borderRadius};
 
-          background-color: ${VARS.color.a.bg.light};
+          background-color: ${VARS.color.c.bg.light};
 
           transition: background-color ${TIME.s} ease-out;
 
@@ -92,7 +82,7 @@ export const Component = styled.div`
           p {
             font-size: ${FONT_SIZE.xs};
 
-            color: ${VARS.color.a.font.light};
+            color: ${VARS.color.c.content.light};
 
             transition: color ${TIME.s} ease-out;
           }
@@ -162,7 +152,7 @@ export const Component = styled.div`
 
   body[data-dark-mode="true"] & {
     .a .subsections {
-      border-color: ${COLOR.gs_10};
+      border-color: ${VARS.color.a.line.dark};
       scrollbar-color: ${COLOR.gs_14} transparent;
 
       h4 {
@@ -170,10 +160,10 @@ export const Component = styled.div`
       }
 
       .hobbies-and-likes li {
-        background-color: ${VARS.color.a.bg.dark};
+        background-color: ${VARS.color.c.bg.dark};
 
         p {
-          color: ${VARS.color.a.font.dark};
+          color: ${VARS.color.c.content.dark};
         }
       }
     }

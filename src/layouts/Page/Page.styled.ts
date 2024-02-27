@@ -1,23 +1,20 @@
 import styled from "@emotion/styled";
 import {
-  COLOR_BRIGHT_A,
-  COLOR_DARK_A,
-  GLASS_BUTTON_SIZE,
   LAYOUT_WIDTH,
   MAIN_GAP,
   MAIN_GAP_M,
   MEDIA,
   TIME,
   NOT_FONT_SIZE,
+  VARS,
 } from "@/styles";
 
-const MARGIN = `calc(${MAIN_GAP} * 4 + ${GLASS_BUTTON_SIZE})`;
+const MARGIN = `calc(${MAIN_GAP} * 4 + ${VARS.component.button.s.size})`;
 
 export const Component = styled.div`
   position: relative;
   display: flex;
   justify-content: center;
-  color: ${COLOR_BRIGHT_A};
   overflow: hidden;
 
   transition: color ${TIME.s} ease-out;
@@ -69,9 +66,5 @@ export const Component = styled.div`
         }
       }
     }
-  }
-
-  body[data-dark-mode="true"] & {
-    color: ${COLOR_DARK_A};
   }
 `;

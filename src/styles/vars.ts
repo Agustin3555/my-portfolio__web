@@ -7,9 +7,37 @@ export const VARS = {
         light: "var(--color-a-bg-light)",
         dark: "var(--color-a-bg-dark)",
       },
-      font: {
-        light: "var(--color-a-font-light)",
-        dark: "var(--color-a-font-dark)",
+      content: {
+        light: "var(--color-a-content-light)",
+        dark: "var(--color-a-content-dark)",
+      },
+      line: {
+        light: "var(--color-a-line-light)",
+        dark: "var(--color-a-line-dark)",
+      },
+    },
+    b: {
+      bg: {
+        light: "var(--color-b-bg-light)",
+        dark: "var(--color-b-bg-dark)",
+      },
+      content: {
+        light: "var(--color-b-content-light)",
+        dark: "var(--color-b-content-dark)",
+      },
+      line: {
+        light: "var(--color-b-line-light)",
+        dark: "var(--color-b-line-dark)",
+      },
+    },
+    c: {
+      bg: {
+        light: "var(--color-c-bg-light)",
+        dark: "var(--color-c-bg-dark)",
+      },
+      content: {
+        light: "var(--color-c-content-light)",
+        dark: "var(--color-c-content-dark)",
       },
     },
   },
@@ -82,19 +110,12 @@ export const VARS = {
 export const BGC_DARK_A = COLOR.gs_16;
 export const BGC_BRIGHT_A = COLOR.gs_1;
 
-export const BGC_DARK_B = COLOR.gs_14;
-export const BGC_BRIGHT_B = COLOR.gs_5;
-
 export const COLOR_DARK_A = COLOR.gs_5;
 export const COLOR_BRIGHT_A = COLOR.gs_12;
-
-export const COLOR_DARK_B = COLOR.gs_2;
-export const COLOR_BRIGHT_B = COLOR.gs_14;
 
 export const MAIN_GAP = NOT_FONT_SIZE.s;
 export const MAIN_GAP_M = `calc(${MAIN_GAP} * 2)`;
 export const LAYOUT_WIDTH = `calc(${NOT_FONT_SIZE["2xl"]} * 6)`;
-export const GLASS_BUTTON_SIZE = NOT_FONT_SIZE.m;
 
 export enum MEDIA {
   "2xs" = "23.4375rem",

@@ -1,11 +1,13 @@
 ---
 import * as HamburgerMenuStyled from "./HamburgerMenu.styled";
 import Hamburger from "./components/Hamburger/Hamburger.astro";
-import Separator from "@/components/Separator/Separator.astro";
+import Separator, {
+  type Props as SeparatorProps,
+} from "@/components/Separator/Separator.astro";
 import Link, { type Props as LinkProps } from "@/components/Link/Link.astro";
 import ToggleDarkMode from "@/components/ToggleDarkMode/ToggleDarkMode.astro";
 import SocialNetwork from "@/components/SocialNetwork/SocialNetwork.astro";
-import { COLOR_BRIGHT_A, COLOR_DARK_A } from "@/styles";
+import { VARS } from "@/styles";
 import jsonData from "@/data.json";
 
 interface Props {
@@ -18,10 +20,12 @@ interface Props {
 const { home, resume } = Astro.props.linksData;
 const { externalNetwork } = jsonData;
 
-const separatorStyle = {
-  backgroundColor: {
-    dark: COLOR_DARK_A,
-    bright: COLOR_BRIGHT_A,
+const separatorProps: SeparatorProps = {
+  style: {
+    color: {
+      light: VARS.color.b.line.light,
+      dark: VARS.color.b.line.dark,
+    },
   },
 };
 ---
@@ -29,32 +33,30 @@ const separatorStyle = {
 <!-- TODO: semantica HTML -->
 <HamburgerMenuStyled.Component>
   <button class="deep-touch" id="deepTouch" title="Cerrar menú"></button>
-  <header class="glass">
-    <div class="adaptable">
-      <div class="content">
-        <div class="controls">
-          <Hamburger />
-          <ToggleDarkMode />
-        </div>
-        <Separator style={separatorStyle} />
-        <nav>
-          {home.map((item) => <Link {...item} />)}
-          <Separator style={separatorStyle} />
-          <Link {...resume} />
-          <Separator style={separatorStyle} />
-          <div class="external-networks">
-            {
-              externalNetwork.map(({ url, iconName, title }) => (
-                <SocialNetwork
-                  href={url}
-                  iconName={iconName}
-                  title={`Ir al perfil de ${title}`}
-                />
-              ))
-            }
-          </div>
-        </nav>
+  <header class="adaptable">
+    <div class="content">
+      <div class="controls">
+        <Hamburger />
+        <ToggleDarkMode />
       </div>
+      <Separator {...separatorProps} />
+      <nav>
+        {home.map((item) => <Link {...item} />)}
+        <Separator {...separatorProps} />
+        <Link {...resume} />
+        <Separator {...separatorProps} />
+        <div class="external-networks">
+          {
+            externalNetwork.map(({ url, iconName, title }) => (
+              <SocialNetwork
+                href={url}
+                iconName={iconName}
+                title={`Ir al perfil de ${title}`}
+              />
+            ))
+          }
+        </div>
+      </nav>
     </div>
   </header>
 </HamburgerMenuStyled.Component>

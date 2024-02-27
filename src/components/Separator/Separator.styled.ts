@@ -9,20 +9,18 @@ import {
 
 export interface Props {
   long?: Size;
-  thickness?: Size;
   invert?: boolean;
-  backgroundColor: {
-    bright?: Color;
+  color: {
+    light: Color;
     dark: Color;
   };
 }
 
 interface NormalizedProps {
   long?: Size;
-  thickness: Size;
   invert: boolean;
-  backgroundColor: {
-    bright: Color;
+  color: {
+    light: Color;
     dark: Color;
   };
 }
@@ -38,32 +36,42 @@ interface Provider {
 }
 
 export const adapter = (style: Props): Provider => {
-  const normalizedProps: NormalizedProps = {
+  const { long, invert, color }: NormalizedProps = {
     long: style.long,
-    thickness: style.thickness || NOT_FONT_SIZE["6xs"],
     invert: style.invert || false,
-    backgroundColor: {
-      bright: style.backgroundColor.bright || style.backgroundColor.dark,
-      dark: style.backgroundColor.dark,
-    },
+    color: { light: style.color.light, dark: style.color.dark },
   };
 
-  const { long, thickness, invert, backgroundColor } = normalizedProps;
-
   const longAux = long || "100%";
+  const thickness = NOT_FONT_SIZE["6xs"];
 
   return {
     width: invert ? thickness : longAux,
     height: invert ? longAux : thickness,
-    backgroundColor: backgroundColor.bright,
+    backgroundColor: color.light,
 
     DARK_MODE: {
-      backgroundColor: backgroundColor.dark,
+      backgroundColor: color.dark,
     },
   };
 };
 
-export const Component = styled.hr<{ p: Provider }>`
+export const HrComponent = styled.hr<{ p: Provider }>`
+  width: ${({ p }) => p.width};
+  height: ${({ p }) => p.height};
+
+  border: none;
+  border-radius: ${NOT_FONT_SIZE["6xl"]};
+  background-color: ${({ p }) => p.backgroundColor};
+
+  transition: ${TIME.s} ease-out;
+
+  body[data-dark-mode="true"] & {
+    background-color: ${({ p }) => p.DARK_MODE.backgroundColor};
+  }
+`;
+
+export const SpanComponent = styled.span<{ p: Provider }>`
   width: ${({ p }) => p.width};
   height: ${({ p }) => p.height};
 
