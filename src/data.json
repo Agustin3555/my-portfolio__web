@@ -188,174 +188,7 @@
         "skills": {
           "buttonTitle": "Habilidades",
           "title": "Habilidades",
-          "subsections": {
-            "technologies": {
-              "data": [
-                {
-                  "names": ["HTML"],
-                  "icons": [
-                    {
-                      "fileName": "logo-html-5.svg"
-                    }
-                  ],
-                  "skillLevel": 1
-                },
-                {
-                  "names": ["CSS"],
-                  "icons": [
-                    {
-                      "fileName": "logo-css-3.svg"
-                    }
-                  ],
-                  "skillLevel": 1
-                },
-                {
-                  "names": ["JavaScript", "TypeScript"],
-                  "icons": [
-                    {
-                      "fileName": "logo-javascript.svg"
-                    },
-                    {
-                      "fileName": "logo-typescript.svg"
-                    }
-                  ],
-                  "skillLevel": 2,
-                  "technologies": [
-                    {
-                      "names": ["Astro"],
-                      "icons": [
-                        {
-                          "fileName": "logo-astro.png",
-                          "invertInDarkMode": true
-                        }
-                      ],
-                      "skillLevel": 1
-                    },
-                    {
-                      "names": ["React"],
-                      "icons": [
-                        {
-                          "fileName": "logo-react.svg"
-                        }
-                      ],
-                      "skillLevel": 1
-                    },
-                    {
-                      "names": ["React Native"],
-                      "icons": [
-                        {
-                          "fileName": "logo-react.svg"
-                        }
-                      ],
-                      "skillLevel": 0
-                    },
-                    {
-                      "names": ["styled-components"],
-                      "icons": [
-                        {
-                          "fileName": "logo-styled-components.png"
-                        }
-                      ],
-                      "skillLevel": 1
-                    },
-                    {
-                      "names": ["Emotion"],
-                      "icons": [
-                        {
-                          "fileName": "logo-emotion.png"
-                        }
-                      ],
-                      "skillLevel": 1
-                    },
-                    {
-                      "names": ["Zustand"],
-                      "icons": [
-                        {
-                          "fileName": "logo-zustand.png"
-                        }
-                      ],
-                      "skillLevel": 1
-                    },
-                    {
-                      "names": ["Redux"],
-                      "icons": [
-                        {
-                          "fileName": "logo-redux.svg"
-                        }
-                      ],
-                      "skillLevel": 1
-                    },
-                    {
-                      "names": ["NestJS"],
-                      "icons": [
-                        {
-                          "fileName": "logo-nest-js.svg"
-                        }
-                      ],
-                      "skillLevel": 0
-                    },
-                    {
-                      "names": ["Express"],
-                      "icons": [
-                        {
-                          "fileName": "logo-express-js.svg",
-                          "invertInDarkMode": true
-                        }
-                      ],
-                      "skillLevel": 1
-                    },
-                    {
-                      "names": ["Prisma"],
-                      "icons": [
-                        {
-                          "fileName": "logo-prisma.svg",
-                          "invertInDarkMode": true
-                        }
-                      ],
-                      "skillLevel": 1
-                    }
-                  ]
-                },
-                {
-                  "names": ["PHP"],
-                  "icons": [
-                    {
-                      "fileName": "logo-php.svg"
-                    }
-                  ],
-                  "skillLevel": 0,
-                  "technologies": [
-                    {
-                      "names": ["Laravel"],
-                      "icons": [
-                        {
-                          "fileName": "logo-laravel.svg"
-                        }
-                      ],
-                      "skillLevel": 0
-                    }
-                  ]
-                },
-                {
-                  "names": ["Python"],
-                  "icons": [
-                    {
-                      "fileName": "logo-python.svg"
-                    }
-                  ],
-                  "skillLevel": 0
-                },
-                {
-                  "names": ["SQL"],
-                  "icons": [
-                    {
-                      "fileName": "logo-sql.svg"
-                    }
-                  ],
-                  "skillLevel": 0
-                }
-              ]
-            },
+          "data": {
             "levels": [
               {
                 "level": "Principiante",
@@ -368,6 +201,172 @@
               {
                 "level": "Avanzado",
                 "desc": "Profundización constante, aplicando las mejores prácticas."
+              }
+            ],
+            "techs": [
+              {
+                "items": [
+                  {
+                    "name": "Figma",
+                    "file": "logo-figma.webp"
+                  }
+                ],
+                "skillLevel": 2
+              },
+              {
+                "items": [
+                  {
+                    "name": "HTML",
+                    "file": "logo-html.webp"
+                  }
+                ],
+                "skillLevel": 2
+              },
+              {
+                "items": [
+                  {
+                    "name": "CSS",
+                    "file": "logo-css.webp"
+                  }
+                ],
+                "skillLevel": 2
+              },
+              {
+                "items": [
+                  {
+                    "name": "JavaScript",
+                    "file": "logo-javascript.webp"
+                  },
+                  {
+                    "name": "TypeScript",
+                    "file": "logo-typescript.webp"
+                  }
+                ],
+                "skillLevel": 3,
+                "techs": [
+                  {
+                    "items": [
+                      {
+                        "name": "Astro",
+                        "file": "logo-astro.webp",
+                        "invertInDarkMode": true
+                      }
+                    ],
+                    "skillLevel": 2
+                  },
+                  {
+                    "items": [
+                      {
+                        "name": "React",
+                        "file": "logo-react.webp"
+                      }
+                    ],
+                    "skillLevel": 2
+                  },
+                  {
+                    "items": [
+                      {
+                        "name": "React Native",
+                        "file": "logo-react.webp"
+                      }
+                    ],
+                    "skillLevel": 1
+                  },
+                  {
+                    "items": [
+                      {
+                        "name": "styled-components",
+                        "file": "logo-styled-components.webp"
+                      }
+                    ],
+                    "skillLevel": 2
+                  },
+                  {
+                    "items": [
+                      {
+                        "name": "Emotion",
+                        "file": "logo-emotion.webp"
+                      }
+                    ],
+                    "skillLevel": 2
+                  },
+                  {
+                    "items": [
+                      {
+                        "name": "Zustand",
+                        "file": "logo-zustand.webp"
+                      }
+                    ],
+                    "skillLevel": 2
+                  },
+                  {
+                    "items": [
+                      {
+                        "name": "Redux",
+                        "file": "logo-redux.webp"
+                      }
+                    ],
+                    "skillLevel": 2
+                  },
+                  {
+                    "items": [
+                      {
+                        "name": "NestJS",
+                        "file": "logo-nestjs.webp"
+                      }
+                    ],
+                    "skillLevel": 1
+                  },
+                  {
+                    "items": [
+                      {
+                        "name": "Express",
+                        "file": "logo-express.webp",
+                        "invertInDarkMode": true
+                      }
+                    ],
+                    "skillLevel": 1
+                  },
+                  {
+                    "items": [
+                      {
+                        "name": "Prisma",
+                        "file": "logo-prisma.webp",
+                        "invertInDarkMode": true
+                      }
+                    ],
+                    "skillLevel": 1
+                  }
+                ]
+              },
+              {
+                "items": [
+                  {
+                    "name": "PHP",
+                    "file": "logo-php.webp"
+                  }
+                ],
+                "skillLevel": 1,
+                "techs": [
+                  {
+                    "items": [
+                      {
+                        "name": "Laravel",
+                        "file": "logo-laravel.webp"
+                      }
+                    ],
+                    "skillLevel": 1
+                  }
+                ]
+              },
+              {
+                "items": [
+                  {
+                    "name": "SQL",
+                    "file": "logo-sql.webp"
+                  }
+                ],
+                "skillLevel": 1
               }
             ]
           }

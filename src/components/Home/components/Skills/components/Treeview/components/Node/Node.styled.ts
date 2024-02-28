@@ -10,7 +10,7 @@ import {
 
 const GAP = NOT_FONT_SIZE["3xs"];
 const NAME_FONT_SIZE = FONT_SIZE.xs;
-const ICON_SIZE = NOT_FONT_SIZE.s;
+const ICON_SIZE = "1.5rem";
 
 interface ConstProvider {
   technology: {

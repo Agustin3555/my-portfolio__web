@@ -3,15 +3,15 @@ import * as TreeviewStyled from "./Treeview.styled";
 import Node from "./components/Node/Node.astro";
 import jsonData from "@/data.json";
 
-const { data } = jsonData.pages.home.sections.skills.subsections.technologies;
+const { techs } = jsonData.pages.home.sections.skills.data;
 ---
 
 <TreeviewStyled.Component className="glass" id="skillsTreeview">
   <ul class="items">
     {
-      data.map((item) => (
+      techs.map((tech) => (
         <li>
-          <Node dataNode={item} />
+          <Node dataNode={tech} />
         </li>
       ))
     }
