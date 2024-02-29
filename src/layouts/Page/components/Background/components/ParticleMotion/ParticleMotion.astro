@@ -1,0 +1,87 @@
+---
+import * as ParticleMotionStyled from "./ParticleMotion.styled";
+import { type HandlingClass, asClassName } from "@/tools";
+
+interface Props {
+  gapBetween?: number;
+  handlingClass?: HandlingClass;
+}
+
+const { gapBetween = 200, handlingClass = [] } = Astro.props;
+---
+
+<ParticleMotionStyled.Component
+  className={asClassName("particle-motion", ...handlingClass)}
+  data-gap-between={gapBetween}
+/>
+
+<script>
+  import {
+    COLOR,
+    NOT_FONT_SIZE,
+    FONT_SIZE,
+    type Color,
+    type Size,
+  } from "@/styles";
+  import { debounce, randomInt, dropRandom } from "@/tools";
+
+  const particleMotions =
+    window.document.querySelectorAll<HTMLDivElement>(".particle-motion");
+
+  const SIZES: Size[] = [FONT_SIZE.l, NOT_FONT_SIZE.m, NOT_FONT_SIZE.l];
+  const COLORS: Color[] = [COLOR.a, COLOR.b, COLOR.c, COLOR.d];
+  const MAX_CENTER_OFFSET = 128;
+  const MIN_DURATION = 30;
+  const MAX_DURATION = 60;
+
+  const handleResize = () => {
+    particleMotions.forEach((particleMotion) => {
+      while (particleMotion.firstChild)
+        particleMotion.removeChild(particleMotion.firstChild);
+
+      const { clientWidth, clientHeight, dataset } = particleMotion;
+
+      const gapBetween = dataset.gapBetween;
+
+      if (gapBetween) {
+        for (
+          let xPosition = 0;
+          xPosition < clientWidth;
+          xPosition += Number(gapBetween)
+        ) {
+          let centerOffset = randomInt({ max: MAX_CENTER_OFFSET });
+          if (randomInt({ max: 1 }) === 0) centerOffset *= -1;
+
+          const duration =
+            randomInt({ min: MIN_DURATION, max: MAX_DURATION }) *
+            clientHeight *
+            0.000625;
+          const delay = randomInt({ max: duration });
+
+          const size = dropRandom(SIZES);
+
+          const particle = window.document.createElement("span");
+
+          particle.className = "particle";
+          particle.style.setProperty("--animation-duration", `${duration}s`);
+          particle.style.setProperty("--animation-delay", `-${delay}s`);
+          particle.style.setProperty("--max-size", SIZES.at(-1));
+          particle.style.left = `${xPosition + centerOffset}px`;
+
+          const square = window.document.createElement("span");
+
+          square.className = "square";
+          square.style.width = size;
+          square.style.height = size;
+          square.style.backgroundColor = dropRandom(COLORS);
+
+          particleMotion.appendChild(particle).appendChild(square);
+        }
+      }
+    });
+  };
+
+  handleResize();
+
+  window.addEventListener("resize", debounce(handleResize, 500));
+</script>

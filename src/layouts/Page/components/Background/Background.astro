@@ -1,16 +1,11 @@
 ---
 import * as BackgroundStyled from "./Background.styled";
-import ParticleMotion from "./components/ParticleMotion/ParticleMotion";
+import ParticleMotion from "./components/ParticleMotion/ParticleMotion.astro";
 ---
 
-<!-- TODO: semantica HTML -->
 <BackgroundStyled.Component>
-  <div class="background"></div>
-  <ParticleMotion client:load />
-  <ParticleMotion
-    client:load
-    gapBetween={500}
-    handlingClass={["center-particles"]}
-  />
-  <ParticleMotion client:load />
+  <span class="background"></span>
+  <ParticleMotion />
+  <ParticleMotion gapBetween={500} handlingClass={["center-particles"]} />
+  <ParticleMotion />
 </BackgroundStyled.Component>

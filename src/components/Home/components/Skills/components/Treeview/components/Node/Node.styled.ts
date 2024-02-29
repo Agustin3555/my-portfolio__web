@@ -117,7 +117,6 @@ export const Component = styled.div`
         gap: ${GAP};
         /* TODO: comentar */
         width: 4.0625rem;
-        filter: saturate(0.9);
 
         .icon {
           width: ${ICON_SIZE};

@@ -72,8 +72,6 @@ export const Component = styled.footer`
               display: inline-flex;
               justify-content: center;
               width: ${FONT_SIZE.l};
-
-              filter: grayscale(0.25);
             }
           }
         }

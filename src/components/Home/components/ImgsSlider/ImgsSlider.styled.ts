@@ -42,7 +42,7 @@ export const Component = styled.div<{ p: Provider }>`
   border-radius: var(--border-radius);
 
   background-color: hsl(0, 0%, 50%);
-  box-shadow: ${VARS.decorator.bevelHighlight.full};
+  box-shadow: ${VARS.decorator.shadow[1]}, ${VARS.decorator.bevelHighlight.full};
   overflow: hidden;
 
   .imgs {
@@ -109,6 +109,8 @@ export const Component = styled.div<{ p: Provider }>`
     .scroll-indicator {
       width: var(--button-size);
       height: var(--button-size);
+
+      color: ${COLOR.gs_0};
     }
 
     .position-counter {

@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import { LAYOUT_WIDTH } from "@/styles";
 
-export const Component = styled.div`
+export const Component = styled.span`
   position: absolute;
   display: flex;
   width: 100%;

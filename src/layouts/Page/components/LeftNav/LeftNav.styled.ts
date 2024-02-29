@@ -26,7 +26,8 @@ export const Component = styled.div`
     flex-direction: column;
     gap: var(--gap);
 
-    > * {
+    /* Debería ser "> *" */
+    > :is(div, hr) {
       display: flex;
       translate: -100%;
       opacity: 0;
