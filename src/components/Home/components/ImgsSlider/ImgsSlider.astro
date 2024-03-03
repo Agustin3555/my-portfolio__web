@@ -80,36 +80,39 @@ imgs.forEach(({ file }) => validateImgMetadata(folder, file));
   const sliders = window.document.querySelectorAll<HTMLDivElement>(".slider");
 
   sliders.forEach((slider) => {
-    // Sobre el toggle-fullscreen
+    // Sobre el fullscreen
 
     const FULLSCREEN_DS_KEY = "fullscreen";
 
     slider.dataset[FULLSCREEN_DS_KEY] = String(false);
 
-    const handleClick =
-      (thisButton: HTMLButtonElement, slider: HTMLDivElement) => async () => {
+    const toggleFullscreen =
+      slider.querySelector<HTMLButtonElement>(".toggle-fullscreen");
+
+    if (toggleFullscreen) {
+      toggleFullscreen.addEventListener("click", async () => {
         const fullscreen = slider.dataset[FULLSCREEN_DS_KEY] === "true";
         const reverseFullscreen = !fullscreen;
 
         slider.dataset[FULLSCREEN_DS_KEY] = String(reverseFullscreen);
 
         if (reverseFullscreen) {
-          thisButton.title = "Salir de pantalla completa";
+          toggleFullscreen.title = "Salir de pantalla completa";
           await slider.requestFullscreen();
         } else {
-          thisButton.title = "Ver en pantalla completa";
+          toggleFullscreen.title = "Ver en pantalla completa";
           await window.document.exitFullscreen();
         }
-      };
+      });
 
-    const toggleFullscreen =
-      slider.querySelector<HTMLButtonElement>(".toggle-fullscreen");
+      window.document.addEventListener("fullscreenchange", () => {
+        if (!window.document.fullscreenElement) {
+          slider.dataset[FULLSCREEN_DS_KEY] = String(false);
 
-    toggleFullscreen &&
-      toggleFullscreen.addEventListener(
-        "click",
-        handleClick(toggleFullscreen, slider),
-      );
+          toggleFullscreen.title = "Ver en pantalla completa";
+        }
+      });
+    }
 
     // Sobre el position-counter
 

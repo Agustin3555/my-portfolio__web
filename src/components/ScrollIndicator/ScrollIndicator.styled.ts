@@ -20,7 +20,7 @@ export const Component = styled.span`
 
     position: absolute;
 
-    animation: sliding 10s ease infinite;
+    animation: sliding 8s ease infinite;
 
     @keyframes sliding {
       0% {

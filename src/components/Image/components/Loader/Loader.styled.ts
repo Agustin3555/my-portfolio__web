@@ -1,5 +1,5 @@
-import { COLOR, COLOR_BRIGHT_A, COLOR_DARK_A, TIME } from "@/styles";
 import styled from "@emotion/styled";
+import { COLOR, TIME } from "@/styles";
 
 const SIZE = "3rem";
 const PARTICLE_SIZE = "1.5rem";
@@ -31,7 +31,7 @@ export const Component = styled.div`
   }
 
   ::after {
-    background-color: ${COLOR_BRIGHT_A};
+    background-color: ${COLOR.gs_12};
     transform: scale(0.5) translate(0, 0);
     transition: background-color ${TIME.s} ease-out;
     animation: loader ${ANIMATION_DURATION}s infinite ease-in-out;
@@ -64,7 +64,7 @@ export const Component = styled.div`
 
   body[data-dark-mode="true"] & {
     ::after {
-      background-color: ${COLOR_DARK_A};
+      background-color: ${COLOR.gs_5};
     }
   }
 `;

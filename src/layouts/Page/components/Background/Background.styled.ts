@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { LAYOUT_WIDTH } from "@/styles";
+import { LAYOUT_WIDTH, VARS } from "@/styles";
 
 export const Component = styled.span`
   position: absolute;
@@ -37,8 +37,30 @@ export const Component = styled.span`
   }
 
   .center-particles {
-    flex-shrink: 0;
+    flex-grow: 0;
 
-    width: ${LAYOUT_WIDTH};
+    flex-basis: ${LAYOUT_WIDTH};
   }
+
+  /* .lateral-particles {
+    flex-grow: 1;
+    width: calc(
+      ${VARS.size.gold} * 4 + ${VARS.component.button.s.size} + 40.5px
+    );
+
+    background-color: rgba(118, 107, 140, 1);
+  }
+
+  .center-particles {
+    flex-grow: 0;
+
+    flex-basis: ${LAYOUT_WIDTH};
+
+    background-color: rgba(138, 117, 240, 0.2);
+  }
+
+  @media (max-width: calc(100vw - 1062px)) {
+    .lateral-particles {
+    }
+  } */
 `;

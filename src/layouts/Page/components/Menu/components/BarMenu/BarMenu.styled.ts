@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { MEDIA, TIME, NOT_FONT_SIZE, VARS } from "@/styles";
+import { TIME, NOT_FONT_SIZE, VARS } from "@/styles";
 
 export const Component = styled.nav`
   --padding: ${VARS.size.gold};
@@ -17,7 +17,7 @@ export const Component = styled.nav`
     top ${TIME.m} ease,
     box-shadow ${TIME.m} ease;
 
-  @media (max-width: ${MEDIA.m}) {
+  @media (max-width: ${VARS.screen.width.l}) {
     display: none;
   }
 

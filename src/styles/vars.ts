@@ -70,13 +70,6 @@ export const VARS = {
       bottom: "var(--decorator-bevel-highlight-bottom)",
     },
   },
-  media: {
-    // TODO: comentar el no uso variables
-    xs: "23.4375rem",
-    s: "26.5625rem",
-    m: "56.25rem",
-    l: "calc(47rem + (1.625rem * 4 + 2.625rem) * 2)",
-  },
   component: {
     button: {
       xs: {
@@ -105,21 +98,21 @@ export const VARS = {
       },
     },
   },
+  screen: {
+    /*
+      Por el momento no es posible utilizar variables nativas CSS en la
+      declaración de los media queries.
+    */
+    width: {
+      l: "calc(47rem + (1.625rem * 4 + 2.625rem) * 2)",
+      m: "56.25rem",
+      s: "26.5625rem",
+      xs: "23.4375rem",
+    },
+  },
 };
 
 export const BGC_DARK_A = COLOR.gs_16;
 export const BGC_BRIGHT_A = COLOR.gs_1;
 
-export const COLOR_DARK_A = COLOR.gs_5;
-export const COLOR_BRIGHT_A = COLOR.gs_12;
-
-export const MAIN_GAP = NOT_FONT_SIZE.s;
-export const MAIN_GAP_M = `calc(${MAIN_GAP} * 2)`;
 export const LAYOUT_WIDTH = `calc(${NOT_FONT_SIZE["2xl"]} * 6)`;
-
-export enum MEDIA {
-  "2xs" = "23.4375rem",
-  xs = "26.5625rem",
-  s = "56.25rem",
-  m = `calc(47rem + (1.625rem * 4 + 2.625rem) * 2)`,
-}

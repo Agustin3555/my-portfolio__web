@@ -237,6 +237,24 @@ button {
 
     scroll-snap-align: start;
   }
+
+  /* Para dispositivos táctiles */
+  /* @media (hover: none) and (any-hover: none) {
+    & {
+      flex-direction: row;
+
+      overflow: auto hidden;
+      scroll-snap-type: x mandatory;
+
+      > li {
+        flex-shrink: 0;
+
+        align-items: flex-end;
+
+        scroll-snap-align: start;
+      }
+    }
+  } */
 }
 
 .cv {

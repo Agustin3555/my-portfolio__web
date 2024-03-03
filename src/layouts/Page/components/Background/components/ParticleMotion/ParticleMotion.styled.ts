@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-import { VARS } from "@/styles";
 
 export const Component = styled.span`
   position: relative;

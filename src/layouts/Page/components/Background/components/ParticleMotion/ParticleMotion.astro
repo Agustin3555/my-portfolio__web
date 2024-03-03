@@ -84,4 +84,25 @@ const { gapBetween = 200, handlingClass = [] } = Astro.props;
   handleResize();
 
   window.addEventListener("resize", debounce(handleResize, 500));
+
+  const switchAnimations = (value: boolean) => {
+    const elements: HTMLElement[] = [];
+
+    particleMotions.forEach((particleMotion) => {
+      const particles =
+        particleMotion.querySelectorAll<HTMLElement>(".particle");
+      const squares = particleMotion.querySelectorAll<HTMLElement>(".square");
+
+      elements.push(...Array.from(particles));
+      elements.push(...Array.from(squares));
+    });
+
+    elements.forEach((element) => {
+      element.style.animationPlayState = value ? "running" : "paused";
+    });
+  };
+
+  window.addEventListener("visibilitychange", () => {
+    switchAnimations(window.document.visibilityState !== "hidden");
+  });
 </script>

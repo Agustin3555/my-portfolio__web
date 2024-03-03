@@ -38,14 +38,12 @@ if (title) documentTitle += ` ${separator} ${title}`;
 
     <link rel="icon" href="/favicon-logo-s.ico" />
     <title>{documentTitle}</title>
-
-    <script is:inline src="https://kit.fontawesome.com/7463805de7.js"></script>
   </head>
   <body>
     <Background />
     <PageStyled.Component>
       <div class="static">
-        <main class="main">
+        <main>
           <slot />
         </main>
         <Footer />
@@ -56,6 +54,8 @@ if (title) documentTitle += ` ${separator} ${title}`;
     </PageStyled.Component>
   </body>
 </html>
+
+<script is:inline src="https://kit.fontawesome.com/7463805de7.js"></script>
 
 <script>
   import { bodyManager } from "@/tools/elementManagers.tool";

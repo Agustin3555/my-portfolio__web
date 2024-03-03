@@ -13,5 +13,5 @@ const { iconName, style = {}, handlingClass = [] } = Astro.props;
 
 <IconStyled.Component
   p={IconStyled.adapter(style)}
-  className={asClassName(iconName, ...handlingClass)}
+  className={asClassName(...handlingClass, iconName)}
 />

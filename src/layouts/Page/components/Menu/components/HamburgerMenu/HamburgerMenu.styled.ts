@@ -1,10 +1,10 @@
 import styled from "@emotion/styled";
-import { COLOR, MEDIA, TIME, NOT_FONT_SIZE, VARS } from "@/styles";
+import { COLOR, TIME, NOT_FONT_SIZE, VARS } from "@/styles";
 
 export const Component = styled.div`
   display: none;
 
-  @media (max-width: ${MEDIA.m}) {
+  @media (max-width: ${VARS.screen.width.l}) {
     display: initial;
   }
 

@@ -1,23 +1,12 @@
 import styled from "@emotion/styled";
-import {
-  LAYOUT_WIDTH,
-  MAIN_GAP,
-  MAIN_GAP_M,
-  MEDIA,
-  TIME,
-  NOT_FONT_SIZE,
-  VARS,
-} from "@/styles";
-
-const MARGIN = `calc(${MAIN_GAP} * 4 + ${VARS.component.button.s.size})`;
+import { LAYOUT_WIDTH, TIME, NOT_FONT_SIZE, VARS } from "@/styles";
 
 export const Component = styled.div`
+  --gap: ${VARS.size.gold};
+
   position: relative;
   display: flex;
   justify-content: center;
-  overflow: hidden;
-
-  transition: color ${TIME.s} ease-out;
 
   .static {
     position: relative;
@@ -25,7 +14,7 @@ export const Component = styled.div`
     flex-direction: column;
     justify-content: space-between;
     gap: calc(${NOT_FONT_SIZE.l} * 3);
-    margin: 0 ${MARGIN};
+    margin: 0 calc(var(--gap) * 4 + ${VARS.component.button.s.size});
     padding-top: calc(${NOT_FONT_SIZE.l} * 3);
     max-width: ${LAYOUT_WIDTH};
     min-height: 100vh;
@@ -34,22 +23,22 @@ export const Component = styled.div`
       margin ${TIME.m} ease,
       padding ${TIME.m} ease;
 
-    @media (max-width: ${MEDIA.m}) {
+    @media (max-width: ${VARS.screen.width.l}) {
       margin: 0;
       padding-top: calc(${NOT_FONT_SIZE.l} * 2);
 
-      .main {
-        padding: 0 ${MAIN_GAP_M};
+      main {
+        padding: 0 calc(var(--gap) * 2);
       }
     }
 
-    @media (max-width: ${MEDIA.xs}) {
-      .main {
-        padding: 0 ${MAIN_GAP};
+    @media (width < ${VARS.screen.width.s}) {
+      main {
+        padding: 0 var(--gap);
       }
     }
 
-    .main {
+    main {
       display: flex;
       flex-direction: column;
       gap: calc(${NOT_FONT_SIZE.l} * 3);
@@ -62,7 +51,7 @@ export const Component = styled.div`
         }
 
         :not(:nth-of-type(1)) {
-          scroll-margin-top: ${MAIN_GAP};
+          scroll-margin-top: var(--gap);
         }
       }
     }

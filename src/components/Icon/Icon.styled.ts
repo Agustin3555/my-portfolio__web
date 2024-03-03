@@ -17,9 +17,9 @@ export const adapter = ({ size = FONT_SIZE.xs }: Props): Provider => {
 
 export const Component = styled.i<{ p: Provider }>`
   --size: ${({ p }) => p.size};
+  --fa-display: flex;
 
   position: relative;
-  display: flex;
   align-items: center;
   justify-content: center;
   width: var(--size);

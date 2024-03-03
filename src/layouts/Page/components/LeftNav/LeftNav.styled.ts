@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { MEDIA, TIME, NOT_FONT_SIZE, VARS } from "@/styles";
+import { TIME, NOT_FONT_SIZE, VARS } from "@/styles";
 
 export const Component = styled.div`
   --gap: ${VARS.size.gold};
@@ -15,7 +15,7 @@ export const Component = styled.div`
     left ${TIME.m} ease,
     opacity ${TIME.m} ease;
 
-  @media (max-width: ${MEDIA.m}) {
+  @media (max-width: ${VARS.screen.width.l}) {
     left: calc(${NOT_FONT_SIZE.m} * -1);
 
     opacity: 0;

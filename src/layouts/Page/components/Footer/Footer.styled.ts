@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { COLOR, FONT_SIZE, MEDIA, TIME, NOT_FONT_SIZE, VARS } from "@/styles";
+import { COLOR, FONT_SIZE, TIME, NOT_FONT_SIZE, VARS } from "@/styles";
 
 export const Component = styled.footer`
   display: flex;
@@ -39,7 +39,7 @@ export const Component = styled.footer`
     gap: calc(${VARS.size.gold} * 2);
     padding-bottom: ${VARS.size.gold};
 
-    @media (max-width: ${MEDIA.xs}) {
+    @media (max-width: ${VARS.screen.width.s}) {
       flex-direction: column;
     }
 

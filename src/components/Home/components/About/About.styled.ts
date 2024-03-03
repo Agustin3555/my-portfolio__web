@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { COLOR, FONT_SIZE, MEDIA, TIME, NOT_FONT_SIZE, VARS } from "@/styles";
+import { COLOR, FONT_SIZE, TIME, NOT_FONT_SIZE, VARS } from "@/styles";
 
 export const Component = styled.div`
   --gap-xs: calc(var(--gap-s) / 2);
@@ -119,7 +119,7 @@ export const Component = styled.div`
         width: calc(100% - var(--gap));
       }
 
-      @media (max-width: ${MEDIA["2xs"]}) {
+      @media (max-width: ${VARS.screen.width.xs}) {
         --gap: ${NOT_FONT_SIZE.s};
       }
     }
@@ -141,6 +141,11 @@ export const Component = styled.div`
         body[data-social-nets-in-left-nav="false"] & {
           opacity: 1;
           translate: initial;
+        }
+
+        @media (max-width: ${VARS.screen.width.l}) {
+          translate: initial;
+          opacity: initial;
         }
       }
     }

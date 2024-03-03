@@ -1,38 +1,9 @@
 import styled from "@emotion/styled";
-import {
-  COLOR,
-  FONT_SIZE,
-  MAIN_GAP,
-  TIME,
-  NOT_FONT_SIZE,
-  type Value,
-  VARS,
-} from "@/styles";
-
-const GAP = MAIN_GAP;
-const TOGGLE_UI_HEIGHT = FONT_SIZE.s;
-
-interface ConstProvider {
-  item: {
-    toggle: {
-      toggleUI: {
-        width: Value;
-      };
-    };
-  };
-}
-
-const cp: ConstProvider = {
-  item: {
-    toggle: {
-      toggleUI: {
-        width: `calc(${TOGGLE_UI_HEIGHT} * 2)`,
-      },
-    },
-  },
-};
+import { COLOR, FONT_SIZE, TIME, NOT_FONT_SIZE, VARS } from "@/styles";
 
 export const Component = styled.fieldset`
+  --gap: ${VARS.size.gold};
+
   flex-grow: 1.5;
   flex-basis: 13.125rem;
 
@@ -40,7 +11,7 @@ export const Component = styled.fieldset`
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
-  gap: ${NOT_FONT_SIZE.m};
+  gap: calc(var(--gap) * 2);
   padding: 0;
   border: none;
 
@@ -51,7 +22,7 @@ export const Component = styled.fieldset`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: ${GAP};
+    gap: var(--gap);
     text-wrap: pretty;
 
     @container (width <= 40.625rem) {
@@ -59,9 +30,11 @@ export const Component = styled.fieldset`
     }
 
     .toggle {
+      --toggle-ui-height: ${FONT_SIZE.s};
+
       display: flex;
       align-items: center;
-      gap: ${GAP};
+      gap: var(--gap);
       font-size: ${FONT_SIZE.xs};
       color: ${COLOR.b};
       cursor: pointer;
@@ -71,19 +44,19 @@ export const Component = styled.fieldset`
 
         :checked + .ui {
           ::before {
-            width: calc(${TOGGLE_UI_HEIGHT} * 1.5);
+            width: calc(var(--toggle-ui-height) * 1.5);
           }
 
           ::after {
-            transform: translateX(${TOGGLE_UI_HEIGHT});
+            transform: translateX(var(--toggle-ui-height));
           }
         }
       }
 
       .ui {
         position: relative;
-        width: ${cp.item.toggle.toggleUI.width};
-        height: ${TOGGLE_UI_HEIGHT};
+        width: calc(var(--toggle-ui-height) * 2);
+        height: var(--toggle-ui-height);
         border-radius: ${NOT_FONT_SIZE["6xl"]};
         background-color: ${COLOR.gs_10};
         transition: background-color ${TIME.s} ease-out;
@@ -91,8 +64,8 @@ export const Component = styled.fieldset`
         ::before {
           content: "";
           display: block;
-          width: calc(${TOGGLE_UI_HEIGHT} * 0.5);
-          height: ${TOGGLE_UI_HEIGHT};
+          width: calc(var(--toggle-ui-height) * 0.5);
+          height: var(--toggle-ui-height);
           border-top-left-radius: ${NOT_FONT_SIZE["6xl"]};
           border-bottom-left-radius: ${NOT_FONT_SIZE["6xl"]};
           background-color: ${COLOR.b};
@@ -105,8 +78,8 @@ export const Component = styled.fieldset`
           top: calc(${NOT_FONT_SIZE["6xs"]} * -1);
           left: calc(${NOT_FONT_SIZE["6xs"]} * -1);
           display: block;
-          width: ${TOGGLE_UI_HEIGHT};
-          height: ${TOGGLE_UI_HEIGHT};
+          width: var(--toggle-ui-height);
+          height: var(--toggle-ui-height);
           border-radius: 50%;
           border-width: ${NOT_FONT_SIZE["6xs"]};
           border-style: solid;

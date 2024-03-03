@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { COLOR, MEDIA, TIME, NOT_FONT_SIZE, type Value, VARS } from "@/styles";
+import { COLOR, TIME, NOT_FONT_SIZE, type Value, VARS } from "@/styles";
 
 const DIMENSION = NOT_FONT_SIZE.l;
 
@@ -45,7 +45,7 @@ export const Component = styled.a`
     }
   }
 
-  @media (max-width: ${MEDIA.m}) {
+  @media (max-width: ${VARS.screen.width.l}) {
     @keyframes open-curtain {
       to {
         width: ${cp.width};
