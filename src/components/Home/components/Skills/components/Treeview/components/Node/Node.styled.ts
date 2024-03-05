@@ -63,14 +63,10 @@ export const Component = styled.div`
 
     transition:
       background-color ${TIME.s} ease-out,
-      box-shadow ${TIME.s} ease-out,
-      scale ${TIME.s} ease-out,
       opacity ${TIME.s} ease-out;
 
     :hover {
       background-color: ${COLOR.gs_0};
-      box-shadow: ${VARS.decorator.shadow[1]};
-      scale: 1.005;
 
       .names {
         color: ${COLOR.gs_18};

@@ -32,7 +32,7 @@
               "text": "Mis amigos y compañeros de universidad."
             },
             { "emoji": "👨🏻‍🏫", "text": "Mis profesores de universidad." },
-            { "emoji": "👩🏻‍👨🏻‍👦🏻", "text": "Mis padres." },
+            { "emoji": "✨", "text": "Mis padres." },
             { "emoji": "😸", "text": "Mi primera gata." }
           ]
         }
@@ -94,8 +94,8 @@
           }
         },
         "works": {
-          "buttonTitle": "Trabajos",
-          "title": "Trabajos",
+          "buttonTitle": "Proyectos",
+          "title": "Proyectos",
           "data": {
             "items": [
               {
@@ -151,7 +151,7 @@
                 "sliderAspectRatio": "5 / 4",
                 "links": {
                   "repo": {
-                    "url": "https://github.com/Agustin3555",
+                    "url": "https://github.com/Agustin3555/hydro-saving__mobile-app",
                     "host": "github"
                   }
                 }
@@ -174,7 +174,7 @@
                 "sliderAspectRatio": "5 / 4",
                 "links": {
                   "repo": {
-                    "url": "https://github.com/Agustin3555",
+                    "url": "https://github.com/Agustin3555/my-portfolio__web",
                     "host": "github"
                   }
                 }

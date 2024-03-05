@@ -1,13 +1,11 @@
 import styled from "@emotion/styled";
-import { TIME, NOT_FONT_SIZE, VARS, COLOR, FONT_SIZE } from "@/styles";
+import { TIME, VARS, COLOR, FONT_SIZE } from "@/styles";
 
-export const Component = styled.div`
-  --gap: ${VARS.size.gold};
-
+export const Component = styled.article`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: calc(var(--gap) * 2);
+  gap: calc(${VARS.size.gold} * 2);
 
   .nav {
     --border-radius: ${VARS.component.button.xs.borderRadius};
@@ -17,7 +15,7 @@ export const Component = styled.div`
 
     background-color: ${COLOR.gs_1};
     box-shadow: ${VARS.decorator.bevelHighlight.full},
-      ${VARS.decorator.shadow[0]};
+      ${VARS.decorator.shadow[1]};
 
     .bg-indicator {
       position: absolute;
