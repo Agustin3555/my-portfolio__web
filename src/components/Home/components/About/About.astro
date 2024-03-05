@@ -1,5 +1,6 @@
 ---
 import Section from "@/layouts/Section/Section.astro";
+import Tabbed from "@/layouts/Tabbed/Tabbed.astro";
 import * as AboutStyled from "./About.styled";
 import GlassPanel from "@/components/GlassPanel/GlassPanel.astro";
 import SocialNetwork from "@/components/SocialNetwork/SocialNetwork.astro";
@@ -30,7 +31,10 @@ const { intro, profProfile, hobbiesAndLikes } = subsections;
           <strong>{header.titleStrong}</strong>
         </h1>
       </header>
-      <ol class="subsections element-slider">
+      <Tabbed
+        sectionTitles={["Intro", profProfile.title, "Hobbies"]}
+        handlingClass={["subsections"]}
+      >
         <li>
           <div class="intro">
             <p class="text" set:html={highlightToHTMLTag(intro)} />
@@ -63,7 +67,7 @@ const { intro, profProfile, hobbiesAndLikes } = subsections;
             </ul>
           </article>
         </li>
-      </ol>
+      </Tabbed>
     </div>
     <div class="b">
       <div class="x">

@@ -1,0 +1,81 @@
+---
+import * as TabbedStyled from "./Tabbed.styled";
+import { type HandlingClass, asClassName } from "@/tools";
+
+export interface Props {
+  sectionTitles: string[];
+  handlingClass?: HandlingClass;
+}
+
+const { sectionTitles, handlingClass = [] } = Astro.props;
+---
+
+<TabbedStyled.Component className={asClassName("tabbed", ...handlingClass)}>
+  <div class="nav">
+    <span class="bg-indicator"></span>
+    <fieldset>
+      {
+        sectionTitles.map((title) => (
+          <label>
+            <input type="radio" name="sections" />
+            <p class="title">{title}</p>
+          </label>
+        ))
+      }
+    </fieldset>
+  </div>
+  <ol class="element-slider">
+    <slot />
+  </ol>
+</TabbedStyled.Component>
+
+<script>
+  const ACTIVE_CLASS = "active";
+
+  const tabbeds = window.document.querySelectorAll<HTMLElement>(".tabbed");
+
+  tabbeds.forEach((tabbed) => {
+    const elementSlider = tabbed.querySelector<HTMLElement>(".element-slider");
+    const bgIndicator = tabbed.querySelector<HTMLSpanElement>(".bg-indicator");
+
+    if (elementSlider && bgIndicator) {
+      const labels = tabbed.querySelectorAll("label");
+      const items = Array.from(elementSlider.querySelectorAll("li"));
+      const radioInputs = tabbed.querySelectorAll<HTMLInputElement>(
+        'input[type="radio"]',
+      );
+
+      const moveIndicator = (index: number) => {
+        const label = labels[index];
+        const inputRect = label.getBoundingClientRect();
+
+        bgIndicator.style.left = `${label.offsetLeft}px`;
+        bgIndicator.style.width = `${inputRect.width}px`;
+      };
+
+      moveIndicator(0);
+
+      radioInputs[0].checked = true;
+      items[0].classList.add(ACTIVE_CLASS);
+
+      radioInputs.forEach((radioInput, i) => {
+        radioInput.addEventListener("change", () => {
+          moveIndicator(i);
+
+          items.forEach((item, j) => {
+            j == i
+              ? item.classList.add(ACTIVE_CLASS)
+              : item.classList.remove(ACTIVE_CLASS);
+          });
+        });
+      });
+
+      const resizeObserver = new ResizeObserver(() => {
+        const maxHeight = Math.max(...items.map((item) => item.clientHeight));
+        elementSlider.style.height = `${maxHeight}px`;
+      });
+
+      resizeObserver.observe(elementSlider);
+    }
+  });
+</script>

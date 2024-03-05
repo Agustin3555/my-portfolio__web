@@ -28,27 +28,12 @@ export const Component = styled.div`
       }
     }
 
-    .subsections {
-      gap: calc(${VARS.size.gold} * 2);
-      padding-right: var(--gap-xs);
-      padding-left: var(--gap-s);
-      border-width: 0;
-      border-left-width: ${NOT_FONT_SIZE["6xs"]};
-
-      border-style: solid;
-      border-color: ${VARS.color.a.line.light};
-      scrollbar-width: thin;
-      scrollbar-color: ${COLOR.gs_4} transparent;
-
-      transition:
-        border-color ${TIME.s} ease-out,
-        scrollbar-color ${TIME.s} ease-out;
-
+    .subsections .element-slider {
       h4 {
         color: ${COLOR.gs_14};
       }
 
-      > li > :is(article, div) {
+      > li > * {
         display: flex;
         flex-direction: column;
         align-items: flex-start;

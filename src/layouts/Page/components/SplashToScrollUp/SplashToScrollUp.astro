@@ -1,7 +1,7 @@
 ---
 import * as SplashToScrollUpStyled from "./SplashToScrollUp.styled";
 import { Image } from "astro:assets";
-import logo from "./logo.png";
+import Logo from "./logo-without-bg.svg";
 import jsonData from "@/data.json";
 
 const { sections } = jsonData.pages.home;
@@ -12,5 +12,5 @@ const href = `#${sectionKey}`;
 
 <!-- TODO: semantica HTML -->
 <SplashToScrollUpStyled.Component href={href}>
-  <Image class="logo" src={logo} alt="" />
+  <Image class="logo" src={Logo} alt="" />
 </SplashToScrollUpStyled.Component>

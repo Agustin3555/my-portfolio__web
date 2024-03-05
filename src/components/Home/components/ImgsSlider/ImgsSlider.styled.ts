@@ -41,9 +41,15 @@ export const Component = styled.div<{ p: Provider }>`
   position: relative;
   border-radius: var(--border-radius);
 
-  background-color: hsl(0, 0%, 50%);
+  background-color: hsl(0, 0%, 87.5%);
   box-shadow: ${VARS.decorator.shadow[1]}, ${VARS.decorator.bevelHighlight.full};
   overflow: hidden;
+
+  transition: background-color ${TIME.s} ease-out;
+
+  body[data-dark-mode="true"] & {
+    background-color: hsl(0, 0%, 25%);
+  }
 
   .imgs {
     --aspect-ratio: ${({ p }) => p.imgs.aspectRatio};
