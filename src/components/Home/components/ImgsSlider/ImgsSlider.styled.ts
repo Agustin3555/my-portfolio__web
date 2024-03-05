@@ -80,7 +80,7 @@ export const Component = styled.div<{ p: Provider }>`
       }
 
       .background {
-        object-fit: cover;
+        object-fit: fill;
         filter: blur(8rem);
       }
 

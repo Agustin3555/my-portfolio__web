@@ -14,7 +14,10 @@ interface Props {
   title: string;
   types: string[];
   desc: string;
-  technologies: string[];
+  technologies: {
+    name: string;
+    version?: string;
+  }[];
   imgs: {
     file: string;
     alt: string;
@@ -114,10 +117,11 @@ if (links) {
   </header>
   <ul class="techs">
     {
-      technologies.map((item) => (
+      technologies.map(({ name, version }) => (
         <li>
           <p>
-            {item} <small>1.0.0</small>
+            {name}
+            {version && <small>{version}</small>}
           </p>
         </li>
       ))
