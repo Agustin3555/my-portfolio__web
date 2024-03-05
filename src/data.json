@@ -137,15 +137,15 @@
                 "imgs": [
                   {
                     "file": "hs-1.webp",
-                    "alt": ""
+                    "alt": "Hydro Saving mobile app: sección de Home y Estadísticas"
                   },
                   {
                     "file": "hs-2.webp",
-                    "alt": ""
+                    "alt": "Hydro Saving mobile app: sección de Estadísticas y Tips"
                   },
                   {
                     "file": "hs-3.webp",
-                    "alt": ""
+                    "alt": "Hydro Saving mobile app: sección de Home"
                   }
                 ],
                 "sliderAspectRatio": "5 / 4",
@@ -164,11 +164,11 @@
                 "imgs": [
                   {
                     "file": "mp-1.webp",
-                    "alt": ""
+                    "alt": "Mi Portfolio web: presentación en modo oscuro y claro"
                   },
                   {
                     "file": "mp-2.webp",
-                    "alt": ""
+                    "alt": "Mi Portfolio web: vista móvil de la página principal en modo oscuro y claro"
                   }
                 ],
                 "sliderAspectRatio": "5 / 4",

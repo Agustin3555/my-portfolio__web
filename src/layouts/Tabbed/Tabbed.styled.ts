@@ -17,6 +17,8 @@ export const Component = styled.article`
     box-shadow: ${VARS.decorator.bevelHighlight.full},
       ${VARS.decorator.shadow[1]};
 
+    transition: background-color ${TIME.s} ease-out;
+
     .bg-indicator {
       position: absolute;
       top: 0;
@@ -95,26 +97,30 @@ export const Component = styled.article`
       width ${TIME.s} ease,
       border-color ${TIME.s} ease-out;
 
-    > li {
-      position: absolute;
-      width: 100%;
+    > {
+      li {
+        position: absolute;
+        width: 100%;
 
-      scale: 0.9;
-      filter: blur(0.5rem);
-      opacity: 0;
-      pointer-events: none;
+        transition:
+          scale ${TIME.s} ease,
+          filter ${TIME.s} ease,
+          opacity ${TIME.s} ease;
+      }
 
-      transition:
-        scale ${TIME.m} ease,
-        filter ${TIME.m} ease,
-        opacity ${TIME.m} ease;
-    }
+      .inactive {
+        scale: 0.95;
+        filter: blur(0.25rem);
+        opacity: 0;
+        pointer-events: none;
+      }
 
-    .active {
-      scale: 1;
-      filter: initial;
-      opacity: 1;
-      pointer-events: initial;
+      .active {
+        scale: 1;
+        filter: initial;
+        opacity: 1;
+        pointer-events: initial;
+      }
     }
   }
 `;
