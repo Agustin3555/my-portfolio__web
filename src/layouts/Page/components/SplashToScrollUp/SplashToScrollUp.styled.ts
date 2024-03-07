@@ -1,71 +1,53 @@
 import styled from "@emotion/styled";
-import { COLOR, TIME, NOT_FONT_SIZE, type Value, VARS } from "@/styles";
-
-const DIMENSION = NOT_FONT_SIZE.l;
-
-interface ConstProvider {
-  width: Value;
-  height: Value;
-
-  mediaS: {
-    left: Value;
-  };
-}
-
-const cp: ConstProvider = {
-  width: DIMENSION,
-  height: DIMENSION,
-
-  mediaS: {
-    left: `calc(${DIMENSION} * -1)`,
-  },
-};
+import { COLOR, TIME, NOT_FONT_SIZE, VARS } from "@/styles";
 
 export const Component = styled.a`
+  --size: 100%;
+  --size-as-scroll-up: ${NOT_FONT_SIZE.l};
+  --size-logo: ${NOT_FONT_SIZE["2xl"]};
+
   position: fixed;
+  z-index: 1;
   top: 0;
   left: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  height: 100%;
-  border-bottom-right-radius: ${NOT_FONT_SIZE["2xs"]};
+  width: var(--size);
+  height: var(--size);
+
   background-color: ${COLOR.a};
   box-shadow: ${VARS.decorator.shadow[1]};
   cursor: pointer;
-  overflow: hidden;
-  transition: left ${TIME.m} ease;
-  animation: open-curtain 1s 1s ease forwards;
 
-  @keyframes open-curtain {
-    to {
-      width: ${cp.width};
-      height: ${cp.height};
-    }
-  }
-
-  @media (max-width: ${VARS.screen.width.l}) {
-    @keyframes open-curtain {
-      to {
-        width: ${cp.width};
-        height: ${cp.height};
-        left: ${cp.mediaS.left};
-      }
-    }
-  }
+  transition:
+    left ${TIME.m} ease,
+    width ${TIME.l} ease,
+    height ${TIME.l} ease,
+    border-radius ${TIME.l} ease,
+    box-shadow 0s ${TIME.l} ease;
 
   .logo {
-    width: ${NOT_FONT_SIZE["2xl"]};
-    height: ${NOT_FONT_SIZE["2xl"]};
+    width: var(--size-logo);
+    height: var(--size-logo);
+
+    transition:
+      width ${TIME.l} ease,
+      height ${TIME.l} ease;
+
     object-fit: cover;
-    animation: size 1s 1s ease forwards;
   }
 
-  @keyframes size {
-    to {
-      width: ${cp.width};
-      height: ${cp.height};
+  &[data-loaded="true"] {
+    --size: var(--size-as-scroll-up);
+    --size-logo: var(--size);
+
+    border-bottom-right-radius: ${NOT_FONT_SIZE["2xs"]};
+
+    @media (max-width: ${VARS.screen.width.l}) {
+      left: calc(var(--size-as-scroll-up) * -1);
+
+      box-shadow: initial;
     }
   }
 `;

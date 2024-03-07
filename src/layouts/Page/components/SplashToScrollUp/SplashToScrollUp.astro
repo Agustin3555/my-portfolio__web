@@ -5,12 +5,36 @@ import Logo from "./logo-without-bg.svg";
 import jsonData from "@/data.json";
 
 const { sections } = jsonData.pages.home;
+const { buttonTitle } = sections.about;
 
 const sectionKey: keyof typeof sections = "about";
-const href = `#${sectionKey}`;
 ---
 
-<!-- TODO: semantica HTML -->
-<SplashToScrollUpStyled.Component href={href}>
-  <Image class="logo" src={Logo} alt="" />
+<SplashToScrollUpStyled.Component
+  href={`#${sectionKey}`}
+  id="splash-to-scroll-up"
+  title={buttonTitle}
+>
+  <Image
+    class="logo"
+    src={Logo}
+    alt="Logo sin fondo de Juan Agustín Lovera, Full Stack Web Dev"
+    loading="eager"
+  />
 </SplashToScrollUpStyled.Component>
+
+<script>
+  import { sleep } from "@/tools";
+
+  const splashToScrollUp = window.document.querySelector<HTMLElement>(
+    "#splash-to-scroll-up",
+  );
+
+  if (splashToScrollUp) {
+    window.onload = async () => {
+      await sleep(500);
+
+      splashToScrollUp.dataset.loaded = "true";
+    };
+  }
+</script>

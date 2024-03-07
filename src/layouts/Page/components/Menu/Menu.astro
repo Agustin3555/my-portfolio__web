@@ -16,7 +16,7 @@ const home = reassemble(
   }),
 );
 
-const resume: { url: keyof typeof pages } & LinkProps = {
+const resume: { href: keyof typeof pages } & LinkProps = {
   href: "resume",
   text: pages.resume.buttonTitle,
 };
