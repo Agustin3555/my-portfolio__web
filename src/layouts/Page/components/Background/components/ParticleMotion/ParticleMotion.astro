@@ -3,36 +3,36 @@ import * as ParticleMotionStyled from "./ParticleMotion.styled";
 import { type HandlingClass, asClassName } from "@/tools";
 
 interface Props {
-  gapBetween?: number;
+  basicSeparation?: number;
   handlingClass?: HandlingClass;
 }
 
-const { gapBetween = 200, handlingClass = [] } = Astro.props;
+const { basicSeparation = 150, handlingClass = [] } = Astro.props;
 ---
 
 <ParticleMotionStyled.Component
   className={asClassName("particle-motion", ...handlingClass)}
-  data-gap-between={gapBetween}
+  data-basic-separation={basicSeparation}
 />
 
 <script>
-  import {
-    COLOR,
-    NOT_FONT_SIZE,
-    FONT_SIZE,
-    type Color,
-    type Size,
-  } from "@/styles";
+  import { COLOR, type Color } from "@/styles";
   import { debounce, randomInt, dropRandom } from "@/tools";
 
   const particleMotions =
     window.document.querySelectorAll<HTMLDivElement>(".particle-motion");
 
-  const SIZES: Size[] = [FONT_SIZE.l, NOT_FONT_SIZE.m, NOT_FONT_SIZE.l];
+  const SIZES: number[] = [24, 42, 68];
   const COLORS: Color[] = [COLOR.a, COLOR.b, COLOR.c, COLOR.d];
-  const MAX_CENTER_OFFSET = 128;
+  const MAX_MISMATCH = 64;
   const MIN_DURATION = 30;
   const MAX_DURATION = 60;
+
+  // Valores aproximados
+  const MAX_HEIGHT = 8400;
+  const MIN_HEIGHT = 1000;
+
+  const COMPENSATION = 1500;
 
   const handleResize = () => {
     particleMotions.forEach((particleMotion) => {
@@ -41,68 +41,118 @@ const { gapBetween = 200, handlingClass = [] } = Astro.props;
 
       const { clientWidth, clientHeight, dataset } = particleMotion;
 
-      const gapBetween = dataset.gapBetween;
+      const normalStep = dataset.basicSeparation;
 
-      if (gapBetween) {
+      if (normalStep) {
+        let size = 0;
+        let step = 0;
+
+        const updateStep = () => {
+          const mismatch = randomInt({ max: MAX_MISMATCH });
+          size = dropRandom(SIZES);
+          step = Number(normalStep) + mismatch - size / 2;
+        };
+
+        updateStep();
+
+        const paramsElements: {
+          particle: {
+            vars: {
+              squareSize: number;
+              animation: { duration: number; delay: number };
+            };
+            left: number;
+          };
+          square: { backgroundColor: string };
+        }[] = [];
+
+        // Calcular los parametros de los elementos
         for (
-          let xPosition = 0;
-          xPosition < clientWidth;
-          xPosition += Number(gapBetween)
+          // Primer particle
+          let left = -(size / 2);
+          // Última particle
+          left < clientWidth - step / 2;
+          // Paso dinámico
+          left += step
         ) {
-          let centerOffset = randomInt({ max: MAX_CENTER_OFFSET });
-          if (randomInt({ max: 1 }) === 0) centerOffset *= -1;
+          /*
+            Calcular la probabilidad de eliminación en función del
+            clientHeight, con el objetivo de minimizar el numero de particulas
+            en screen en vistas de páginas con un height mínimo.
+          */
+
+          const minHeight = MIN_HEIGHT - COMPENSATION;
+          const maxHeight = MAX_HEIGHT - COMPENSATION;
+
+          const deletionProbability =
+            1 - (clientHeight - minHeight) / (maxHeight - minHeight);
+          /*
+            Generar un número aleatorio entre 0 y 1 para determinar si eliminar
+            el elemento.
+          */
+          const randomValue = Math.random();
+          /*
+            Si el número aleatorio es menor que la probabilidad de eliminación,
+            omitir este elemento.
+          */
+          if (randomValue < deletionProbability) continue;
 
           const duration =
             randomInt({ min: MIN_DURATION, max: MAX_DURATION }) *
             clientHeight *
             0.000625;
-          const delay = randomInt({ max: duration });
 
-          const size = dropRandom(SIZES);
+          paramsElements.push({
+            particle: {
+              vars: {
+                squareSize: size,
+                animation: { duration, delay: randomInt({ max: duration }) },
+              },
+              left,
+            },
+            square: { backgroundColor: dropRandom(COLORS) },
+          });
+
+          updateStep();
+        }
+
+        // Crear los elementos
+        paramsElements.forEach((item) => {
+          const { vars, left } = item.particle;
+          const { squareSize, animation } = vars;
+          const { duration, delay } = animation;
 
           const particle = window.document.createElement("span");
-
           particle.className = "particle";
+          particle.style.setProperty("--container-height", `${clientHeight}px`);
+          particle.style.setProperty("--square-size", `${squareSize}px`);
           particle.style.setProperty("--animation-duration", `${duration}s`);
           particle.style.setProperty("--animation-delay", `-${delay}s`);
-          particle.style.setProperty("--max-size", SIZES.at(-1));
-          particle.style.left = `${xPosition + centerOffset}px`;
+          particle.style.left = `${left}px`;
+
+          const { backgroundColor } = item.square;
 
           const square = window.document.createElement("span");
-
           square.className = "square";
-          square.style.width = size;
-          square.style.height = size;
-          square.style.backgroundColor = dropRandom(COLORS);
+          square.style.backgroundColor = backgroundColor;
 
           particleMotion.appendChild(particle).appendChild(square);
-        }
+        });
       }
     });
   };
 
   handleResize();
 
+  // Evento optimizado por debounce
   window.addEventListener("resize", debounce(handleResize, 500));
 
-  const switchAnimations = (value: boolean) => {
-    const elements: HTMLElement[] = [];
-
-    particleMotions.forEach((particleMotion) => {
-      const particles =
-        particleMotion.querySelectorAll<HTMLElement>(".particle");
-      const squares = particleMotion.querySelectorAll<HTMLElement>(".square");
-
-      elements.push(...Array.from(particles));
-      elements.push(...Array.from(squares));
-    });
-
-    elements.forEach((element) => {
-      element.style.animationPlayState = value ? "running" : "paused";
-    });
-  };
-
   window.addEventListener("visibilitychange", () => {
-    switchAnimations(window.document.visibilityState !== "hidden");
+    particleMotions.forEach((particleMotion) =>
+      particleMotion.style.setProperty(
+        "--animation-play",
+        window.document.visibilityState !== "hidden" ? "running" : "paused",
+      ),
+    );
   });
 </script>

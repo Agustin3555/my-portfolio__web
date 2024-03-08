@@ -45,7 +45,7 @@ export const Component = styled.div`
 
       transition: padding ${TIME.m} ease;
 
-      > * {
+      > section {
         :nth-of-type(1) {
           scroll-margin-top: ${NOT_FONT_SIZE["6xl"]};
         }

@@ -7,6 +7,7 @@ export const Component = styled.span`
 
   .particle {
     position: absolute;
+    bottom: calc(var(--square-size) * -1.25);
 
     filter: drop-shadow(0.3px 0.5px 0.7px rgba(0, 0, 0, 0.09))
       drop-shadow(0.7px 1.3px 1.7px rgba(0, 0, 0, 0.09))
@@ -14,28 +15,26 @@ export const Component = styled.span`
       drop-shadow(2.6px 5.2px 6.5px rgba(0, 0, 0, 0.09))
       drop-shadow(5px 10px 12.6px rgba(0, 0, 0, 0.09));
 
-    animation: movementLavaLampMotion var(--animation-duration)
+    animation: translateLavaLampMotion var(--animation-duration)
       var(--animation-delay) ease-in infinite alternate;
+    animation-play-state: var(--animation-play);
 
-    @keyframes movementLavaLampMotion {
-      0% {
-        bottom: calc(var(--max-size) * -1);
-      }
+    @keyframes translateLavaLampMotion {
       to {
-        bottom: calc(100% + var(--max-size));
+        translate: 0 calc((var(--container-height) + 200%) * -1);
       }
     }
 
     .square {
+      width: var(--square-size);
+      height: var(--square-size);
       border-radius: 15%;
 
       animation: rotateLavaLampMotion var(--animation-duration)
         var(--animation-delay) ease-in infinite alternate;
+      animation-play-state: var(--animation-play);
 
       @keyframes rotateLavaLampMotion {
-        0% {
-          rotate: 0;
-        }
         to {
           rotate: 2turn;
         }
