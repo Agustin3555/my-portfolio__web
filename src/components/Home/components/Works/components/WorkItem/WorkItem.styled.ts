@@ -78,24 +78,21 @@ export const Component = styled.li`
     flex-wrap: wrap;
     gap: var(--techs-gap);
 
-    li {
-      padding: ${VARS.component.button.xs.padding};
+    li p {
+      color: ${COLOR.b_d2};
 
-      background-color: ${COLOR.gs_1};
-      border-radius: ${VARS.component.button.xs.borderRadius};
-
-      transition: background-color ${TIME.s} ease-out;
-
-      p {
+      small {
+        margin-left: ${VARS.component.button.xs.gapElements};
         font-size: ${VARS.component.button.xs.fontSize};
 
-        color: ${COLOR.b_d2};
+        color: ${COLOR.gs_11};
+      }
+
+      body[data-dark-mode="true"] & {
+        color: ${COLOR.b_l2};
 
         small {
-          margin-left: ${VARS.component.button.xs.fontSize};
-          font-size: ${VARS.component.button.xs.fontSize};
-
-          color: ${COLOR.gs_10};
+          color: ${COLOR.gs_8};
         }
       }
     }
@@ -134,19 +131,5 @@ export const Component = styled.li`
 
       overflow-y: auto;
     } */
-  }
-
-  body[data-dark-mode="true"] & {
-    .techs li {
-      background-color: ${COLOR.gs_16};
-
-      p {
-        color: ${COLOR.b_l2};
-
-        small {
-          color: ${COLOR.gs_8};
-        }
-      }
-    }
   }
 `;

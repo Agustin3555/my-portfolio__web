@@ -33,6 +33,7 @@ imgs.forEach(({ file }) => validateImgMetadata(folder, file));
 <ImgsSliderStyled.Component
   className={asClassName("slider", ...handlingClass)}
   p={ImgsSliderStyled.adapter(style)}
+  data-fullscreen="false"
 >
   <ol class="imgs">
     {
@@ -61,12 +62,12 @@ imgs.forEach(({ file }) => validateImgMetadata(folder, file));
     <p class="position-counter"><strong>1</strong> / {imgs.length}</p>
     <button class="toggle-fullscreen" title="Ver en pantalla completa">
       <Icon
-        iconName="fa-solid fa-compress"
+        faIcon="fa-solid fa-compress"
         style={{ size: FONT_SIZE.m }}
         handlingClass={["compress"]}
       />
       <Icon
-        iconName="fa-solid fa-expand"
+        faIcon="fa-solid fa-expand"
         style={{ size: FONT_SIZE.m }}
         handlingClass={["expand"]}
       />
@@ -79,12 +80,12 @@ imgs.forEach(({ file }) => validateImgMetadata(folder, file));
 
   const sliders = window.document.querySelectorAll<HTMLDivElement>(".slider");
 
+  const FULLSCREEN_DS_KEY = "fullscreen";
+  const FULLSCREEN_TITLE_ON = "Salir de pantalla completa";
+  const FULLSCREEN_TITLE_OFF = "Ver en pantalla completa";
+
   sliders.forEach((slider) => {
     // Sobre el fullscreen
-
-    const FULLSCREEN_DS_KEY = "fullscreen";
-
-    slider.dataset[FULLSCREEN_DS_KEY] = String(false);
 
     const toggleFullscreen =
       slider.querySelector<HTMLButtonElement>(".toggle-fullscreen");
@@ -97,19 +98,19 @@ imgs.forEach(({ file }) => validateImgMetadata(folder, file));
         slider.dataset[FULLSCREEN_DS_KEY] = String(reverseFullscreen);
 
         if (reverseFullscreen) {
-          toggleFullscreen.title = "Salir de pantalla completa";
+          toggleFullscreen.title = FULLSCREEN_TITLE_ON;
           await slider.requestFullscreen();
         } else {
-          toggleFullscreen.title = "Ver en pantalla completa";
+          toggleFullscreen.title = FULLSCREEN_TITLE_OFF;
           await window.document.exitFullscreen();
         }
       });
 
       window.document.addEventListener("fullscreenchange", () => {
         if (!window.document.fullscreenElement) {
-          slider.dataset[FULLSCREEN_DS_KEY] = String(false);
+          slider.dataset[FULLSCREEN_DS_KEY] = "false";
 
-          toggleFullscreen.title = "Ver en pantalla completa";
+          toggleFullscreen.title = FULLSCREEN_TITLE_OFF;
         }
       });
     }
@@ -117,10 +118,11 @@ imgs.forEach(({ file }) => validateImgMetadata(folder, file));
     // Sobre el position-counter
 
     const imgContainers = slider.querySelectorAll<HTMLLIElement>("li");
-
     const positionCounter = slider.querySelector<HTMLElement>(
       ".position-counter strong",
     );
+
+    if (!positionCounter) return;
 
     imgContainers.forEach((item, index) => {
       onScreen({
@@ -128,10 +130,11 @@ imgs.forEach(({ file }) => validateImgMetadata(folder, file));
         containerObserver: slider,
         margin: "-50%",
         onIntersectionChange: (isIntersecting) => {
-          if (isIntersecting && positionCounter)
-            positionCounter.innerText = String(index + 1);
+          if (isIntersecting) positionCounter.innerText = String(index + 1);
         },
       });
     });
+
+    window.addEventListener("load", () => slider.scrollTo({ top: 0, left: 0 }));
   });
 </script>

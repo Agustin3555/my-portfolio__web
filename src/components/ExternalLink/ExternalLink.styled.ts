@@ -25,12 +25,9 @@ export const Component = styled.a`
   .content {
     display: flex;
     align-items: center;
-    gap: calc(${VARS.component.button.xs.padding} * 1.25);
-    padding: 0 ${VARS.component.button.xs.padding};
-    height: calc(
-      ${VARS.component.button.xs.padding} * 2 +
-        ${VARS.component.button.xs.fontSize}
-    );
+    gap: ${VARS.component.button.xs.gapElements};
+    padding-inline: ${VARS.component.button.xs.paddingInline};
+    height: ${VARS.component.button.xs.height};
     border-radius: var(--border-radius);
 
     p {

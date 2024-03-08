@@ -5,11 +5,11 @@ import { FONT_SIZE } from "@/styles";
 
 interface Props {
   href: string;
-  iconName: string;
+  faIcon: string;
   title: string;
 }
 
-const { href, iconName, title } = Astro.props;
+const { href, faIcon, title } = Astro.props;
 ---
 
 <SocialNetworkStyled.Component
@@ -20,6 +20,6 @@ const { href, iconName, title } = Astro.props;
   rel="noopener"
 >
   <div class="content">
-    <Icon iconName={iconName} style={{ size: FONT_SIZE.m }} />
+    <Icon faIcon={faIcon} style={{ size: FONT_SIZE.m }} />
   </div>
 </SocialNetworkStyled.Component>

@@ -7,6 +7,7 @@ import ExternalLink, {
 import Separator from "@/components/Separator/Separator.astro";
 import { NOT_FONT_SIZE, VARS } from "@/styles";
 import { highlightToHTMLTag } from "@/tools";
+import Pill from "@/components/Pill/Pill.astro";
 
 type HostingPlatform = "github" | "gitlab" | "bitbucket";
 
@@ -56,7 +57,7 @@ if (links) {
     externalLinks = [
       {
         url: repo.url,
-        iconName: `fa-brands fa-${icon}`,
+        faIcon: `fa-brands fa-${icon}`,
         text: "Repositorio",
         title: `Ir al repositorio en ${name}`,
       },
@@ -68,7 +69,6 @@ if (links) {
       ...externalLinks,
       ...others.map<ExternalLinksProps>(({ url, text, title }) => ({
         url,
-        iconName: "fa-solid fa-square-arrow-up-right",
         text,
         title,
       })),
@@ -119,10 +119,12 @@ if (links) {
     {
       technologies.map(({ name, version }) => (
         <li>
-          <p>
-            {name}
-            {version && <small>{version}</small>}
-          </p>
+          <Pill>
+            <p>
+              {name}
+              {version && <small>{version}</small>}
+            </p>
+          </Pill>
         </li>
       ))
     }

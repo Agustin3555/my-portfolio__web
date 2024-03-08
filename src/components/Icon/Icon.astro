@@ -3,15 +3,15 @@ import * as IconStyled from "./Icon.styled";
 import { type HandlingClass, asClassName } from "@/tools";
 
 interface Props {
-  iconName: string;
+  faIcon: string;
   style?: IconStyled.Props;
   handlingClass?: HandlingClass;
 }
 
-const { iconName, style = {}, handlingClass = [] } = Astro.props;
+const { faIcon, style = {}, handlingClass = [] } = Astro.props;
 ---
 
 <IconStyled.Component
   p={IconStyled.adapter(style)}
-  className={asClassName(...handlingClass, iconName)}
+  className={asClassName(...handlingClass, faIcon)}
 />

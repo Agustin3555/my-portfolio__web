@@ -6,13 +6,13 @@ import { type HandlingClass, asClassName } from "@/tools";
 
 export interface Props {
   url: string;
-  iconName: string;
+  faIcon?: string;
   text: string;
   title: string;
   handlingClass?: HandlingClass;
 }
 
-const { url, iconName, text, title, handlingClass = [] } = Astro.props;
+const { url, faIcon, text, title, handlingClass = [] } = Astro.props;
 ---
 
 <ExternalLinkStyled.Component
@@ -22,9 +22,9 @@ const { url, iconName, text, title, handlingClass = [] } = Astro.props;
   target="_blank"
   rel="noopener"
 >
-  <div class="content">
+  <div class="content" style={`--fa-rotate-angle: ${faIcon ? "" : "-45deg"};`}>
     <Icon
-      iconName={iconName}
+      faIcon={faIcon ? faIcon : "fa-solid fa-arrow-right fa-rotate-by"}
       style={{ size: VARS.component.button.xs.fontSize }}
     />
     <p>{text}</p>

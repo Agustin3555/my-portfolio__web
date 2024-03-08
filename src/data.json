@@ -6,17 +6,17 @@
   "externalNetwork": [
     {
       "url": "https://www.linkedin.com/in/agust%C3%ADn-lovera-b27528212/",
-      "iconName": "fa-brands fa-linkedin",
+      "faIcon": "fa-brands fa-linkedin",
       "title": "LinkedIn"
     },
     {
       "url": "https://github.com/Agustin3555",
-      "iconName": "fa-brands fa-github",
+      "faIcon": "fa-brands fa-github",
       "title": "GitHub"
     },
     {
       "url": "https://www.instagram.com/agustin_lovera2",
-      "iconName": "fa-brands fa-instagram",
+      "faIcon": "fa-brands fa-instagram",
       "title": "Instagram"
     }
   ],
@@ -55,7 +55,14 @@
               "titleStrong": "Full Stack Web Dev"
             },
             "subsections": {
-              "intro": "Recién graduado con sólidas bases en la [creación de software]. Durante mi trayectoria universitaria, complementé mis estudios con cursos y [aprendizaje autodidacta], enfocándome en [tecnologías web] y [diseño UI].",
+              "intro": {
+                "text": "Recién graduado con sólidas bases en la [creación de software]. Durante mi trayectoria universitaria, complementé mis estudios con cursos y [aprendizaje autodidacta], enfocándome en [tecnologías web] y [diseño UI].",
+                "residence": {
+                  "text": "Argentina, Resistencia",
+                  "mapsUrl": "https://maps.app.goo.gl/WV5tTaDhoktP9uRp8"
+                },
+                "englishLevel": "técnico"
+              },
               "profProfile": {
                 "title": "Perfil profesional",
                 "text": "Emocionado por integrarme a un equipo de desarrollo web y dominar el ámbito profesional. Destaco por [aprender rápidamente], [idear proyectos innovadores] y mi sólido conocimiento en [TypeScript]. Comprometido a potenciar mi inglés para ampliar oportunidades laborales y apasionado por mantenerme al tanto de las [últimas tendencias tecnológicas] que mejoran la eficiencia del desarrollo."
@@ -86,11 +93,7 @@
                 "file": "flat-logo.svg",
                 "alt": "Logo de Juan Agustín Lovera, Full Stack Web Dev"
               }
-            ],
-            "residence": {
-              "text": "Argentina, Resistencia",
-              "mapsUrl": "https://maps.app.goo.gl/WV5tTaDhoktP9uRp8"
-            }
+            ]
           }
         },
         "works": {

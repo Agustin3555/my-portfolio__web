@@ -55,9 +55,15 @@
     var(--decorator-bevel-highlight-bottom);
 
   --component-button-xs-font-size: var(--palette-size-font-xs);
-  --component-button-xs-padding: 0.5rem;
+  --component-button-xs-padding-block: 0.5rem;
+  --component-button-xs-padding-inline: calc(
+    var(--component-button-xs-padding-block) * 1.25
+  );
+  --component-button-xs-gap-elements: calc(
+    var(--component-button-xs-padding-block) * 1.5
+  );
   --component-button-xs-height: calc(
-    var(--component-button-xs-padding) * 2 +
+    var(--component-button-xs-padding-block) * 2 +
       var(--component-button-xs-font-size)
   );
   --component-button-xs-border-radius: 0.3125rem;

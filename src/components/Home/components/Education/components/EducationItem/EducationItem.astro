@@ -47,19 +47,16 @@ const {
       </div>
     </header>
     <div class="about-time">
-      <time class="end-date text" datetime={endDate.machine}
-        >{endDate.human}</time
-      >
-      <time class="duration text" datetime={duration.machine}
-        >{duration.human}</time
-      >
+      <time class="end-date text" datetime={endDate.machine}>
+        {endDate.human}
+      </time>
+      <time class="duration text" datetime={duration.machine}>
+        {duration.human}
+      </time>
     </div>
     <ul class="links">
       <li>
-        <ExternalLink
-          {...moreInfoLink}
-          iconName="fa-solid fa-square-arrow-up-right"
-        />
+        <ExternalLink {...moreInfoLink} />
       </li>
     </ul>
     <span class="bullet">
@@ -82,7 +79,7 @@ const {
           stroke-dasharray="4 4"></circle>
       </svg>
       <span class="line"></span>
-      <Icon iconName={faIcon} handlingClass={["icon"]} />
+      <Icon faIcon={faIcon} handlingClass={["icon"]} />
     </span>
     <span class="line-extension-layout line"></span>
   </article>

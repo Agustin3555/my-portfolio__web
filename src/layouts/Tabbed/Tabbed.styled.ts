@@ -42,7 +42,7 @@ export const Component = styled.article`
       border: none;
 
       label {
-        --padding: ${VARS.component.button.xs.padding};
+        --padding: ${VARS.component.button.xs.paddingBlock};
 
         position: relative;
         padding: var(--padding) calc(var(--padding) * 2);

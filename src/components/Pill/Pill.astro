@@ -1,0 +1,25 @@
+---
+import * as PillStyled from "./Pill.styled";
+import Icon from "../Icon/Icon.astro";
+import { VARS } from "@/styles";
+import { type HandlingClass, asClassName } from "@/tools";
+
+export interface Props {
+  faIcon?: string;
+  handlingClass?: HandlingClass;
+}
+
+const { faIcon, handlingClass = [] } = Astro.props;
+---
+
+<PillStyled.Component className={asClassName(...handlingClass)}>
+  {
+    faIcon && (
+      <Icon
+        faIcon={faIcon}
+        style={{ size: VARS.component.button.xs.fontSize }}
+      />
+    )
+  }
+  <slot />
+</PillStyled.Component>

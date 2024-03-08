@@ -5,6 +5,7 @@ import * as AboutStyled from "./About.styled";
 import GlassPanel from "@/components/GlassPanel/GlassPanel.astro";
 import SocialNetwork from "@/components/SocialNetwork/SocialNetwork.astro";
 import ExternalLink from "@/components/ExternalLink/ExternalLink.astro";
+import Pill from "@/components/Pill/Pill.astro";
 import ContactLink from "@/components/ContactLink/ContactLink.astro";
 import ImgsSlider from "../ImgsSlider/ImgsSlider.astro";
 import { highlightToHTMLTag } from "@/tools";
@@ -16,7 +17,7 @@ const { sections } = pages.home;
 const sectionKey: keyof typeof sections = "about";
 
 const { about } = sections;
-const { header, subsections, imgs, residence } = about.data;
+const { header, subsections, imgs } = about.data;
 const { intro, profProfile, hobbiesAndLikes } = subsections;
 ---
 
@@ -37,13 +38,22 @@ const { intro, profProfile, hobbiesAndLikes } = subsections;
       >
         <li>
           <div class="intro">
-            <p class="text" set:html={highlightToHTMLTag(intro)} />
-            <ExternalLink
-              url={residence.mapsUrl}
-              iconName="fa-solid fa-location-dot"
-              text={residence.text}
-              title={`Visitar ${residence.text} en Maps`}
-            />
+            <p class="text" set:html={highlightToHTMLTag(intro.text)} />
+            <ul>
+              {
+                [
+                  <ExternalLink
+                    url={intro.residence.mapsUrl}
+                    faIcon="fa-solid fa-location-dot"
+                    text={intro.residence.text}
+                    title={`Visitar ${intro.residence.text} en Maps`}
+                  />,
+                  <Pill faIcon="fa-solid fa-comment-dots">
+                    <p>Ingles {intro.englishLevel}</p>
+                  </Pill>,
+                ].map((item) => <li>{item}</li>)
+              }
+            </ul>
           </div>
         </li>
         <li>
@@ -86,10 +96,10 @@ const { intro, profProfile, hobbiesAndLikes } = subsections;
             ...externalNetwork
               .slice()
               .reverse()
-              .map(({ url, iconName, title }) => (
+              .map(({ url, faIcon, title }) => (
                 <SocialNetwork
                   href={url}
-                  iconName={iconName}
+                  faIcon={faIcon}
                   title={`Ir al perfil de ${title}`}
                 />
               )),

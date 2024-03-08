@@ -197,7 +197,7 @@ export const Component = styled.li`
 
   &[data-first-item="true"] {
     .item .bullet > *.line:nth-of-type(1) {
-      opacity: 0;
+      visibility: hidden;
     }
   }
 

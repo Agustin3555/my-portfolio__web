@@ -40,6 +40,12 @@ export const Component = styled.div`
         gap: ${VARS.size.gold};
       }
 
+      .intro ul {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--gap-xs);
+      }
+
       .hobbies-and-likes {
         display: flex;
         flex-wrap: wrap;

@@ -78,7 +78,7 @@ export const Component = styled.div`
             filter ${TIME.m} ${TIMING_FUNC.a};
         }
 
-        .check {
+        .check-icon {
           opacity: 0;
           scale: 0;
           filter: blur(${NOT_FONT_SIZE["4xs"]});
@@ -87,14 +87,15 @@ export const Component = styled.div`
         &[data-copying="true"] {
           box-shadow: initial;
           translate: initial;
+          cursor: initial;
 
-          .copy {
+          .copy-icon {
             opacity: 0;
             scale: 0;
             filter: blur(${NOT_FONT_SIZE["4xs"]});
           }
 
-          .check {
+          .check-icon {
             opacity: 1;
             scale: 1;
             filter: initial;

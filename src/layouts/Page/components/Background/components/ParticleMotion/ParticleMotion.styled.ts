@@ -7,7 +7,7 @@ export const Component = styled.span`
 
   .particle {
     position: absolute;
-    bottom: calc(var(--square-size) * -1.25);
+    bottom: calc(var(--square-size) * -1.414);
 
     filter: drop-shadow(0.3px 0.5px 0.7px rgba(0, 0, 0, 0.09))
       drop-shadow(0.7px 1.3px 1.7px rgba(0, 0, 0, 0.09))
@@ -21,7 +21,8 @@ export const Component = styled.span`
 
     @keyframes translateLavaLampMotion {
       to {
-        translate: 0 calc((var(--container-height) + 200%) * -1);
+        translate: 0
+          calc((var(--container-height) + var(--square-size) * 1.25 * 3) * -1);
       }
     }
 

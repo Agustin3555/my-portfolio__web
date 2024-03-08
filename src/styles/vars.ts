@@ -73,7 +73,9 @@ export const VARS = {
   component: {
     button: {
       xs: {
-        padding: "var(--component-button-xs-padding)",
+        gapElements: "var(--component-button-xs-gap-elements)",
+        paddingBlock: "var(--component-button-xs-padding-block)",
+        paddingInline: "var(--component-button-xs-padding-inline)",
         height: "var(--component-button-xs-height)",
         fontSize: "var(--component-button-xs-font-size)",
         borderRadius: "var(--component-button-xs-border-radius)",

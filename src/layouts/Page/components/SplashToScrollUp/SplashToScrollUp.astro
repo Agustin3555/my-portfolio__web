@@ -30,11 +30,10 @@ const sectionKey: keyof typeof sections = "about";
     "#splash-to-scroll-up",
   );
 
-  if (splashToScrollUp) {
-    window.onload = async () => {
+  splashToScrollUp &&
+    window.addEventListener("load", async () => {
       await sleep(500);
 
       splashToScrollUp.dataset.loaded = "true";
-    };
-  }
+    });
 </script>
