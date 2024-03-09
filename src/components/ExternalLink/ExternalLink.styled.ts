@@ -18,7 +18,7 @@ export const Component = styled.a`
   }
 
   :hover {
-    color: ${COLOR.b};
+    color: ${COLOR.b_d1};
     translate: ${VARS.component.link.translate.value};
   }
 
@@ -32,6 +32,12 @@ export const Component = styled.a`
 
     p {
       font-size: ${VARS.component.button.xs.fontSize};
+    }
+  }
+
+  body[data-dark-mode="true"] & {
+    :hover {
+      color: ${COLOR.b};
     }
   }
 `;

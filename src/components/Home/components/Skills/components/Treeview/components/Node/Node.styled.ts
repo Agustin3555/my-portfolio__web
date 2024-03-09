@@ -66,7 +66,7 @@ export const Component = styled.div`
       opacity ${TIME.s} ease-out;
 
     :hover {
-      background-color: ${COLOR.gs_0};
+      background-color: ${COLOR.gs_3};
 
       .names {
         color: ${COLOR.gs_18};
@@ -239,7 +239,7 @@ export const Component = styled.div`
   body[data-dark-mode="true"] & {
     .tech {
       :hover {
-        background-color: ${COLOR.gs_13};
+        background-color: ${COLOR.gs_14};
 
         .names {
           color: ${COLOR.gs_0};

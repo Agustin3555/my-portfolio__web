@@ -104,16 +104,20 @@ h1 {
 
   color: var(--palette-color-gs-14);
 
-  body[data-dark-mode="true"] & {
-    color: var(--palette-color-gs-1);
-  }
-
   strong {
     display: block;
     margin-top: calc(var(--size-gold) / 2);
     font-size: var(--palette-size-font-l);
 
-    color: var(--palette-color-b);
+    color: var(--palette-color-b-d1);
+  }
+
+  body[data-dark-mode="true"] & {
+    color: var(--palette-color-gs-1);
+
+    strong {
+      color: var(--palette-color-b);
+    }
   }
 }
 

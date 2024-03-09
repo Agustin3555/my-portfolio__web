@@ -23,7 +23,7 @@ export const Component = styled.a`
     width: 130%;
     height: 130%;
 
-    background: linear-gradient(45deg, ${COLOR.d_l2} 12.5%, ${COLOR.b} 100%);
+    background: linear-gradient(45deg, ${COLOR.d_l1} 12.5%, ${COLOR.b} 100%);
   }
 
   :hover {

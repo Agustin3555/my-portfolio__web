@@ -36,7 +36,8 @@ export const Component = styled.fieldset`
       align-items: center;
       gap: var(--gap);
       font-size: ${FONT_SIZE.xs};
-      color: ${COLOR.b};
+
+      color: ${COLOR.b_d1};
       cursor: pointer;
 
       input {
@@ -58,7 +59,10 @@ export const Component = styled.fieldset`
         width: calc(var(--toggle-ui-height) * 2);
         height: var(--toggle-ui-height);
         border-radius: ${NOT_FONT_SIZE["6xl"]};
+
+        color: ${COLOR.b};
         background-color: ${COLOR.gs_10};
+
         transition: background-color ${TIME.s} ease-out;
 
         ::before {
@@ -95,12 +99,16 @@ export const Component = styled.fieldset`
     }
   }
 
-  body[data-dark-mode="true"] & .item .toggle .ui {
-    background-color: ${COLOR.gs_12};
+  body[data-dark-mode="true"] & .item .toggle {
+    color: ${COLOR.b};
 
-    ::after {
-      border-color: ${COLOR.gs_10};
-      background-color: ${COLOR.gs_4};
+    .ui {
+      background-color: ${COLOR.gs_12};
+
+      ::after {
+        border-color: ${COLOR.gs_10};
+        background-color: ${COLOR.gs_4};
+      }
     }
   }
 

@@ -19,140 +19,150 @@ const { basicSeparation = 150, handlingClass = [] } = Astro.props;
   import { COLOR, type Color } from "@/styles";
   import { debounce, randomInt, dropRandom } from "@/tools";
 
-  const particleMotions =
-    window.document.querySelectorAll<HTMLDivElement>(".particle-motion");
+  const isMobile =
+    /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+      window.navigator.userAgent,
+    );
 
-  const SIZES: number[] = [24, 42, 68];
-  const COLORS: Color[] = [COLOR.a, COLOR.b, COLOR.c, COLOR.d];
-  const MAX_MISMATCH = 64;
-  const MIN_DURATION = 30;
-  const MAX_DURATION = 60;
+  if (!isMobile) {
+    const particleMotions =
+      window.document.querySelectorAll<HTMLDivElement>(".particle-motion");
 
-  // Valores aproximados
-  const MAX_HEIGHT = 8400;
-  const MIN_HEIGHT = 1000;
+    const SIZES: number[] = [24, 42, 68];
+    const COLORS: Color[] = [COLOR.a, COLOR.b, COLOR.c, COLOR.d];
+    const MAX_MISMATCH = 64;
+    const MIN_DURATION = 30;
+    const MAX_DURATION = 60;
 
-  const COMPENSATION = 1500;
+    // Valores aproximados
+    const MAX_HEIGHT = 8400;
+    const MIN_HEIGHT = 1000;
 
-  const handleResize = () => {
-    particleMotions.forEach((particleMotion) => {
-      while (particleMotion.firstChild)
-        particleMotion.removeChild(particleMotion.firstChild);
+    const COMPENSATION = 1500;
 
-      const { clientWidth, clientHeight, dataset } = particleMotion;
+    const handleResize = () => {
+      particleMotions.forEach((particleMotion) => {
+        while (particleMotion.firstChild)
+          particleMotion.removeChild(particleMotion.firstChild);
 
-      const normalStep = dataset.basicSeparation;
+        const { clientWidth, clientHeight, dataset } = particleMotion;
 
-      if (normalStep) {
-        let size = 0;
-        let step = 0;
+        const normalStep = dataset.basicSeparation;
 
-        const updateStep = () => {
-          const mismatch = randomInt({ max: MAX_MISMATCH });
-          size = dropRandom(SIZES);
-          step = Number(normalStep) + mismatch - size / 2;
-        };
+        if (normalStep) {
+          let size = 0;
+          let step = 0;
 
-        updateStep();
-
-        const paramsElements: {
-          particle: {
-            vars: {
-              squareSize: number;
-              animation: { duration: number; delay: number };
-            };
-            left: number;
+          const updateStep = () => {
+            const mismatch = randomInt({ max: MAX_MISMATCH });
+            size = dropRandom(SIZES);
+            step = Number(normalStep) + mismatch - size / 2;
           };
-          square: { backgroundColor: string };
-        }[] = [];
 
-        // Calcular los parametros de los elementos
-        for (
-          // Primer particle
-          let left = -(size / 2);
-          // Última particle
-          left < clientWidth - step / 2;
-          // Paso dinámico
-          left += step
-        ) {
-          /*
+          updateStep();
+
+          const paramsElements: {
+            particle: {
+              vars: {
+                squareSize: number;
+                animation: { duration: number; delay: number };
+              };
+              left: number;
+            };
+            square: { backgroundColor: string };
+          }[] = [];
+
+          // Calcular los parametros de los elementos
+          for (
+            // Primer particle
+            let left = -(size / 2);
+            // Última particle
+            left < clientWidth - step / 2;
+            // Paso dinámico
+            left += step
+          ) {
+            /*
             Calcular la probabilidad de eliminación en función del
             clientHeight, con el objetivo de minimizar el numero de particulas
             en screen en vistas de páginas con un height mínimo.
-          */
+            */
 
-          const minHeight = MIN_HEIGHT - COMPENSATION;
-          const maxHeight = MAX_HEIGHT - COMPENSATION;
+            const minHeight = MIN_HEIGHT - COMPENSATION;
+            const maxHeight = MAX_HEIGHT - COMPENSATION;
 
-          const deletionProbability =
-            1 - (clientHeight - minHeight) / (maxHeight - minHeight);
-          /*
+            const deletionProbability =
+              1 - (clientHeight - minHeight) / (maxHeight - minHeight);
+            /*
             Generar un número aleatorio entre 0 y 1 para determinar si eliminar
             el elemento.
-          */
-          const randomValue = Math.random();
-          /*
+            */
+            const randomValue = Math.random();
+            /*
             Si el número aleatorio es menor que la probabilidad de eliminación,
             omitir este elemento.
-          */
-          if (randomValue < deletionProbability) continue;
+            */
+            if (randomValue < deletionProbability) continue;
 
-          const duration =
-            randomInt({ min: MIN_DURATION, max: MAX_DURATION }) *
-            clientHeight *
-            0.000625;
+            const duration =
+              randomInt({ min: MIN_DURATION, max: MAX_DURATION }) *
+              clientHeight *
+              0.000625;
 
-          paramsElements.push({
-            particle: {
-              vars: {
-                squareSize: size,
-                animation: { duration, delay: randomInt({ max: duration }) },
+            paramsElements.push({
+              particle: {
+                vars: {
+                  squareSize: size,
+                  animation: { duration, delay: randomInt({ max: duration }) },
+                },
+                left,
               },
-              left,
-            },
-            square: { backgroundColor: dropRandom(COLORS) },
+              square: { backgroundColor: dropRandom(COLORS) },
+            });
+
+            updateStep();
+          }
+
+          // Crear los elementos
+          paramsElements.forEach((item) => {
+            const { vars, left } = item.particle;
+            const { squareSize, animation } = vars;
+            const { duration, delay } = animation;
+
+            const particle = window.document.createElement("span");
+            particle.className = "particle";
+            particle.style.setProperty(
+              "--container-height",
+              `${clientHeight}px`,
+            );
+            particle.style.setProperty("--square-size", `${squareSize}px`);
+            particle.style.setProperty("--animation-duration", `${duration}s`);
+            particle.style.setProperty("--animation-delay", `-${delay}s`);
+            particle.style.left = `${left}px`;
+
+            const { backgroundColor } = item.square;
+
+            const square = window.document.createElement("span");
+            square.className = "square";
+            square.style.backgroundColor = backgroundColor;
+
+            particleMotion.appendChild(particle).appendChild(square);
           });
-
-          updateStep();
         }
+      });
+    };
 
-        // Crear los elementos
-        paramsElements.forEach((item) => {
-          const { vars, left } = item.particle;
-          const { squareSize, animation } = vars;
-          const { duration, delay } = animation;
+    handleResize();
 
-          const particle = window.document.createElement("span");
-          particle.className = "particle";
-          particle.style.setProperty("--container-height", `${clientHeight}px`);
-          particle.style.setProperty("--square-size", `${squareSize}px`);
-          particle.style.setProperty("--animation-duration", `${duration}s`);
-          particle.style.setProperty("--animation-delay", `-${delay}s`);
-          particle.style.left = `${left}px`;
+    // Evento optimizado por debounce
+    window.addEventListener("resize", debounce(handleResize, 500));
 
-          const { backgroundColor } = item.square;
-
-          const square = window.document.createElement("span");
-          square.className = "square";
-          square.style.backgroundColor = backgroundColor;
-
-          particleMotion.appendChild(particle).appendChild(square);
-        });
-      }
+    window.addEventListener("visibilitychange", () => {
+      particleMotions.forEach((particleMotion) =>
+        particleMotion.style.setProperty(
+          "--animation-play",
+          window.document.visibilityState !== "hidden" ? "running" : "paused",
+        ),
+      );
     });
-  };
-
-  handleResize();
-
-  // Evento optimizado por debounce
-  window.addEventListener("resize", debounce(handleResize, 500));
-
-  window.addEventListener("visibilitychange", () => {
-    particleMotions.forEach((particleMotion) =>
-      particleMotion.style.setProperty(
-        "--animation-play",
-        window.document.visibilityState !== "hidden" ? "running" : "paused",
-      ),
-    );
-  });
+  }
 </script>

@@ -61,7 +61,7 @@ export const Component = styled.li`
         .institution-name {
           font-size: ${FONT_SIZE.xs};
 
-          color: ${COLOR.b};
+          color: ${COLOR.b_d1};
         }
       }
     }
@@ -175,10 +175,26 @@ export const Component = styled.li`
     }
   }
 
+  &[data-first-item="true"] {
+    .item .bullet > *.line:nth-of-type(1) {
+      visibility: hidden;
+    }
+  }
+
+  &[data-last-item="true"] {
+    .item-gap {
+      display: none;
+    }
+  }
+
   body[data-dark-mode="true"] & {
     --line-color: ${VARS.color.a.line.dark};
 
     .item {
+      header .content .institution-name {
+        color: ${COLOR.b};
+      }
+
       .about-time {
         .end-date {
           color: ${COLOR.b_l2};
@@ -192,18 +208,6 @@ export const Component = styled.li`
           color: ${COLOR.gs_8};
         }
       }
-    }
-  }
-
-  &[data-first-item="true"] {
-    .item .bullet > *.line:nth-of-type(1) {
-      visibility: hidden;
-    }
-  }
-
-  &[data-last-item="true"] {
-    .item-gap {
-      display: none;
     }
   }
 `;

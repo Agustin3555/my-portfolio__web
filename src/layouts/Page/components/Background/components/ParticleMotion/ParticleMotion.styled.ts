@@ -6,8 +6,16 @@ export const Component = styled.span`
   height: 100%;
 
   .particle {
+    /* Diámetro del círculo (por la rotación del square) */
+    --hitbox: calc(var(--square-size) * 1.4142);
+
     position: absolute;
-    bottom: calc(var(--square-size) * -1.414);
+    bottom: calc(var(--hitbox) * -2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--hitbox);
+    height: var(--hitbox);
 
     filter: drop-shadow(0.3px 0.5px 0.7px rgba(0, 0, 0, 0.09))
       drop-shadow(0.7px 1.3px 1.7px rgba(0, 0, 0, 0.09))
@@ -21,8 +29,7 @@ export const Component = styled.span`
 
     @keyframes translateLavaLampMotion {
       to {
-        translate: 0
-          calc((var(--container-height) + var(--square-size) * 1.25 * 3) * -1);
+        translate: 0 calc((var(--container-height) + var(--hitbox) * 3) * -1);
       }
     }
 

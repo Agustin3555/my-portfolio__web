@@ -18,12 +18,18 @@ export const Component = styled.a`
   }
 
   :hover {
-    color: ${COLOR.b_l2};
+    color: ${COLOR.b_d1};
     translate: ${VARS.component.link.translate.value};
   }
 
   .content {
     padding: ${VARS.component.button.s.padding};
     border-radius: var(--border-radius);
+  }
+
+  body[data-dark-mode="true"] & {
+    :hover {
+      color: ${COLOR.b};
+    }
   }
 `;

@@ -59,7 +59,7 @@ export const Component = styled.li`
         li p {
           font-size: ${FONT_SIZE.xs};
 
-          color: ${COLOR.b};
+          color: ${COLOR.b_d1};
         }
       }
     }
@@ -86,14 +86,6 @@ export const Component = styled.li`
         font-size: ${VARS.component.button.xs.fontSize};
 
         color: ${COLOR.gs_11};
-      }
-
-      body[data-dark-mode="true"] & {
-        color: ${COLOR.b_l2};
-
-        small {
-          color: ${COLOR.gs_8};
-        }
       }
     }
   }
@@ -131,5 +123,19 @@ export const Component = styled.li`
 
       overflow-y: auto;
     } */
+  }
+
+  body[data-dark-mode="true"] & {
+    header .content .types li p {
+      color: ${COLOR.b};
+    }
+
+    .techs li p {
+      color: ${COLOR.b_l2};
+
+      small {
+        color: ${COLOR.gs_8};
+      }
+    }
   }
 `;
