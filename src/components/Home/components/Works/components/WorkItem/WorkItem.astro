@@ -92,10 +92,8 @@ if (links) {
       <ul class="types">
         {
           types.map((item, index) => (
-            <>
-              <li>
-                <p class="text">{item}</p>
-              </li>
+            <li>
+              <p class="text">{item}</p>
               {index !== types.length - 1 && (
                 <Separator
                   asSpan
@@ -109,7 +107,7 @@ if (links) {
                   }}
                 />
               )}
-            </>
+            </li>
           ))
         }
       </ul>

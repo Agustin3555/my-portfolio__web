@@ -52,14 +52,22 @@ export const Component = styled.li`
       border-radius: var(--border-radius);
 
       .types {
+        --types-gap: ${VARS.global.fontSize};
+
         display: flex;
         align-items: center;
-        gap: ${VARS.global.fontSize};
+        gap: var(--types-gap);
 
-        li p {
-          font-size: ${FONT_SIZE.xs};
+        li {
+          display: flex;
+          align-items: center;
+          gap: var(--types-gap);
 
-          color: ${COLOR.b_d1};
+          p {
+            font-size: ${FONT_SIZE.xs};
+
+            color: ${COLOR.b_d1};
+          }
         }
       }
     }
