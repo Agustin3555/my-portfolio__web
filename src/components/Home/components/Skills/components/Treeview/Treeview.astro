@@ -3,11 +3,11 @@ import * as TreeviewStyled from "./Treeview.styled";
 import Node from "./components/Node/Node.astro";
 import jsonData from "@/data.json";
 
-const { techs } = jsonData.pages.home.sections.skills.data;
+const { techs, levels } = jsonData.pages.home.sections.skills.data;
 ---
 
-<TreeviewStyled.Component className="glass" id="skillsTreeview">
-  <ul class="items">
+<TreeviewStyled.Component className="glass" id="skill-treeview">
+  <ul class="items" style={`--levels: ${levels.length};`}>
     {
       techs.map((tech) => (
         <li>
@@ -17,3 +17,39 @@ const { techs } = jsonData.pages.home.sections.skills.data;
     }
   </ul>
 </TreeviewStyled.Component>
+
+<script>
+  const skillTreeview =
+    window.document.querySelector<HTMLElement>("#skill-treeview");
+
+  if (skillTreeview) {
+    const icons = Array.from(
+      skillTreeview.querySelectorAll<HTMLElement>(".icons"),
+    );
+
+    const iconsMaxWidth = Math.max(...icons.map((item) => item.clientWidth));
+    skillTreeview.style.setProperty("--icons-max-width", `${iconsMaxWidth}px`);
+
+    const names = Array.from(
+      skillTreeview.querySelectorAll<HTMLElement>(".names"),
+    );
+
+    const resizeObserver = new ResizeObserver(() => {
+      names.forEach((item) => {
+        item.style.display = "flex";
+      });
+
+      const namesMaxWidth = Math.max(...names.map((item) => item.clientWidth));
+      skillTreeview.style.setProperty(
+        "--names-max-width",
+        `${namesMaxWidth}px`,
+      );
+
+      names.forEach((item) => {
+        item.style.display = "";
+      });
+    });
+
+    resizeObserver.observe(names[0]);
+  }
+</script>

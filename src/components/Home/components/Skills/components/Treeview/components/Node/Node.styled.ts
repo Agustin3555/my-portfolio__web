@@ -1,65 +1,27 @@
 import styled from "@emotion/styled";
-import {
-  COLOR,
-  FONT_SIZE,
-  TIME,
-  NOT_FONT_SIZE,
-  type Value,
-  VARS,
-} from "@/styles";
-
-const GAP = NOT_FONT_SIZE["3xs"];
-const NAME_FONT_SIZE = FONT_SIZE.xs;
-const ICON_SIZE = "1.5rem";
-
-interface ConstProvider {
-  technology: {
-    paddingLeft: Value;
-  };
-  childTech: {
-    item: {
-      bulletPoint: {
-        width: Value;
-      };
-    };
-    extensionContainer: {
-      width: Value;
-    };
-  };
-}
-
-const bulletPointContainerSize = `calc(${GAP} * 5)`;
-
-const cp: ConstProvider = {
-  technology: {
-    paddingLeft: `calc(${GAP} + (${ICON_SIZE} - ${NAME_FONT_SIZE}) * 0.5)`,
-  },
-  childTech: {
-    item: {
-      bulletPoint: {
-        width: bulletPointContainerSize,
-      },
-    },
-    extensionContainer: {
-      width: bulletPointContainerSize,
-    },
-  },
-};
+import { COLOR, FONT_SIZE, TIME, NOT_FONT_SIZE, VARS } from "@/styles";
 
 export const Component = styled.div`
+  --gap-s: ${NOT_FONT_SIZE["3xs"]};
+  --bar-height: ${VARS.size.gold};
+  --tech-padding: var(--gap-s);
+  --tech-height: calc(var(--tech-padding) * 2 + var(--bar-height));
+  --bullet-point-width: ${VARS.size.gold};
+  --bullet-point-node-gap: var(--gap-s);
+
+  flex-grow: 1;
+
   display: flex;
   flex-direction: column;
-  gap: ${GAP};
-  width: 100%;
+  gap: var(--gap-s);
 
   .tech {
     display: flex;
     justify-content: space-between;
-    gap: calc(${GAP} * 3);
-    padding: ${GAP};
-    padding-left: ${cp.technology.paddingLeft};
+    gap: calc(var(--gap-s) * 3);
+    padding: var(--tech-padding);
+    padding-left: calc(var(--tech-padding) * 2);
     border-radius: ${NOT_FONT_SIZE["3xs"]};
-    opacity: 0.25;
 
     transition:
       background-color ${TIME.s} ease-out,
@@ -73,28 +35,22 @@ export const Component = styled.div`
       }
     }
 
-    &[data-show="true"] {
-      opacity: 1;
-    }
-
     .names {
       display: flex;
       align-items: center;
-      gap: calc(${GAP} * 2);
-      /* TODO: comentar */
-      width: calc(10.5rem - var(--level) * 36px);
+      gap: calc(var(--gap-s) * 2);
+      width: calc(
+        var(--names-max-width) -
+          (var(--bullet-point-node-gap) + var(--bullet-point-width)) *
+          var(--node-level)
+      );
 
       transition: color ${TIME.s} ease-out;
 
-      /* white-space: nowrap; */
-      /* overflow: hidden; */
-      /* outline: solid 1px coral; */
-
       .name {
-        font-size: ${NAME_FONT_SIZE};
-        line-height: 1;
+        font-size: ${FONT_SIZE.xs};
 
-        /* text-overflow: ellipsis; */
+        white-space: nowrap;
       }
     }
 
@@ -103,20 +59,22 @@ export const Component = styled.div`
 
       display: flex;
       align-items: center;
-      gap: calc(${GAP} * 3);
+      gap: calc(var(--gap-s) * 3);
       justify-content: space-between;
 
       .icons {
         display: flex;
         align-items: center;
         justify-content: flex-end;
-        gap: ${GAP};
-        /* TODO: comentar */
-        width: 4.0625rem;
+        gap: var(--gap-s);
+        width: var(--icons-max-width);
 
         .icon {
-          width: ${ICON_SIZE};
-          height: ${ICON_SIZE};
+          --icon-size: ${FONT_SIZE.l};
+
+          width: var(--icon-size);
+          height: var(--icon-size);
+
           object-fit: contain;
 
           transition: filter ${TIME.s} ease-out;
@@ -130,27 +88,18 @@ export const Component = styled.div`
       .level-bar {
         flex-grow: 1;
 
-        position: relative;
-        min-width: calc(${NOT_FONT_SIZE.s} * 4);
-        height: ${NOT_FONT_SIZE.s};
-        border-radius: calc(${NOT_FONT_SIZE["2xs"]} - ${NOT_FONT_SIZE["3xs"]});
-        background-color: ${COLOR.gs_2};
-        background-color: transparent;
-
-        transition: background-color ${TIME.s} ease-out;
+        min-width: calc(var(--bar-height) * var(--levels));
 
         .bar {
-          position: relative;
-          height: 100%;
-          border-radius: calc(
-            ${NOT_FONT_SIZE["2xs"]} - ${NOT_FONT_SIZE["3xs"]}
-          );
+          height: var(--bar-height);
+          border-radius: ${NOT_FONT_SIZE["4xs"]};
+
           background-color: ${COLOR.b};
         }
       }
     }
 
-    @media (max-width: 30.875rem) {
+    @media (width < 32rem) {
       .names {
         display: none;
       }
@@ -158,79 +107,72 @@ export const Component = styled.div`
       .graphics {
         flex-grow: 1;
 
+        gap: var(--bar-height);
+
         .icons {
           justify-content: flex-start;
-          /* TODO: comentar */
           width: calc(
-            (${ICON_SIZE} * 2 + ${GAP} * 2 + 0.0625rem) - var(--level) * 2.25rem
+            var(--icons-max-width) -
+              (var(--bullet-point-node-gap) + var(--bullet-point-width)) *
+              var(--node-level)
           );
         }
 
         .level-bar {
-          flex-grow: 0.875;
-          /* width: calc(${NOT_FONT_SIZE.s} * 4); */
+          flex-grow: 1;
         }
       }
     }
   }
 
-  .child-tech {
+  .techs-children {
     display: flex;
     flex-direction: column;
 
-    .item {
+    > li {
       display: flex;
-      flex-direction: column;
+      gap: var(--bullet-point-node-gap);
 
-      .line {
-        width: ${NOT_FONT_SIZE["6xs"]};
-        background-color: ${VARS.color.a.line.light};
+      :not(:nth-last-of-type(1)) {
+        --techs-children-gap: var(--gap-s);
 
-        transition: background-color ${TIME.s} ease-out;
-      }
-
-      .child-group {
-        display: grid;
-        grid-template-columns: auto 1fr;
-        gap: ${GAP};
-
-        .bullet-point-container {
-          position: relative;
-          width: ${cp.childTech.item.bulletPoint.width};
-
-          > * {
-            position: absolute;
-            left: 50%;
-          }
-
-          .box {
-            width: 37.5%;
-            height: 50%;
-            border-width: 0;
-            border-left-width: ${NOT_FONT_SIZE["6xs"]};
-            border-bottom-width: ${NOT_FONT_SIZE["6xs"]};
-            border-style: solid;
-            border-color: ${VARS.color.a.line.light};
-            border-bottom-left-radius: ${NOT_FONT_SIZE["3xs"]};
-
-            transition: border-color ${TIME.s} ease-out;
-          }
-
-          .next-extension {
-            bottom: 0;
-            height: calc(50% + ${NOT_FONT_SIZE["3xs"]});
-          }
+        .bullet-point .line {
+          width: ${NOT_FONT_SIZE["6xs"]};
         }
       }
 
-      .extension-container {
-        width: ${cp.childTech.extensionContainer.width};
-        height: ${GAP};
+      .bullet-point {
+        --line-color: ${VARS.color.a.line.light};
 
-        .extension {
-          position: relative;
+        position: relative;
+        width: var(--bullet-point-width);
+        height: calc(var(--tech-height) + var(--techs-children-gap));
+
+        > * {
+          position: absolute;
           left: 50%;
+        }
+
+        .box {
+          width: ${NOT_FONT_SIZE["2xs"]};
+          height: calc(var(--tech-height) / 2);
+          border-bottom-left-radius: ${NOT_FONT_SIZE["3xs"]};
+
+          border-width: 0;
+          border-left-width: ${NOT_FONT_SIZE["6xs"]};
+          border-bottom-width: ${NOT_FONT_SIZE["6xs"]};
+          border-style: solid;
+          border-color: var(--line-color);
+
+          transition: border-color ${TIME.s} ease-out;
+        }
+
+        .line {
           height: 100%;
+
+          background-color: var(--line-color);
+
+          transition: background-color ${TIME.s} ease-out;
         }
       }
     }
@@ -246,26 +188,13 @@ export const Component = styled.div`
         }
       }
 
-      .graphics {
-        .icons .icon {
-          filter: var(--invert-in-dark-mode);
-        }
-
-        .level-bar {
-          background-color: ${COLOR.gs_16};
-          background-color: transparent;
-        }
+      .graphics .icons .icon {
+        filter: var(--invert-in-dark-mode);
       }
     }
 
-    .child-tech .item {
-      .line {
-        background-color: ${VARS.color.a.line.dark};
-      }
-
-      .child-group .bullet-point-container .box {
-        border-color: ${VARS.color.a.line.dark};
-      }
+    .techs-children > li .bullet-point {
+      --line-color: ${VARS.color.a.line.dark};
     }
   }
 `;

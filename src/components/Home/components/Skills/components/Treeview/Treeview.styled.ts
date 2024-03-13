@@ -6,19 +6,12 @@ export const Component = styled.div`
 
   flex-grow: 2;
 
-  border-radius: var(--border-radius);
-
   box-shadow: ${VARS.decorator.shadow[1]};
-
-  ::before {
-    border-radius: var(--border-radius);
-  }
 
   .items {
     display: flex;
     flex-direction: column;
     gap: ${NOT_FONT_SIZE["3xs"]};
     padding: ${VARS.size.gold};
-    border-radius: var(--border-radius);
   }
 `;

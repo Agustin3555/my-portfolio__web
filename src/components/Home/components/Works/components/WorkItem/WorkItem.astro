@@ -5,9 +5,9 @@ import ExternalLink, {
   type Props as ExternalLinksProps,
 } from "@/components/ExternalLink/ExternalLink.astro";
 import Separator from "@/components/Separator/Separator.astro";
+import Pill from "@/components/Pill/Pill.astro";
 import { NOT_FONT_SIZE, VARS } from "@/styles";
 import { highlightToHTMLTag } from "@/tools";
-import Pill from "@/components/Pill/Pill.astro";
 
 type HostingPlatform = "github" | "gitlab" | "bitbucket";
 
@@ -76,7 +76,7 @@ if (links) {
 }
 ---
 
-<WorkItemStyled.Component>
+<WorkItemStyled.Component className="work-item">
   <ImgsSlider
     folder="works"
     imgs={imgs}
@@ -113,28 +113,32 @@ if (links) {
       </ul>
     </div>
   </header>
-  <ul class="techs">
+  <div class="desc-container">
+    <p set:html={highlightToHTMLTag(desc)} class="desc text" />
+  </div>
+  <div class="on-development">
     {
-      technologies.map(({ name, version }) => (
-        <li>
-          <Pill>
-            <p>
-              {name}
-              {version && <small>{version}</small>}
-            </p>
-          </Pill>
-        </li>
-      ))
+      externalLinks.length !== 0 && (
+        <nav class="links">
+          {externalLinks.map((item) => (
+            <ExternalLink {...item} />
+          ))}
+        </nav>
+      )
     }
-  </ul>
-  <p set:html={highlightToHTMLTag(desc)} class="desc text" />
-  <ul class="links">
-    {
-      externalLinks.map((item) => (
-        <li>
-          <ExternalLink {...item} />
-        </li>
-      ))
-    }
-  </ul>
+    <ul class="techs">
+      {
+        technologies.map(({ name, version }) => (
+          <li>
+            <Pill>
+              <p>
+                {name}
+                {version && <small>{version}</small>}
+              </p>
+            </Pill>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
 </WorkItemStyled.Component>

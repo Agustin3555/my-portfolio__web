@@ -14,7 +14,7 @@ interface Props {
 const { home, resume } = Astro.props.linksData;
 ---
 
-<BarMenuStyled.Component className="glass">
+<BarMenuStyled.Component className="glass glass-initial">
   <nav>
     {home.map((item) => <Link {...item} />)}
     <Separator

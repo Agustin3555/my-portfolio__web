@@ -4,16 +4,21 @@ import { COLOR, FONT_SIZE, TIME, NOT_FONT_SIZE, VARS } from "@/styles";
 export const Component = styled.fieldset`
   --gap: ${VARS.size.gold};
 
+  container-type: inline-size;
   flex-grow: 1.5;
   flex-basis: 13.125rem;
 
-  container-type: inline-size;
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
   gap: calc(var(--gap) * 2);
   padding: 0;
+
   border: none;
+
+  @media (width < 47.4375rem) {
+    order: -1;
+  }
 
   .item {
     flex-grow: 1;
@@ -23,9 +28,8 @@ export const Component = styled.fieldset`
     flex-direction: column;
     align-items: flex-start;
     gap: var(--gap);
-    text-wrap: pretty;
 
-    @container (width <= 40.625rem) {
+    @container (width < 40.625rem) {
       flex-basis: 25rem;
     }
 
@@ -72,7 +76,9 @@ export const Component = styled.fieldset`
           height: var(--toggle-ui-height);
           border-top-left-radius: ${NOT_FONT_SIZE["6xl"]};
           border-bottom-left-radius: ${NOT_FONT_SIZE["6xl"]};
+
           background-color: ${COLOR.b};
+
           transition: width ${TIME.s} ease;
         }
 
@@ -84,12 +90,14 @@ export const Component = styled.fieldset`
           display: block;
           width: var(--toggle-ui-height);
           height: var(--toggle-ui-height);
-          border-radius: 50%;
           border-width: ${NOT_FONT_SIZE["6xs"]};
+          border-radius: 50%;
+
           border-style: solid;
           border-color: ${COLOR.gs_6};
           background-color: ${COLOR.gs_2};
           box-shadow: ${VARS.decorator.shadow[1]};
+
           transition:
             border-color ${TIME.s} ease-out,
             background-color ${TIME.s} ease-out,
@@ -110,9 +118,5 @@ export const Component = styled.fieldset`
         background-color: ${COLOR.gs_4};
       }
     }
-  }
-
-  @media (max-width: 51.0625rem) {
-    order: -1;
   }
 `;

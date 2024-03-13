@@ -12,6 +12,7 @@ export const Component = styled.nav`
   border-bottom-left-radius: var(--border-radius);
 
   box-shadow: ${VARS.decorator.shadow[1]};
+  backdrop-filter: blur(2rem);
 
   transition:
     top ${TIME.m} ease,

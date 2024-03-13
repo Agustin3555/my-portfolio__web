@@ -5,14 +5,13 @@ import jsonData from "@/data.json";
 const { levels } = jsonData.pages.home.sections.skills.data;
 ---
 
-<!-- TODO: semantica HTML -->
 <LevelDescsStyled.Component>
   {
     levels.map(({ level, desc }) => (
       <div class="item">
         <label class="toggle">
-          <input class="toggle-skill" type="checkbox" checked />
-          <div class="ui" />
+          <input class="level-toggle" type="checkbox" checked />
+          <span class="ui" />
           {level}
         </label>
         <p class="text">{desc}</p>
@@ -22,32 +21,22 @@ const { levels } = jsonData.pages.home.sections.skills.data;
 </LevelDescsStyled.Component>
 
 <script>
-  const handleChange: (index: number) => EventListener = (index) => (event) => {
-    const element = event.target as HTMLInputElement;
-    const { checked } = element;
+  const levelToggles =
+    window.document.querySelectorAll<HTMLInputElement>(".level-toggle");
+  const skillTreeview =
+    window.document.querySelector<HTMLElement>("#skill-treeview");
 
-    technologies[index].forEach(
-      (technology) => (technology.dataset.show = checked),
-    );
-  };
+  if (levelToggles && skillTreeview) {
+    levelToggles.forEach((toggle, index) => {
+      toggle.addEventListener("change", (event) => {
+        const element = event.target as HTMLInputElement;
+        const { checked } = element;
 
-  const toggles = Array.from(
-    window.document.getElementsByClassName("toggle-skill"),
-  ) as HTMLInputElement[];
-
-  const technologies: HTMLElement[][] = Array.from(
-    { length: toggles.length },
-    (_, index) =>
-      Array.from(
-        document.getElementsByClassName(`skill-level-${index}`),
-      ) as HTMLElement[],
-  );
-
-  toggles.forEach((toggle, index) => {
-    technologies[index].forEach(
-      (technology) => (technology.dataset.show = toggle.checked),
-    );
-
-    toggle.addEventListener("change", handleChange(index));
-  });
+        skillTreeview.style.setProperty(
+          `--level-${index}-opacity`,
+          checked ? "1" : "0.25",
+        );
+      });
+    });
+  }
 </script>

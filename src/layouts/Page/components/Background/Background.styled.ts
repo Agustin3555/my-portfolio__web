@@ -15,7 +15,7 @@ export const Component = styled.span`
 
     background-size: 1.5rem 1.5rem;
     background-image: radial-gradient(
-      rgba(138, 117, 240, 0.2) 1px,
+      rgba(204, 198, 236, 0.55) 1px,
       transparent 0
     );
     mask-image: radial-gradient(

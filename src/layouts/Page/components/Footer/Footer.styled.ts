@@ -52,7 +52,7 @@ export const Component = styled.footer`
       flex-direction: column;
 
       h4 {
-        text-wrap: nowrap;
+        white-space: nowrap;
         color: ${COLOR.gs_18};
       }
 

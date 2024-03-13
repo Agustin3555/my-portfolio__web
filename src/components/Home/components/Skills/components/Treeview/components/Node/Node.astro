@@ -47,17 +47,19 @@ const separatorProps: SeparatorProps = {
 };
 ---
 
-<!-- TODO: semantica HTML -->
 <NodeStyled.Component>
   <div
-    class={`tech skill-level-${skillLevel - 1}`}
-    style={`--level: ${level};`}
+    class="tech"
+    style={`
+      --node-level: ${level};
+      opacity: var(--level-${skillLevel - 1}-opacity);
+    `}
   >
     <div class="names">
       {
         items.map(({ name }, index) => (
           <>
-            <div class="name">{name}</div>
+            <p class="name">{name}</p>
             {index !== items.length - 1 && <Separator {...separatorProps} />}
           </>
         ))
@@ -82,29 +84,21 @@ const separatorProps: SeparatorProps = {
         }
       </div>
       <div class="level-bar">
-        <div class="bar" style={{ width: `${(skillLevel / 3) * 100}%` }}></div>
+        <span class="bar" style={{ width: `${(skillLevel / 3) * 100}%` }}
+        ></span>
       </div>
     </div>
   </div>
   {
     techs && (
-      <ul class="child-tech">
-        {techs?.map((item, index) => (
-          <li class="item">
-            <div class="child-group">
-              <div class="bullet-point-container">
-                <div class="box" />
-                {index !== techs?.length - 1 && (
-                  <div class="next-extension line" />
-                )}
-              </div>
-              <Astro.self dataNode={item} level={level + 1} />
-            </div>
-            {index !== techs?.length - 1 && (
-              <div class="extension-container">
-                <div class="extension line" />
-              </div>
-            )}
+      <ul class="techs-children">
+        {techs.map((tech) => (
+          <li>
+            <span class="bullet-point">
+              <span class="box" />
+              <span class="line" />
+            </span>
+            <Astro.self dataNode={tech} level={level + 1} />
           </li>
         ))}
       </ul>
