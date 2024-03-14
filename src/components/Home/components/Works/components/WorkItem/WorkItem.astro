@@ -113,10 +113,10 @@ if (links) {
       </ul>
     </div>
   </header>
-  <div class="desc-container">
+  <div class="desc-container scrollable">
     <p set:html={highlightToHTMLTag(desc)} class="desc text" />
   </div>
-  <div class="on-development">
+  <div class="on-development scrollable scrollable--inline">
     {
       externalLinks.length !== 0 && (
         <nav class="links">

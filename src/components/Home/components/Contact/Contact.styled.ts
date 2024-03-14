@@ -5,7 +5,7 @@ export const Component = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: ${NOT_FONT_SIZE["2xl"]};
+  gap: var(--section-gap);
 
   address {
     --button-size: ${VARS.component.button.s.size};

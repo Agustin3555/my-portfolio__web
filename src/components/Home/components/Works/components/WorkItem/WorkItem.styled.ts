@@ -10,6 +10,7 @@ enum GRID_L {
 
 export const Component = styled.article`
   --gap: ${VARS.size.gold};
+  --gap-s: calc(var(--gap) / 2);
 
   display: grid;
 
@@ -18,11 +19,6 @@ export const Component = styled.article`
     "${GRID_L.header} ${GRID_L.desc}         " 1fr
     "${GRID_L.slider} ${GRID_L.slider}       " auto /
     auto 1fr;
-
-  * {
-    scrollbar-width: thin;
-    scrollbar-color: rgba(122, 122, 122, 0.25) transparent;
-  }
 
   header {
     --border-radius: ${NOT_FONT_SIZE["2xs"]};
@@ -64,52 +60,20 @@ export const Component = styled.article`
   }
 
   .desc-container {
-    --lines: 3;
+    --max-lines: 3;
     --gradient-width: 1.5rem;
 
     grid-area: ${GRID_L.desc};
     align-self: end;
 
-    margin-block: -0.25em;
-    padding-right: calc(var(--gap) / 2);
-    max-height: calc(1.4375rem * var(--lines)); // Hasta 3 líneas
+    margin-block: calc((1em * 1.4375 - 1em) / -2);
+    padding-right: var(--gap-s);
+    max-height: calc(1em * 1.4375 * var(--max-lines));
 
     overflow: auto;
-
-    animation: progress-desc auto linear;
-    animation-timeline: scroll(self);
-
-    @keyframes progress-desc {
-      from {
-        mask-image: linear-gradient(
-          rgba(0, 0, 0, 1) 0%,
-          rgba(0, 0, 0, 1) var(--gradient-width),
-          rgba(0, 0, 0, 1) calc(100% - var(--gradient-width)),
-          rgba(0, 0, 0, 0) 100%
-        );
-      }
-      0.001%,
-      99.999% {
-        mask-image: linear-gradient(
-          rgba(0, 0, 0, 0) 0%,
-          rgba(0, 0, 0, 1) var(--gradient-width),
-          rgba(0, 0, 0, 1) calc(100% - var(--gradient-width)),
-          rgba(0, 0, 0, 0) 100%
-        );
-      }
-      to {
-        mask-image: linear-gradient(
-          rgba(0, 0, 0, 0) 0%,
-          rgba(0, 0, 0, 1) var(--gradient-width),
-          rgba(0, 0, 0, 1) calc(100% - var(--gradient-width)),
-          rgba(0, 0, 0, 1) 100%
-        );
-      }
-    }
   }
 
   .on-development {
-    --gap-s: calc(var(--gap) / 2);
     --gradient-width: 1.5rem;
 
     grid-area: ${GRID_L.onDevelopment};
@@ -124,40 +88,6 @@ export const Component = styled.article`
     padding-bottom: var(--gap-s);
 
     overflow: auto;
-
-    animation: progress-gradient auto linear;
-    animation-timeline: scroll(self inline);
-
-    @keyframes progress-gradient {
-      from {
-        mask-image: linear-gradient(
-          90deg,
-          rgba(0, 0, 0, 1) 0%,
-          rgba(0, 0, 0, 1) var(--gradient-width),
-          rgba(0, 0, 0, 1) calc(100% - var(--gradient-width)),
-          rgba(0, 0, 0, 0) 100%
-        );
-      }
-      0.001%,
-      99.999% {
-        mask-image: linear-gradient(
-          90deg,
-          rgba(0, 0, 0, 0) 0%,
-          rgba(0, 0, 0, 1) var(--gradient-width),
-          rgba(0, 0, 0, 1) calc(100% - var(--gradient-width)),
-          rgba(0, 0, 0, 0) 100%
-        );
-      }
-      to {
-        mask-image: linear-gradient(
-          90deg,
-          rgba(0, 0, 0, 0) 0%,
-          rgba(0, 0, 0, 1) var(--gradient-width),
-          rgba(0, 0, 0, 1) calc(100% - var(--gradient-width)),
-          rgba(0, 0, 0, 1) 100%
-        );
-      }
-    }
 
     .links,
     .techs {
@@ -199,7 +129,7 @@ export const Component = styled.article`
       auto 1fr;
 
     .desc-container {
-      --lines: 5;
+      --max-lines: 5;
 
       margin-top: calc(var(--gap) - 0.25em);
       margin-bottom: -0.25em;

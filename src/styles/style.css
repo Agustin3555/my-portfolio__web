@@ -242,6 +242,54 @@ button {
   }
 }
 
+.scrollable {
+  --angle: 180deg;
+
+  scrollbar-width: thin;
+  scrollbar-color: rgba(122, 122, 122, 0.25) transparent;
+
+  animation: progress-scrolling auto linear;
+  animation-timeline: scroll(self);
+}
+
+.scrollable--inline {
+  --angle: 90deg;
+
+  animation-timeline: scroll(self inline);
+}
+
+@keyframes progress-scrolling {
+  from {
+    mask-image: linear-gradient(
+      var(--angle),
+      rgba(0, 0, 0, 1) 0%,
+      rgba(0, 0, 0, 1) var(--gradient-width),
+      rgba(0, 0, 0, 1) calc(100% - var(--gradient-width)),
+      rgba(0, 0, 0, 0) 100%
+    );
+  }
+  0.001%,
+  99.999% {
+    mask-image: linear-gradient(
+      var(--angle),
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 1) var(--gradient-width),
+      rgba(0, 0, 0, 1) calc(100% - var(--gradient-width)),
+      rgba(0, 0, 0, 0) 100%
+    );
+  }
+  to {
+    mask-image: linear-gradient(
+      var(--angle),
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 1) var(--gradient-width),
+      rgba(0, 0, 0, 1) calc(100% - var(--gradient-width)),
+      rgba(0, 0, 0, 1) 100%
+    );
+  }
+}
+
+/* TODO: tratar de sacarlo de aqui */
 .cv {
   width: 100%;
   height: 1174px;
