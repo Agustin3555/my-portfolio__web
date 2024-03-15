@@ -1,11 +1,14 @@
 {
-  "pageTitle": {
-    "base": "Juan Agustín Lovera",
-    "separator": "•"
+  "documentInfo": {
+    "title": {
+      "base": "Juan Agustín Lovera, Full Stack Web Dev",
+      "separator": "•"
+    },
+    "desc": "¡Hola! Soy Juan Agustín Lovera, un Full Stack Web Developer recién graduado con sólidas bases en la creación de software y un enfoque en tecnologías web y diseño UI. ¡Bienvenido a mi portafolio!"
   },
   "externalNetwork": [
     {
-      "url": "https://www.linkedin.com/in/agust%C3%ADn-lovera-b27528212/",
+      "url": "https://www.linkedin.com/in/juan-agust%C3%ADn-lovera-b27528212/",
       "faIcon": "fa-brands fa-linkedin",
       "title": "LinkedIn"
     },

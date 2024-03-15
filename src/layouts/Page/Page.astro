@@ -15,29 +15,34 @@ import LeftNav from "./components/LeftNav/LeftNav.astro";
 import jsonData from "@/data.json";
 
 interface Props {
-  title?: string;
+  subtitle?: string;
 }
 
-const { title } = Astro.props;
-const { base, separator } = jsonData.pageTitle;
+const { subtitle } = Astro.props;
 
-let documentTitle = base;
+const { title, desc } = jsonData.documentInfo;
+const { base, separator } = title;
 
-if (title) documentTitle += ` ${separator} ${title}`;
+let fullTitle = base;
+
+if (subtitle) fullTitle += ` ${separator} ${subtitle}`;
 ---
 
-<!-- TODO: semantica HTML -->
 <html lang="en">
   <head>
     <!-- TODO: completar para el SEO -->
 
-    <meta charset="UTF-8" />
-    <meta name="description" content="Astro description" />
+    <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://juan-agustin-lovera.netlify.app/" />
+
+    <meta name="theme-color" content="#eb5547" />
 
     <link rel="icon" href="/favicon-logo-s.ico" />
-    <title>{documentTitle}</title>
+    <title>{fullTitle}</title>
+    <meta name="description" content={desc} />
   </head>
   <body>
     <SplashToScrollUp />
