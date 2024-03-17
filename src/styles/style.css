@@ -288,11 +288,3 @@ button {
     );
   }
 }
-
-/* TODO: tratar de sacarlo de aqui */
-.cv {
-  width: 100%;
-  height: 1174px;
-  border-radius: var(--palette-size-not-font-xs);
-  box-shadow: var(--decorator-shadow-1), var(--decorator-bevel-highlight);
-}

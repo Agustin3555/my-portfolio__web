@@ -42,7 +42,7 @@ export const Component = styled.div`
       }
     }
 
-    @media (max-width: ${VARS.screen.width.l}) {
+    @media (width < ${VARS.screen.width.l}) {
       margin: 0;
       padding-top: calc(${NOT_FONT_SIZE.l} * 2);
 

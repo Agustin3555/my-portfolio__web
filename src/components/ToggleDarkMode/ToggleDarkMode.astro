@@ -32,9 +32,9 @@ const iconSize = `calc(${VARS.component.button.s.iconSize} - var(--padding) * 2)
 
   darkModeToggles.forEach((item) =>
     item.addEventListener("click", () => {
-      const reverseDarkMode = !(bodyManager.getData("darkMode") === "true");
+      const reverseDarkMode = !(bodyManager.data.darkMode.get() === "true");
 
-      bodyManager.setData("darkMode", String(reverseDarkMode));
+      bodyManager.data.darkMode.set(String(reverseDarkMode));
       darkModeEntity.set(reverseDarkMode);
     }),
   );

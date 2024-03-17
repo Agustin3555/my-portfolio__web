@@ -15,26 +15,15 @@ import * as HamburgerStyled from "./Hamburger.styled";
 </HamburgerStyled.Component>
 
 <script>
-  import { bodyManager } from "@/tools/elementManagers.tool";
+  import { hamburgerMenuManager } from "@/tools/elementManagers.tool";
 
-  bodyManager.setData("hamburgerMenuIsOpen", String(false));
+  const hamburger = window.document.querySelector<HTMLElement>("#hamburger");
 
-  const hamburger = window.hamburger as HTMLButtonElement;
+  hamburger?.addEventListener("click", () => {
+    const isOpenReversed = !(hamburgerMenuManager.data.isOpen.get() === "true");
 
-  const handleClick = () => {
-    const inversedHamburgerMenuIsOpen = !(
-      bodyManager.getData("hamburgerMenuIsOpen") === String(true)
-    );
+    hamburger.title = isOpenReversed ? "Cerrar menú" : "Abrir menú";
 
-    hamburger.title = inversedHamburgerMenuIsOpen
-      ? "Cerrar menú"
-      : "Abrir menú";
-
-    bodyManager.setData(
-      "hamburgerMenuIsOpen",
-      String(inversedHamburgerMenuIsOpen),
-    );
-  };
-
-  hamburger.addEventListener("click", handleClick);
+    hamburgerMenuManager.data.isOpen.set(String(isOpenReversed));
+  });
 </script>

@@ -145,7 +145,7 @@ export const Component = styled.li`
     }
   }
 
-  @media (max-width: 40.8125rem) {
+  @media (width < 40.8125rem) {
     .item {
       grid-template:
         "${GRID_L.bullet}               ${GRID_L.aboutTime}" auto

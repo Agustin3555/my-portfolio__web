@@ -14,7 +14,11 @@ interface Props {
 const { home, resume } = Astro.props.linksData;
 ---
 
-<BarMenuStyled.Component className="glass glass-initial">
+<BarMenuStyled.Component
+  className="glass glass-initial"
+  id="bar-menu"
+  data-vertical-scroll="false"
+>
   <nav>
     {home.map((item) => <Link {...item} />)}
     <Separator
@@ -30,3 +34,26 @@ const { home, resume } = Astro.props.linksData;
     <Link {...resume} />
   </nav>
 </BarMenuStyled.Component>
+
+<script>
+  const barMenu = window.document.querySelector<HTMLElement>("#bar-menu");
+
+  let lastScrollY = 0;
+  let ticking = false;
+
+  barMenu &&
+    window.addEventListener("scroll", () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const scrollY = window.scrollY;
+
+          barMenu.dataset.verticalScroll = String(scrollY > lastScrollY);
+
+          lastScrollY = scrollY;
+          ticking = false;
+        });
+
+        ticking = true;
+      }
+    });
+</script>

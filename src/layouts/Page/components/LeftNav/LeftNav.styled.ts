@@ -15,7 +15,7 @@ export const Component = styled.div`
     left ${TIME.m} ease,
     opacity ${TIME.m} ease;
 
-  @media (max-width: ${VARS.screen.width.l}) {
+  @media (width < ${VARS.screen.width.l}) {
     left: calc(${NOT_FONT_SIZE.m} * -1);
 
     opacity: 0;
@@ -37,7 +37,7 @@ export const Component = styled.div`
         opacity ${TIME.m} ease;
       transition-delay: calc(0.15s * var(--i));
 
-      body[data-social-nets-in-left-nav="true"] & {
+      body[data-social-nets-location="true"] & {
         translate: initial;
         opacity: 1;
       }

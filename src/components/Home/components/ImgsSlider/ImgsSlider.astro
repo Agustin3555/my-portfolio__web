@@ -78,7 +78,7 @@ imgs.forEach(({ file }) => validateImgMetadata(folder, file));
 <script>
   import { onScreen } from "@/tools";
 
-  const sliders = window.document.querySelectorAll<HTMLDivElement>(".slider");
+  const sliders = window.document.querySelectorAll<HTMLElement>(".slider");
 
   const FULLSCREEN_DS_KEY = "fullscreen";
   const FULLSCREEN_TITLE_ON = "Salir de pantalla completa";
@@ -88,7 +88,7 @@ imgs.forEach(({ file }) => validateImgMetadata(folder, file));
     // Sobre el fullscreen
 
     const toggleFullscreen =
-      slider.querySelector<HTMLButtonElement>(".toggle-fullscreen");
+      slider.querySelector<HTMLElement>(".toggle-fullscreen");
 
     if (toggleFullscreen) {
       toggleFullscreen.addEventListener("click", async () => {
@@ -117,7 +117,7 @@ imgs.forEach(({ file }) => validateImgMetadata(folder, file));
 
     // Sobre el position-counter
 
-    const imgContainers = slider.querySelectorAll<HTMLLIElement>("li");
+    const imgContainers = slider.querySelectorAll<HTMLElement>("li");
     const positionCounter = slider.querySelector<HTMLElement>(
       ".position-counter strong",
     );
@@ -135,6 +135,7 @@ imgs.forEach(({ file }) => validateImgMetadata(folder, file));
       });
     });
 
+    // Asegura de que el slider se desplace al principio al cargar la página
     window.addEventListener("load", () => slider.scrollTo({ top: 0, left: 0 }));
   });
 </script>

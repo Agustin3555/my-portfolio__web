@@ -90,7 +90,7 @@ const { intro, profProfile, hobbiesAndLikes } = subsections;
           handlingClass={["slider"]}
         />
       </div>
-      <nav id="socialNetsInAbout">
+      <nav id="social-nets-in-about">
         {
           [
             ...externalNetwork
@@ -110,3 +110,32 @@ const { intro, profProfile, hobbiesAndLikes } = subsections;
     </div>
   </AboutStyled.Component>
 </Section>
+
+<script>
+  import { NOT_FONT_SIZE, getCSSVarValue } from "@/styles";
+  import { bodyManager } from "@/tools/elementManagers.tool";
+  import { onScreen } from "@/tools";
+
+  const MARGIN = NOT_FONT_SIZE.m;
+
+  let margin = getCSSVarValue(MARGIN);
+  margin = margin.slice(0, -3);
+  margin = `-${parseFloat(margin) * 16}px`;
+
+  const socialNetsInAbout = window.document.querySelector(
+    "#social-nets-in-about",
+  );
+
+  socialNetsInAbout
+    ? onScreen({
+        observed: socialNetsInAbout,
+        margin,
+        onIntersectionChange: (isIntersecting) =>
+          bodyManager.data.socialNetsLocation.set(String(!isIntersecting)),
+      })
+    : /*
+        Si no existe socialNetsInAbout en la página, socialNetsInLeftNav siempre
+        será visible.
+      */
+      bodyManager.data.socialNetsLocation.set("false");
+</script>

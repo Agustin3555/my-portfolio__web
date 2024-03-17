@@ -16,7 +16,7 @@ import ParticleMotion from "./components/ParticleMotion/ParticleMotion.astro";
 <script>
   const staticElement = window.document.querySelector(".static");
   const centerParticles =
-    window.document.querySelector<HTMLSpanElement>("#center-particles");
+    window.document.querySelector<HTMLElement>("#center-particles");
 
   if (staticElement && centerParticles) {
     const resizeObserver = new ResizeObserver((entries) => {

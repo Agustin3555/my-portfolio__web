@@ -44,7 +44,7 @@ export const Component = styled.a`
 
     border-bottom-right-radius: ${NOT_FONT_SIZE["2xs"]};
 
-    @media (max-width: ${VARS.screen.width.l}) {
+    @media (width < ${VARS.screen.width.l}) {
       left: calc(var(--size-as-scroll-up) * -1);
 
       box-shadow: initial;

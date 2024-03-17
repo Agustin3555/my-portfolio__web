@@ -60,6 +60,8 @@ export const Component = styled.article`
         .title {
           font-size: ${FONT_SIZE.xs};
 
+          /* TODO: el title colapsa a los 330px */
+
           transition: color ${TIME.s} ease-out;
         }
 

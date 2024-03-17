@@ -27,6 +27,7 @@ const { techs, levels } = jsonData.pages.home.sections.skills.data;
       skillTreeview.querySelectorAll<HTMLElement>(".icons"),
     );
 
+    // Calcular el ancho máximo entre todos los icons
     const iconsMaxWidth = Math.max(...icons.map((item) => item.clientWidth));
     skillTreeview.style.setProperty("--icons-max-width", `${iconsMaxWidth}px`);
 
@@ -35,19 +36,16 @@ const { techs, levels } = jsonData.pages.home.sections.skills.data;
     );
 
     const resizeObserver = new ResizeObserver(() => {
-      names.forEach((item) => {
-        item.style.display = "flex";
-      });
+      names.forEach((item) => (item.style.display = "flex"));
 
+      // Calcular el ancho máximo entre todos los names
       const namesMaxWidth = Math.max(...names.map((item) => item.clientWidth));
       skillTreeview.style.setProperty(
         "--names-max-width",
         `${namesMaxWidth}px`,
       );
 
-      names.forEach((item) => {
-        item.style.display = "";
-      });
+      names.forEach((item) => (item.style.display = ""));
     });
 
     resizeObserver.observe(names[0]);

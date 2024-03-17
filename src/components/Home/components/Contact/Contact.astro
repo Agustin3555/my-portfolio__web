@@ -51,15 +51,17 @@ const iconSize = VARS.component.button.s.iconSize;
     window.document.querySelector<HTMLButtonElement>("#button-copy-email");
 
   buttonCopyEmail?.addEventListener("click", async () => {
-    if (buttonCopyEmail.dataset.copying === "false") {
-      try {
-        await navigator.clipboard.writeText(email);
-        buttonCopyEmail.dataset.copying = "true";
+    try {
+      await navigator.clipboard.writeText(email);
 
-        await sleep(2000);
+      // Deshabilitamos el botón temporalmente para evitar múltiples clics
+      buttonCopyEmail.disabled = true;
 
-        buttonCopyEmail.dataset.copying = "false";
-      } catch (error) {}
-    }
+      // Esperamos 2 segundos antes de habilitar nuevamente el botón
+      await sleep(2000);
+
+      // Habilitamos el botón después de la espera
+      buttonCopyEmail.disabled = false;
+    } catch (error) {}
   });
 </script>

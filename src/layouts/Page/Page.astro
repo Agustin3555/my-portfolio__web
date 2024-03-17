@@ -44,7 +44,7 @@ if (subtitle) fullTitle += ` ${separator} ${subtitle}`;
     <title>{fullTitle}</title>
     <meta name="description" content={desc} />
   </head>
-  <body>
+  <body data-social-nets-location="true">
     <SplashToScrollUp />
     <Background />
     <PageStyled.Component>
@@ -82,32 +82,7 @@ if (subtitle) fullTitle += ` ${separator} ${subtitle}`;
     return DEFAULT_DARK_MODE;
   };
 
-  bodyManager.setData("darkMode", String(darkModeInit()));
-</script>
-
-<script>
-  import { NOT_FONT_SIZE, getCSSVarValue } from "@/styles";
-  import { bodyManager } from "@/tools/elementManagers.tool";
-  import { onScreen } from "@/tools";
-
-  const MARGIN = NOT_FONT_SIZE.m;
-
-  let margin = getCSSVarValue(MARGIN);
-  margin = margin.slice(0, -3);
-  margin = `-${parseFloat(margin) * 16}px`;
-
-  const { socialNetsInAbout } = window;
-
-  if (socialNetsInAbout)
-    onScreen({
-      observed: socialNetsInAbout,
-      margin,
-      onIntersectionChange: (isIntersecting) => {
-        bodyManager.setData("socialNetsInLeftNav", String(!isIntersecting));
-      },
-    });
-  // Si no existe socialNetsInAbout en la página, socialNetsInLeftNav siempre será visible
-  else bodyManager.setData("socialNetsInLeftNav", "true");
+  bodyManager.data.darkMode.set(String(darkModeInit()));
 </script>
 
 <script>

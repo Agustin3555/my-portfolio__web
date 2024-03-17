@@ -22,7 +22,6 @@ const { sectionTitles, handlingClass = [] } = Astro.props;
           </label>
         ))
       }
-      <!-- TODO: el title colapsa a los 330px -->
     </fieldset>
   </div>
   <ol class="element-slider">
@@ -33,14 +32,14 @@ const { sectionTitles, handlingClass = [] } = Astro.props;
 <script>
   import { sleep } from "@/tools";
 
-  const tabbeds = window.document.querySelectorAll<HTMLElement>(".tabbed");
-
   const ACTIVE_CLASS = "active";
   const INACTIVE_CLASS = "inactive";
 
+  const tabbeds = window.document.querySelectorAll<HTMLElement>(".tabbed");
+
   tabbeds.forEach((tabbed) => {
     const elementSlider = tabbed.querySelector<HTMLElement>(".element-slider");
-    const indicator = tabbed.querySelector<HTMLSpanElement>(".bg-indicator");
+    const indicator = tabbed.querySelector<HTMLElement>(".bg-indicator");
 
     if (elementSlider && indicator) {
       const labels = tabbed.querySelectorAll("label");

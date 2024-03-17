@@ -84,7 +84,7 @@ export const Component = styled.div`
           filter: blur(${NOT_FONT_SIZE["4xs"]});
         }
 
-        &[data-copying="true"] {
+        :disabled {
           box-shadow: initial;
           translate: initial;
           cursor: initial;

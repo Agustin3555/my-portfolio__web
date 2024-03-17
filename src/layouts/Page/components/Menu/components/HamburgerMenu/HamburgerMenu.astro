@@ -30,9 +30,8 @@ const separatorProps: SeparatorProps = {
 };
 ---
 
-<!-- TODO: semantica HTML -->
-<HamburgerMenuStyled.Component>
-  <button class="deep-touch" id="deepTouch" title="Cerrar menú"></button>
+<HamburgerMenuStyled.Component id="hamburger-menu" data-is-open="false">
+  <button id="deep-touch" title="Cerrar menú"></button>
   <header class="adaptable">
     <div class="content">
       <div class="controls">
@@ -62,13 +61,11 @@ const separatorProps: SeparatorProps = {
 </HamburgerMenuStyled.Component>
 
 <script>
-  import { bodyManager } from "@/tools/elementManagers.tool";
+  import { hamburgerMenuManager } from "@/tools/elementManagers.tool";
 
-  const deepTouch = window.deepTouch as HTMLButtonElement;
+  const deepTouch = window.document.querySelector("#deep-touch");
 
-  const deepTouchHandleClick = () => {
-    bodyManager.setData("hamburgerMenuIsOpen", "false");
-  };
-
-  deepTouch.addEventListener("click", deepTouchHandleClick);
+  deepTouch?.addEventListener("click", () =>
+    hamburgerMenuManager.data.isOpen.set("false"),
+  );
 </script>

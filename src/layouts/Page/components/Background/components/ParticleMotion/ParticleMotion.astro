@@ -26,7 +26,7 @@ const { basicSeparation = 150, handlingClass = [] } = Astro.props;
 
   if (!isMobile) {
     const particleMotions =
-      window.document.querySelectorAll<HTMLDivElement>(".particle-motion");
+      window.document.querySelectorAll<HTMLElement>(".particle-motion");
 
     const SIZES: number[] = [24, 42, 68];
     const COLORS: Color[] = [COLOR.a, COLOR.b, COLOR.c, COLOR.d];
@@ -42,11 +42,7 @@ const { basicSeparation = 150, handlingClass = [] } = Astro.props;
 
     const handleResize = () => {
       particleMotions.forEach((particleMotion) => {
-        while (particleMotion.firstChild)
-          particleMotion.removeChild(particleMotion.firstChild);
-
         const { clientWidth, clientHeight, dataset } = particleMotion;
-
         const normalStep = dataset.basicSeparation;
 
         if (normalStep) {
@@ -122,7 +118,11 @@ const { basicSeparation = 150, handlingClass = [] } = Astro.props;
             updateStep();
           }
 
-          // Crear los elementos
+          // Eliminar los elementos anteriores
+          while (particleMotion.firstChild)
+            particleMotion.removeChild(particleMotion.firstChild);
+
+          // Crear los nuevos elementos con los parámetros calculados
           paramsElements.forEach((item) => {
             const { vars, left } = item.particle;
             const { squareSize, animation } = vars;
@@ -153,9 +153,13 @@ const { basicSeparation = 150, handlingClass = [] } = Astro.props;
 
     handleResize();
 
-    // Evento optimizado por debounce
+    // Agregar un evento de redimensionamiento con debounce
     window.addEventListener("resize", debounce(handleResize, 500));
 
+    /*
+      Agregar un evento de cambio de visibilidad para pausar o reanudar las
+      animaciones.
+    */
     window.addEventListener("visibilitychange", () => {
       particleMotions.forEach((particleMotion) =>
         particleMotion.style.setProperty(

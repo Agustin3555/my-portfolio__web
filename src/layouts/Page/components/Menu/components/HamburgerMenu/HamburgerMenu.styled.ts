@@ -4,11 +4,11 @@ import { COLOR, TIME, NOT_FONT_SIZE, VARS } from "@/styles";
 export const Component = styled.div`
   display: none;
 
-  @media (max-width: ${VARS.screen.width.l}) {
+  @media (width < ${VARS.screen.width.l}) {
     display: initial;
   }
 
-  .deep-touch {
+  #deep-touch {
     position: fixed;
     left: 0;
     width: 100%;
@@ -81,8 +81,8 @@ export const Component = styled.div`
     }
   }
 
-  body[data-hamburger-menu-is-open="true"] & {
-    .deep-touch {
+  &[data-is-open="true"] {
+    #deep-touch {
       opacity: 0.25;
       pointer-events: initial;
     }

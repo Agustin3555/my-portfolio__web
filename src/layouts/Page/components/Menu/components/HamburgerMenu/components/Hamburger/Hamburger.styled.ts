@@ -93,7 +93,7 @@ export const Component = styled.button`
     background-color: ${COLOR.gs_19};
   }
 
-  body[data-hamburger-menu-is-open="true"] & {
+  #hamburger-menu[data-is-open="true"] & {
     --size: ${VARS.component.button.m.iconSize};
 
     .hamburger-icon {

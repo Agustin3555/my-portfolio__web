@@ -18,7 +18,7 @@ export const Component = styled.nav`
     top ${TIME.m} ease,
     box-shadow ${TIME.m} ease;
 
-  @media (max-width: ${VARS.screen.width.l}) {
+  @media (width < ${VARS.screen.width.l}) {
     display: none;
   }
 
@@ -39,7 +39,7 @@ export const Component = styled.nav`
       ${VARS.decorator.bevelHighlight.bottom};
   }
 
-  body[data-vertical-scroll="true"] & {
+  &[data-vertical-scroll="true"] {
     top: calc((var(--padding) * 2 + ${VARS.global.fontSize}) * -1);
 
     box-shadow: initial;

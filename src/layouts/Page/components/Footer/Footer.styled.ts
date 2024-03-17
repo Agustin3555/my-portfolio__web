@@ -21,7 +21,7 @@ export const Component = styled.footer`
     color ${TIME.s} ease-out,
     background-color ${TIME.s} ease-out;
 
-  @media (max-width: 23.4375rem) {
+  @media (width < 23.4375rem) {
     padding: ${VARS.size.gold};
     padding-top: calc(${VARS.size.gold} * 2);
   }
@@ -39,7 +39,7 @@ export const Component = styled.footer`
     gap: calc(${VARS.size.gold} * 2);
     padding-bottom: ${VARS.size.gold};
 
-    @media (max-width: ${VARS.screen.width.s}) {
+    @media (width < ${VARS.screen.width.s}) {
       flex-direction: column;
     }
 

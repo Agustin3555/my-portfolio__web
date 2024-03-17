@@ -110,7 +110,7 @@ export const Component = styled.div`
         width: calc(100% - var(--gap));
       }
 
-      @media (max-width: ${VARS.screen.width.xs}) {
+      @media (width < ${VARS.screen.width.xs}) {
         --gap: ${NOT_FONT_SIZE.s};
       }
     }
@@ -129,12 +129,12 @@ export const Component = styled.div`
           translate ${TIME.m} ease;
         transition-delay: calc(${TIME.s} * var(--i));
 
-        body[data-social-nets-in-left-nav="false"] & {
+        body[data-social-nets-location="false"] & {
           opacity: 1;
           translate: initial;
         }
 
-        @media (max-width: ${VARS.screen.width.l}) {
+        @media (width < ${VARS.screen.width.l}) {
           translate: initial;
           opacity: initial;
         }
