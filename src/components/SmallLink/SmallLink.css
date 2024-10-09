@@ -1,0 +1,15 @@
+.small-link {
+  display: flex;
+  align-items: center;
+  gap: var(--pal-size-s);
+  padding-inline: var(--pal-size-s);
+  height: 1.75rem;
+
+  font-size: var(--pal-size-font-xs);
+
+  border-radius: var(--pal-size-2xs);
+
+  .cmp-icon {
+    color: var(--pal-color-gs-200);
+  }
+}

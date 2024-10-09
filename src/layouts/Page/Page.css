@@ -1,0 +1,66 @@
+body {
+  position: relative;
+
+  font-family: var(--pal-font-a);
+  font-weight: 300;
+  color: rgba(var(--pal-color-base-white), 0.625);
+
+  .layout {
+    --section-gap: 16rem;
+    --gap: var(--pal-size-font-m);
+
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+
+    .static {
+      position: relative;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: var(--section-gap);
+      margin: 0 11rem;
+      max-width: 68rem;
+      min-height: 100vh;
+
+      transition:
+        margin var(--pal-time-m) ease,
+        padding var(--pal-time-m) ease;
+
+      @media (width < calc(47rem + (1.625rem * 4 + 2.625rem) * 2)) {
+        margin: 0;
+        padding-top: var(--pal-size-3xl);
+
+        main {
+          padding: 0 calc(var(--gap) * 2);
+        }
+      }
+
+      @media (width < 26.5625rem) {
+        main {
+          padding: 0 var(--gap);
+        }
+      }
+
+      main {
+        display: flex;
+        flex-direction: column;
+        gap: var(--section-gap);
+
+        transition: padding var(--pal-time-m) ease;
+
+        > section {
+          :nth-of-type(1) {
+            scroll-margin-top: var(--pal-size-3xl);
+          }
+
+          :not(:nth-of-type(1)) {
+            scroll-margin-top: var(--gap);
+          }
+        }
+      }
+    }
+  }
+}

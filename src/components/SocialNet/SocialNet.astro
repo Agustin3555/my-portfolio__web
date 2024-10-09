@@ -1,0 +1,22 @@
+---
+import './SocialNet.css'
+import Icon from '@/components/Icon/Icon.astro'
+
+interface Props {
+  url: string
+  faIcon: string
+  title: string
+}
+
+const { url, faIcon, title } = Astro.props
+---
+
+<a
+  class="social-net card link s"
+  title={title}
+  href={url}
+  target="_blank"
+  rel="noopener"
+>
+  <Icon faIcon={faIcon} />
+</a>

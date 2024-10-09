@@ -1,0 +1,52 @@
+@keyframes spin {
+  to {
+    rotate: 360deg;
+  }
+}
+
+.contact-link {
+  --cmp-icon-size: var(--pal-size-font-m);
+
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1;
+  height: var(--pal-size-2xl);
+
+  text-decoration: none;
+  color: var(--pal-color-white);
+
+  border-radius: 0.375rem;
+  overflow: hidden;
+
+  &::before {
+    position: absolute;
+
+    aspect-ratio: 1;
+    width: calc(100% * sqrt(2));
+
+    content: "";
+
+    background: linear-gradient(
+      45deg,
+      var(--pal-color-b) 12.5%,
+      var(--pal-color-a)
+    );
+  }
+
+  &:hover {
+    &::before {
+      animation: spin var(--pal-time-l) linear infinite;
+    }
+  }
+
+  .cmp-icon {
+    z-index: 1;
+  }
+
+  &[data-email-sender] {
+    border-radius: var(--pal-size-2xs);
+  }
+}

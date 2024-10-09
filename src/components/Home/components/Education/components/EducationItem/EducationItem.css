@@ -1,0 +1,29 @@
+.education-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--pal-size-xl);
+  padding: var(--pal-size-xl);
+
+  border-radius: var(--pal-size-s);
+
+  ul {
+    flex-wrap: wrap;
+    row-gap: var(--pal-size-xs);
+    column-gap: var(--pal-size-xl);
+
+    li {
+      display: flex;
+      align-items: center;
+      gap: var(--pal-size-s);
+
+      .cmp-icon {
+        color: var(--pal-color-gs-200);
+      }
+
+      time {
+        font-size: var(--pal-size-font-xs);
+      }
+    }
+  }
+}

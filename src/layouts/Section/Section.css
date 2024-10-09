@@ -1,0 +1,28 @@
+section {
+  display: flex;
+  flex-direction: column;
+  gap: 6rem;
+
+  > header {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+
+    .bullet {
+      --cmp-icon-size: var(--pal-size-font-l);
+
+      align-content: center;
+      aspect-ratio: 1;
+      width: var(--pal-size-font-3xl);
+
+      color: var(--pal-color-gs-900);
+
+      border-radius: 50%;
+      background-color: var(--pal-color-gs-100);
+
+      > * {
+        margin-inline: auto;
+      }
+    }
+  }
+}

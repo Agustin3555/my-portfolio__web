@@ -1,0 +1,21 @@
+.tech {
+  display: flex;
+  align-items: center;
+  gap: var(--pal-size-s);
+  padding-inline: var(--pal-size-s);
+  height: 1.75rem;
+
+  border-radius: var(--pal-size-2xs);
+  background-color: var(--pal-color-gs-850);
+
+  transition: background-color var(--pal-time-s) ease-out;
+
+  &,
+  > * {
+    font-size: var(--pal-size-font-xs);
+  }
+
+  body[data-dark-mode="true"] & {
+    background-color: var(--pal-color-gs-850);
+  }
+}

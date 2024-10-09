@@ -6,3 +6,4 @@ export * from "./random.tool";
 export * from "./sleep.tool";
 export * from "./debounce.tool";
 export * from "./onScreen.tool";
+export * from "./querySelector.tool";

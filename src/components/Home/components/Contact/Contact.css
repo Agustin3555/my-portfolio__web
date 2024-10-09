@@ -1,0 +1,122 @@
+.contact {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--section-gap);
+
+  .according-to-user {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--pal-size-xl);
+
+    article {
+      flex-grow: 1;
+      flex-basis: 20rem;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: var(--pal-size-xl);
+      padding: var(--pal-size-xl);
+
+      border-radius: var(--pal-size-s);
+    }
+  }
+
+  address {
+    --gap: var(--pal-size-xs);
+    --text-padding-inline: 1.75rem;
+
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--text-padding-inline);
+    padding: var(--gap);
+    padding-left: var(--text-padding-inline);
+
+    color: var(--pal-color-gs-900);
+
+    border-radius: calc(var(--pal-size-2xs) + var(--gap));
+    background-color: var(--pal-color-gs-100);
+    box-shadow: var(pal-shadow-1);
+
+    transition: background-color var(--pal-time-s) ease-out;
+
+    .email {
+      flex-grow: 1;
+      flex-basis: 0;
+
+      line-height: initial;
+      font-weight: 500;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+
+      overflow: hidden;
+    }
+
+    .controls {
+      display: flex;
+      gap: var(--gap);
+
+      #button-copy-email {
+        --cmp-icon-size: var(--pal-size-font-m);
+
+        position: relative;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        aspect-ratio: 1;
+        width: var(--pal-size-2xl);
+
+        color: var(--pal-color-gs-100);
+
+        border-radius: var(--pal-size-2xs);
+        background-color: var(--pal-color-gs-750);
+
+        transition: background-color var(--pal-time-s) ease-out;
+
+        > * {
+          position: absolute;
+
+          transition:
+            opacity var(--pal-time-m) ease-out,
+            scale var(--pal-time-m) var(--pal-timing-func-a);
+        }
+
+        .check-icon {
+          scale: 0;
+          opacity: 0;
+        }
+
+        &:disabled {
+          box-shadow: initial;
+          translate: initial;
+          cursor: initial;
+
+          .copy-icon {
+            scale: 0;
+            opacity: 0;
+          }
+
+          .check-icon {
+            scale: 1;
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+
+  body[data-dark-mode="true"] & {
+    /* address {
+      color: ${COLOR.gs_14};
+      background-color: ${COLOR.gs_4};
+
+      .controls #button-copy-email {
+        color: ${COLOR.gs_4};
+        background-color: ${COLOR.gs_14};
+      }
+    } */
+  }
+}

@@ -1,17 +1,12 @@
 ---
-import * as IconStyled from "./Icon.styled";
-import { type HandlingClass, asClassName } from "@/tools";
+import './Icon.css'
 
-interface Props {
-  faIcon: string;
-  style?: IconStyled.Props;
-  handlingClass?: HandlingClass;
+export interface Props {
+  faIcon: string
+  handlingClass?: string
 }
 
-const { faIcon, style = {}, handlingClass = [] } = Astro.props;
+const { faIcon, handlingClass } = Astro.props
 ---
 
-<IconStyled.Component
-  p={IconStyled.adapter(style)}
-  className={asClassName(...handlingClass, faIcon)}
-/>
+<i class:list={['cmp-icon', handlingClass, faIcon]}></i>

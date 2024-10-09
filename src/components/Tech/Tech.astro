@@ -1,0 +1,15 @@
+---
+import './Tech.css'
+
+export interface Props {
+  name: string
+  version?: string
+}
+
+const { name, version } = Astro.props
+---
+
+<li class="tech">
+  {name}
+  {version && <small>{version}</small>}
+</li>

@@ -1,0 +1,122 @@
+.tabbed {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--pal-size-xl);
+
+  > header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--pal-size-xs);
+    width: 100%;
+
+    .nav {
+      position: relative;
+
+      .bg-indicator {
+        position: absolute;
+        top: 0;
+        height: 100%;
+
+        border-radius: var(--pal-size-2xs);
+        background-color: var(--pal-color-gs-850);
+
+        transition:
+          left var(--pal-time-s) ease,
+          width var(--pal-time-s) ease,
+          background-color var(--pal-time-s) ease-out;
+      }
+
+      fieldset {
+        position: relative;
+
+        display: flex;
+        gap: var(--pal-size-xs);
+        margin: 0;
+        border: none;
+        padding: 0;
+
+        label {
+          position: relative;
+
+          align-content: center;
+          padding-inline: var(--pal-size-s);
+          height: 1.75rem;
+
+          font-size: var(--pal-size-font-xs);
+
+          cursor: pointer;
+
+          transition: color var(--pal-time-s) ease-out;
+
+          input {
+            display: none;
+          }
+
+          &:hover {
+            color: var(--pal-color-white);
+          }
+
+          &:has(input:checked) {
+            color: var(--pal-color-a-l2);
+          }
+        }
+      }
+
+      body[data-dark-mode="true"] & {
+        .bg-indicator {
+          /* background-color: ${VARS.color.b.bg.dark}; */
+        }
+
+        fieldset label {
+          input:checked + .title {
+            /* color: ${COLOR.b_l2}; */
+          }
+
+          :hover .title {
+            /* color: ${COLOR.gs_0}; */
+          }
+        }
+      }
+    }
+
+    .line {
+      width: 100%;
+      height: 0.0625rem;
+
+      background: linear-gradient(90deg, var(--pal-color-white), transparent);
+    }
+  }
+
+  .element-slider {
+    position: relative;
+
+    align-self: stretch;
+
+    transition:
+      width var(--pal-time-s) ease,
+      border-color var(--pal-time-s) ease-out;
+
+    > li {
+      position: absolute;
+
+      width: 100%;
+
+      transition:
+        scale var(--pal-time-s) ease,
+        opacity var(--pal-time-s) ease;
+    }
+
+    .inactive {
+      scale: 0.95;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .active {
+      scale: initial;
+      opacity: initial;
+      pointer-events: initial;
+    }
+  }
+}

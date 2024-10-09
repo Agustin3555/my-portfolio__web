@@ -1,20 +1,20 @@
 ---
-import * as WorkStyled from "./Work.styled";
-import Section from "@/layouts/Section/Section.astro";
-import WorkItem from "./components/WorkItem/WorkItem.astro";
-import jsonData from "@/data.json";
+import * as WorkStyled from './Work.styled'
+import Section from '@/layouts/Section/Section.astro'
+import WorkItem from './components/WorkItem/WorkItem.astro'
+import jsonData from '@/data.json'
 
-const { sections } = jsonData.pages.home;
-const sectionKey: keyof typeof sections = "works";
+const { sections } = jsonData.pages.home
+const sectionKey: keyof typeof sections = 'works'
 
-const { title, data } = sections.works;
-const { items } = data;
+const { title, span, faIcon, data } = sections.works
+const { items } = data
 ---
 
-<Section sectionKey={sectionKey} title={title}>
+<Section sectionKey={sectionKey} {...{ title, span, faIcon }}>
   <WorkStyled.Component>
     {
-      items.map((item) => (
+      items.map(item => (
         <li>
           <WorkItem {...item} />
         </li>

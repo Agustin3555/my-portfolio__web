@@ -1,0 +1,122 @@
+.levels {
+  --gap: var(--pal-size-xl);
+
+  container-type: inline-size;
+  flex-grow: 1.5;
+  flex-basis: 13.125rem;
+
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: var(--gap);
+  border: none;
+  padding: 0;
+
+  @media (width < 47.4375rem) {
+    order: -1;
+  }
+
+  label {
+    position: relative;
+
+    flex-grow: 1;
+    flex-basis: 5rem;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--gap);
+    padding: var(--gap);
+
+    border-radius: var(--pal-size-s);
+    cursor: pointer;
+
+    @container (width < 40.625rem) {
+      flex-basis: 25rem;
+    }
+
+    input {
+      display: none;
+    }
+
+    .group {
+      display: flex;
+      align-items: center;
+      gap: var(--pal-size-l);
+
+      font-size: var(--pal-size-font-xs);
+
+      transition: color var(--pal-time-s) ease-out;
+
+      span {
+        --border-width: 0.0625rem;
+        --toggle-height: calc(var(--pal-size-m) - var(--border-width) * 2);
+        --toggle-width: calc(var(--toggle-height) * 2.25);
+
+        position: relative;
+        width: var(--toggle-width);
+        height: var(--toggle-height);
+
+        border-radius: var(--pal-size-3xl);
+        background-color: var(--pal-color-gs-900);
+        outline-color: var(--pal-color-gs-750);
+        outline-style: solid;
+        outline-width: var(--border-width);
+        overflow: hidden;
+
+        transition: background-color var(--pal-time-s) ease-out;
+
+        &::before,
+        &::after {
+          position: absolute;
+          top: 0;
+
+          content: "";
+
+          transition:
+            background-color var(--pal-time-s) ease-out,
+            translate var(--pal-time-s) ease;
+        }
+
+        &::before {
+          --width: 100%;
+
+          left: calc((var(--width) - var(--toggle-height) / 2) * -1);
+
+          width: var(--width);
+          height: 100%;
+
+          background-color: var(--pal-color-a);
+        }
+
+        &::after {
+          left: 0;
+
+          aspect-ratio: 1;
+          height: var(--toggle-height);
+
+          border-radius: 50%;
+          background-color: var(--pal-color-gs-300);
+          box-shadow: var(--pal-shadow-1);
+        }
+      }
+    }
+
+    &:has(input:checked) {
+      .group {
+        color: var(--pal-color-a);
+
+        span {
+          &::before,
+          &::after {
+            translate: calc(var(--toggle-width) - var(--toggle-height));
+          }
+
+          &::after {
+            background-color: var(--pal-color-white);
+          }
+        }
+      }
+    }
+  }
+}

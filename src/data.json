@@ -51,6 +51,9 @@
       "sections": {
         "about": {
           "buttonTitle": "Sobre mí",
+          "title": "Juan Agustín Lovera",
+          "span": "Full Stack Web Dev",
+          "faIcon": "fa-solid fa-face-smile-wink",
           "data": {
             "header": {
               "hello": "Hola 👋🏻, mi nombre es",
@@ -101,7 +104,9 @@
         },
         "works": {
           "buttonTitle": "Proyectos",
-          "title": "Proyectos",
+          "title": "Lo que hago",
+          "span": "Mis proyectos",
+          "faIcon": "fa-solid fa-briefcase",
           "data": {
             "items": [
               {
@@ -194,8 +199,10 @@
           }
         },
         "skills": {
-          "buttonTitle": "Habilidades",
-          "title": "Habilidades",
+          "buttonTitle": "Tecnologías",
+          "title": "Con que trabajo",
+          "span": "Mis tecnologías",
+          "faIcon": "fa-solid fa-screwdriver-wrench",
           "data": {
             "levels": [
               {
@@ -237,7 +244,7 @@
                     "file": "logo-css.webp"
                   }
                 ],
-                "skillLevel": 2
+                "skillLevel": 3
               },
               {
                 "items": [
@@ -381,7 +388,9 @@
         },
         "education": {
           "buttonTitle": "Formación",
-          "title": "Formación",
+          "title": "Siempre aprendiendo",
+          "span": "Mi formación",
+          "faIcon": "fa-solid fa-book-open-reader",
           "data": {
             "items": [
               {
@@ -455,9 +464,20 @@
         },
         "contact": {
           "buttonTitle": "Contáctame",
-          "title": "Contáctame",
+          "title": "Hablemos",
+          "span": "Contáctame",
+          "faIcon": "fa-solid fa-comments",
           "data": {
-            "desc": "Si eres un [reclutador] y deseas hablar de [oportunidades de trabajo], te dejo mi contacto. O bien, si eres un [programador] y necesitas ayuda con tu código o [buscas orientación] en algún aspecto técnico, ¡estaré encantado de ayudarte! 😉",
+            "accordingToUser": [
+              {
+                "title": "Reclutadores o clientes",
+                "desc": "¿Tienes una oportunidad de trabajo interesante? ¡Me encantaría saber más! Contáctame y hablemos sobre cómo puedo contribuir a tu equipo o proyecto."
+              },
+              {
+                "title": "Devs",
+                "desc": "¿Atascado con tu código o necesitas una nueva perspectiva técnica? Estoy aquí para ayudarte a superar cualquier desafío. ¡Hablemos y resolvámoslo juntos!"
+              }
+            ],
             "email": "Agustin3555@hotmail.com"
           }
         }

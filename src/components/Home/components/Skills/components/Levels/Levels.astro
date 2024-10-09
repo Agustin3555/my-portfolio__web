@@ -1,0 +1,42 @@
+---
+import './Levels.css'
+import jsonData from '@/data.json'
+
+const { levels } = jsonData.pages.home.sections.skills.data
+---
+
+<fieldset class="levels">
+  {
+    levels.map(({ level, desc }) => (
+      <label class="card highlight">
+        <input class="level-toggle" type="checkbox" checked />
+        <div class="group">
+          <span />
+          {level}
+        </div>
+        <p class="text">{desc}</p>
+      </label>
+    ))
+  }
+</fieldset>
+
+<script>
+  import { $, $$ } from '@/tools'
+
+  const levelToggles = $$<HTMLInputElement>('.level-toggle')
+  const skillTreeview = $<HTMLElement>('#skill-treeview')
+
+  if (levelToggles && skillTreeview) {
+    levelToggles.forEach((toggle, index) => {
+      toggle.addEventListener('change', event => {
+        const element = event.target as HTMLInputElement
+        const { checked } = element
+
+        skillTreeview.style.setProperty(
+          `--level-${index}-opacity`,
+          checked ? '1' : '0.25'
+        )
+      })
+    })
+  }
+</script>

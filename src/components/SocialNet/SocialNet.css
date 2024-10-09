@@ -1,0 +1,15 @@
+.social-net {
+  --cmp-icon-size: var(--pal-size-font-m);
+
+  align-content: center;
+  aspect-ratio: 1;
+  width: var(--pal-size-2xl);
+
+  color: var(--pal-color-gs-200);
+
+  border-radius: 0.375rem;
+
+  > * {
+    margin-inline: auto;
+  }
+}

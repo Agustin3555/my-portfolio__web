@@ -1,40 +1,34 @@
 ---
-import Section from "@/layouts/Section/Section.astro";
-import Tabbed from "@/layouts/Tabbed/Tabbed.astro";
-import * as AboutStyled from "./About.styled";
-import GlassPanel from "@/components/GlassPanel/GlassPanel.astro";
-import SocialNetwork from "@/components/SocialNetwork/SocialNetwork.astro";
-import ExternalLink from "@/components/ExternalLink/ExternalLink.astro";
-import Pill from "@/components/Pill/Pill.astro";
-import ContactLink from "@/components/ContactLink/ContactLink.astro";
-import ImgsSlider from "../ImgsSlider/ImgsSlider.astro";
-import { highlightToHTMLTag } from "@/tools";
-import jsonData from "@/data.json";
+import Section from '@/layouts/Section/Section.astro'
+import Tabbed from '@/layouts/Tabbed/Tabbed.astro'
+import * as AboutStyled from './About.styled'
+import GlassPanel from '@/components/GlassPanel/GlassPanel.astro'
+import SocialNet from '@/components/SocialNet/SocialNet.astro'
+import SmallLink from '@/components/SmallLink/SmallLink.astro'
+import Pill from '@/components/Pill/Pill.astro'
+import ContactLink from '@/components/ContactLink/ContactLink.astro'
+import ImgsSlider from '../ImgsSlider/ImgsSlider.astro'
+import { highlightToHTMLTag } from '@/tools'
+import jsonData from '@/data.json'
 
-const { externalNetwork, pages } = jsonData;
+const { externalNetwork, pages } = jsonData
 
-const { sections } = pages.home;
-const sectionKey: keyof typeof sections = "about";
+const { sections } = pages.home
+const sectionKey: keyof typeof sections = 'about'
 
-const { about } = sections;
-const { header, subsections, imgs } = about.data;
-const { intro, profProfile, hobbiesAndLikes } = subsections;
+const { about } = sections
+const { title, span, faIcon, data } = about
+const { header, subsections, imgs } = data
+const { intro, profProfile, hobbiesAndLikes } = subsections
 ---
 
 <!-- TODO: semantica HTML -->
-<Section sectionKey={sectionKey}>
+<Section sectionKey={sectionKey} {...{ title, span, faIcon }}>
   <AboutStyled.Component>
     <div class="a">
-      <header>
-        <p class="hello text">{header.hello}</p>
-        <h1>
-          {header.title}
-          <strong>{header.titleStrong}</strong>
-        </h1>
-      </header>
       <Tabbed
-        sectionTitles={["Intro", profProfile.title, "Hobbies"]}
-        handlingClass={["subsections"]}
+        sectionTitles={['Hola', 'Perfil profesional', 'Saber más']}
+        handlingClass={['subsections']}
       >
         <li>
           <div class="intro">
@@ -42,7 +36,7 @@ const { intro, profProfile, hobbiesAndLikes } = subsections;
             <ul>
               {
                 [
-                  <ExternalLink
+                  <SmallLink
                     url={intro.residence.mapsUrl}
                     faIcon="fa-solid fa-location-dot"
                     text={intro.residence.text}
@@ -51,7 +45,7 @@ const { intro, profProfile, hobbiesAndLikes } = subsections;
                   <Pill faIcon="fa-solid fa-comment-dots">
                     <p>Ingles {intro.englishLevel}</p>
                   </Pill>,
-                ].map((item) => <li>{item}</li>)
+                ].map(item => <li>{item}</li>)
               }
             </ul>
           </div>
@@ -81,13 +75,13 @@ const { intro, profProfile, hobbiesAndLikes } = subsections;
     </div>
     <div class="b">
       <div class="x">
-        <GlassPanel handlingClass={["glass-panel"]} />
+        <GlassPanel handlingClass={['glass-panel']} />
         <ImgsSlider
           folder="about"
           imgs={imgs}
           eager
-          style={{ aspectRatio: "1 / 1" }}
-          handlingClass={["slider"]}
+          style={{ aspectRatio: '1 / 1' }}
+          handlingClass={['slider']}
         />
       </div>
       <nav id="social-nets-in-about">
@@ -97,8 +91,8 @@ const { intro, profProfile, hobbiesAndLikes } = subsections;
               .slice()
               .reverse()
               .map(({ url, faIcon, title }) => (
-                <SocialNetwork
-                  href={url}
+                <SocialNet
+                  url={url}
                   faIcon={faIcon}
                   title={`Ir al perfil de ${title}`}
                 />
@@ -112,30 +106,30 @@ const { intro, profProfile, hobbiesAndLikes } = subsections;
 </Section>
 
 <script>
-  import { NOT_FONT_SIZE, getCSSVarValue } from "@/styles";
-  import { bodyManager } from "@/tools/elementManagers.tool";
-  import { onScreen } from "@/tools";
+  import { NOT_FONT_SIZE, getCSSVarValue } from '@/styles'
+  import { bodyManager } from '@/tools/elementManagers.tool'
+  import { onScreen } from '@/tools'
 
-  const MARGIN = NOT_FONT_SIZE.m;
+  const MARGIN = NOT_FONT_SIZE.m
 
-  let margin = getCSSVarValue(MARGIN);
-  margin = margin.slice(0, -3);
-  margin = `-${parseFloat(margin) * 16}px`;
+  let margin = getCSSVarValue(MARGIN)
+  margin = margin.slice(0, -3)
+  margin = `-${parseFloat(margin) * 16}px`
 
   const socialNetsInAbout = window.document.querySelector(
-    "#social-nets-in-about",
-  );
+    '#social-nets-in-about'
+  )
 
   socialNetsInAbout
     ? onScreen({
         observed: socialNetsInAbout,
         margin,
-        onIntersectionChange: (isIntersecting) =>
+        onIntersectionChange: isIntersecting =>
           bodyManager.data.socialNetsLocation.set(String(!isIntersecting)),
       })
     : /*
         Si no existe socialNetsInAbout en la página, socialNetsInLeftNav siempre
         será visible.
       */
-      bodyManager.data.socialNetsLocation.set("false");
+      bodyManager.data.socialNetsLocation.set('false')
 </script>

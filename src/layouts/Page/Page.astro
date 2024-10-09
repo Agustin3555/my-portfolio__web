@@ -1,31 +1,31 @@
 ---
-import "@/styles/normalize.css";
-import "@/styles/palette.css";
-import "@/styles/vars.css";
-import "@/styles/style.css";
-import "@fontsource-variable/onest";
-import "@fontsource-variable/roboto-mono";
+import '@/styles/normalize.css'
+import '@/styles/palette.css'
+import '@/styles/vars.css'
+import '@/styles/style.css'
+import '@fontsource-variable/onest'
+import '@fontsource-variable/dm-sans'
 
-import * as PageStyled from "./Page.styled";
-import SplashToScrollUp from "./components/SplashToScrollUp/SplashToScrollUp.astro";
-import Background from "./components/Background/Background.astro";
-import Footer from "./components/Footer/Footer.astro";
-import Menu from "./components/Menu/Menu.astro";
-import LeftNav from "./components/LeftNav/LeftNav.astro";
-import jsonData from "@/data.json";
+import './Page.css'
+import SplashToScrollUp from './components/SplashToScrollUp/SplashToScrollUp.astro'
+import Background from './components/Background/Background.astro'
+import Footer from './components/Footer/Footer.astro'
+import Menu from './components/Menu/Menu.astro'
+import LeftNav from './components/LeftNav/LeftNav.astro'
+import jsonData from '@/data.json'
 
 interface Props {
-  subtitle?: string;
+  subtitle?: string
 }
 
-const { subtitle } = Astro.props;
+const { subtitle } = Astro.props
 
-const { title, desc } = jsonData.documentInfo;
-const { base, separator } = title;
+const { title, desc } = jsonData.documentInfo
+const { base, separator } = title
 
-let fullTitle = base;
+let fullTitle = base
 
-if (subtitle) fullTitle += ` ${separator} ${subtitle}`;
+if (subtitle) fullTitle += ` ${separator} ${subtitle}`
 ---
 
 <html lang="en">
@@ -50,9 +50,9 @@ if (subtitle) fullTitle += ` ${separator} ${subtitle}`;
     />
   </head>
   <body data-social-nets-location="true">
-    <SplashToScrollUp />
-    <Background />
-    <PageStyled.Component>
+    <!-- <SplashToScrollUp /> -->
+    <!-- <Background /> -->
+    <div class="layout">
       <div class="static">
         <main>
           <slot />
@@ -61,51 +61,50 @@ if (subtitle) fullTitle += ` ${separator} ${subtitle}`;
       </div>
       <Menu />
       <LeftNav />
-    </PageStyled.Component>
+    </div>
   </body>
 </html>
 
 <script is:inline src="https://kit.fontawesome.com/7463805de7.js"></script>
 
 <script>
-  import { bodyManager } from "@/tools/elementManagers.tool";
-  import { darkModeEntity } from "@/services";
+  import { bodyManager } from '@/tools/elementManagers.tool'
+  import { darkModeEntity } from '@/services'
 
-  const DEFAULT_DARK_MODE = true;
+  const DEFAULT_DARK_MODE = true
 
   const darkModeInit = () => {
     // Si existe la entidad en local storage, se la utiliza
-    const darkModeValue = darkModeEntity.get();
-    if (darkModeValue !== null) return darkModeValue;
+    const darkModeValue = darkModeEntity.get()
+    if (darkModeValue !== null) return darkModeValue
 
     // Si existe la media del usuario, se la utiliza
     if (window.matchMedia)
-      return window.matchMedia("(prefers-color-scheme: dark)").matches;
+      return window.matchMedia('(prefers-color-scheme: dark)').matches
 
     // Si no, se crea la entidad en local storage y se la utiliza
-    darkModeEntity.set(DEFAULT_DARK_MODE);
-    return DEFAULT_DARK_MODE;
-  };
+    darkModeEntity.set(DEFAULT_DARK_MODE)
+    return DEFAULT_DARK_MODE
+  }
 
-  bodyManager.data.darkMode.set(String(darkModeInit()));
+  bodyManager.data.darkMode.set(String(darkModeInit()))
 </script>
 
 <script>
-  const adaptables =
-    window.document.querySelectorAll<HTMLElement>(".adaptable");
+  const adaptables = window.document.querySelectorAll<HTMLElement>('.adaptable')
 
-  adaptables.forEach((adaptable) => {
-    const content = adaptable.querySelector("& > *");
+  adaptables.forEach(adaptable => {
+    const content = adaptable.querySelector('& > *')
 
-    const resizeObserver = new ResizeObserver((entries) => {
+    const resizeObserver = new ResizeObserver(entries => {
       if (entries.length > 0) {
-        const { width, height } = entries[0].contentRect;
+        const { width, height } = entries[0].contentRect
 
-        adaptable.style.setProperty("--content-width", `${width}px`);
-        adaptable.style.setProperty("--content-height", `${height}px`);
+        adaptable.style.setProperty('--content-width', `${width}px`)
+        adaptable.style.setProperty('--content-height', `${height}px`)
       }
-    });
+    })
 
-    content && resizeObserver.observe(content);
-  });
+    content && resizeObserver.observe(content)
+  })
 </script>

@@ -13,8 +13,8 @@
     "@astrojs/react": "^3.0.10",
     "@emotion/css": "^11.11.2",
     "@emotion/styled": "^11.11.0",
+    "@fontsource-variable/dm-sans": "^5.1.0",
     "@fontsource-variable/onest": "^5.0.2",
-    "@fontsource-variable/roboto-mono": "^5.0.17",
     "astro": "^4.4.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"

@@ -1,0 +1,24 @@
+---
+import './SmallLink.css'
+import Icon from '@/components/Icon/Icon.astro'
+
+export interface Props {
+  url: string
+  faIcon: string
+  text: string
+  title: string
+}
+
+const { url, faIcon, text, title } = Astro.props
+---
+
+<a
+  class="small-link card link s"
+  title={title}
+  href={url}
+  target="_blank"
+  rel="noopener"
+>
+  <Icon faIcon={faIcon} />
+  {text}
+</a>

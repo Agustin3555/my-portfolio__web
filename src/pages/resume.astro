@@ -1,9 +1,9 @@
 ---
-import Page from "@/layouts/Page/Page.astro";
-import BasicHeader from "@/layouts/BasicHeader/BasicHeader.astro";
-import jsonData from "@/data.json";
+import Page from '@/layouts/Page/Page.astro'
+import BasicHeader from '@/layouts/BasicHeader/BasicHeader.astro'
+import jsonData from '@/data.json'
 
-const { pageTitle, data } = jsonData.pages.resume;
+const { pageTitle, data } = jsonData.pages.resume
 ---
 
 <Page subtitle={pageTitle}>
@@ -20,7 +20,7 @@ const { pageTitle, data } = jsonData.pages.resume;
   .cv {
     aspect-ratio: 4 / 5;
     width: 100%;
-    border-radius: var(--palette-size-not-font-xs);
+    border-radius: var(--pal-size-font-xs);
     box-shadow: var(--decorator-shadow-1), var(--decorator-bevel-highlight);
   }
 </style>

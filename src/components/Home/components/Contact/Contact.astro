@@ -1,67 +1,63 @@
 ---
-import Section from "@/layouts/Section/Section.astro";
-import * as ContactStyled from "./Contact.styled";
-import Icon from "@/components/Icon/Icon.astro";
-import ContactLink from "@/components/ContactLink/ContactLink.astro";
-import { VARS } from "@/styles";
-import { highlightToHTMLTag } from "@/tools";
-import jsonData from "@/data.json";
+import './Contact.css'
+import Section from '@/layouts/Section/Section.astro'
+import Icon from '@/components/Icon/Icon.astro'
+import ContactLink from '@/components/ContactLink/ContactLink.astro'
+import { highlightToHTMLTag } from '@/tools'
+import jsonData from '@/data.json'
 
-const { sections } = jsonData.pages.home;
-const sectionKey: keyof typeof sections = "contact";
+const { sections } = jsonData.pages.home
+const sectionKey: keyof typeof sections = 'contact'
 
-const { contact } = sections;
-const { title } = contact;
-const { desc, email } = contact.data;
-
-const iconSize = VARS.component.button.s.iconSize;
+const { contact } = sections
+const { title, span, faIcon } = contact
+const { accordingToUser, email } = contact.data
 ---
 
-<Section sectionKey={sectionKey} title={title}>
-  <ContactStyled.Component>
-    <p class="text" set:html={highlightToHTMLTag(desc)} />
+<Section sectionKey={sectionKey} {...{ title, span, faIcon }}>
+  <div class="contact">
+    <div class="according-to-user">
+      {
+        accordingToUser.map(({ title, desc }) => (
+          <article class="card highlight">
+            <h3 class="text">{title}</h3>
+            <p class="text" set:html={highlightToHTMLTag(desc)} />
+          </article>
+        ))
+      }
+    </div>
     <address>
       <p class="email">{email}</p>
       <div class="controls">
-        <button id="button-copy-email" title="Copiar" data-copying="false">
-          <Icon
-            faIcon="fa-solid fa-copy"
-            style={{ size: iconSize }}
-            handlingClass={["copy-icon"]}
-          />
-          <Icon
-            faIcon="fa-solid fa-check"
-            style={{ size: iconSize }}
-            handlingClass={["check-icon"]}
-          />
+        <button
+          id="button-copy-email"
+          title="Copiar email"
+          data-copying="false"
+        >
+          <Icon faIcon="fa-solid fa-copy" handlingClass={'copy-icon'} />
+          <Icon faIcon="fa-solid fa-check" handlingClass={'check-icon'} />
         </button>
         <ContactLink emailSender />
       </div>
     </address>
-  </ContactStyled.Component>
+  </div>
 </Section>
 
 <script>
-  import { sleep } from "@/tools";
-  import jsonData from "@/data.json";
+  import { $, sleep } from '@/tools'
+  import jsonData from '@/data.json'
 
-  const { email } = jsonData.pages.home.sections.contact.data;
+  const { email } = jsonData.pages.home.sections.contact.data
 
-  const buttonCopyEmail =
-    window.document.querySelector<HTMLButtonElement>("#button-copy-email");
+  const buttonCopyEmail = $<HTMLButtonElement>('#button-copy-email')
 
-  buttonCopyEmail?.addEventListener("click", async () => {
+  buttonCopyEmail?.addEventListener('click', async () => {
     try {
-      await navigator.clipboard.writeText(email);
+      await navigator.clipboard.writeText(email)
 
-      // Deshabilitamos el botón temporalmente para evitar múltiples clics
-      buttonCopyEmail.disabled = true;
-
-      // Esperamos 2 segundos antes de habilitar nuevamente el botón
-      await sleep(2000);
-
-      // Habilitamos el botón después de la espera
-      buttonCopyEmail.disabled = false;
+      buttonCopyEmail.disabled = true
+      await sleep(2000)
+      buttonCopyEmail.disabled = false
     } catch (error) {}
-  });
+  })
 </script>

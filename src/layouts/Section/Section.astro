@@ -1,15 +1,26 @@
 ---
-import * as SectionStyled from "./Section.styled";
+import './Section.css'
+import Icon from '@/components/Icon/Icon.astro'
 
 interface Props {
-  sectionKey: string;
-  title?: string;
+  sectionKey: string
+  title: string
+  span: string
+  faIcon: string
 }
 
-const { sectionKey, title } = Astro.props;
+const { sectionKey, title, span, faIcon } = Astro.props
 ---
 
-<SectionStyled.Component id={sectionKey}>
-  {title && <h2>{title}</h2>}
+<section id={sectionKey}>
+  <header>
+    <div class="bullet">
+      <Icon faIcon={faIcon} />
+    </div>
+    <h2 class="text">
+      {title}
+      <span>{span}</span>
+    </h2>
+  </header>
   <slot />
-</SectionStyled.Component>
+</section>

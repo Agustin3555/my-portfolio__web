@@ -1,24 +1,24 @@
 ---
-import * as HamburgerMenuStyled from "./HamburgerMenu.styled";
-import Hamburger from "./components/Hamburger/Hamburger.astro";
+import * as HamburgerMenuStyled from './HamburgerMenu.styled'
+import Hamburger from './components/Hamburger/Hamburger.astro'
 import Separator, {
   type Props as SeparatorProps,
-} from "@/components/Separator/Separator.astro";
-import Link, { type Props as LinkProps } from "@/components/Link/Link.astro";
-import ToggleDarkMode from "@/components/ToggleDarkMode/ToggleDarkMode.astro";
-import SocialNetwork from "@/components/SocialNetwork/SocialNetwork.astro";
-import { VARS } from "@/styles";
-import jsonData from "@/data.json";
+} from '@/components/Separator/Separator.astro'
+import Link, { type Props as LinkProps } from '@/components/Link/Link.astro'
+import ToggleDarkMode from '@/components/ToggleDarkMode/ToggleDarkMode.astro'
+import SocialNet from '@/components/SocialNet/SocialNet.astro'
+import { VARS } from '@/styles'
+import jsonData from '@/data.json'
 
 interface Props {
   linksData: {
-    home: LinkProps[];
-    resume: LinkProps;
-  };
+    home: LinkProps[]
+    resume: LinkProps
+  }
 }
 
-const { home, resume } = Astro.props.linksData;
-const { externalNetwork } = jsonData;
+const { home, resume } = Astro.props.linksData
+const { externalNetwork } = jsonData
 
 const separatorProps: SeparatorProps = {
   style: {
@@ -27,7 +27,7 @@ const separatorProps: SeparatorProps = {
       dark: VARS.color.b.line.dark,
     },
   },
-};
+}
 ---
 
 <HamburgerMenuStyled.Component id="hamburger-menu" data-is-open="false">
@@ -40,15 +40,15 @@ const separatorProps: SeparatorProps = {
       </div>
       <Separator {...separatorProps} />
       <nav>
-        {home.map((item) => <Link {...item} />)}
+        {home.map(item => <Link {...item} />)}
         <Separator {...separatorProps} />
         <Link {...resume} />
         <Separator {...separatorProps} />
         <div class="external-networks">
           {
             externalNetwork.map(({ url, faIcon, title }) => (
-              <SocialNetwork
-                href={url}
+              <SocialNet
+                url={url}
                 faIcon={faIcon}
                 title={`Ir al perfil de ${title}`}
               />
@@ -61,11 +61,11 @@ const separatorProps: SeparatorProps = {
 </HamburgerMenuStyled.Component>
 
 <script>
-  import { hamburgerMenuManager } from "@/tools/elementManagers.tool";
+  import { hamburgerMenuManager } from '@/tools/elementManagers.tool'
 
-  const deepTouch = window.document.querySelector("#deep-touch");
+  const deepTouch = window.document.querySelector('#deep-touch')
 
-  deepTouch?.addEventListener("click", () =>
-    hamburgerMenuManager.data.isOpen.set("false"),
-  );
+  deepTouch?.addEventListener('click', () =>
+    hamburgerMenuManager.data.isOpen.set('false')
+  )
 </script>

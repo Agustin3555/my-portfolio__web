@@ -1,89 +1,50 @@
 ---
-import * as EducationItemStyled from "./EducationItem.styled";
-import ExternalLink from "@/components/ExternalLink/ExternalLink.astro";
-import Icon from "@/components/Icon/Icon.astro";
+import './EducationItem.css'
+import Icon from '@/components/Icon/Icon.astro'
 
 interface DateData {
-  machine: string;
-  human: string;
+  machine: string
+  human: string
 }
 
 interface Props {
-  title: string;
-  institutionName: string;
-  endDate: DateData;
-  duration: DateData;
+  title: string
+  institutionName: string
+  endDate: DateData
+  duration: DateData
   moreInfoLink: {
-    url: string;
-    text: string;
-    title: string;
-  };
-  faIcon: string;
-  firstItem?: boolean;
-  lastItem?: boolean;
+    url: string
+    text: string
+    title: string
+  }
 }
 
-const {
-  title,
-  institutionName,
-  endDate,
-  duration,
-  moreInfoLink,
-  faIcon,
-  firstItem = false,
-  lastItem = false,
-} = Astro.props;
+const { title, institutionName, endDate, duration, moreInfoLink } = Astro.props
 ---
 
-<EducationItemStyled.Component
-  data-first-item={firstItem}
-  data-last-item={lastItem}
+<a
+  class="education-item card highlight link"
+  title={moreInfoLink.title}
+  href={moreInfoLink.url}
+  target="_blank"
+  rel="noopener"
 >
-  <article class="item">
-    <header class="glass">
-      <div class="content" aria-labelledby="education-title">
-        <h3 id="education-title" class="text">{title}</h3>
-        <p class="institution-name text">{institutionName}</p>
-      </div>
-    </header>
-    <div class="about-time">
-      <time class="end-date text" datetime={endDate.machine}>
+  <h3 class="text">
+    {title}
+    <span class="text">{institutionName}</span>
+  </h3>
+  <ul>
+    <li>
+      <Icon faIcon="fa-solid fa-calendar-check" />
+      <time class="text" datetime={endDate.machine}>
         {endDate.human}
       </time>
-      <time class="duration text" datetime={duration.machine}>
+    </li>
+    <li>
+      <Icon faIcon="fa-solid fa-stopwatch" />
+      <time class="text" datetime={duration.machine}>
         {duration.human}
       </time>
-    </div>
-    <ul class="links">
-      <li>
-        <ExternalLink {...moreInfoLink} />
-      </li>
-    </ul>
-    <span class="bullet">
-      <span class="line"></span>
-      <svg
-        class="encapsulator"
-        width="34"
-        height="34"
-        viewBox="0 0 34 34"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <circle
-          cx="17"
-          cy="17"
-          r="16.5"
-          stroke="currentColor"
-          stroke-width="0.75"
-          stroke-linecap="square"
-          stroke-dasharray="4 4"></circle>
-      </svg>
-      <span class="line"></span>
-      <Icon faIcon={faIcon} handlingClass={["icon"]} />
-    </span>
-    <span class="line-extension-layout line"></span>
-  </article>
-  <span class="item-gap">
-    <span class="line"></span>
-  </span>
-</EducationItemStyled.Component>
+    </li>
+  </ul>
+</a>

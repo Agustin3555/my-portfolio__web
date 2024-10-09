@@ -1,28 +1,25 @@
 ---
-import * as ContactLinkStyled from "./ContactLink.styled";
-import Icon from "../Icon/Icon.astro";
-import { VARS } from "@/styles";
-import jsonData from "@/data.json";
+import './ContactLink.css'
+import Icon from '../Icon/Icon.astro'
+import jsonData from '@/data.json'
 
 export interface Props {
-  emailSender?: boolean;
+  emailSender?: boolean
 }
 
-const { emailSender = false } = Astro.props;
+const { emailSender = false } = Astro.props
 
-const { sections } = jsonData.pages.home;
-const sectionKey: keyof typeof sections = "contact";
+const { sections } = jsonData.pages.home
+const sectionKey: keyof typeof sections = 'contact'
 
-const { email } = sections.contact.data;
+const { email } = sections.contact.data
 ---
 
-<ContactLinkStyled.Component
+<a
+  class="contact-link"
   href={emailSender ? `mailto:${email}` : `/#${sectionKey}`}
-  title={emailSender ? "Enviar correo" : "Contáctame"}
+  title={emailSender ? 'Enviar correo' : 'Contáctame'}
   data-email-sender={emailSender}
 >
-  <Icon
-    faIcon="fa-solid fa-paper-plane"
-    style={{ size: VARS.component.button.s.iconSize }}
-  />
-</ContactLinkStyled.Component>
+  <Icon faIcon="fa-solid fa-paper-plane" />
+</a>

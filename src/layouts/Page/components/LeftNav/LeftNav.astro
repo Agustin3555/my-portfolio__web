@@ -1,13 +1,13 @@
 ---
-import * as LeftNavStyled from "./LeftNav.styled";
-import SocialNetwork from "@/components/SocialNetwork/SocialNetwork.astro";
-import Separator from "@/components/Separator/Separator.astro";
-import ToggleDarkMode from "@/components/ToggleDarkMode/ToggleDarkMode.astro";
-import ContactLink from "@/components/ContactLink/ContactLink.astro";
-import { VARS } from "@/styles";
-import jsonData from "@/data.json";
+import * as LeftNavStyled from './LeftNav.styled'
+import SocialNet from '@/components/SocialNet/SocialNet.astro'
+import Separator from '@/components/Separator/Separator.astro'
+import ToggleDarkMode from '@/components/ToggleDarkMode/ToggleDarkMode.astro'
+import ContactLink from '@/components/ContactLink/ContactLink.astro'
+import { VARS } from '@/styles'
+import jsonData from '@/data.json'
 
-const { externalNetwork } = jsonData;
+const { externalNetwork } = jsonData
 ---
 
 <LeftNavStyled.Component>
@@ -15,8 +15,8 @@ const { externalNetwork } = jsonData;
     {
       [
         ...externalNetwork.map(({ url, faIcon, title }) => (
-          <SocialNetwork
-            href={url}
+          <SocialNet
+            url={url}
             faIcon={faIcon}
             title={`Ir al perfil de ${title}`}
           />

@@ -1,74 +1,76 @@
 ---
-import * as TabbedStyled from "./Tabbed.styled";
-import { type HandlingClass, asClassName } from "@/tools";
+import './Tabbed.css'
 
 export interface Props {
-  sectionTitles: string[];
-  handlingClass?: HandlingClass;
+  sectionTitles: string[]
+  handlingClass?: string
 }
 
-const { sectionTitles, handlingClass = [] } = Astro.props;
+const { sectionTitles, handlingClass = [] } = Astro.props
 ---
 
-<TabbedStyled.Component className={asClassName("tabbed", ...handlingClass)}>
-  <div class="nav">
-    <span class="bg-indicator"></span>
-    <fieldset>
-      {
-        sectionTitles.map((title) => (
-          <label>
-            <input type="radio" name="sections" />
-            <p class="title">{title}</p>
-          </label>
-        ))
-      }
-    </fieldset>
-  </div>
+<article class:list={['tabbed', handlingClass]}>
+  <header>
+    <div class="nav">
+      <span class="bg-indicator"></span>
+      <fieldset>
+        {
+          sectionTitles.map(title => (
+            <label>
+              <input type="radio" name="sections" />
+              {title}
+            </label>
+          ))
+        }
+      </fieldset>
+    </div>
+    <span class="line"></span>
+  </header>
   <ol class="element-slider">
     <slot />
   </ol>
-</TabbedStyled.Component>
+</article>
 
 <script>
-  import { sleep } from "@/tools";
+  import { $$, sleep } from '@/tools'
 
-  const ACTIVE_CLASS = "active";
-  const INACTIVE_CLASS = "inactive";
+  const ACTIVE_CLASS = 'active'
+  const INACTIVE_CLASS = 'inactive'
 
-  const tabbeds = window.document.querySelectorAll<HTMLElement>(".tabbed");
+  const tabbeds = $$<HTMLElement>('.tabbed')
 
-  tabbeds.forEach((tabbed) => {
-    const elementSlider = tabbed.querySelector<HTMLElement>(".element-slider");
-    const indicator = tabbed.querySelector<HTMLElement>(".bg-indicator");
+  tabbeds.forEach(tabbed => {
+    const elementSlider = tabbed.querySelector<HTMLElement>('.element-slider')
+    const indicator = tabbed.querySelector<HTMLElement>('.bg-indicator')
 
     if (elementSlider && indicator) {
-      const labels = tabbed.querySelectorAll("label");
-      const items = Array.from(elementSlider.querySelectorAll("& > li"));
+      const labels = tabbed.querySelectorAll('label')
+      const items = Array.from(elementSlider.querySelectorAll('& > li'))
       const radioInputs = tabbed.querySelectorAll<HTMLInputElement>(
-        'input[type="radio"]',
-      );
+        'input[type="radio"]'
+      )
 
       const moveIndicator = (index: number) => {
-        const label = labels[index];
-        const inputRect = label.getBoundingClientRect();
+        const label = labels[index]
+        const inputRect = label.getBoundingClientRect()
 
-        indicator.style.left = `${label.offsetLeft}px`;
-        indicator.style.width = `${inputRect.width}px`;
-      };
+        indicator.style.left = `${label.offsetLeft}px`
+        indicator.style.width = `${inputRect.width}px`
+      }
 
       // Inicializar
-      items.forEach((item) => item.classList.add(INACTIVE_CLASS));
-      items[0].classList.remove(INACTIVE_CLASS);
-      items[0].classList.add(ACTIVE_CLASS);
+      items.forEach(item => item.classList.add(INACTIVE_CLASS))
+      items[0].classList.remove(INACTIVE_CLASS)
+      items[0].classList.add(ACTIVE_CLASS)
 
-      radioInputs[0].checked = true;
-      moveIndicator(0);
+      radioInputs[0].checked = true
+      moveIndicator(0)
 
-      radioInputs.forEach((radioInput) => {
-        radioInput.addEventListener("change", () => {
+      radioInputs.forEach(radioInput => {
+        radioInput.addEventListener('change', () => {
           const checkedRadioInputIndex = Array.from(radioInputs).findIndex(
-            (input) => input.checked,
-          );
+            input => input.checked
+          )
 
           items.forEach(async (item, index) => {
             // TODO: Implementar la espera con el evento "transitionend" en vez de sleep
@@ -77,28 +79,28 @@ const { sectionTitles, handlingClass = [] } = Astro.props;
               // Radio input activo
 
               // La duración debe ser la misma que las transitions CSS
-              await sleep(200);
+              await sleep(200)
 
-              item.classList.remove(INACTIVE_CLASS);
-              item.classList.add(ACTIVE_CLASS);
+              item.classList.remove(INACTIVE_CLASS)
+              item.classList.add(ACTIVE_CLASS)
             } else {
               // Radio input inactivo
 
-              item.classList.remove(ACTIVE_CLASS);
-              item.classList.add(INACTIVE_CLASS);
+              item.classList.remove(ACTIVE_CLASS)
+              item.classList.add(INACTIVE_CLASS)
             }
-          });
+          })
 
-          moveIndicator(checkedRadioInputIndex);
-        });
-      });
+          moveIndicator(checkedRadioInputIndex)
+        })
+      })
 
       const resizeObserver = new ResizeObserver(() => {
-        const maxHeight = Math.max(...items.map((item) => item.clientHeight));
-        elementSlider.style.height = `${maxHeight}px`;
-      });
+        const maxHeight = Math.max(...items.map(item => item.clientHeight))
+        elementSlider.style.height = `${maxHeight}px`
+      })
 
-      resizeObserver.observe(elementSlider);
+      resizeObserver.observe(elementSlider)
     }
-  });
+  })
 </script>

@@ -1,27 +1,27 @@
 :root {
-  --color-a-bg-light: var(--palette-color-gs-0);
-  --color-a-bg-dark: var(--palette-color-gs-17);
-  --color-a-content-light: var(--palette-color-gs-13);
-  --color-a-content-dark: var(--palette-color-gs-5);
-  --color-a-line-light: var(--palette-color-gs-7);
-  --color-a-line-dark: var(--palette-color-gs-11);
+  --color-a-bg-light: var(--pal-color-gs-0);
+  --color-a-bg-dark: var(--pal-color-gs-900);
+  --color-a-content-light: var(--pal-color-gs-13);
+  --color-a-content-dark: var(--pal-color-gs-5);
+  --color-a-line-light: var(--pal-color-gs-7);
+  --color-a-line-dark: var(--pal-color-gs-11);
 
-  --color-b-bg-light: var(--palette-color-gs-3);
-  --color-b-bg-dark: var(--palette-color-gs-14);
-  --color-b-content-light: var(--palette-color-gs-14);
-  --color-b-content-dark: var(--palette-color-gs-3);
-  --color-b-line-light: var(--palette-color-gs-8);
-  --color-b-line-dark: var(--palette-color-gs-9);
+  --color-b-bg-light: var(--pal-color-gs-3);
+  --color-b-bg-dark: var(--pal-color-gs-14);
+  --color-b-content-light: var(--pal-color-gs-14);
+  --color-b-content-dark: var(--pal-color-gs-3);
+  --color-b-line-light: var(--pal-color-gs-8);
+  --color-b-line-dark: var(--pal-color-gs-9);
 
-  --color-c-bg-light: var(--palette-color-gs-1);
-  --color-c-bg-dark: var(--palette-color-gs-16);
-  --color-c-content-light: var(--palette-color-b-d2);
-  --color-c-content-dark: var(--palette-color-b-l2);
+  --color-c-bg-light: var(--pal-color-gs-1);
+  --color-c-bg-dark: var(--pal-color-gs-16);
+  --color-c-content-light: var(--pal-color-b-d2);
+  --color-c-content-dark: var(--pal-color-b-l2);
 
-  --size-gold: var(--palette-size-not-font-s);
+  --size-gold: var(--pal-size-font-s);
   --size-silver: calc(var(--size-gold) * 1.5);
 
-  --global-font-size: var(--palette-size-font-s);
+  --global-font-size: var(--pal-size-font-s);
 
   --decorator-shadow-0: 0.3px 0.5px 0.7px rgba(0, 0, 0, 0.1),
     0.4px 0.8px 1px rgba(0, 0, 0, 0.1), 1px 2px 2.5px rgba(0, 0, 0, 0.1);
@@ -38,7 +38,7 @@
     18.5px 37.1px 46.6px rgba(0, 0, 0, 0.08),
     25px 50px 62.9px rgba(0, 0, 0, 0.08);
 
-  --border-width: var(--palette-size-not-font-6xs);
+  --border-width: var(--pal-size-font-6xs);
 
   --decorator-bevel-highlight-top: inset 0 var(--border-width) 0
     rgba(255, 255, 255, 0.1);
@@ -54,7 +54,7 @@
     var(--decorator-bevel-highlight-right),
     var(--decorator-bevel-highlight-bottom);
 
-  --component-button-xs-font-size: var(--palette-size-font-xs);
+  --component-button-xs-font-size: var(--pal-size-font-xs);
   --component-button-xs-padding-block: 0.5rem;
   --component-button-xs-padding-inline: calc(
     var(--component-button-xs-padding-block) * 1.25
@@ -68,21 +68,21 @@
   );
   --component-button-xs-border-radius: 0.3125rem;
 
-  --component-button-s-padding: var(--palette-size-not-font-2xs);
-  --component-button-s-icon-size: var(--palette-size-font-m);
+  --component-button-s-padding: var(--pal-size-font-2xs);
+  --component-button-s-icon-size: var(--pal-size-font-m);
   --component-button-s-size: calc(
     var(--component-button-s-padding) * 2 + var(--component-button-s-icon-size)
   );
-  --component-button-s-border-radius: var(--palette-size-not-font-3xs);
+  --component-button-s-border-radius: var(--pal-size-font-3xs);
 
-  --component-button-m-icon-size: var(--palette-size-font-xl);
-  --component-button-m-padding: var(--palette-size-font-s);
+  --component-button-m-icon-size: var(--pal-size-font-xl);
+  --component-button-m-padding: var(--pal-size-font-s);
   --component-button-m-size: calc(
     var(--component-button-m-padding) * 2 + var(--component-button-m-icon-size)
   );
-  --component-button-m-border-radius: var(--palette-size-not-font-2xs);
+  --component-button-m-border-radius: var(--pal-size-font-2xs);
 
   --component-link-translate-value: 0 -0.1875rem;
-  --component-link-translate-transition: translate var(--palette-time-m)
-    var(--palette-timing-func-a);
+  --component-link-translate-transition: translate var(--pal-time-m)
+    var(--pal-timing-func-a);
 }

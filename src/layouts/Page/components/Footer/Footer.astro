@@ -1,14 +1,14 @@
 ---
-import * as FooterStyled from "./Footer.styled";
+import './Footer.css'
 import Separator, {
   type Props as SeparatorProps,
-} from "@/components/Separator/Separator.astro";
-import Link from "@/components/Link/Link.astro";
-import { VARS } from "@/styles";
-import jsonData from "@/data.json";
+} from '@/components/Separator/Separator.astro'
+import Link from '@/components/Link/Link.astro'
+import { VARS } from '@/styles'
+import jsonData from '@/data.json'
 
-const { copyright, sections } = jsonData.footer;
-const { acknowledgments, othersPages } = sections;
+const { copyright, sections } = jsonData.footer
+const { acknowledgments, othersPages } = sections
 
 const separatorProps: SeparatorProps = {
   style: {
@@ -17,11 +17,11 @@ const separatorProps: SeparatorProps = {
       dark: VARS.color.b.line.dark,
     },
   },
-  handlingClass: ["separator"],
-};
+  handlingClass: ['separator'],
+}
 ---
 
-<FooterStyled.Component>
+<footer>
   <div class="sections">
     <article>
       <h4>{acknowledgments.title}</h4>
@@ -52,4 +52,4 @@ const separatorProps: SeparatorProps = {
   </div>
   <Separator {...separatorProps} />
   <small class="copyright text">{copyright}</small>
-</FooterStyled.Component>
+</footer>
