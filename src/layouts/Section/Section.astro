@@ -5,22 +5,32 @@ import Icon from '@/components/Icon/Icon.astro'
 interface Props {
   sectionKey: string
   title: string
-  span: string
+  strong: string
   faIcon: string
+  main?: boolean
 }
 
-const { sectionKey, title, span, faIcon } = Astro.props
+const { sectionKey, title, strong, faIcon, main } = Astro.props
 ---
 
-<section id={sectionKey}>
+<section class:list={{ main }} id={sectionKey}>
   <header>
     <div class="bullet">
       <Icon faIcon={faIcon} />
     </div>
-    <h2 class="text">
-      {title}
-      <span>{span}</span>
-    </h2>
+    {
+      main ? (
+        <h1>
+          {title}
+          <strong>{strong}</strong>
+        </h1>
+      ) : (
+        <h2>
+          {title}
+          <strong>{strong}</strong>
+        </h2>
+      )
+    }
   </header>
   <slot />
 </section>

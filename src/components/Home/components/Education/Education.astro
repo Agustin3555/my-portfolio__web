@@ -8,11 +8,11 @@ const { sections } = jsonData.pages.home
 const sectionKey: keyof typeof sections = 'education'
 
 const { education } = sections
-const { title, span, faIcon, data } = education
+const { title, strong, faIcon, data } = education
 const { items } = data
 ---
 
-<Section sectionKey={sectionKey} {...{ title, span, faIcon }}>
+<Section sectionKey={sectionKey} {...{ title, strong, faIcon }}>
   <ul class="education">
     {items.map(item => <EducationItem {...item} />)}
   </ul>

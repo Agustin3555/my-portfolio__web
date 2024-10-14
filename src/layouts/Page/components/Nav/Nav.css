@@ -1,0 +1,26 @@
+.cmp-nav {
+  position: sticky;
+  top: 0;
+
+  align-content: center;
+  height: 100dvh;
+
+  @media (width < 67.5rem) {
+    position: fixed;
+    left: 90%;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    padding: var(--layout-gutter);
+
+    border-radius: var(--pal-size-s);
+
+    .cmp-links {
+      flex-direction: column;
+      gap: var(--pal-size-xl);
+      padding: var(--pal-size-xs);
+    }
+  }
+}

@@ -10,17 +10,17 @@ const { sections } = jsonData.pages.home
 const sectionKey: keyof typeof sections = 'contact'
 
 const { contact } = sections
-const { title, span, faIcon } = contact
+const { title, strong, faIcon } = contact
 const { accordingToUser, email } = contact.data
 ---
 
-<Section sectionKey={sectionKey} {...{ title, span, faIcon }}>
+<Section sectionKey={sectionKey} {...{ title, strong, faIcon }}>
   <div class="contact">
     <div class="according-to-user">
       {
         accordingToUser.map(({ title, desc }) => (
-          <article class="card highlight">
-            <h3 class="text">{title}</h3>
+          <article class="bg card">
+            <h3>{title}</h3>
             <p class="text" set:html={highlightToHTMLTag(desc)} />
           </article>
         ))

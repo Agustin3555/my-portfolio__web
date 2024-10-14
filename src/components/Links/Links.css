@@ -1,0 +1,14 @@
+.cmp-links {
+  display: flex;
+
+  .resume {
+    align-content: center;
+    border-width: 0.0625rem;
+    border-style: solid;
+    border-color: var(--pal-color-a-l2);
+    padding-inline: 1.25rem;
+    height: var(--pal-size-2xl);
+
+    border-radius: var(--pal-size-2xs);
+  }
+}

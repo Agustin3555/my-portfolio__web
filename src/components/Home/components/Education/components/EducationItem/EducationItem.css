@@ -1,11 +1,6 @@
 .education-item {
-  display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: var(--pal-size-xl);
-  padding: var(--pal-size-xl);
-
-  border-radius: var(--pal-size-s);
 
   ul {
     flex-wrap: wrap;

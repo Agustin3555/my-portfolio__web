@@ -1,13 +1,11 @@
 ---
+import './About.css'
 import Section from '@/layouts/Section/Section.astro'
 import Tabbed from '@/layouts/Tabbed/Tabbed.astro'
-import * as AboutStyled from './About.styled'
-import GlassPanel from '@/components/GlassPanel/GlassPanel.astro'
 import SocialNet from '@/components/SocialNet/SocialNet.astro'
 import SmallLink from '@/components/SmallLink/SmallLink.astro'
 import Pill from '@/components/Pill/Pill.astro'
 import ContactLink from '@/components/ContactLink/ContactLink.astro'
-import ImgsSlider from '../ImgsSlider/ImgsSlider.astro'
 import { highlightToHTMLTag } from '@/tools'
 import jsonData from '@/data.json'
 
@@ -17,92 +15,106 @@ const { sections } = pages.home
 const sectionKey: keyof typeof sections = 'about'
 
 const { about } = sections
-const { title, span, faIcon, data } = about
-const { header, subsections, imgs } = data
-const { intro, profProfile, hobbiesAndLikes } = subsections
+const { title, strong, faIcon, data } = about
+const { hi, profProfile, knowMore } = data
+
+const sectionTitles = Object.values(data).map(item => item.title)
 ---
 
-<!-- TODO: semantica HTML -->
-<Section sectionKey={sectionKey} {...{ title, span, faIcon }}>
-  <AboutStyled.Component>
-    <div class="a">
-      <Tabbed
-        sectionTitles={['Hola', 'Perfil profesional', 'Saber más']}
-        handlingClass={['subsections']}
-      >
-        <li>
-          <div class="intro">
-            <p class="text" set:html={highlightToHTMLTag(intro.text)} />
-            <ul>
-              {
-                [
+<Section sectionKey={sectionKey} {...{ title, strong, faIcon }} main>
+  <Tabbed sectionTitles={sectionTitles}>
+    <li>
+      {
+        () => {
+          const { residenceMapsLink, englishLevel, text } = hi.data
+
+          return (
+            <article class="hi">
+              <p class="text bg card" set:html={highlightToHTMLTag(text)} />
+              <footer>
+                <nav id="social-nets-in-about">
+                  {[
+                    ...externalNetwork
+                      .slice()
+                      .reverse()
+                      .map(({ url, faIcon, title }) => (
+                        <SocialNet
+                          url={url}
+                          faIcon={faIcon}
+                          title={`Ir al perfil de ${title}`}
+                        />
+                      )),
+                    <ContactLink />,
+                  ].map((item, index) => (
+                    <div style={`--i: ${index}`}>{item}</div>
+                  ))}
+                </nav>
+                <div>
                   <SmallLink
-                    url={intro.residence.mapsUrl}
+                    url={residenceMapsLink.url}
                     faIcon="fa-solid fa-location-dot"
-                    text={intro.residence.text}
-                    title={`Visitar ${intro.residence.text} en Maps`}
-                  />,
+                    text={residenceMapsLink.title}
+                    title={`Ir a ${residenceMapsLink.title} en Maps`}
+                  />
                   <Pill faIcon="fa-solid fa-comment-dots">
-                    <p>Ingles {intro.englishLevel}</p>
-                  </Pill>,
-                ].map(item => <li>{item}</li>)
-              }
-            </ul>
-          </div>
-        </li>
-        <li>
-          <article>
-            <h4>{profProfile.title}</h4>
-            <p class="text" set:html={highlightToHTMLTag(profProfile.text)} />
-          </article>
-        </li>
-        <li>
-          <article>
-            <h4>{hobbiesAndLikes.title}</h4>
-            <ul class="hobbies-and-likes">
-              {
-                hobbiesAndLikes.items.map(({ title, emoji }) => (
-                  <li>
-                    <span>{emoji}</span>
-                    <p>{title}</p>
-                  </li>
-                ))
-              }
-            </ul>
-          </article>
-        </li>
-      </Tabbed>
-    </div>
-    <div class="b">
-      <div class="x">
-        <GlassPanel handlingClass={['glass-panel']} />
-        <ImgsSlider
-          folder="about"
-          imgs={imgs}
-          eager
-          style={{ aspectRatio: '1 / 1' }}
-          handlingClass={['slider']}
-        />
-      </div>
-      <nav id="social-nets-in-about">
-        {
-          [
-            ...externalNetwork
-              .slice()
-              .reverse()
-              .map(({ url, faIcon, title }) => (
-                <SocialNet
-                  url={url}
-                  faIcon={faIcon}
-                  title={`Ir al perfil de ${title}`}
-                />
-              )),
-            <ContactLink />,
-          ].map((item, index) => <div style={`--i: ${index}`}>{item}</div>)
+                    <p>Ingles {englishLevel}</p>
+                  </Pill>
+                </div>
+              </footer>
+            </article>
+          )
         }
-      </nav>
-    </div>
-  </AboutStyled.Component>
+      }
+    </li>
+    <li>
+      {
+        () => {
+          const { text } = profProfile.data
+
+          return (
+            <article>
+              <div class="bg card">
+                <p class="text" set:html={highlightToHTMLTag(text)} />
+              </div>
+            </article>
+          )
+        }
+      }
+    </li>
+    <li>
+      {
+        () => {
+          const { history, hobbiesAndLikes } = knowMore.data
+
+          return (
+            <>
+              <article>
+                <h3>{history.title}</h3>
+                <div class="bg card">
+                  <div class="paragraphs">
+                    {history.data.paragraphs.map(item => (
+                      <p class="text" set:html={highlightToHTMLTag(item)} />
+                    ))}
+                  </div>
+                </div>
+              </article>
+              <article>
+                <h3>{hobbiesAndLikes.title}</h3>
+                <ul>
+                  {hobbiesAndLikes.data.items.map(({ title, emoji }) => (
+                    <li>
+                      <span>{emoji}</span>
+                      <p>{title}</p>
+                    </li>
+                  ))}
+                </ul>
+              </article>
+            </>
+          )
+        }
+      }
+    </li>
+  </Tabbed>
 </Section>
 
 <script>

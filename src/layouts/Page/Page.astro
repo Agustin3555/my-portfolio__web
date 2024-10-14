@@ -9,9 +9,8 @@ import '@fontsource-variable/dm-sans'
 import './Page.css'
 import SplashToScrollUp from './components/SplashToScrollUp/SplashToScrollUp.astro'
 import Background from './components/Background/Background.astro'
+import Nav from './components/Nav/Nav.astro'
 import Footer from './components/Footer/Footer.astro'
-import Menu from './components/Menu/Menu.astro'
-import LeftNav from './components/LeftNav/LeftNav.astro'
 import jsonData from '@/data.json'
 
 interface Props {
@@ -50,17 +49,15 @@ if (subtitle) fullTitle += ` ${separator} ${subtitle}`
     />
   </head>
   <body data-social-nets-location="true">
-    <!-- <SplashToScrollUp /> -->
     <!-- <Background /> -->
     <div class="layout">
-      <div class="static">
+      <div class="content">
         <main>
           <slot />
         </main>
-        <Footer />
+        <!-- <Footer /> -->
       </div>
-      <Menu />
-      <LeftNav />
+      <Nav />
     </div>
   </body>
 </html>
@@ -88,23 +85,4 @@ if (subtitle) fullTitle += ` ${separator} ${subtitle}`
   }
 
   bodyManager.data.darkMode.set(String(darkModeInit()))
-</script>
-
-<script>
-  const adaptables = window.document.querySelectorAll<HTMLElement>('.adaptable')
-
-  adaptables.forEach(adaptable => {
-    const content = adaptable.querySelector('& > *')
-
-    const resizeObserver = new ResizeObserver(entries => {
-      if (entries.length > 0) {
-        const { width, height } = entries[0].contentRect
-
-        adaptable.style.setProperty('--content-width', `${width}px`)
-        adaptable.style.setProperty('--content-height', `${height}px`)
-      }
-    })
-
-    content && resizeObserver.observe(content)
-  })
 </script>

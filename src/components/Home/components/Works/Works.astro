@@ -7,11 +7,11 @@ import jsonData from '@/data.json'
 const { sections } = jsonData.pages.home
 const sectionKey: keyof typeof sections = 'works'
 
-const { title, span, faIcon, data } = sections.works
+const { title, strong, faIcon, data } = sections.works
 const { items } = data
 ---
 
-<Section sectionKey={sectionKey} {...{ title, span, faIcon }}>
+<Section sectionKey={sectionKey} {...{ title, strong, faIcon }}>
   <WorkStyled.Component>
     {
       items.map(item => (

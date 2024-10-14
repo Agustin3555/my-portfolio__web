@@ -1,0 +1,27 @@
+---
+import './Links.css'
+import Link, { type Props as LinkProps } from './components/Link/Link.astro'
+import { reassemble } from './tools'
+import jsonData from '@/data.json'
+
+const { pages } = jsonData
+const { sections } = pages.home
+
+const home = reassemble(
+  sections,
+  (sectionKey, current): LinkProps => ({
+    href: `#${sectionKey}`,
+    text: current.buttonTitle,
+  })
+)
+
+const resume: { href: keyof typeof pages } & LinkProps = {
+  href: 'resume',
+  text: pages.resume.buttonTitle,
+}
+---
+
+<nav class="cmp-links">
+  {home.map(item => <Link {...item} />)}
+  <Link {...resume} handlingClass="resume" />
+</nav>

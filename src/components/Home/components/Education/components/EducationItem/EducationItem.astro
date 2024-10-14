@@ -23,15 +23,15 @@ const { title, institutionName, endDate, duration, moreInfoLink } = Astro.props
 ---
 
 <a
-  class="education-item card highlight link"
+  class="education-item bg card link"
   title={moreInfoLink.title}
   href={moreInfoLink.url}
   target="_blank"
   rel="noopener"
 >
-  <h3 class="text">
+  <h3>
     {title}
-    <span class="text">{institutionName}</span>
+    <strong class="text">{institutionName}</strong>
   </h3>
   <ul>
     <li>

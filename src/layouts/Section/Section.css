@@ -11,6 +11,9 @@ section {
     .bullet {
       --cmp-icon-size: var(--pal-size-font-l);
 
+      flex-grow: 0;
+      flex-shrink: 0;
+
       align-content: center;
       aspect-ratio: 1;
       width: var(--pal-size-font-3xl);
@@ -24,5 +27,10 @@ section {
         margin-inline: auto;
       }
     }
+  }
+
+  &.main {
+    justify-content: center;
+    min-height: 100dvh;
   }
 }

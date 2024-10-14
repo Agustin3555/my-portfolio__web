@@ -6,58 +6,44 @@ body {
   color: rgba(var(--pal-color-base-white), 0.625);
 
   .layout {
-    --section-gap: 16rem;
-    --gap: var(--pal-size-font-m);
-
-    position: relative;
+    --layout-max-width: 68rem;
+    --layout-margin-inline: 4rem;
+    --layout-gutter: var(--pal-size-xl);
+    --layout-section-gap: 16rem;
 
     display: flex;
     justify-content: center;
 
-    .static {
-      position: relative;
+    /* Mobile */
+    @media (width <= 26.5625rem) {
+      --layout-margin-inline: 1.25rem;
+      --layout-gutter: var(--pal-size-l);
+    }
 
+    .content {
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-      gap: var(--section-gap);
-      margin: 0 11rem;
-      max-width: 68rem;
-      min-height: 100vh;
-
-      transition:
-        margin var(--pal-time-m) ease,
-        padding var(--pal-time-m) ease;
-
-      @media (width < calc(47rem + (1.625rem * 4 + 2.625rem) * 2)) {
-        margin: 0;
-        padding-top: var(--pal-size-3xl);
-
-        main {
-          padding: 0 calc(var(--gap) * 2);
-        }
-      }
-
-      @media (width < 26.5625rem) {
-        main {
-          padding: 0 var(--gap);
-        }
-      }
+      gap: var(--layout-section-gap);
+      max-width: calc(
+        var(--layout-max-width) + var(--layout-margin-inline) * 2
+      );
+      min-height: 100dvh;
 
       main {
         display: flex;
         flex-direction: column;
-        gap: var(--section-gap);
+        gap: var(--layout-section-gap);
+        padding-inline: var(--layout-margin-inline);
 
-        transition: padding var(--pal-time-m) ease;
+        transition: padding-inline var(--pal-time-m) ease;
 
         > section {
-          :nth-of-type(1) {
-            scroll-margin-top: var(--pal-size-3xl);
+          &:nth-of-type(1) {
+            /* scroll-margin-top: var(--pal-size-3xl); */
           }
 
-          :not(:nth-of-type(1)) {
-            scroll-margin-top: var(--gap);
+          &:not(:nth-of-type(1)) {
+            scroll-margin-top: var(--layout-margin-inline);
           }
         }
       }

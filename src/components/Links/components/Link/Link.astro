@@ -1,0 +1,15 @@
+---
+import './Link.css'
+
+export interface Props {
+  href: string
+  text: string
+  handlingClass?: string
+}
+
+const { href, text, handlingClass } = Astro.props
+---
+
+<a class:list={['cmp-link', handlingClass]} href={`/${href}`}>
+  {text}
+</a>

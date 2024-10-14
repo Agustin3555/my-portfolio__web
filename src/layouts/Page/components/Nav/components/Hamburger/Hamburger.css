@@ -1,0 +1,95 @@
+.cmp-hamburger {
+  --size: 3.5rem;
+  --thickness: 0.125rem;
+  --mid-top: calc(50% - var(--thickness) * 0.5);
+
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--size);
+  aspect-ratio: 1;
+
+  border-radius: var(--pal-size-xs);
+  background-color: var(--pal-color-gs-100);
+
+  &:hover {
+    .bar {
+      background-color: var(--pal-color-white);
+    }
+  }
+
+  .bar {
+    position: absolute;
+    height: var(--thickness);
+    border-radius: var(--pal-size-3xl);
+
+    background-color: rgba(var(--pal-color-base-black), 0.75);
+
+    transition: background-color var(--pal-time-s) ease-out;
+  }
+
+  > * {
+    --icon-size: var(--pal-size-l);
+
+    position: absolute;
+
+    width: var(--icon-size);
+    height: var(--icon-size);
+
+    transition:
+      scale var(--pal-time-m) ease,
+      opacity var(--pal-time-m) ease;
+  }
+
+  .hamburger-icon {
+    .top {
+      top: var(--thickness);
+      width: 50%;
+    }
+
+    .mid {
+      top: var(--mid-top);
+      width: 100%;
+    }
+
+    .bot {
+      bottom: var(--thickness);
+      width: 75%;
+    }
+  }
+
+  .x-icon {
+    scale: 0;
+    opacity: 0;
+
+    > * {
+      top: var(--mid-top);
+      width: 109%;
+    }
+
+    .a {
+      rotate: 45deg;
+    }
+
+    .b {
+      rotate: -45deg;
+    }
+  }
+
+  &:hover .bar {
+    background-color: var(--pal-color-a-l2);
+  }
+
+  &.open {
+    .hamburger-icon {
+      scale: 0;
+      opacity: 0;
+    }
+
+    .x-icon {
+      scale: initial;
+      opacity: initial;
+    }
+  }
+}

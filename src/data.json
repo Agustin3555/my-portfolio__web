@@ -50,62 +50,76 @@
     "home": {
       "sections": {
         "about": {
-          "buttonTitle": "Sobre mí",
+          "linkTitle": "Sobre mí",
           "title": "Juan Agustín Lovera",
-          "span": "Full Stack Web Dev",
+          "strong": "Full Stack Web Dev",
           "faIcon": "fa-solid fa-face-smile-wink",
           "data": {
-            "header": {
-              "hello": "Hola 👋🏻, mi nombre es",
-              "title": "Juan Agustín Lovera",
-              "titleStrong": "Full Stack Web Dev"
-            },
-            "subsections": {
-              "intro": {
-                "text": "Recién graduado con sólidas bases en la [creación de software]. Durante mi trayectoria universitaria, complementé mis estudios con cursos y [aprendizaje autodidacta], enfocándome en [tecnologías web] y [diseño UI].",
-                "residence": {
-                  "text": "Argentina, Resistencia",
-                  "mapsUrl": "https://maps.app.goo.gl/WV5tTaDhoktP9uRp8"
-                },
-                "englishLevel": "técnico"
-              },
-              "profProfile": {
-                "title": "Perfil profesional",
-                "text": "Emocionado por integrarme a un equipo de desarrollo web y dominar el ámbito profesional. Destaco por [aprender rápidamente], [idear proyectos innovadores] y mi sólido conocimiento en [TypeScript]. Comprometido a potenciar mi inglés para ampliar oportunidades laborales y apasionado por mantenerme al tanto de las [últimas tendencias tecnológicas] que mejoran la eficiencia del desarrollo."
-              },
-              "hobbiesAndLikes": {
-                "title": "Hobbies y gustos",
-                "items": [
-                  { "title": "Producción", "emoji": "🎚️" },
-                  { "title": "Videojuegos", "emoji": "🎮" },
-                  { "title": "Gym", "emoji": "💪🏻" },
-                  { "title": "Filosofar", "emoji": "🤔" },
-                  { "title": "Gatos", "emoji": "😸" },
-                  { "title": "Acústica", "emoji": "🔊" },
-                  { "title": "Arquitectura", "emoji": "🏡" }
-                ]
-              }
-            },
-            "imgs": [
-              {
+            "hi": {
+              "title": "Hola",
+              "img": {
                 "file": "myself-1.webp",
                 "alt": "Fotografía de Juan Agustín Lovera: cara frontal sonriente, cuerpo frontal y brazos cruzados"
               },
-              {
+              "data": {
+                "text": "He recorrido un camino único que me ha permitido combinar conocimientos técnicos y creativos. Mi viaje en la programación comenzó en la secundaria, donde descubrí mi pasión por el diseño y la creación de sistemas. Desde entonces, me he dedicado a aprender y perfeccionar mis habilidades, siempre buscando nuevos desafíos y oportunidades para innovar.",
+                "residenceMapsLink": {
+                  "title": "Argentina, Resistencia",
+                  "url": "https://maps.app.goo.gl/WV5tTaDhoktP9uRp8"
+                },
+                "englishLevel": "técnico"
+              }
+            },
+            "profProfile": {
+              "title": "Perfil profesional",
+              "img": {
                 "file": "myself-2.webp",
                 "alt": "Fotografía de Juan Agustín Lovera: cara lateral seria y cuerpo semi lateral"
               },
-              {
+              "data": {
+                "text": "Como [desarrollador web], me destaco en el uso de [TypeScript] y en la implementación de tecnologías modernas para crear soluciones eficientes y escalables. Mi experiencia abarca desde el [diseño UI], hasta el backend con [Node.js], destacando un uso avanzado de [CSS]. Soy un [aprendiz rápido], un [pensador lógico] y un [colaborador eficaz] en equipo, comprometido con la excelencia y la [mejora continua] de mis habilidades técnicas y de comunicación. Aunque me especializo en este campo, estoy abierto a explorar otras áreas del desarrollo en el futuro."
+              }
+            },
+            "knowMore": {
+              "title": "Saber más",
+              "img": {
                 "file": "flat-logo.svg",
                 "alt": "Logo de Juan Agustín Lovera, Full Stack Web Dev"
+              },
+              "data": {
+                "history": {
+                  "title": "Historia",
+                  "data": {
+                    "paragraphs": [
+                      "Desde muy pequeño, era muy observador y curioso, me gustaba diseñar juguetes y crear mecanismos a escala. Como niño, soñaba con ser científico o inventor. Siempre me fue fácil entender la informática, aunque inicialmente no fui más allá de instalar programas, comprender de hardware o limpiar los teléfonos de mi familia y amigos.",
+                      "Durante la secundaria técnica, donde obtuve el título de Maestro Mayor de Obra, descubrí mi gusto por el diseño a través de las materias de Arquitectura. Al mismo tiempo, me interesé en la producción de música y más tarde en la física del sonido. Este interés me llevó a querer construir un proyecto ambicioso sobre la física del sonido, pero necesitaba aprender a programar o al menos saber algo sobre la creación de software. Así, me adentré en el mundo de la programación y el desarrollo de software, arriesgándome a entrar en la universidad para estudiar mi tecnicatura.",
+                      "Por suerte, descubrí una pasión por la programación, y más tarde por el desarrollo web. Así es como pude combinar mi gusto por el diseño y la creación de sistemas. Actualmente, estoy trabajando en proyectos personales de desarrollo innovadores, colaborando con otras personas para llevarlos a cabo. No descarto retomar algún día mi proyecto de física del sonido.",
+                      "Considero que he podido cumplir mi sueño de niño de ser inventor a través de la programación 💜"
+                    ]
+                  }
+                },
+                "hobbiesAndLikes": {
+                  "title": "Hobbies y gustos",
+                  "data": {
+                    "items": [
+                      { "title": "Gym", "emoji": "💪🏻" },
+                      { "title": "Producción", "emoji": "🎚️" },
+                      { "title": "Acústica", "emoji": "🔊" },
+                      { "title": "Videojuegos", "emoji": "🎮" },
+                      { "title": "Filosofar", "emoji": "🤔" },
+                      { "title": "Gatos", "emoji": "😸" },
+                      { "title": "Arquitectura", "emoji": "🏡" }
+                    ]
+                  }
+                }
               }
-            ]
+            }
           }
         },
         "works": {
-          "buttonTitle": "Proyectos",
+          "linkTitle": "Proyectos",
           "title": "Lo que hago",
-          "span": "Mis proyectos",
+          "strong": "Mis proyectos",
           "faIcon": "fa-solid fa-briefcase",
           "data": {
             "items": [
@@ -199,9 +213,9 @@
           }
         },
         "skills": {
-          "buttonTitle": "Tecnologías",
+          "linkTitle": "Tecnologías",
           "title": "Con que trabajo",
-          "span": "Mis tecnologías",
+          "strong": "Mis tecnologías",
           "faIcon": "fa-solid fa-screwdriver-wrench",
           "data": {
             "levels": [
@@ -387,9 +401,9 @@
           }
         },
         "education": {
-          "buttonTitle": "Formación",
+          "linkTitle": "Formación",
           "title": "Siempre aprendiendo",
-          "span": "Mi formación",
+          "strong": "Mi formación",
           "faIcon": "fa-solid fa-book-open-reader",
           "data": {
             "items": [
@@ -463,9 +477,9 @@
           }
         },
         "contact": {
-          "buttonTitle": "Contáctame",
+          "linkTitle": "Contáctame",
           "title": "Hablemos",
-          "span": "Contáctame",
+          "strong": "Contáctame",
           "faIcon": "fa-solid fa-comments",
           "data": {
             "accordingToUser": [
@@ -484,7 +498,7 @@
       }
     },
     "resume": {
-      "buttonTitle": "Currículum",
+      "linkTitle": "Currículum",
       "pageTitle": "Currículum",
       "data": {
         "title": "Currículum",

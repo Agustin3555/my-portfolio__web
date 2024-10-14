@@ -6,13 +6,15 @@ export interface Props {
   handlingClass?: string
 }
 
-const { sectionTitles, handlingClass = [] } = Astro.props
+const { sectionTitles, handlingClass } = Astro.props
+
+// TODO: Se podria optimizar mejor con el uso de la caracteristica de espera para el display en CSS
 ---
 
 <article class:list={['tabbed', handlingClass]}>
   <header>
     <div class="nav">
-      <span class="bg-indicator"></span>
+      <span class="bg-indicator bg"></span>
       <fieldset>
         {
           sectionTitles.map(title => (
@@ -97,7 +99,7 @@ const { sectionTitles, handlingClass = [] } = Astro.props
 
       const resizeObserver = new ResizeObserver(() => {
         const maxHeight = Math.max(...items.map(item => item.clientHeight))
-        elementSlider.style.height = `${maxHeight}px`
+        elementSlider.style.height = `${maxHeight / 16}rem`
       })
 
       resizeObserver.observe(elementSlider)

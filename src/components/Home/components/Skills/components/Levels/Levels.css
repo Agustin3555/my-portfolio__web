@@ -22,13 +22,9 @@
     flex-grow: 1;
     flex-basis: 5rem;
 
-    display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: var(--gap);
-    padding: var(--gap);
 
-    border-radius: var(--pal-size-s);
     cursor: pointer;
 
     @container (width < 40.625rem) {

@@ -19,7 +19,6 @@
         height: 100%;
 
         border-radius: var(--pal-size-2xs);
-        background-color: var(--pal-color-gs-850);
 
         transition:
           left var(--pal-time-s) ease,

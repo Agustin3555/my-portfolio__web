@@ -8,10 +8,10 @@ import jsonData from '@/data.json'
 const { home } = jsonData.pages
 const sectionKey: keyof typeof home.sections = 'skills'
 
-const { title, span, faIcon } = home.sections.skills
+const { title, strong, faIcon } = home.sections.skills
 ---
 
-<Section sectionKey={sectionKey} {...{ title, span, faIcon }}>
+<Section sectionKey={sectionKey} {...{ title, strong, faIcon }}>
   <SkillsStyled.Component>
     <Treeview />
     <Levels />
