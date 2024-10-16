@@ -1,0 +1,5 @@
+@layer normalize, palette, style;
+
+@import "normalize.css" layer(normalize);
+@import "palette.css" layer(palette);
+@import "style.css" layer(style);

@@ -173,17 +173,19 @@ button {
 }
 
 .card {
-  position: relative;
-
-  display: flex;
-  gap: var(--layout-gutter);
-  padding: var(--layout-gutter);
-
   border-radius: var(--pal-size-s);
   box-shadow: var(--pal-shadow-1), var(--bevel);
 
   &.bg {
     --multiplier: 1;
+  }
+
+  &.layout {
+    position: relative;
+
+    display: flex;
+    gap: var(--layout-gutter);
+    padding: var(--layout-gutter);
   }
 }
 

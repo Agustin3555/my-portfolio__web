@@ -1,0 +1,62 @@
+.cmp-work-item {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+
+  text-decoration: none;
+
+  overflow: hidden;
+
+  img {
+    aspect-ratio: 16 / 9;
+    width: 100%;
+
+    object-fit: contain;
+  }
+
+  .content {
+    flex-grow: 1;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: var(--layout-gutter);
+    padding: var(--layout-gutter);
+
+    header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+
+      .types {
+        --cmp-tech-color: var(--pal-color-gs-200);
+
+        display: flex;
+        gap: var(--pal-size-xs);
+
+        font-weight: 500;
+        color: var(--pal-color-gs-850);
+
+        /* Mobile */
+        @media (width <= 26.5625rem) {
+          position: absolute;
+          top: 0;
+          left: 0;
+
+          padding: var(--pal-size-xs);
+        }
+      }
+    }
+
+    .techs {
+      --gap: var(--pal-size-xs);
+
+      flex-wrap: wrap;
+      gap: var(--gap);
+      max-height: calc(var(--cmp-tech-height) * 2 + var(--gap));
+
+      overflow: hidden;
+    }
+  }
+}

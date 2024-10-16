@@ -1,4 +1,9 @@
-.tech {
+:root {
+  --cmp-tech-height: 1.75rem;
+  --cmp-tech-color: rgba(var(--pal-color-base-a), 0.1);
+}
+
+.cmp-tech {
   display: flex;
   align-items: center;
   gap: var(--pal-size-s);
@@ -6,8 +11,7 @@
   height: 1.75rem;
 
   border-radius: var(--pal-size-2xs);
-
-  transition: background-color var(--pal-time-s) ease-out;
+  background-color: var(--cmp-tech-color);
 
   &,
   > * {

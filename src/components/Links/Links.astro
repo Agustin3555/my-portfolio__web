@@ -11,13 +11,13 @@ const home = reassemble(
   sections,
   (sectionKey, current): LinkProps => ({
     href: `#${sectionKey}`,
-    text: current.buttonTitle,
+    text: current.linkTitle,
   })
 )
 
 const resume: { href: keyof typeof pages } & LinkProps = {
   href: 'resume',
-  text: pages.resume.buttonTitle,
+  text: pages.resume.linkTitle,
 }
 ---
 

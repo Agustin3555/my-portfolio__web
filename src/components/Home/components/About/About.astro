@@ -118,15 +118,10 @@ const sectionTitles = Object.values(data).map(item => item.title)
 </Section>
 
 <script>
-  import { NOT_FONT_SIZE, getCSSVarValue } from '@/styles'
   import { bodyManager } from '@/tools/elementManagers.tool'
   import { onScreen } from '@/tools'
 
-  const MARGIN = NOT_FONT_SIZE.m
-
-  let margin = getCSSVarValue(MARGIN)
-  margin = margin.slice(0, -3)
-  margin = `-${parseFloat(margin) * 16}px`
+  const margin = '16px'
 
   const socialNetsInAbout = window.document.querySelector(
     '#social-nets-in-about'

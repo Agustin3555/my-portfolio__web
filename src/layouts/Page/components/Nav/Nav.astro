@@ -4,48 +4,29 @@ import Hamburger from './components/Hamburger/Hamburger.astro'
 import Links from '@/components/Links/Links.astro'
 ---
 
-<header class="cmp-nav">
-  <div class="container card">
-    <!-- <Hamburger /> -->
+<Hamburger />
+<header class="cmp-header">
+  <!-- <ScrollUp /> -->
+  <button class="backdrop" title="Cerrar menú"></button>
+  <nav class="bg card layout">
     <Links />
-    <!-- <ScrollUp /> -->
-  </div>
+  </nav>
 </header>
 
 <script>
   import { $ } from '@/tools'
 
   const hamburger = $<HTMLButtonElement>('.cmp-hamburger')
-  const aside = $<HTMLElement>('.cmp-aside')
+  const backdrop = $<HTMLButtonElement>('.backdrop')
+  const header = $<HTMLButtonElement>('.cmp-header')
 
-  if (hamburger && aside) {
-    const asideWidth = aside.clientWidth / 16
-
-    let isAsideOpen = false
-
-    const updateAsideWidth = () => {
-      const width = `${isAsideOpen ? 0 : asideWidth}rem`
-      window.document.body.style.setProperty('--aside-width', width)
-
-      hamburger.classList.toggle('open', !isAsideOpen)
-      hamburger.title = isAsideOpen ? 'Abrir menú' : 'Cerrar menú'
-    }
-
-    // Alternar apertura/cierre del aside
+  if (hamburger && backdrop && header) {
     hamburger.addEventListener('click', () => {
-      updateAsideWidth()
-      isAsideOpen = !isAsideOpen
+      header.classList.add('open')
     })
 
-    // Cerrar el aside cuando se haga click fuera de él
-    window.document.addEventListener('click', event => {
-      const isClickInsideHamburger = hamburger.contains(event.target as Node)
-      const isClickInsideAside = aside.contains(event.target as Node)
-
-      if (isAsideOpen && !isClickInsideAside && !isClickInsideHamburger) {
-        updateAsideWidth()
-        isAsideOpen = false
-      }
+    backdrop.addEventListener('click', () => {
+      header.classList.remove('open')
     })
   }
 </script>

@@ -3,15 +3,23 @@
   --thickness: 0.125rem;
   --mid-top: calc(50% - var(--thickness) * 0.5);
 
-  position: relative;
+  position: fixed;
+  right: var(--pal-size-m);
+  bottom: var(--pal-size-m);
+
   display: flex;
   align-items: center;
   justify-content: center;
-  width: var(--size);
   aspect-ratio: 1;
+  width: var(--size);
 
+  visibility: hidden;
   border-radius: var(--pal-size-xs);
   background-color: var(--pal-color-gs-100);
+
+  @media (width < 67.5rem) {
+    visibility: visible;
+  }
 
   &:hover {
     .bar {

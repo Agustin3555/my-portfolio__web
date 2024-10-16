@@ -19,7 +19,7 @@ const { accordingToUser, email } = contact.data
     <div class="according-to-user">
       {
         accordingToUser.map(({ title, desc }) => (
-          <article class="bg card">
+          <article class="bg card layout">
             <h3>{title}</h3>
             <p class="text" set:html={highlightToHTMLTag(desc)} />
           </article>

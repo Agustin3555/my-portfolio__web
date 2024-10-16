@@ -1,0 +1,133 @@
+---
+import * as WorkItemStyled from './WorkItem.styled'
+import ImgsSlider from '../../../ImgsSlider/ImgsSlider.astro'
+import SmallLink, {
+  type Props as SmallLinksProps,
+} from '@/components/SmallLink/SmallLink.astro'
+import Separator from '@/components/Separator/Separator.astro'
+import { NOT_FONT_SIZE, VARS } from '@/styles'
+import { highlightToHTMLTag } from '@/tools'
+import Tech from '@/components/Tech/Tech.astro'
+
+type HostingPlatform = 'github' | 'gitlab' | 'bitbucket'
+
+interface Props {
+  title: string
+  types: string[]
+  desc: string
+  technologies: {
+    name: string
+    version?: string
+  }[]
+  imgs: {
+    file: string
+    alt: string
+  }[]
+  sliderAspectRatio?: string
+  links?: {
+    repo?: {
+      url: string
+      host: HostingPlatform
+    }
+    others?: {
+      url: string
+      text: string
+      title: string
+    }[]
+  }
+}
+
+const { title, types, desc, technologies, imgs, sliderAspectRatio, links } =
+  Astro.props
+
+let externalLinks: SmallLinksProps[] = []
+
+if (links) {
+  const { repo, others } = links
+
+  const BY_HOST: Record<HostingPlatform, { icon: string; name: string }> = {
+    github: { icon: 'github', name: 'GitHub' },
+    gitlab: { icon: 'gitlab', name: 'GitLab' },
+    bitbucket: { icon: 'bitbucket', name: 'Bitbucket' },
+  }
+
+  if (repo) {
+    const { icon, name } = BY_HOST[repo.host]
+
+    externalLinks = [
+      {
+        url: repo.url,
+        faIcon: `fa-brands fa-${icon}`,
+        text: 'Repositorio',
+        title: `Ir al repositorio en ${name}`,
+      },
+    ]
+  }
+
+  if (others)
+    externalLinks = [
+      ...externalLinks,
+      ...others.map<SmallLinksProps>(({ url, text, title }) => ({
+        url,
+        text,
+        title,
+      })),
+    ]
+}
+---
+
+<WorkItemStyled.Component className="work-item">
+  <ImgsSlider
+    folder="works"
+    imgs={imgs}
+    style={{
+      aspectRatio: sliderAspectRatio,
+      borderRadius: NOT_FONT_SIZE['2xs'],
+    }}
+    handlingClass={['slider']}
+  />
+  <header class="glass">
+    <div class="content">
+      <h3 class="text">{title}</h3>
+      <ul class="types">
+        {
+          types.map((item, index) => (
+            <li>
+              <p class="text">{item}</p>
+              {index !== types.length - 1 && (
+                <Separator
+                  asSpan
+                  style={{
+                    invert: true,
+                    long: NOT_FONT_SIZE['2xs'],
+                    color: {
+                      light: VARS.color.a.line.light,
+                      dark: VARS.color.a.line.dark,
+                    },
+                  }}
+                />
+              )}
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </header>
+  <div class="desc-container scrollable">
+    <p set:html={highlightToHTMLTag(desc)} class="desc text" />
+  </div>
+  <div class="on-development scrollable scrollable--inline">
+    {
+      externalLinks.length !== 0 && (
+        <nav class="links">
+          {externalLinks.map(item => (
+            <SmallLink {...item} />
+          ))}
+        </nav>
+      )
+    }
+    <ul class="techs">
+      {technologies.map(item => <Tech {...item} />)}
+    </ul>
+  </div>
+</WorkItemStyled.Component>

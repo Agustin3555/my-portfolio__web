@@ -5,7 +5,7 @@ body {
   font-weight: 300;
   color: rgba(var(--pal-color-base-white), 0.625);
 
-  .layout {
+  > .layout {
     --layout-max-width: 68rem;
     --layout-margin-inline: 4rem;
     --layout-gutter: var(--pal-size-xl);
@@ -20,7 +20,7 @@ body {
       --layout-gutter: var(--pal-size-l);
     }
 
-    .content {
+    > .content {
       display: flex;
       flex-direction: column;
       gap: var(--layout-section-gap);
@@ -28,6 +28,8 @@ body {
         var(--layout-max-width) + var(--layout-margin-inline) * 2
       );
       min-height: 100dvh;
+
+      overflow-y: hidden;
 
       main {
         display: flex;
