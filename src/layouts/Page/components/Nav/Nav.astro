@@ -2,6 +2,9 @@
 import './Nav.css'
 import Hamburger from './components/Hamburger/Hamburger.astro'
 import Links from '@/components/Links/Links.astro'
+import SocialNets from '@/components/SocialNets/SocialNets.astro'
+import ContactLink from '@/components/ContactLink/ContactLink.astro'
+import ToggleDarkMode from '@/components/ToggleDarkMode/ToggleDarkMode.astro'
 ---
 
 <Hamburger />
@@ -10,6 +13,11 @@ import Links from '@/components/Links/Links.astro'
   <button class="backdrop" title="Cerrar menú"></button>
   <nav class="bg card layout">
     <Links />
+    <SocialNets />
+    <div>
+      <ContactLink />
+      <ToggleDarkMode />
+    </div>
   </nav>
 </header>
 

@@ -19,8 +19,8 @@ html {
 }
 
 ::selection {
-  color: var(--pal-color-gs-0);
-  background-color: var(--pal-color-b-d2);
+  color: var(--pal-color-white);
+  background-color: var(--pal-color-b);
 }
 
 :is(h1, h2, h3, h4) {
@@ -195,6 +195,8 @@ button {
   --arrow-line-length: calc(var(--arrow-head-size) * sqrt(2) * 1.125);
   --arrow-color-alpha: 0.5;
   --arrow-color: rgba(var(--pal-color-base-white), var(--arrow-color-alpha));
+
+  position: relative;
 
   text-decoration: none;
 

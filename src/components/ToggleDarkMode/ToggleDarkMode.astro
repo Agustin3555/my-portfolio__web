@@ -1,41 +1,28 @@
 ---
-import * as ToggleDarkModeStyled from "./ToggleDarkMode.styled";
-import Icon from "@/components/Icon/Icon.astro";
-import { VARS } from "@/styles";
-
-const iconSize = `calc(${VARS.component.button.s.iconSize} - var(--padding) * 2)`;
+import './ToggleDarkMode.css'
+import Icon from '@/components/Icon/Icon.astro'
 ---
 
-<ToggleDarkModeStyled.Component
-  className="dark-mode-toggle"
-  title="Alternar tema"
->
+<button class="cmp-toggle-dark-mode" title="Alternar tema">
   <div class="switch">
-    <Icon
-      faIcon="fa-solid fa-sun"
-      style={{ size: iconSize }}
-      handlingClass={["sun"]}
-    />
-    <Icon
-      faIcon="fa-solid fa-moon"
-      style={{ size: iconSize }}
-      handlingClass={["moon"]}
-    />
+    <Icon faIcon="fa-solid fa-sun" handlingClass="sun" />
+    <Icon faIcon="fa-solid fa-moon" handlingClass="moon" />
   </div>
-</ToggleDarkModeStyled.Component>
+</button>
 
 <script>
-  import { bodyManager } from "@/tools/elementManagers.tool";
-  import { darkModeEntity } from "@/services";
+  import { darkModeEntity } from '@/services'
+  import { bodyManager } from '@/tools/elementManagers.tool'
+  import { $$ } from '@/tools'
 
-  const darkModeToggles = window.document.querySelectorAll(".dark-mode-toggle");
+  const toggleDarkModeList = $$('.cmp-toggle-dark-mode')
 
-  darkModeToggles.forEach((item) =>
-    item.addEventListener("click", () => {
-      const reverseDarkMode = !(bodyManager.data.darkMode.get() === "true");
+  toggleDarkModeList.forEach(item =>
+    item.addEventListener('click', () => {
+      const reverseDarkMode = !(bodyManager.data.darkMode.get() === 'true')
 
-      bodyManager.data.darkMode.set(String(reverseDarkMode));
-      darkModeEntity.set(reverseDarkMode);
-    }),
-  );
+      bodyManager.data.darkMode.set(String(reverseDarkMode))
+      darkModeEntity.set(reverseDarkMode)
+    })
+  )
 </script>

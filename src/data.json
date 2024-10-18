@@ -6,21 +6,21 @@
     },
     "desc": "¡Hola! Soy Juan Agustín Lovera, un Full Stack Web Developer recién graduado con sólidas bases en la creación de software y un enfoque en tecnologías web y diseño UI. ¡Bienvenido a mi portafolio!"
   },
-  "externalNetwork": [
+  "socialNets": [
     {
-      "url": "https://www.linkedin.com/in/juan-agust%C3%ADn-lovera-b27528212/",
+      "title": "LinkedIn",
       "faIcon": "fa-brands fa-linkedin",
-      "title": "LinkedIn"
+      "url": "https://www.linkedin.com/in/juan-agust%C3%ADn-lovera-b27528212/"
     },
     {
-      "url": "https://github.com/Agustin3555",
+      "title": "GitHub",
       "faIcon": "fa-brands fa-github",
-      "title": "GitHub"
+      "url": "https://github.com/Agustin3555"
     },
     {
-      "url": "https://www.instagram.com/agustin_lovera2",
+      "title": "Instagram",
       "faIcon": "fa-brands fa-instagram",
-      "title": "Instagram"
+      "url": "https://www.instagram.com/agustin_lovera2"
     }
   ],
   "footer": {

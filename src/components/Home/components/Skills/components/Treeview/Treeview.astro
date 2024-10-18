@@ -1,53 +1,51 @@
 ---
-import * as TreeviewStyled from "./Treeview.styled";
-import Node from "./components/Node/Node.astro";
-import jsonData from "@/data.json";
+import './Treeview.css'
+import Node from './components/Node/Node.astro'
+import jsonData from '@/data.json'
 
-const { techs, levels } = jsonData.pages.home.sections.skills.data;
+const { techs, levels } = jsonData.pages.home.sections.skills.data
 ---
 
-<TreeviewStyled.Component className="glass" id="skill-treeview">
-  <ul class="items" style={`--levels: ${levels.length};`}>
+<div id="skill-treeview">
+  <ul style={`--levels: ${levels.length};`}>
     {
-      techs.map((tech) => (
+      techs.map(tech => (
         <li>
           <Node dataNode={tech} />
         </li>
       ))
     }
   </ul>
-</TreeviewStyled.Component>
+</div>
 
 <script>
-  const skillTreeview =
-    window.document.querySelector<HTMLElement>("#skill-treeview");
+  import { $ } from '@/tools'
+
+  const skillTreeview = $<HTMLElement>('#skill-treeview')
 
   if (skillTreeview) {
     const icons = Array.from(
-      skillTreeview.querySelectorAll<HTMLElement>(".icons"),
-    );
+      skillTreeview.querySelectorAll<HTMLElement>('.icons')
+    )
 
     // Calcular el ancho máximo entre todos los icons
-    const iconsMaxWidth = Math.max(...icons.map((item) => item.clientWidth));
-    skillTreeview.style.setProperty("--icons-max-width", `${iconsMaxWidth}px`);
+    const iconsMaxWidth = Math.max(...icons.map(item => item.clientWidth))
+    skillTreeview.style.setProperty('--icons-max-width', `${iconsMaxWidth}px`)
 
     const names = Array.from(
-      skillTreeview.querySelectorAll<HTMLElement>(".names"),
-    );
+      skillTreeview.querySelectorAll<HTMLElement>('.names')
+    )
 
     const resizeObserver = new ResizeObserver(() => {
-      names.forEach((item) => (item.style.display = "flex"));
+      names.forEach(item => (item.style.display = 'flex'))
 
       // Calcular el ancho máximo entre todos los names
-      const namesMaxWidth = Math.max(...names.map((item) => item.clientWidth));
-      skillTreeview.style.setProperty(
-        "--names-max-width",
-        `${namesMaxWidth}px`,
-      );
+      const namesMaxWidth = Math.max(...names.map(item => item.clientWidth))
+      skillTreeview.style.setProperty('--names-max-width', `${namesMaxWidth}px`)
 
-      names.forEach((item) => (item.style.display = ""));
-    });
+      names.forEach(item => (item.style.display = ''))
+    })
 
-    resizeObserver.observe(names[0]);
+    resizeObserver.observe(names[0])
   }
 </script>

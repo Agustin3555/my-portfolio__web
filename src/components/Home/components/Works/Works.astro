@@ -13,7 +13,7 @@ const { title, strong, faIcon } = sections.works
 const works = await getCollection('works')
 ---
 
-<Section sectionKey={sectionKey} {...{ title, strong, faIcon }}>
+<Section {...{ sectionKey, title, strong, faIcon }}>
   <nav>
     {works.map(item => <WorkItem {...item.data} />)}
   </nav>

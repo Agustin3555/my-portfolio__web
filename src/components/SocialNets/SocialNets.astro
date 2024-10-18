@@ -1,0 +1,15 @@
+---
+import './SocialNets.css'
+import SocialNet from './components/SocialNet/SocialNet.astro'
+import jsonData from '@/data.json'
+
+const { socialNets } = jsonData
+---
+
+<div class="cmp-social-nets">
+  {
+    socialNets.map(({ title, faIcon, url }) => (
+      <SocialNet {...{ faIcon, url }} title={`Ir al perfil de ${title}`} />
+    ))
+  }
+</div>

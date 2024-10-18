@@ -2,16 +2,14 @@
 import './About.css'
 import Section from '@/layouts/Section/Section.astro'
 import Tabbed from '@/layouts/Tabbed/Tabbed.astro'
-import SocialNet from '@/components/SocialNet/SocialNet.astro'
 import SmallLink from '@/components/SmallLink/SmallLink.astro'
 import Pill from '@/components/Pill/Pill.astro'
+import SocialNets from '@/components/SocialNets/SocialNets.astro'
 import ContactLink from '@/components/ContactLink/ContactLink.astro'
 import { highlightToHTMLTag } from '@/tools'
 import jsonData from '@/data.json'
 
-const { externalNetwork, pages } = jsonData
-
-const { sections } = pages.home
+const { sections } = jsonData.pages.home
 const sectionKey: keyof typeof sections = 'about'
 
 const { about } = sections
@@ -21,7 +19,7 @@ const { hi, profProfile, knowMore } = data
 const sectionTitles = Object.values(data).map(item => item.title)
 ---
 
-<Section sectionKey={sectionKey} {...{ title, strong, faIcon }} main>
+<Section {...{ sectionKey, title, strong, faIcon }} main>
   <Tabbed sectionTitles={sectionTitles}>
     <li>
       {
@@ -33,21 +31,8 @@ const sectionTitles = Object.values(data).map(item => item.title)
               <p class="text bg card" set:html={highlightToHTMLTag(text)} />
               <footer>
                 <nav id="social-nets-in-about">
-                  {[
-                    ...externalNetwork
-                      .slice()
-                      .reverse()
-                      .map(({ url, faIcon, title }) => (
-                        <SocialNet
-                          url={url}
-                          faIcon={faIcon}
-                          title={`Ir al perfil de ${title}`}
-                        />
-                      )),
-                    <ContactLink />,
-                  ].map((item, index) => (
-                    <div style={`--i: ${index}`}>{item}</div>
-                  ))}
+                  <SocialNets />
+                  <ContactLink />
                 </nav>
                 <div>
                   <SmallLink

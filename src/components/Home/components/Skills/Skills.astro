@@ -1,6 +1,6 @@
 ---
+import './Skills.css'
 import Section from '@/layouts/Section/Section.astro'
-import * as SkillsStyled from './Skills.styled'
 import Treeview from './components/Treeview/Treeview.astro'
 import Levels from './components/Levels/Levels.astro'
 import jsonData from '@/data.json'
@@ -11,9 +11,9 @@ const sectionKey: keyof typeof home.sections = 'skills'
 const { title, strong, faIcon } = home.sections.skills
 ---
 
-<Section sectionKey={sectionKey} {...{ title, strong, faIcon }}>
-  <SkillsStyled.Component>
+<Section {...{ sectionKey, title, strong, faIcon }}>
+  <div>
     <Treeview />
     <Levels />
-  </SkillsStyled.Component>
+  </div>
 </Section>

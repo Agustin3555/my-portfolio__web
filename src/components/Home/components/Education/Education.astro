@@ -12,7 +12,7 @@ const { title, strong, faIcon, data } = education
 const { items } = data
 ---
 
-<Section sectionKey={sectionKey} {...{ title, strong, faIcon }}>
+<Section {...{ sectionKey, title, strong, faIcon }}>
   <ul class="education">
     {items.map(item => <EducationItem {...item} />)}
   </ul>

@@ -12,7 +12,6 @@
 
   .backdrop {
     position: fixed;
-    z-index: 0;
     top: 0;
     left: 0;
 
@@ -25,7 +24,7 @@
 
     transition:
       opacity var(--pal-time-s) ease-out,
-      display var(--pal-time-s) allow-discrete;
+      display var(--pal-time-s) ease-out allow-discrete;
   }
 
   > nav {

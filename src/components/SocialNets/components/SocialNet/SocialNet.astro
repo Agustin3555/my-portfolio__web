@@ -3,16 +3,16 @@ import './SocialNet.css'
 import Icon from '@/components/Icon/Icon.astro'
 
 interface Props {
-  url: string
-  faIcon: string
   title: string
+  faIcon: string
+  url: string
 }
 
-const { url, faIcon, title } = Astro.props
+const { title, faIcon, url } = Astro.props
 ---
 
 <a
-  class="social-net card link s"
+  class="cmp-social-net bg link s"
   title={title}
   href={url}
   target="_blank"

@@ -1,39 +1,39 @@
 ---
-import * as NodeStyled from "./Node.styled";
-import { Image } from "astro:assets";
+import './Node.css'
+import { Image } from 'astro:assets'
 import Separator, {
   type Props as SeparatorProps,
-} from "@/components/Separator/Separator.astro";
-import { FONT_SIZE, VARS } from "@/styles";
-import { asClassName } from "@/tools";
+} from '@/components/Separator/Separator.astro'
+import { FONT_SIZE, VARS } from '@/styles'
+import { asClassName } from '@/tools'
 import {
   getImgMetadata,
   validateImgMetadata,
   type Folder,
-} from "@/tools/getImgMetadata.tool";
+} from '@/tools/getImgMetadata.tool'
 
 interface DataNode {
   items: {
-    name: string;
-    file: string;
-    invertInBrightMode?: boolean;
-    invertInDarkMode?: boolean;
-  }[];
-  skillLevel: number;
-  techs?: DataNode[];
+    name: string
+    file: string
+    invertInBrightMode?: boolean
+    invertInDarkMode?: boolean
+  }[]
+  skillLevel: number
+  techs?: DataNode[]
 }
 
 interface Props {
-  dataNode: DataNode;
-  level?: number;
+  dataNode: DataNode
+  level?: number
 }
 
-const { dataNode, level = 0 } = Astro.props;
-const { items, skillLevel, techs } = dataNode;
+const { dataNode, level = 0 } = Astro.props
+const { items, skillLevel, techs } = dataNode
 
-const folder: Folder = "skills";
+const folder: Folder = 'skills'
 
-items.forEach(({ file }) => validateImgMetadata(folder, file));
+items.forEach(({ file }) => validateImgMetadata(folder, file))
 
 const separatorProps: SeparatorProps = {
   style: {
@@ -44,10 +44,10 @@ const separatorProps: SeparatorProps = {
       dark: VARS.color.a.line.dark,
     },
   },
-};
+}
 ---
 
-<NodeStyled.Component>
+<div class="cmp-node">
   <div
     class="tech"
     style={`
@@ -72,8 +72,8 @@ const separatorProps: SeparatorProps = {
             <>
               <Image
                 class={asClassName(
-                  "icon",
-                  invertInDarkMode ? "invert-in-dark-mode" : "",
+                  'icon',
+                  invertInDarkMode ? 'invert-in-dark-mode' : ''
                 )}
                 src={getImgMetadata(folder, file)()}
                 alt={`Logo de ${name}`}
@@ -92,7 +92,7 @@ const separatorProps: SeparatorProps = {
   {
     techs && (
       <ul class="techs-children">
-        {techs.map((tech) => (
+        {techs.map(tech => (
           <li>
             <span class="bullet-point">
               <span class="box" />
@@ -104,4 +104,4 @@ const separatorProps: SeparatorProps = {
       </ul>
     )
   }
-</NodeStyled.Component>
+</div>

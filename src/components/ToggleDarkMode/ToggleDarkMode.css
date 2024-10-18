@@ -1,0 +1,79 @@
+.cmp-toggle-dark-mode {
+  padding: var(--pal-size-3xs);
+  aspect-ratio: 1;
+  width: var(--pal-size-2xl);
+
+  border-radius: 100%;
+  background-color: var(--pal-color-gs-600);
+
+  transition: background-color var(--pal-time-s) ease-out;
+
+  &:hover .switch {
+    rotate: -22.5deg;
+  }
+
+  &:active .switch {
+    scale: 90%;
+  }
+
+  .switch {
+    --cmp-icon-size: var(--pal-size-font-s);
+
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1;
+    width: 100%;
+
+    border-radius: 100%;
+    background-color: var(--pal-color-gs-200);
+
+    transition:
+      background-color var(--pal-time-s) ease-out,
+      scale var(--pal-time-s) var(--pal-timing-func-a),
+      rotate 0.6s var(--pal-timing-func-a);
+
+    > * {
+      position: absolute;
+
+      transition:
+        scale var(--pal-time-m) ease-out,
+        rotate var(--pal-time-m) ease-out,
+        opacity var(--pal-time-m) ease-out;
+    }
+
+    .sun {
+      color: var(--pal-color-gs-200);
+
+      scale: 0;
+      rotate: 0.375turn;
+      opacity: 0;
+    }
+
+    .moon {
+      color: var(--pal-color-gs-800);
+    }
+  }
+
+  body[data-dark-mode="true"] & {
+    background-color: var(--pal-color-gs-950);
+
+    .switch {
+      background-color: var(--pal-color-gs-850);
+
+      .sun {
+        scale: initial;
+        rotate: initial;
+        opacity: initial;
+      }
+
+      .moon {
+        scale: 0;
+        rotate: 135deg;
+        opacity: 0;
+      }
+    }
+  }
+}

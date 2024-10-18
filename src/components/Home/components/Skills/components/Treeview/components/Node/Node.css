@@ -1,12 +1,10 @@
-import styled from "@emotion/styled";
-import { COLOR, FONT_SIZE, TIME, NOT_FONT_SIZE, VARS } from "@/styles";
 
-export const Component = styled.div`
-  --gap-s: ${NOT_FONT_SIZE["3xs"]};
-  --bar-height: ${VARS.size.gold};
+.cmp-node {
+  --gap-s: var(--pal-size-2xs);
+  --bar-height: var(--pal-size-l);
   --tech-padding: var(--gap-s);
   --tech-height: calc(var(--tech-padding) * 2 + var(--bar-height));
-  --bullet-point-width: ${VARS.size.gold};
+  --bullet-point-width: var(--pal-size-l);
   --bullet-point-node-gap: var(--gap-s);
 
   flex-grow: 1;
@@ -21,14 +19,14 @@ export const Component = styled.div`
     gap: calc(var(--gap-s) * 3);
     padding: var(--tech-padding);
     padding-left: calc(var(--tech-padding) * 2);
-    border-radius: ${NOT_FONT_SIZE["3xs"]};
+    border-radius: var(--pal-size-2xs);
 
     transition:
-      background-color ${TIME.s} ease-out,
-      opacity ${TIME.s} ease-out;
+      background-color var(--pal-time-s) ease-out,
+      opacity var(--pal-time-s) ease-out;
 
-    :hover {
-      background-color: ${COLOR.gs_3};
+    &:hover {
+      background-color: var(--pal-color-gs-850);
 
       .names {
         color: ${COLOR.gs_18};
@@ -45,10 +43,10 @@ export const Component = styled.div`
           var(--node-level)
       );
 
-      transition: color ${TIME.s} ease-out;
+      transition: color var(--pal-time-s) ease-out;
 
       .name {
-        font-size: ${FONT_SIZE.xs};
+        font-size: var(--pal-size-font-xs);
 
         white-space: nowrap;
       }
@@ -70,14 +68,14 @@ export const Component = styled.div`
         width: var(--icons-max-width);
 
         .icon {
-          --icon-size: ${FONT_SIZE.l};
 
-          width: var(--icon-size);
-          height: var(--icon-size);
+          aspect-ratio: 1;
+          width: var(--pal-size-l);
+          height: auto;
 
           object-fit: contain;
 
-          transition: filter ${TIME.s} ease-out;
+          transition: filter var(--pal-time-s) ease-out;
         }
 
         .invert-in-dark-mode {
@@ -92,9 +90,9 @@ export const Component = styled.div`
 
         .bar {
           height: var(--bar-height);
-          border-radius: ${NOT_FONT_SIZE["4xs"]};
+          border-radius: var(--pal-size-2xs);
 
-          background-color: ${COLOR.b};
+          background-color: var(--pal-color-a);
         }
       }
     }
@@ -137,12 +135,12 @@ export const Component = styled.div`
         --techs-children-gap: var(--gap-s);
 
         .bullet-point .line {
-          width: ${NOT_FONT_SIZE["6xs"]};
+          width: .0625rem;
         }
       }
 
       .bullet-point {
-        --line-color: ${VARS.color.a.line.light};
+        --line-color: var(--pal-color-gs-400);
 
         position: relative;
         width: var(--bullet-point-width);
@@ -154,33 +152,34 @@ export const Component = styled.div`
         }
 
         .box {
-          width: ${NOT_FONT_SIZE["2xs"]};
+          width: var(--pal-size-2xs);
           height: calc(var(--tech-height) / 2);
-          border-bottom-left-radius: ${NOT_FONT_SIZE["3xs"]};
+          border-bottom-left-radius: var(--pal-size-2xs);
 
           border-width: 0;
-          border-left-width: ${NOT_FONT_SIZE["6xs"]};
-          border-bottom-width: ${NOT_FONT_SIZE["6xs"]};
+          border-left-width: .0625rem;
+          border-bottom-width: .0625rem;
           border-style: solid;
           border-color: var(--line-color);
 
-          transition: border-color ${TIME.s} ease-out;
+          transition: border-color var(--pal-time-s) ease-out;
         }
 
         .line {
+          width: .0625rem;
           height: 100%;
 
           background-color: var(--line-color);
 
-          transition: background-color ${TIME.s} ease-out;
+          transition: background-color var(--pal-time-s) ease-out;
         }
       }
     }
   }
 
-  body[data-dark-mode="true"] & {
+  /* body[data-dark-mode="true"] & {
     .tech {
-      :hover {
+      &:hover {
         background-color: ${COLOR.gs_14};
 
         .names {
@@ -196,5 +195,5 @@ export const Component = styled.div`
     .techs-children > li .bullet-point {
       --line-color: ${VARS.color.a.line.dark};
     }
-  }
-`;
+  } */
+}
