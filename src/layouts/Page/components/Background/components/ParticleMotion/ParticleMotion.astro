@@ -1,172 +1,89 @@
 ---
-import * as ParticleMotionStyled from "./ParticleMotion.styled";
-import { type HandlingClass, asClassName } from "@/tools";
+import './ParticleMotion.css'
 
 interface Props {
-  basicSeparation?: number;
-  handlingClass?: HandlingClass;
+  basicSeparation?: number
 }
 
-const { basicSeparation = 150, handlingClass = [] } = Astro.props;
+const { basicSeparation = 625 } = Astro.props
 ---
 
-<ParticleMotionStyled.Component
-  className={asClassName("particle-motion", ...handlingClass)}
-  data-basic-separation={basicSeparation}
-/>
+<span class="cmp-particle-motion" data-basic-separation={basicSeparation}
+></span>
 
 <script>
-  import { COLOR, type Color } from "@/styles";
-  import { debounce, randomInt, dropRandom } from "@/tools";
+  import { debounce, randomInt, dropRandom, $$ } from '@/tools'
 
-  const isMobile =
-    /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-      window.navigator.userAgent,
-    );
+  const particleMotions = $$<HTMLElement>('.cmp-particle-motion')
 
-  if (!isMobile) {
-    const particleMotions =
-      window.document.querySelectorAll<HTMLElement>(".particle-motion");
+  const SIZES = [80, 128, 256]
+  const COLORS = ['a', 'b']
+  const BPM = 120
+  const TIME_FACTORS = [2, 4, 8]
 
-    const SIZES: number[] = [24, 42, 68];
-    const COLORS: Color[] = [COLOR.a, COLOR.b, COLOR.c, COLOR.d];
-    const MAX_MISMATCH = 64;
-    const MIN_DURATION = 30;
-    const MAX_DURATION = 60;
+  const handleResize = () => {
+    particleMotions.forEach(particleMotion => {
+      const { clientWidth, clientHeight, dataset } = particleMotion
 
-    // Valores aproximados
-    const MAX_HEIGHT = 8000;
-    const MIN_HEIGHT = 1000;
+      let step: undefined | string | number = dataset.basicSeparation
 
-    const COMPENSATION = 1500;
+      if (step === undefined) return
 
-    const handleResize = () => {
-      particleMotions.forEach((particleMotion) => {
-        const { clientWidth, clientHeight, dataset } = particleMotion;
-        const normalStep = dataset.basicSeparation;
+      // Eliminar los elementos anteriores
+      while (particleMotion.firstChild)
+        particleMotion.removeChild(particleMotion.firstChild)
 
-        if (normalStep) {
-          let size = 0;
-          let step = 0;
-
-          const updateStep = () => {
-            const mismatch = randomInt({ max: MAX_MISMATCH });
-            size = dropRandom(SIZES);
-            step = Number(normalStep) + mismatch - size / 2;
-          };
-
-          updateStep();
-
-          const paramsElements: {
-            particle: {
-              vars: {
-                squareSize: number;
-                animation: { duration: number; delay: number };
-              };
-              left: number;
-            };
-            square: { backgroundColor: string };
-          }[] = [];
-
-          // Calcular los parametros de los elementos
-          for (
-            // Primer particle
-            let left = -(size / 2);
-            // Última particle
-            left < clientWidth - step / 2;
-            // Paso dinámico
-            left += step
-          ) {
-            /*
-            Calcular la probabilidad de eliminación en función del
-            clientHeight, con el objetivo de minimizar el numero de particulas
-            en screen en vistas de páginas con un height mínimo.
-            */
-
-            const minHeight = MIN_HEIGHT - COMPENSATION;
-            const maxHeight = MAX_HEIGHT - COMPENSATION;
-
-            const deletionProbability =
-              1 - (clientHeight - minHeight) / (maxHeight - minHeight);
-            /*
-            Generar un número aleatorio entre 0 y 1 para determinar si eliminar
-            el elemento.
-            */
-            const randomValue = Math.random();
-            /*
-            Si el número aleatorio es menor que la probabilidad de eliminación,
-            omitir este elemento.
-            */
-            if (randomValue < deletionProbability) continue;
-
-            const duration =
-              randomInt({ min: MIN_DURATION, max: MAX_DURATION }) *
-              clientHeight *
-              0.000625;
-
-            paramsElements.push({
-              particle: {
-                vars: {
-                  squareSize: size,
-                  animation: { duration, delay: randomInt({ max: duration }) },
-                },
-                left,
-              },
-              square: { backgroundColor: dropRandom(COLORS) },
-            });
-
-            updateStep();
-          }
-
-          // Eliminar los elementos anteriores
-          while (particleMotion.firstChild)
-            particleMotion.removeChild(particleMotion.firstChild);
-
-          // Crear los nuevos elementos con los parámetros calculados
-          paramsElements.forEach((item) => {
-            const { vars, left } = item.particle;
-            const { squareSize, animation } = vars;
-            const { duration, delay } = animation;
-
-            const particle = window.document.createElement("span");
-            particle.className = "particle";
-            particle.style.setProperty(
-              "--container-height",
-              `${clientHeight}px`,
-            );
-            particle.style.setProperty("--square-size", `${squareSize}px`);
-            particle.style.setProperty("--animation-duration", `${duration}s`);
-            particle.style.setProperty("--animation-delay", `-${delay}s`);
-            particle.style.left = `${left}px`;
-
-            const { backgroundColor } = item.square;
-
-            const square = window.document.createElement("span");
-            square.className = "square";
-            square.style.backgroundColor = backgroundColor;
-
-            particleMotion.appendChild(particle).appendChild(square);
-          });
+      const configElements: {
+        top: number
+        left: number
+        vars: {
+          size: number
+          backgroundColor: string
+          animation: { duration: number }
         }
-      });
-    };
+      }[] = []
 
-    handleResize();
+      step = Number(step)
 
-    // Agregar un evento de redimensionamiento con debounce
-    window.addEventListener("resize", debounce(handleResize, 500));
+      for (let top = 0; top < clientHeight; top += step) {
+        const left = randomInt({ min: -SIZES[1], max: clientWidth })
 
-    /*
-      Agregar un evento de cambio de visibilidad para pausar o reanudar las
-      animaciones.
-    */
-    window.addEventListener("visibilitychange", () => {
-      particleMotions.forEach((particleMotion) =>
-        particleMotion.style.setProperty(
-          "--animation-play",
-          window.document.visibilityState !== "hidden" ? "running" : "paused",
-        ),
-      );
-    });
+        configElements.push({
+          top,
+          left,
+          vars: {
+            size: dropRandom(SIZES),
+            backgroundColor: dropRandom(COLORS),
+            animation: {
+              duration: (60 / BPM) * dropRandom(TIME_FACTORS),
+            },
+          },
+        })
+      }
+
+      configElements.forEach(({ top, left, vars }) => {
+        const { size, backgroundColor, animation } = vars
+        const { duration } = animation
+
+        const particle = window.document.createElement('span')
+
+        particle.className = 'particle'
+        particle.style.top = `${top / 16}rem`
+        particle.style.left = `${left / 16}rem`
+        particle.style.setProperty('--size', `${size / 16}rem`)
+        particle.style.setProperty('--animation-duration', `${duration}s`)
+        particle.style.setProperty(
+          '--background-color',
+          `var(--pal-color-base-${backgroundColor})`
+        )
+
+        particleMotion.appendChild(particle)
+      })
+    })
   }
+
+  handleResize()
+
+  // Evento de redimensionamiento con debounce para optimizarlo
+  window.addEventListener('resize', debounce(handleResize, 400))
 </script>

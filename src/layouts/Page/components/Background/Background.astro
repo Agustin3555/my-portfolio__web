@@ -1,37 +1,8 @@
 ---
-import * as BackgroundStyled from "./Background.styled";
-import ParticleMotion from "./components/ParticleMotion/ParticleMotion.astro";
+import './Background.css'
+import ParticleMotion from './components/ParticleMotion/ParticleMotion.astro'
 ---
 
-<BackgroundStyled.Component>
-  <span class="background"></span>
-  <ParticleMotion handlingClass={["lateral-particles"]} />
-  <span id="center-particles">
-    <!-- 312.5 ≈ 4 particles -->
-    <ParticleMotion basicSeparation={312.5} />
-  </span>
-  <ParticleMotion handlingClass={["lateral-particles"]} />
-</BackgroundStyled.Component>
-
-<script>
-  const staticElement = window.document.querySelector(".static");
-  const centerParticles =
-    window.document.querySelector<HTMLElement>("#center-particles");
-
-  if (staticElement && centerParticles) {
-    const resizeObserver = new ResizeObserver((entries) => {
-      if (entries.length > 0) {
-        const { width: mainWidth } = entries[0].contentRect;
-
-        centerParticles.style.width = `${mainWidth}px`;
-      }
-    });
-
-    resizeObserver.observe(staticElement);
-
-    // Ejecutar la parte necesaria al menos una vez
-    const { width: mainWidth } = staticElement.getBoundingClientRect();
-
-    centerParticles.style.width = `${mainWidth}px`;
-  }
-</script>
+<span class="cmp-background">
+  <ParticleMotion />
+</span>

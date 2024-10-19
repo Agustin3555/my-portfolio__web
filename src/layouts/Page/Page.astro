@@ -4,10 +4,10 @@ import '@fontsource-variable/onest'
 import '@fontsource-variable/dm-sans'
 
 import './Page.css'
-import SplashToScrollUp from './components/SplashToScrollUp/SplashToScrollUp.astro'
 import Background from './components/Background/Background.astro'
-import Nav from './components/Nav/Nav.astro'
+import SplashToScrollUp from './components/SplashToScrollUp/SplashToScrollUp.astro'
 import Footer from './components/Footer/Footer.astro'
+import Nav from './components/Nav/Nav.astro'
 import jsonData from '@/data.json'
 
 interface Props {
@@ -46,7 +46,7 @@ if (subtitle) fullTitle += ` ${separator} ${subtitle}`
     />
   </head>
   <body data-social-nets-location="true">
-    <!-- <Background /> -->
+    <Background />
     <div class="layout">
       <div class="content">
         <main>

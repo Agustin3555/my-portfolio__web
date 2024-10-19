@@ -1,0 +1,32 @@
+@keyframes kick {
+  to {
+    scale: 1.25;
+  }
+}
+
+@keyframes float {
+  to {
+    translate: 0 100rem;
+  }
+}
+
+.cmp-particle-motion {
+  width: 100%;
+  height: 100%;
+
+  animation: float linear both;
+  animation-timeline: scroll(root);
+
+  .particle {
+    position: absolute;
+
+    aspect-ratio: 1;
+    width: var(--size);
+
+    border-radius: 50%;
+    background-color: rgba(var(--background-color), 0.2);
+    filter: blur(4rem);
+
+    animation: kick var(--animation-duration) ease-in infinite alternate;
+  }
+}
