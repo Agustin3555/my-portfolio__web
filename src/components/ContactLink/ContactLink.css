@@ -38,7 +38,7 @@
 
   &:hover {
     &::before {
-      animation: spin var(--pal-time-l) linear infinite;
+      animation: spin 0.8s linear infinite;
     }
   }
 

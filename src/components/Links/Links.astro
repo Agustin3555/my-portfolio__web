@@ -1,6 +1,5 @@
 ---
-import './Links.css'
-import Link, { type Props as LinkProps } from './components/Link/Link.astro'
+import Link, { type Props as LinkProps } from '@/components/Link/Link.astro'
 import { reassemble } from './tools'
 import jsonData from '@/data.json'
 
@@ -21,7 +20,5 @@ const resume: { href: keyof typeof pages } & LinkProps = {
 }
 ---
 
-<nav class="cmp-links">
-  {home.map(item => <Link {...item} />)}
-  <Link {...resume} handlingClass="resume" />
-</nav>
+{home.map(item => <Link {...item} />)}
+<Link {...resume} handlingClass="resume bg-spin" />

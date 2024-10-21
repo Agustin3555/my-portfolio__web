@@ -29,7 +29,7 @@ html {
 
   line-height: 1.4375;
   font-family: var(--pal-font-b);
-  font-weight: 450;
+  font-weight: 500;
   text-wrap: balance;
   word-spacing: initial;
   letter-spacing: initial;
@@ -112,51 +112,8 @@ button {
   }
 }
 
-.scrollable {
-  --angle: 180deg;
-
-  animation: progress-scrolling auto linear;
-
-  scrollbar-width: thin;
-  scrollbar-color: rgba(122, 122, 122, 0.25) transparent;
-  animation-timeline: scroll(self);
-}
-
-.scrollable--inline {
-  --angle: 90deg;
-
-  animation-timeline: scroll(self inline);
-}
-
-@keyframes progress-scrolling {
-  from {
-    mask-image: linear-gradient(
-      var(--angle),
-      rgba(0, 0, 0, 1) 0%,
-      rgba(0, 0, 0, 1) var(--gradient-width),
-      rgba(0, 0, 0, 1) calc(100% - var(--gradient-width)),
-      rgba(0, 0, 0, 0) 100%
-    );
-  }
-  0.001%,
-  99.999% {
-    mask-image: linear-gradient(
-      var(--angle),
-      rgba(0, 0, 0, 0) 0%,
-      rgba(0, 0, 0, 1) var(--gradient-width),
-      rgba(0, 0, 0, 1) calc(100% - var(--gradient-width)),
-      rgba(0, 0, 0, 0) 100%
-    );
-  }
-  to {
-    mask-image: linear-gradient(
-      var(--angle),
-      rgba(0, 0, 0, 0) 0%,
-      rgba(0, 0, 0, 1) var(--gradient-width),
-      rgba(0, 0, 0, 1) calc(100% - var(--gradient-width)),
-      rgba(0, 0, 0, 1) 100%
-    );
-  }
+:root {
+  --cls-bg-color: var(--pal-color-gs-850);
 }
 
 .bg {
@@ -166,9 +123,9 @@ button {
     inset 0.0625rem 0.0625rem 0 0
       rgba(var(--pal-color-base-white), calc(0.05 * var(--multiplier))),
     inset 0 0.0625rem 0 0
-      rgba(var(--pal-color-base-white), calc(0.075 * var(--multiplier)));
+      rgba(var(--pal-color-base-white), calc(0.1 * var(--multiplier)));
 
-  background-color: var(--pal-color-gs-850);
+  background-color: var(--cls-bg-color);
   box-shadow: var(--bevel);
 }
 
@@ -177,7 +134,7 @@ button {
   box-shadow: var(--pal-shadow-1), var(--bevel);
 
   &.bg {
-    --multiplier: 1;
+    --multiplier: 0.75;
   }
 
   &.layout {
@@ -226,10 +183,10 @@ button {
     scale: 0;
     rotate: -45deg;
 
+    transition: scale var(--pal-time-s) ease-out;
+
     background: linear-gradient(90deg, transparent, var(--arrow-color));
     transform-origin: top right;
-
-    transition: scale var(--pal-time-s) ease-out;
   }
 
   &::after {

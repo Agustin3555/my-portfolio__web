@@ -1,5 +1,4 @@
 .cmp-hamburger {
-  --size: 3.5rem;
   --thickness: 0.125rem;
   --mid-top: calc(50% - var(--thickness) * 0.5);
 
@@ -11,27 +10,22 @@
   align-items: center;
   justify-content: center;
   aspect-ratio: 1;
-  width: var(--size);
+  width: 3.5rem;
 
   visibility: hidden;
   border-radius: var(--pal-size-xs);
   background-color: var(--pal-color-gs-100);
+  box-shadow: var(--pal-shadow-1);
 
   @media (width < 67.5rem) {
     visibility: visible;
   }
 
-  &:hover {
-    .bar {
-      background-color: var(--pal-color-white);
-    }
-  }
-
   .bar {
     position: absolute;
     height: var(--thickness);
-    border-radius: var(--pal-size-3xl);
 
+    border-radius: var(--pal-size-3xl);
     background-color: rgba(var(--pal-color-base-black), 0.75);
 
     transition: background-color var(--pal-time-s) ease-out;
@@ -86,7 +80,7 @@
   }
 
   &:hover .bar {
-    background-color: var(--pal-color-a-l2);
+    background-color: var(--pal-color-a);
   }
 
   &.open {

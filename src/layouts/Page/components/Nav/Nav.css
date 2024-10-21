@@ -32,10 +32,49 @@
 
     transition: translate var(--pal-time-m) ease;
 
-    .cmp-links {
+    .section {
+      display: flex;
+    }
+
+    .squares {
+      --cls-bg-color: var(--pal-color-gs-800);
+
+      gap: var(--pal-size-m);
+    }
+
+    .links {
       flex-direction: column;
-      gap: var(--pal-size-xl);
-      padding: var(--pal-size-xs);
+      gap: var(--pal-size-s);
+
+      .cmp-link {
+        padding-block: var(--pal-size-s);
+        padding-inline: var(--pal-size-m);
+
+        border-radius: 0.375rem;
+
+        transition:
+          color var(--pal-time-s) ease-out,
+          background-color var(--pal-time-s) ease-out;
+
+        &:hover {
+          color: var(--pal-color-white);
+
+          background-color: var(--pal-color-gs-800);
+        }
+      }
+
+      .resume {
+        font-weight: 450;
+        color: var(--pal-color-black);
+
+        background-color: var(--pal-color-gs-300);
+
+        &:hover {
+          color: var(--pal-color-black);
+
+          background-color: var(--pal-color-a-l2);
+        }
+      }
     }
   }
 

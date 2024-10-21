@@ -1,32 +1,20 @@
 ---
 import './Footer.css'
-import Separator, {
-  type Props as SeparatorProps,
-} from '@/components/Separator/Separator.astro'
 import Link from '@/components/Link/Link.astro'
-import { VARS } from '@/styles'
 import jsonData from '@/data.json'
 
 const { copyright, sections } = jsonData.footer
 const { acknowledgments, othersPages } = sections
 
-const separatorProps: SeparatorProps = {
-  style: {
-    color: {
-      light: VARS.color.b.line.light,
-      dark: VARS.color.b.line.dark,
-    },
-  },
-  handlingClass: ['separator'],
-}
+// TODO: agregar un separador
+// TODO: agregar un icono y un "Gracias por llegar hasta aqui" o algo asi
 ---
 
 <footer>
   <div class="sections">
-    <article>
+    <article class="acknowledgments">
       <h4>{acknowledgments.title}</h4>
-      <Separator {...separatorProps} />
-      <div class="acknowledgments paragraphs">
+      <div>
         <p class="text">{acknowledgments.data.text}</p>
         <ul>
           {
@@ -42,14 +30,12 @@ const separatorProps: SeparatorProps = {
         </ul>
       </div>
     </article>
-    <article>
+    <article class="others-pages">
       <h4>{othersPages.title}</h4>
-      <Separator {...separatorProps} />
       <nav>
         <Link href="cat" text="Not found" />
       </nav>
     </article>
   </div>
-  <Separator {...separatorProps} />
-  <small class="copyright text">{copyright}</small>
+  <small class="text">{copyright}</small>
 </footer>

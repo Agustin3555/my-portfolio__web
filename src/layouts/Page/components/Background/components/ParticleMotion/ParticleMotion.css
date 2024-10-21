@@ -1,6 +1,6 @@
 @keyframes kick {
   to {
-    scale: 1.25;
+    scale: 1.375;
   }
 }
 
@@ -24,7 +24,7 @@
     width: var(--size);
 
     border-radius: 50%;
-    background-color: rgba(var(--background-color), 0.2);
+    background-color: rgba(var(--background-color), 0.25);
     filter: blur(4rem);
 
     animation: kick var(--animation-duration) ease-in infinite alternate;

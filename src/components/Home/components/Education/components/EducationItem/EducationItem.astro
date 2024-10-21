@@ -1,6 +1,6 @@
 ---
 import './EducationItem.css'
-import Icon from '@/components/Icon/Icon.astro'
+import Pill from '@/components/Pill/Pill.astro'
 
 interface DateData {
   machine: string
@@ -33,18 +33,16 @@ const { title, institutionName, endDate, duration, moreInfoLink } = Astro.props
     {title}
     <strong class="text">{institutionName}</strong>
   </h3>
-  <ul>
-    <li>
-      <Icon faIcon="fa-solid fa-calendar-check" />
+  <div>
+    <Pill faIcon="fa-solid fa-calendar-check">
       <time class="text" datetime={endDate.machine}>
         {endDate.human}
       </time>
-    </li>
-    <li>
-      <Icon faIcon="fa-solid fa-stopwatch" />
+    </Pill>
+    <Pill faIcon="fa-solid fa-stopwatch">
       <time class="text" datetime={duration.machine}>
         {duration.human}
       </time>
-    </li>
-  </ul>
+    </Pill>
+  </div>
 </a>

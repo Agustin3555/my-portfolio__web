@@ -1,0 +1,24 @@
+.cmp-pill {
+  display: flex;
+  align-items: center;
+  gap: var(--pal-size-s);
+
+  font-size: var(--pal-size-font-xs);
+
+  border-radius: var(--pal-size-2xs);
+
+  &.s {
+    padding-inline: var(--pal-size-s);
+    height: 1.75rem;
+  }
+
+  &.m {
+    gap: var(--pal-size-m);
+    padding-inline: var(--pal-size-m);
+    height: var(--pal-size-2xl);
+
+    span {
+      font-size: var(--pal-size-font-s);
+    }
+  }
+}

@@ -31,13 +31,17 @@ body {
 
       overflow-y: hidden;
 
+      > * {
+        padding-inline: var(--layout-margin-inline);
+
+        transition: padding var(--pal-time-m) ease;
+      }
+
       main {
         display: flex;
         flex-direction: column;
         gap: var(--layout-section-gap);
-        padding-inline: var(--layout-margin-inline);
-
-        transition: padding-inline var(--pal-time-m) ease;
+        padding-top: max(6rem, calc(var(--layout-margin-inline) * 2));
 
         > section {
           &:nth-of-type(1) {

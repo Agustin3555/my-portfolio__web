@@ -1,25 +1,19 @@
 ---
-import * as PillStyled from "./Pill.styled";
-import Icon from "../Icon/Icon.astro";
-import { VARS } from "@/styles";
-import { type HandlingClass, asClassName } from "@/tools";
+import './Pill.css'
+import Icon from '../Icon/Icon.astro'
 
 export interface Props {
-  faIcon?: string;
-  handlingClass?: HandlingClass;
+  faIcon?: string
+  emoji?: string
+  size?: 's' | 'm'
+  handlingClass?: string
 }
 
-const { faIcon, handlingClass = [] } = Astro.props;
+const { faIcon, emoji, size, handlingClass } = Astro.props
 ---
 
-<PillStyled.Component className={asClassName(...handlingClass)}>
-  {
-    faIcon && (
-      <Icon
-        faIcon={faIcon}
-        style={{ size: VARS.component.button.xs.fontSize }}
-      />
-    )
-  }
+<div class:list={['cmp-pill', size, { bg: size !== undefined }, handlingClass]}>
+  {faIcon && <Icon faIcon={faIcon} />}
+  {emoji && <span>{emoji}</span>}
   <slot />
-</PillStyled.Component>
+</div>

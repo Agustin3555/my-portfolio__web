@@ -30,7 +30,7 @@
       justify-content: space-between;
 
       .types {
-        --cmp-tech-color: var(--pal-color-gs-200);
+        --cmp-tech-color: var(--pal-color-gs-100);
 
         display: flex;
         gap: var(--pal-size-xs);

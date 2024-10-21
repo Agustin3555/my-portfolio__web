@@ -24,11 +24,13 @@ const sectionTitles = Object.values(data).map(item => item.title)
     <li>
       {
         () => {
-          const { residenceMapsLink, englishLevel, text } = hi.data
+          const { text, residenceMapsLink } = hi.data
 
           return (
             <article class="hi">
-              <p class="text bg card" set:html={highlightToHTMLTag(text)} />
+              <div class="bg card layout">
+                <p class="text" set:html={highlightToHTMLTag(text)} />
+              </div>
               <footer>
                 <nav id="social-nets-in-about">
                   <SocialNets />
@@ -41,9 +43,6 @@ const sectionTitles = Object.values(data).map(item => item.title)
                     text={residenceMapsLink.title}
                     title={`Ir a ${residenceMapsLink.title} en Maps`}
                   />
-                  <Pill faIcon="fa-solid fa-comment-dots">
-                    <p>Ingles {englishLevel}</p>
-                  </Pill>
                 </div>
               </footer>
             </article>
@@ -54,13 +53,16 @@ const sectionTitles = Object.values(data).map(item => item.title)
     <li>
       {
         () => {
-          const { text } = profProfile.data
+          const { text, englishLevel } = profProfile.data
 
           return (
             <article>
-              <div class="bg card">
+              <div class="bg card layout">
                 <p class="text" set:html={highlightToHTMLTag(text)} />
               </div>
+              <Pill faIcon="fa-solid fa-comment-dots" size="s">
+                <p>Ingles {englishLevel}</p>
+              </Pill>
             </article>
           )
         }
@@ -73,26 +75,23 @@ const sectionTitles = Object.values(data).map(item => item.title)
 
           return (
             <>
-              <article>
+              <article class="bg card layout">
                 <h3>{history.title}</h3>
-                <div class="bg card">
-                  <div class="paragraphs">
-                    {history.data.paragraphs.map(item => (
-                      <p class="text" set:html={highlightToHTMLTag(item)} />
-                    ))}
-                  </div>
+                <div class="paragraphs">
+                  {history.data.paragraphs.map(item => (
+                    <p class="text" set:html={highlightToHTMLTag(item)} />
+                  ))}
                 </div>
               </article>
-              <article>
+              <article class="bg card layout">
                 <h3>{hobbiesAndLikes.title}</h3>
-                <ul>
+                <div>
                   {hobbiesAndLikes.data.items.map(({ title, emoji }) => (
-                    <li>
-                      <span>{emoji}</span>
+                    <Pill emoji={emoji} size="m">
                       <p>{title}</p>
-                    </li>
+                    </Pill>
                   ))}
-                </ul>
+                </div>
               </article>
             </>
           )
@@ -101,27 +100,3 @@ const sectionTitles = Object.values(data).map(item => item.title)
     </li>
   </Tabbed>
 </Section>
-
-<script>
-  import { bodyManager } from '@/tools/elementManagers.tool'
-  import { onScreen } from '@/tools'
-
-  const margin = '16px'
-
-  const socialNetsInAbout = window.document.querySelector(
-    '#social-nets-in-about'
-  )
-
-  socialNetsInAbout
-    ? onScreen({
-        observed: socialNetsInAbout,
-        margin,
-        onIntersectionChange: isIntersecting =>
-          bodyManager.data.socialNetsLocation.set(String(!isIntersecting)),
-      })
-    : /*
-        Si no existe socialNetsInAbout en la página, socialNetsInLeftNav siempre
-        será visible.
-      */
-      bodyManager.data.socialNetsLocation.set('false')
-</script>
