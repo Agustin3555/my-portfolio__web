@@ -39,7 +39,7 @@ const { sectionTitles, handlingClass } = Astro.props
   const ACTIVE_CLASS = 'active'
   const INACTIVE_CLASS = 'inactive'
 
-  const tabbeds = $$<HTMLElement>('.tabbed')
+  const tabbeds = $$('.tabbed')
 
   tabbeds.forEach(tabbed => {
     const elementSlider = tabbed.querySelector<HTMLElement>('.element-slider')

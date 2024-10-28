@@ -1,6 +1,7 @@
 ---
 import './Nav.css'
 import Hamburger from './components/Hamburger/Hamburger.astro'
+import ScrollUp from './components/ScrollUp/ScrollUp.astro'
 import Links from '@/components/Links/Links.astro'
 import SocialNets from '@/components/SocialNets/SocialNets.astro'
 import ContactLink from '@/components/ContactLink/ContactLink.astro'
@@ -9,7 +10,7 @@ import ToggleDarkMode from '@/components/ToggleDarkMode/ToggleDarkMode.astro'
 
 <Hamburger />
 <header class="cmp-header">
-  <!-- <ScrollUp /> -->
+  <ScrollUp />
   <button class="backdrop" title="Cerrar menú"></button>
   <nav class="bg card layout">
     <div class="section links">
@@ -28,9 +29,9 @@ import ToggleDarkMode from '@/components/ToggleDarkMode/ToggleDarkMode.astro'
 <script>
   import { $ } from '@/tools'
 
-  const hamburger = $<HTMLButtonElement>('.cmp-hamburger')
-  const backdrop = $<HTMLButtonElement>('.backdrop')
-  const header = $<HTMLButtonElement>('.cmp-header')
+  const hamburger = $('.cmp-hamburger')
+  const backdrop = $('.backdrop')
+  const header = $('.cmp-header')
 
   if (hamburger && backdrop && header) {
     hamburger.addEventListener('click', () => {

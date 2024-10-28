@@ -1,0 +1,20 @@
+---
+import './ScrollUp.css'
+import { Image } from 'astro:assets'
+import Logo from './logo-without-bg.svg'
+import jsonData from '@/data.json'
+
+const { sections } = jsonData.pages.home
+const { linkTitle } = sections.about
+
+const sectionKey: keyof typeof sections = 'about'
+---
+
+<a class="cmp-scroll-up" href={`/#${sectionKey}`} title={linkTitle}>
+  <Image
+    class="logo"
+    src={Logo}
+    alt="Logo sin fondo de Juan Agustín Lovera, Full Stack Web Dev"
+    loading="eager"
+  />
+</a>
