@@ -3,10 +3,10 @@ import Page from '@/layouts/Page/Page.astro'
 import BasicHeader from '@/layouts/BasicHeader/BasicHeader.astro'
 import jsonData from '@/data.json'
 
-const { pageTitle, data } = jsonData.pages.resume
+const { head, data } = jsonData.pages.resume
 ---
 
-<Page subtitle={pageTitle}>
+<Page {head}>
   <BasicHeader {...data}>
     <embed
       class="cv"

@@ -4,13 +4,13 @@
 
   font-size: var(--global-font-size);
   line-height: 1;
-  word-spacing: 0.03125rem;
-  letter-spacing: calc(0.0625rem / 8);
+  word-spacing: calc(0.0625rem * 3);
+  letter-spacing: calc(0.0625rem * 0.05);
   color: inherit;
 
   scroll-behavior: smooth;
   scrollbar-width: thin;
-  scrollbar-color: rgba(var(--pal-color-base-white), 0.5) transparent;
+  scrollbar-color: rgba(var(--pal-color-base-white), 0.25) transparent;
 }
 
 html {
@@ -86,7 +86,7 @@ button {
 }
 
 .text {
-  line-height: 1.4375;
+  line-height: 1.5;
   text-wrap: pretty;
 
   > strong {

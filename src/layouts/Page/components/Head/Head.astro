@@ -1,0 +1,45 @@
+---
+import jsonData from '@/data.json'
+
+export interface Props {
+  subtitle?: string
+  desc: string
+}
+
+const { subtitle, desc } = Astro.props
+
+const { title } = jsonData.documentInfo
+const { base, separator } = title
+
+const fullTitle = subtitle ? [base, separator, subtitle].join(' ') : base
+const faFiles = ['fontawesome.css', 'brands.css', 'solid.css']
+---
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <meta name="generator" content={Astro.generator} />
+  <meta name="robots" content="index, follow" />
+
+  <meta name="description" content={desc} />
+  <meta name="theme-color" content="#eb5547" />
+  <!-- TODO: obtener desde .env -->
+  <meta
+    name="google-site-verification"
+    content="YYKIvWV2nOIwchh9AOzo4kwVG5FWKATc4FVCH2h2pH0"
+  />
+
+  <!-- TODO: obtener desde .env -->
+  <link rel="canonical" href="https://juan-agustin-lovera.netlify.app/" />
+  <link rel="icon" href="/favicon-logo-s.ico" />
+  {
+    faFiles.map(file => (
+      <link
+        href={`src/assets/fontawesome-6.6.0/css/${file}`}
+        rel="stylesheet"
+      />
+    ))
+  }
+
+  <title>{fullTitle}</title>
+</head>

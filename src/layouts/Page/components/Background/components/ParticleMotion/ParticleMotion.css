@@ -7,6 +7,7 @@
 @keyframes float {
   to {
     translate: 0 100rem;
+    /* BUG: en páginas cortas el desplazamiento es demasiado */
   }
 }
 

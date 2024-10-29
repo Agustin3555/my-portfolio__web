@@ -1,13 +1,16 @@
 ---
-import Page from "@/layouts/Page/Page.astro";
-import About from "@/components/Home/components/About/About.astro";
-import Works from "@/components/Home/components/Works/Works.astro";
-import Skills from "@/components/Home/components/Skills/Skills.astro";
-import Education from "@/components/Home/components/Education/Education.astro";
-import Contact from "@/components/Home/components/Contact/Contact.astro";
+import Page from '@/layouts/Page/Page.astro'
+import About from '@/components/Home/components/About/About.astro'
+import Works from '@/components/Home/components/Works/Works.astro'
+import Skills from '@/components/Home/components/Skills/Skills.astro'
+import Education from '@/components/Home/components/Education/Education.astro'
+import Contact from '@/components/Home/components/Contact/Contact.astro'
+import jsonData from '@/data.json'
+
+const { head } = jsonData.pages.home
 ---
 
-<Page>
+<Page {head}>
   <About />
   <Works />
   <Skills />

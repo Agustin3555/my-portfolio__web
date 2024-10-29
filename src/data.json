@@ -3,8 +3,7 @@
     "title": {
       "base": "Juan Agustín Lovera, Full Stack Web Dev",
       "separator": "•"
-    },
-    "desc": "¡Hola! Soy Juan Agustín Lovera, un Full Stack Web Developer recién graduado con sólidas bases en la creación de software y un enfoque en tecnologías web y diseño UI. ¡Bienvenido a mi portafolio!"
+    }
   },
   "socialNets": [
     {
@@ -48,6 +47,9 @@
   },
   "pages": {
     "home": {
+      "head": {
+        "desc": "¡Hola! Soy Juan Agustín Lovera, un Full Stack Web Developer recién graduado con sólidas bases en la creación de software y un enfoque en tecnologías web y diseño UI. ¡Bienvenido a mi portafolio!"
+      },
       "sections": {
         "about": {
           "linkTitle": "Sobre mí",
@@ -435,8 +437,11 @@
       }
     },
     "resume": {
+      "head": {
+        "subtitle": "Currículum",
+        "desc": ""
+      },
       "linkTitle": "Currículum",
-      "pageTitle": "Currículum",
       "data": {
         "title": "Currículum",
         "titleStrong": "Resumen o CV",
@@ -446,10 +451,13 @@
       }
     },
     "notFound": {
-      "pageTitle": "Página no encontrada",
+      "head": {
+        "subtitle": "Error 404",
+        "desc": ""
+      },
       "data": {
-        "title": "Error 404",
-        "titleStrong": "Página no encontrada",
+        "title": "Página no encontrada",
+        "titleStrong": "Error 404",
         "desc": [
           "Creo que no es el programador que buscas 🫠.",
           "El [error 404] ocurre cuando se intenta acceder a una página que no existe en un sitio web. Este problema puede surgir debido a una [URL incorrecta], una [página eliminada] o [problemas de redirección]."

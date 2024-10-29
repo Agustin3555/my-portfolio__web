@@ -1,49 +1,23 @@
 ---
 import '@/styles/index.css'
-import '@fontsource-variable/onest'
+import '@fontsource-variable/plus-jakarta-sans'
 import '@fontsource-variable/dm-sans'
 
 import './Page.css'
+import Head, { type Props as HeadProps } from './components/Head/Head.astro'
 import Background from './components/Background/Background.astro'
-import Nav from './components/Nav/Nav.astro'
 import Footer from './components/Footer/Footer.astro'
-import jsonData from '@/data.json'
+import Nav from './components/Nav/Nav.astro'
 
 interface Props {
-  subtitle?: string
+  head: HeadProps
 }
 
-const { subtitle } = Astro.props
-
-const { title, desc } = jsonData.documentInfo
-const { base, separator } = title
-
-let fullTitle = base
-
-if (subtitle) fullTitle += ` ${separator} ${subtitle}`
+const { head } = Astro.props
 ---
 
 <html lang="en">
-  <head>
-    <!-- TODO: completar para el SEO -->
-
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <meta name="robots" content="index, follow" />
-    <link rel="canonical" href="https://juan-agustin-lovera.netlify.app/" />
-
-    <meta name="theme-color" content="#eb5547" />
-
-    <link rel="icon" href="/favicon-logo-s.ico" />
-    <title>{fullTitle}</title>
-    <meta name="description" content={desc} />
-
-    <meta
-      name="google-site-verification"
-      content="YYKIvWV2nOIwchh9AOzo4kwVG5FWKATc4FVCH2h2pH0"
-    />
-  </head>
+  <Head {...head} />
   <body>
     <Background />
     <div class="layout">
@@ -57,8 +31,6 @@ if (subtitle) fullTitle += ` ${separator} ${subtitle}`
     </div>
   </body>
 </html>
-
-<script is:inline src="https://kit.fontawesome.com/7463805de7.js"></script>
 
 <script>
   import { bodyManager } from '@/tools/elementManagers.tool'

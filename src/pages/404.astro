@@ -1,11 +1,11 @@
 ---
-import Page from "@/layouts/Page/Page.astro";
-import BasicHeader from "@/layouts/BasicHeader/BasicHeader.astro";
-import jsonData from "@/data.json";
+import Page from '@/layouts/Page/Page.astro'
+import BasicHeader from '@/layouts/BasicHeader/BasicHeader.astro'
+import jsonData from '@/data.json'
 
-const { pageTitle, data } = jsonData.pages.notFound;
+const { head, data } = jsonData.pages.notFound
 ---
 
-<Page subtitle={pageTitle}>
+<Page {head}>
   <BasicHeader {...data} />
 </Page>

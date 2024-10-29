@@ -3,7 +3,7 @@ import { type ImageMetadata } from "astro";
 export type Folder = "about" | "skills" | "works";
 
 /*
-  "glob" necesita un literal como parametro, por lo tanto no se puedo
+  "glob" necesita un literal como parámetro, por lo tanto no se puedo
   refactorizar y usar los template string.
 */
 const assets: Record<Folder, any> = {

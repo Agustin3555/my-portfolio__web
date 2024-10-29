@@ -1,9 +1,10 @@
 body {
   position: relative;
 
+  font-size: var(--pal-size-font-s);
   font-family: var(--pal-font-a);
   font-weight: 300;
-  color: rgba(var(--pal-color-base-white), 0.625);
+  color: rgba(var(--pal-color-base-white), 0.65);
 
   > .layout {
     --layout-max-width: 68rem;
