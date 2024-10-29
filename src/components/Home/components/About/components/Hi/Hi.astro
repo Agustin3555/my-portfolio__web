@@ -1,0 +1,32 @@
+---
+import SmallLink from '@/components/SmallLink/SmallLink.astro'
+import SocialNets from '@/components/SocialNets/SocialNets.astro'
+import ContactLink from '@/components/ContactLink/ContactLink.astro'
+import { highlightToHTMLTag } from '@/tools'
+import jsonData from '@/data.json'
+
+const { text, residenceMapsLink } =
+  jsonData.pages.home.sections.about.data.hi.data
+---
+
+<li>
+  <article class="hi">
+    <div class="bg card layout">
+      <p class="text" set:html={highlightToHTMLTag(text)} />
+    </div>
+    <footer>
+      <nav id="social-nets-in-about">
+        <SocialNets />
+        <ContactLink />
+      </nav>
+      <div>
+        <SmallLink
+          url={residenceMapsLink.url}
+          faIcon="fa-solid fa-location-dot"
+          text={residenceMapsLink.title}
+          title={`Ir a ${residenceMapsLink.title} en Maps`}
+        />
+      </div>
+    </footer>
+  </article>
+</li>

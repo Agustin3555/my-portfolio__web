@@ -2,11 +2,9 @@
 import './About.css'
 import Section from '@/layouts/Section/Section.astro'
 import Tabbed from '@/layouts/Tabbed/Tabbed.astro'
-import SmallLink from '@/components/SmallLink/SmallLink.astro'
-import Pill from '@/components/Pill/Pill.astro'
-import SocialNets from '@/components/SocialNets/SocialNets.astro'
-import ContactLink from '@/components/ContactLink/ContactLink.astro'
-import { highlightToHTMLTag } from '@/tools'
+import Hi from './components/Hi/Hi.astro'
+import ProfProfile from './components/ProfProfile/ProfProfile.astro'
+import KnowMore from './components/KnowMore/KnowMore.astro'
 import jsonData from '@/data.json'
 
 const { sections } = jsonData.pages.home
@@ -14,89 +12,14 @@ const sectionKey: keyof typeof sections = 'about'
 
 const { about } = sections
 const { title, strong, faIcon, data } = about
-const { hi, profProfile, knowMore } = data
 
 const sectionTitles = Object.values(data).map(item => item.title)
 ---
 
 <Section {...{ sectionKey, title, strong, faIcon }} main>
   <Tabbed sectionTitles={sectionTitles}>
-    <li>
-      {
-        () => {
-          const { text, residenceMapsLink } = hi.data
-
-          return (
-            <article class="hi">
-              <div class="bg card layout">
-                <p class="text" set:html={highlightToHTMLTag(text)} />
-              </div>
-              <footer>
-                <nav id="social-nets-in-about">
-                  <SocialNets />
-                  <ContactLink />
-                </nav>
-                <div>
-                  <SmallLink
-                    url={residenceMapsLink.url}
-                    faIcon="fa-solid fa-location-dot"
-                    text={residenceMapsLink.title}
-                    title={`Ir a ${residenceMapsLink.title} en Maps`}
-                  />
-                </div>
-              </footer>
-            </article>
-          )
-        }
-      }
-    </li>
-    <li>
-      {
-        () => {
-          const { text, englishLevel } = profProfile.data
-
-          return (
-            <article>
-              <div class="bg card layout">
-                <p class="text" set:html={highlightToHTMLTag(text)} />
-              </div>
-              <Pill faIcon="fa-solid fa-comment-dots" size="s">
-                <p>Ingles {englishLevel}</p>
-              </Pill>
-            </article>
-          )
-        }
-      }
-    </li>
-    <li>
-      {
-        () => {
-          const { history, hobbiesAndLikes } = knowMore.data
-
-          return (
-            <>
-              <article class="bg card layout">
-                <h3>{history.title}</h3>
-                <div class="paragraphs">
-                  {history.data.paragraphs.map(item => (
-                    <p class="text" set:html={highlightToHTMLTag(item)} />
-                  ))}
-                </div>
-              </article>
-              <article class="bg card layout">
-                <h3>{hobbiesAndLikes.title}</h3>
-                <div>
-                  {hobbiesAndLikes.data.items.map(({ title, emoji }) => (
-                    <Pill emoji={emoji} size="m">
-                      <p>{title}</p>
-                    </Pill>
-                  ))}
-                </div>
-              </article>
-            </>
-          )
-        }
-      }
-    </li>
+    <Hi />
+    <ProfProfile />
+    <KnowMore />
   </Tabbed>
 </Section>

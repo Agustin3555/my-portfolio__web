@@ -1,0 +1,33 @@
+---
+import Pill from '@/components/Pill/Pill.astro'
+import { highlightToHTMLTag } from '@/tools'
+import jsonData from '@/data.json'
+
+const { history, hobbiesAndLikes } =
+  jsonData.pages.home.sections.about.data.knowMore.data
+---
+
+<li>
+  <article class="bg card layout">
+    <h3>{history.title}</h3>
+    <div class="paragraphs">
+      {
+        history.data.paragraphs.map(item => (
+          <p class="text" set:html={highlightToHTMLTag(item)} />
+        ))
+      }
+    </div>
+  </article>
+  <article class="bg card layout">
+    <h3>{hobbiesAndLikes.title}</h3>
+    <div>
+      {
+        hobbiesAndLikes.data.items.map(({ title, emoji }) => (
+          <Pill emoji={emoji} size="m">
+            <p>{title}</p>
+          </Pill>
+        ))
+      }
+    </div>
+  </article>
+</li>

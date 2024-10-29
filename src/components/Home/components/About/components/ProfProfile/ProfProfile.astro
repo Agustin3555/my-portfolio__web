@@ -1,0 +1,19 @@
+---
+import Pill from '@/components/Pill/Pill.astro'
+import { highlightToHTMLTag } from '@/tools'
+import jsonData from '@/data.json'
+
+const { text, englishLevel } =
+  jsonData.pages.home.sections.about.data.profProfile.data
+---
+
+<li>
+  <article>
+    <div class="bg card layout">
+      <p class="text" set:html={highlightToHTMLTag(text)} />
+    </div>
+    <Pill faIcon="fa-solid fa-comment-dots" size="s">
+      <p>Ingles {englishLevel}</p>
+    </Pill>
+  </article>
+</li>
