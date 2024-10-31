@@ -13,11 +13,11 @@ const sectionKey: keyof typeof sections = 'about'
 const { about } = sections
 const { title, strong, faIcon, data } = about
 
-const sectionTitles = Object.values(data).map(item => item.title)
+const titles = Object.values(data).map(item => item.title)
 ---
 
 <Section {...{ sectionKey, title, strong, faIcon }} main>
-  <Tabbed sectionTitles={sectionTitles}>
+  <Tabbed {titles}>
     <Hi />
     <ProfProfile />
     <KnowMore />

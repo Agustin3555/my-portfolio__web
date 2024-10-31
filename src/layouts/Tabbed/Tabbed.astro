@@ -1,14 +1,12 @@
 ---
 import './Tabbed.css'
 
-export interface Props {
-  sectionTitles: string[]
+interface Props {
+  titles: string[]
   handlingClass?: string
 }
 
-const { sectionTitles, handlingClass } = Astro.props
-
-// TODO: se podria optimizar mejor con el uso de la caracteristica de espera para el display en CSS
+const { titles, handlingClass } = Astro.props
 ---
 
 <article class:list={['tabbed', handlingClass]}>
@@ -17,9 +15,9 @@ const { sectionTitles, handlingClass } = Astro.props
       <span class="bg-indicator bg"></span>
       <fieldset>
         {
-          sectionTitles.map(title => (
+          titles.map((title, index) => (
             <label>
-              <input type="radio" name="sections" />
+              <input type="radio" name="sections" checked={index === 0} />
               {title}
             </label>
           ))
@@ -34,10 +32,10 @@ const { sectionTitles, handlingClass } = Astro.props
 </article>
 
 <script>
-  import { $$, sleep } from '@/tools'
+  import { $$, asRem } from '@/tools'
 
   const ACTIVE_CLASS = 'active'
-  const INACTIVE_CLASS = 'inactive'
+  const INIT_INDEX = 0
 
   const tabbeds = $$('.tabbed')
 
@@ -45,64 +43,52 @@ const { sectionTitles, handlingClass } = Astro.props
     const elementSlider = tabbed.querySelector<HTMLElement>('.element-slider')
     const indicator = tabbed.querySelector<HTMLElement>('.bg-indicator')
 
-    if (elementSlider && indicator) {
-      const labels = tabbed.querySelectorAll('label')
-      const items = Array.from(elementSlider.querySelectorAll('& > li'))
-      const radioInputs = tabbed.querySelectorAll<HTMLInputElement>(
-        'input[type="radio"]'
-      )
+    if (!elementSlider || !indicator) return
 
-      const moveIndicator = (index: number) => {
-        const label = labels[index]
-        const inputRect = label.getBoundingClientRect()
+    const labels = tabbed.querySelectorAll('label')
+    const items = Array.from<HTMLElement>(
+      elementSlider.querySelectorAll(':scope > li')
+    )
+    const radios = tabbed.querySelectorAll<HTMLInputElement>(
+      'input[type="radio"]'
+    )
 
-        indicator.style.left = `${label.offsetLeft}px`
-        indicator.style.width = `${inputRect.width}px`
-      }
+    const moveIndicator = (index: number) => {
+      const label = labels[index]
+      const labelRect = label.getBoundingClientRect()
 
-      // Inicializar
-      items.forEach(item => item.classList.add(INACTIVE_CLASS))
-      items[0].classList.remove(INACTIVE_CLASS)
-      items[0].classList.add(ACTIVE_CLASS)
-
-      radioInputs[0].checked = true
-      moveIndicator(0)
-
-      radioInputs.forEach(radioInput => {
-        radioInput.addEventListener('change', () => {
-          const checkedRadioInputIndex = Array.from(radioInputs).findIndex(
-            input => input.checked
-          )
-
-          items.forEach(async (item, index) => {
-            // TODO: Implementar la espera con el evento "transitionend" en vez de sleep
-
-            if (index === checkedRadioInputIndex) {
-              // Radio input activo
-
-              // La duración debe ser la misma que las transitions CSS
-              await sleep(200)
-
-              item.classList.remove(INACTIVE_CLASS)
-              item.classList.add(ACTIVE_CLASS)
-            } else {
-              // Radio input inactivo
-
-              item.classList.remove(ACTIVE_CLASS)
-              item.classList.add(INACTIVE_CLASS)
-            }
-          })
-
-          moveIndicator(checkedRadioInputIndex)
-        })
-      })
-
-      const resizeObserver = new ResizeObserver(() => {
-        const maxHeight = Math.max(...items.map(item => item.clientHeight))
-        elementSlider.style.height = `${maxHeight / 16}rem`
-      })
-
-      resizeObserver.observe(elementSlider)
+      indicator.style.left = asRem(label.offsetLeft)
+      indicator.style.width = asRem(labelRect.width)
     }
+
+    // Inicializar
+    let itemActive = items[INIT_INDEX]
+    itemActive.classList.add(ACTIVE_CLASS)
+    moveIndicator(INIT_INDEX)
+
+    // TODO: desactivar los radios mientras se esten produciendo las transisiones
+
+    radios.forEach((radio, index) => {
+      radio.onchange = () => {
+        const newItemActive = items[index]
+
+        itemActive.ontransitionend = () => {
+          itemActive.ontransitionend = null
+
+          newItemActive.classList.add(ACTIVE_CLASS)
+          itemActive = newItemActive
+        }
+
+        itemActive.classList.remove(ACTIVE_CLASS)
+        moveIndicator(index)
+      }
+    })
+
+    const resizeObserver = new ResizeObserver(() => {
+      const maxHeight = Math.max(...items.map(item => item.clientHeight))
+      elementSlider.style.height = asRem(maxHeight)
+    })
+
+    resizeObserver.observe(elementSlider)
   })
 </script>

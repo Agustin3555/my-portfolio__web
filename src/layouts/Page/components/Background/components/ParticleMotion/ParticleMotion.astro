@@ -12,7 +12,7 @@ const { basicSeparation = 625 } = Astro.props
 ></span>
 
 <script>
-  import { debounce, randomInt, dropRandom, $$ } from '@/tools'
+  import { debounce, randomInt, dropRandom, $$, asRem } from '@/tools'
 
   const particleMotions = $$<HTMLElement>('.cmp-particle-motion')
 
@@ -68,9 +68,9 @@ const { basicSeparation = 625 } = Astro.props
         const particle = window.document.createElement('span')
 
         particle.className = 'particle'
-        particle.style.top = `${top / 16}rem`
-        particle.style.left = `${left / 16}rem`
-        particle.style.setProperty('--size', `${size / 16}rem`)
+        particle.style.top = asRem(top)
+        particle.style.left = asRem(left)
+        particle.style.setProperty('--size', asRem(size))
         particle.style.setProperty('--animation-duration', `${duration}s`)
         particle.style.setProperty(
           '--background-color',

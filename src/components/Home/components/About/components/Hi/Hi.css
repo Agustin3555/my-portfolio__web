@@ -1,0 +1,14 @@
+.cmp-hi {
+  footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: var(--layout-gutter);
+
+    > div {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--layout-gutter);
+    }
+  }
+}

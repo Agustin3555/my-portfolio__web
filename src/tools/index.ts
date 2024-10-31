@@ -7,3 +7,4 @@ export * from "./sleep.tool";
 export * from "./debounce.tool";
 export * from "./onScreen.tool";
 export * from "./querySelector.tool";
+export * from "./asRem.tool";

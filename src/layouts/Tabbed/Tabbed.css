@@ -61,22 +61,6 @@
           }
         }
       }
-
-      body[data-dark-mode="true"] & {
-        .bg-indicator {
-          /* background-color: ${VARS.color.b.bg.dark}; */
-        }
-
-        fieldset label {
-          input:checked + .title {
-            /* color: ${COLOR.b_l2}; */
-          }
-
-          :hover .title {
-            /* color: ${COLOR.gs_0}; */
-          }
-        }
-      }
     }
 
     .line {
@@ -101,21 +85,19 @@
 
       width: 100%;
 
-      transition:
-        scale var(--pal-time-s) ease,
-        opacity var(--pal-time-s) ease;
-    }
-
-    .inactive {
       scale: 0.95;
       opacity: 0;
       pointer-events: none;
-    }
 
-    .active {
-      scale: initial;
-      opacity: initial;
-      pointer-events: initial;
+      transition:
+        scale var(--pal-time-s) ease,
+        opacity var(--pal-time-s) ease;
+
+      &.active {
+        scale: initial;
+        opacity: initial;
+        pointer-events: initial;
+      }
     }
   }
 }

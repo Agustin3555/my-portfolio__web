@@ -1,4 +1,5 @@
 ---
+import './Hi.css'
 import SmallLink from '@/components/SmallLink/SmallLink.astro'
 import SocialNets from '@/components/SocialNets/SocialNets.astro'
 import ContactLink from '@/components/ContactLink/ContactLink.astro'
@@ -10,7 +11,7 @@ const { text, residenceMapsLink } =
 ---
 
 <li>
-  <article class="hi">
+  <article class="cmp-hi">
     <div class="bg card layout">
       <p class="text" set:html={highlightToHTMLTag(text)} />
     </div>
