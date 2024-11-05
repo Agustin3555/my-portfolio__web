@@ -34,12 +34,7 @@ import ToggleDarkMode from '@/components/ToggleDarkMode/ToggleDarkMode.astro'
   const header = $('.cmp-header')
 
   if (hamburger && backdrop && header) {
-    hamburger.addEventListener('click', () => {
-      header.classList.add('open')
-    })
-
-    backdrop.addEventListener('click', () => {
-      header.classList.remove('open')
-    })
+    hamburger.addEventListener('click', () => header.classList.add('open'))
+    backdrop.addEventListener('click', () => header.classList.remove('open'))
   }
 </script>

@@ -1,0 +1,94 @@
+.cmp-know-more {
+  display: flex;
+  flex-direction: column;
+  gap: var(--layout-gutter);
+
+  article {
+    flex-direction: column;
+  }
+
+  .history {
+    --button-height: 1.75rem;
+    --button-height-compensation: calc(
+      var(--layout-gutter) + var(--button-height)
+    );
+
+    padding-bottom: var(--button-height-compensation);
+    height: 12rem;
+
+    overflow: hidden;
+
+    transition: height var(--pal-time-m) ease;
+    interpolate-size: allow-keywords;
+
+    button {
+      position: absolute;
+      bottom: 0;
+      left: 0.0625rem;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: calc(100% - 0.0625rem * 2);
+      height: var(--button-height-compensation);
+
+      font-size: var(--pal-size-font-xs);
+      color: var(--pal-color-a-l2);
+
+      border-radius: var(--card-border-radius);
+      background: linear-gradient(
+        0,
+        var(--pal-color-gs-850) 0%,
+        var(--pal-color-gs-850) var(--button-height),
+        transparent 100%
+      );
+
+      transition: color var(--pal-time-s) ease-out;
+
+      &:hover {
+        color: var(--pal-color-white);
+      }
+
+      small {
+        position: absolute;
+        bottom: calc((var(--button-height) - 1em) / 2);
+
+        display: flex;
+        align-items: center;
+        gap: var(--pal-size-xs);
+
+        transition: opacity var(--pal-time-m) ease-out;
+
+        &.close {
+          opacity: 0;
+        }
+      }
+    }
+
+    &.open {
+      height: auto;
+
+      button small {
+        &.open {
+          opacity: 0;
+        }
+
+        &.close {
+          opacity: initial;
+        }
+      }
+    }
+  }
+
+  .hobbies-and-likes {
+    > div {
+      --cls-bg-color: var(--pal-color-gs-800);
+
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--pal-size-s);
+
+      color: var(--pal-color-gs-200);
+    }
+  }
+}

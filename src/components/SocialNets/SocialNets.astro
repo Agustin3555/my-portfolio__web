@@ -6,7 +6,7 @@ const { socialNets } = jsonData
 ---
 
 {
-  socialNets.map(({ title, faIcon, url }) => (
-    <SocialNet {...{ faIcon, url }} title={`Ir al perfil de ${title}`} />
+  socialNets.map(({ title, ...rest }) => (
+    <SocialNet {...rest} title={`Ir al perfil de ${title}`} />
   ))
 }

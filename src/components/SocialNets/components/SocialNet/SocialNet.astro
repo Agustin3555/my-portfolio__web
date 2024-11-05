@@ -12,11 +12,12 @@ const { title, faIcon, url } = Astro.props
 ---
 
 <a
-  class="cmp-social-net bg link s"
-  title={title}
+  class="cmp-social-net bg external-link s"
+  {title}
+  aria-label={title}
   href={url}
   target="_blank"
   rel="noopener"
 >
-  <Icon faIcon={faIcon} />
+  <Icon {faIcon} />
 </a>

@@ -6,7 +6,7 @@
 
 @keyframes float {
   to {
-    translate: 0 100rem;
+    translate: 0 150dvh;
     /* BUG: en páginas cortas el desplazamiento es demasiado */
   }
 }
@@ -22,12 +22,15 @@
     position: absolute;
 
     aspect-ratio: 1;
-    width: var(--size);
+    width: calc(var(--size) * 2);
 
-    border-radius: 50%;
-    background-color: rgba(var(--background-color), 0.25);
-    filter: blur(4rem);
+    background-image: radial-gradient(
+      rgba(var(--background-color), 0.125),
+      transparent 70%,
+      transparent
+    );
 
-    animation: kick var(--animation-duration) ease-in infinite alternate;
+    animation: kick calc((60s / var(--bpm)) * var(--time-factor)) ease-in
+      infinite alternate;
   }
 }

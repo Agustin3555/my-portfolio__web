@@ -26,7 +26,7 @@ const { levels } = jsonData.pages.home.sections.skills.data
   const levelToggles = $$<HTMLInputElement>('.level-toggle')
   const skillTreeview = $<HTMLElement>('#skill-treeview')
 
-  if (levelToggles && skillTreeview) {
+  if (skillTreeview) {
     levelToggles.forEach((toggle, index) => {
       toggle.addEventListener('change', event => {
         const element = event.target as HTMLInputElement

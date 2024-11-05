@@ -1,14 +1,19 @@
 ---
+import './KnowMore.css'
+import { Image } from 'astro:assets'
 import Pill from '@/components/Pill/Pill.astro'
 import { highlightToHTMLTag } from '@/tools'
+import MySelf2 from './myself-2.webp'
 import jsonData from '@/data.json'
+import Icon from '@/components/Icon/Icon.astro'
 
 const { history, hobbiesAndLikes } =
   jsonData.pages.home.sections.about.data.knowMore.data
 ---
 
-<li>
-  <article class="bg card layout">
+<section class="cmp-know-more">
+  <Image src={MySelf2} alt="" />
+  <article class="history bg card layout">
     <h3>{history.title}</h3>
     <div class="paragraphs">
       {
@@ -17,8 +22,16 @@ const { history, hobbiesAndLikes } =
         ))
       }
     </div>
+    <button>
+      <small class="open">
+        Continuar <Icon faIcon="fa-solid fa-angle-down" />
+      </small>
+      <small class="close">
+        Contraer <Icon faIcon="fa-solid fa-angle-up" />
+      </small>
+    </button>
   </article>
-  <article class="bg card layout">
+  <article class="hobbies-and-likes bg card layout">
     <h3>{hobbiesAndLikes.title}</h3>
     <div>
       {
@@ -30,4 +43,16 @@ const { history, hobbiesAndLikes } =
       }
     </div>
   </article>
-</li>
+</section>
+
+<script>
+  import { $ } from '@/tools'
+
+  const history = $('.cmp-know-more .history')
+
+  if (history) {
+    const toggle = history.querySelector<HTMLButtonElement>('& > button')
+
+    toggle?.addEventListener('click', () => history.classList.toggle('open'))
+  }
+</script>

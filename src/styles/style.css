@@ -1,3 +1,7 @@
+:root {
+  --bpm: 124;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -27,7 +31,7 @@ html {
   display: inline-flex;
   flex-direction: column;
 
-  line-height: 1.4375;
+  line-height: 1.5;
   font-family: var(--pal-font-b);
   font-weight: 500;
   text-wrap: balance;
@@ -36,6 +40,7 @@ html {
   color: var(--pal-color-gs-100);
 
   strong {
+    line-height: inherit;
     font-family: var(--pal-font-a);
     font-weight: initial;
     color: var(--pal-color-a);
@@ -44,8 +49,6 @@ html {
 
 h1,
 h2 {
-  gap: var(--pal-size-xs);
-
   font-size: clamp(var(--pal-size-font-m), 5dvw, var(--pal-size-font-2xl));
 
   strong {
@@ -81,8 +84,13 @@ span {
 
 button {
   border: none;
+  padding: 0;
   background-color: transparent;
   cursor: pointer;
+}
+
+a {
+  text-decoration: none;
 }
 
 .text {
@@ -130,7 +138,9 @@ button {
 }
 
 .card {
-  border-radius: var(--pal-size-s);
+  --card-border-radius: var(--pal-size-s);
+
+  border-radius: var(--card-border-radius);
   box-shadow: var(--pal-shadow-1), var(--bevel);
 
   &.bg {
@@ -146,7 +156,7 @@ button {
   }
 }
 
-.link {
+.external-link {
   --arrow-width: 0.0625rem;
   --arrow-head-size: calc(var(--pal-size-m) - var(--decreasing-factor, 0rem));
   --arrow-line-length: calc(var(--arrow-head-size) * sqrt(2) * 1.125);
@@ -155,9 +165,7 @@ button {
 
   position: relative;
 
-  text-decoration: none;
-
-  border-top-right-radius: 0 !important;
+  border-top-right-radius: 0;
 
   &:hover {
     --arrow-color-alpha: 1;

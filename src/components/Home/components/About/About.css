@@ -1,7 +1,37 @@
 #about {
-  article {
-    display: flex;
-    flex-direction: column;
-    gap: var(--layout-gutter);
+  container: about / inline-size;
+
+  .cmp-tabbed {
+    --img-size: clamp(12rem, 30%, 19rem);
+
+    img {
+      position: absolute;
+      z-index: -1;
+      right: 0;
+      bottom: calc(100% - var(--pal-size-l));
+
+      align-self: center;
+
+      width: var(--img-size);
+      height: auto;
+
+      border-radius: 50%;
+
+      @container (width < 35rem) {
+        position: relative;
+      }
+    }
+
+    .line {
+      @container (35rem <= width) {
+        width: calc(100% - (var(--img-size) + var(--layout-gutter)));
+      }
+    }
+
+    section {
+      display: flex;
+      flex-direction: column;
+      gap: var(--layout-gutter);
+    }
   }
 }

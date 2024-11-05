@@ -3,22 +3,23 @@ import './SmallLink.css'
 import Icon from '@/components/Icon/Icon.astro'
 
 export interface Props {
-  url: string
-  faIcon: string
-  text: string
   title: string
+  text: string
+  faIcon: string
+  url: string
 }
 
-const { url, faIcon, text, title } = Astro.props
+const { faIcon, text, title, url } = Astro.props
 ---
 
 <a
-  class="small-link card link s"
-  title={title}
+  class="small-link bg external-link s"
+  {title}
+  aria-label={title}
   href={url}
   target="_blank"
   rel="noopener"
 >
-  <Icon faIcon={faIcon} />
+  <Icon {faIcon} />
   {text}
 </a>

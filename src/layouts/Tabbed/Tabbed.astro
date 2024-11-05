@@ -3,13 +3,12 @@ import './Tabbed.css'
 
 interface Props {
   titles: string[]
-  handlingClass?: string
 }
 
-const { titles, handlingClass } = Astro.props
+const { titles } = Astro.props
 ---
 
-<article class:list={['tabbed', handlingClass]}>
+<article class="cmp-tabbed">
   <header>
     <div class="nav">
       <span class="bg-indicator bg"></span>
@@ -26,9 +25,9 @@ const { titles, handlingClass } = Astro.props
     </div>
     <span class="line"></span>
   </header>
-  <ol class="element-slider">
+  <div class="slider">
     <slot />
-  </ol>
+  </div>
 </article>
 
 <script>
@@ -37,18 +36,16 @@ const { titles, handlingClass } = Astro.props
   const ACTIVE_CLASS = 'active'
   const INIT_INDEX = 0
 
-  const tabbeds = $$('.tabbed')
+  const tabbeds = $$('.cmp-tabbed')
 
   tabbeds.forEach(tabbed => {
-    const elementSlider = tabbed.querySelector<HTMLElement>('.element-slider')
+    const slider = tabbed.querySelector<HTMLElement>('.slider')
     const indicator = tabbed.querySelector<HTMLElement>('.bg-indicator')
 
-    if (!elementSlider || !indicator) return
+    if (!slider || !indicator) return
 
     const labels = tabbed.querySelectorAll('label')
-    const items = Array.from<HTMLElement>(
-      elementSlider.querySelectorAll(':scope > li')
-    )
+    const sections = Array.from<HTMLElement>(slider.querySelectorAll('& > *'))
     const radios = tabbed.querySelectorAll<HTMLInputElement>(
       'input[type="radio"]'
     )
@@ -62,33 +59,35 @@ const { titles, handlingClass } = Astro.props
     }
 
     // Inicializar
-    let itemActive = items[INIT_INDEX]
-    itemActive.classList.add(ACTIVE_CLASS)
+    let sectionActive = sections[INIT_INDEX]
+    sectionActive.classList.add(ACTIVE_CLASS)
     moveIndicator(INIT_INDEX)
 
     // TODO: desactivar los radios mientras se esten produciendo las transisiones
 
     radios.forEach((radio, index) => {
       radio.onchange = () => {
-        const newItemActive = items[index]
+        const newSectionActive = sections[index]
 
-        itemActive.ontransitionend = () => {
-          itemActive.ontransitionend = null
+        sectionActive.ontransitionend = () => {
+          sectionActive.ontransitionend = null
 
-          newItemActive.classList.add(ACTIVE_CLASS)
-          itemActive = newItemActive
+          newSectionActive.classList.add(ACTIVE_CLASS)
+          sectionActive = newSectionActive
         }
 
-        itemActive.classList.remove(ACTIVE_CLASS)
+        sectionActive.classList.remove(ACTIVE_CLASS)
         moveIndicator(index)
       }
     })
 
     const resizeObserver = new ResizeObserver(() => {
-      const maxHeight = Math.max(...items.map(item => item.clientHeight))
-      elementSlider.style.height = asRem(maxHeight)
+      const maxHeight = Math.max(...sections.map(item => item.clientHeight))
+      slider.style.height = asRem(maxHeight)
     })
 
-    resizeObserver.observe(elementSlider)
+    resizeObserver.observe(slider)
+
+    // TODO: controlar tambien el resize de los items
   })
 </script>

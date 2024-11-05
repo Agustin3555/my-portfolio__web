@@ -1,16 +1,21 @@
+:root {
+  --cmp-hamburger-size: 3.5rem;
+  --cmp-hamburger-gap: var(--pal-size-m);
+}
+
 .cmp-hamburger {
   --thickness: 0.125rem;
   --mid-top: calc(50% - var(--thickness) * 0.5);
 
   position: fixed;
-  right: var(--pal-size-m);
-  bottom: var(--pal-size-m);
+  right: var(--cmp-hamburger-gap);
+  bottom: var(--cmp-hamburger-gap);
 
   display: flex;
   align-items: center;
   justify-content: center;
   aspect-ratio: 1;
-  width: 3.5rem;
+  width: var(--cmp-hamburger-size);
 
   visibility: hidden;
   border-radius: var(--pal-size-xs);

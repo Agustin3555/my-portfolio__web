@@ -5,6 +5,11 @@
     justify-content: space-between;
     gap: var(--layout-gutter);
 
+    > nav {
+      display: flex;
+      gap: var(--pal-size-m);
+    }
+
     > div {
       display: flex;
       flex-wrap: wrap;

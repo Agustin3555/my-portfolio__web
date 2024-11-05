@@ -6,14 +6,13 @@ export interface Props {
   faIcon?: string
   emoji?: string
   size?: 's' | 'm'
-  handlingClass?: string
 }
 
-const { faIcon, emoji, size, handlingClass } = Astro.props
+const { faIcon, emoji, size } = Astro.props
 ---
 
-<div class:list={['cmp-pill', size, { bg: size !== undefined }, handlingClass]}>
-  {faIcon && <Icon faIcon={faIcon} />}
+<div class:list={['cmp-pill', size, { bg: size !== undefined }]}>
+  {faIcon && <Icon {faIcon} />}
   {emoji && <span>{emoji}</span>}
   <slot />
 </div>

@@ -16,9 +16,8 @@ const { basicSeparation = 625 } = Astro.props
 
   const particleMotions = $$<HTMLElement>('.cmp-particle-motion')
 
-  const SIZES = [80, 128, 256]
+  const SIZES = [128, 256]
   const COLORS = ['a', 'b']
-  const BPM = 120
   const TIME_FACTORS = [2, 4, 8]
 
   const handleResize = () => {
@@ -39,7 +38,7 @@ const { basicSeparation = 625 } = Astro.props
         vars: {
           size: number
           backgroundColor: string
-          animation: { duration: number }
+          timeFactor: number
         }
       }[] = []
 
@@ -54,16 +53,13 @@ const { basicSeparation = 625 } = Astro.props
           vars: {
             size: dropRandom(SIZES),
             backgroundColor: dropRandom(COLORS),
-            animation: {
-              duration: (60 / BPM) * dropRandom(TIME_FACTORS),
-            },
+            timeFactor: dropRandom(TIME_FACTORS),
           },
         })
       }
 
       configElements.forEach(({ top, left, vars }) => {
-        const { size, backgroundColor, animation } = vars
-        const { duration } = animation
+        const { size, backgroundColor, timeFactor } = vars
 
         const particle = window.document.createElement('span')
 
@@ -71,7 +67,7 @@ const { basicSeparation = 625 } = Astro.props
         particle.style.top = asRem(top)
         particle.style.left = asRem(left)
         particle.style.setProperty('--size', asRem(size))
-        particle.style.setProperty('--animation-duration', `${duration}s`)
+        particle.style.setProperty('--time-factor', String(timeFactor))
         particle.style.setProperty(
           '--background-color',
           `var(--pal-color-base-${backgroundColor})`

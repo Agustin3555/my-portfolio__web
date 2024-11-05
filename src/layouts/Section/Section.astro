@@ -13,10 +13,14 @@ interface Props {
 const { sectionKey, title, strong, faIcon, main } = Astro.props
 ---
 
-<section class:list={{ main }} id={sectionKey}>
+<section class:list={['cmp-section', { main }]} id={sectionKey}>
   <header>
     <div class="bullet">
-      <Icon faIcon={faIcon} />
+      <span class="line top"></span>
+      <div class="point">
+        <Icon {faIcon} />
+      </div>
+      <span class="line bot"></span>
     </div>
     {
       main ? (
@@ -34,3 +38,16 @@ const { sectionKey, title, strong, faIcon, main } = Astro.props
   </header>
   <slot />
 </section>
+
+<script>
+  import { $$, onScreen } from '@/tools'
+
+  const sections = $$('.cmp-section')
+
+  sections?.forEach(section => {
+    onScreen(
+      { observed: section, margin: '-25%' },
+      isIntersecting => isIntersecting && section.classList.add('seen')
+    )
+  })
+</script>
