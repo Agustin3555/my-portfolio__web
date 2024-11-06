@@ -3,11 +3,21 @@
   flex-direction: column;
   justify-content: center;
   gap: calc(var(--layout-gutter) * 3);
-  padding-top: calc(var(--pal-size-3xl) * 2);
   padding-bottom: var(--layout-gutter);
 
   .text {
     font-size: var(--pal-size-font-xs);
+  }
+
+  > .line {
+    height: 0.0625rem;
+
+    background-image: linear-gradient(
+      to left,
+      transparent,
+      var(--pal-color-white),
+      transparent
+    );
   }
 
   .sections {
