@@ -1,104 +1,100 @@
-#contact {
-  > div {
+#contact > .content {
+  align-items: center;
+  gap: 6rem;
+
+  .according-to-user {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
+    gap: var(--pal-size-xl);
+
+    article {
+      flex-grow: 1;
+      flex-basis: 20rem;
+
+      flex-direction: column;
+      justify-content: space-between;
+    }
+  }
+
+  address {
+    --gap: var(--pal-size-xs);
+    --text-padding-inline: 1.75rem;
+
+    display: flex;
+    flex-wrap: wrap;
     align-items: center;
-    gap: 6rem;
+    gap: var(--text-padding-inline);
+    padding: var(--gap);
+    padding-left: var(--text-padding-inline);
 
-    .according-to-user {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--pal-size-xl);
+    color: var(--pal-color-gs-900);
 
-      article {
-        flex-grow: 1;
-        flex-basis: 20rem;
+    border-radius: calc(var(--pal-size-2xs) + var(--gap));
+    background-color: var(--pal-color-gs-100);
+    box-shadow: var(pal-shadow-1);
 
-        flex-direction: column;
-        justify-content: space-between;
-      }
+    transition: background-color var(--pal-time-s) ease-out;
+
+    .email {
+      flex-grow: 1;
+      flex-basis: 0;
+
+      line-height: initial;
+      font-weight: 500;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+
+      overflow: hidden;
     }
 
-    address {
-      --gap: var(--pal-size-xs);
-      --text-padding-inline: 1.75rem;
-
+    .controls {
       display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: var(--text-padding-inline);
-      padding: var(--gap);
-      padding-left: var(--text-padding-inline);
+      gap: var(--gap);
 
-      color: var(--pal-color-gs-900);
+      #button-copy-email {
+        --cmp-icon-size: var(--pal-size-font-m);
 
-      border-radius: calc(var(--pal-size-2xs) + var(--gap));
-      background-color: var(--pal-color-gs-100);
-      box-shadow: var(pal-shadow-1);
+        position: relative;
 
-      transition: background-color var(--pal-time-s) ease-out;
-
-      .email {
-        flex-grow: 1;
-        flex-basis: 0;
-
-        line-height: initial;
-        font-weight: 500;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-
-        overflow: hidden;
-      }
-
-      .controls {
         display: flex;
-        gap: var(--gap);
+        align-items: center;
+        justify-content: center;
+        aspect-ratio: 1;
+        width: var(--pal-size-2xl);
 
-        #button-copy-email {
-          --cmp-icon-size: var(--pal-size-font-m);
+        color: var(--pal-color-gs-100);
 
-          position: relative;
+        border-radius: var(--pal-size-2xs);
+        background-color: var(--pal-color-gs-750);
 
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          aspect-ratio: 1;
-          width: var(--pal-size-2xl);
+        transition: background-color var(--pal-time-s) ease-out;
 
-          color: var(--pal-color-gs-100);
+        > * {
+          position: absolute;
 
-          border-radius: var(--pal-size-2xs);
-          background-color: var(--pal-color-gs-750);
+          transition:
+            opacity var(--pal-time-m) ease-out,
+            scale var(--pal-time-m) var(--pal-timing-func-a);
+        }
 
-          transition: background-color var(--pal-time-s) ease-out;
+        .check-icon {
+          scale: 0;
+          opacity: 0;
+        }
 
-          > * {
-            position: absolute;
+        &:disabled {
+          box-shadow: initial;
+          translate: initial;
+          cursor: initial;
 
-            transition:
-              opacity var(--pal-time-m) ease-out,
-              scale var(--pal-time-m) var(--pal-timing-func-a);
-          }
-
-          .check-icon {
+          .copy-icon {
             scale: 0;
             opacity: 0;
           }
 
-          &:disabled {
-            box-shadow: initial;
-            translate: initial;
-            cursor: initial;
-
-            .copy-icon {
-              scale: 0;
-              opacity: 0;
-            }
-
-            .check-icon {
-              scale: 1;
-              opacity: 1;
-            }
+          .check-icon {
+            scale: 1;
+            opacity: 1;
           }
         }
       }

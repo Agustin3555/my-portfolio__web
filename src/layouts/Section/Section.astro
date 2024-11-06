@@ -3,10 +3,10 @@ import './Section.css'
 import Icon from '@/components/Icon/Icon.astro'
 
 interface Props {
-  sectionKey: string
+  sectionKey?: string
   title: string
   strong: string
-  faIcon: string
+  faIcon?: string
   main?: boolean
 }
 
@@ -15,13 +15,17 @@ const { sectionKey, title, strong, faIcon, main } = Astro.props
 
 <section class:list={['cmp-section', { main }]} id={sectionKey}>
   <header>
-    <div class="bullet">
-      <span class="line top"></span>
-      <div class="point">
-        <Icon {faIcon} />
-      </div>
-      <span class="line bot"></span>
-    </div>
+    {
+      faIcon && (
+        <div class="bullet">
+          <span class="line top" />
+          <div class="point">
+            <Icon {faIcon} />
+          </div>
+          <span class="line bot" />
+        </div>
+      )
+    }
     {
       main ? (
         <h1>
@@ -36,7 +40,9 @@ const { sectionKey, title, strong, faIcon, main } = Astro.props
       )
     }
   </header>
-  <slot />
+  <div class="content">
+    <slot />
+  </div>
 </section>
 
 <script>

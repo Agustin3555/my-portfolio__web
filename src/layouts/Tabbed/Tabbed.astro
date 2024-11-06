@@ -81,13 +81,24 @@ const { titles } = Astro.props
       }
     })
 
-    const resizeObserver = new ResizeObserver(() => {
-      const maxHeight = Math.max(...sections.map(item => item.clientHeight))
-      slider.style.height = asRem(maxHeight)
+    // Control de altura global
+
+    const sectionHeights: number[] = []
+
+    sections.forEach((section, index) => {
+      const resizeObserver = new ResizeObserver(() => {
+        const newHeight = section.clientHeight
+
+        // Solo actualizar si el valor es diferente
+        if (sectionHeights[index] !== newHeight) {
+          const value = sectionHeights.map(asRem).join(', ')
+          slider.style.setProperty('--section-heights', value)
+
+          sectionHeights[index] = newHeight
+        }
+      })
+
+      resizeObserver.observe(section)
     })
-
-    resizeObserver.observe(slider)
-
-    // TODO: controlar tambien el resize de los items
   })
 </script>

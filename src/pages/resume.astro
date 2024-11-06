@@ -1,26 +1,36 @@
 ---
 import Page from '@/layouts/Page/Page.astro'
-import BasicHeader from '@/layouts/BasicHeader/BasicHeader.astro'
+import Section from '@/layouts/Section/Section.astro'
+import { highlightToHTMLTag } from '@/tools'
 import jsonData from '@/data.json'
 
-const { head, data } = jsonData.pages.resume
+const { head, title, strong, faIcon, desc } = jsonData.pages.resume
 ---
 
 <Page {head}>
-  <BasicHeader {...data}>
+  <Section {...{ title, strong, faIcon }}>
+    <div class="bg card layout">
+      <div class="paragraphs">
+        {
+          desc.map(item => (
+            <p class="text" set:html={highlightToHTMLTag(item)} />
+          ))
+        }
+      </div>
+    </div>
     <embed
       class="cv"
       src="/CV - Juan Agustín Lovera - g_fswd_v1.pdf"
       type="application/pdf"
     />
-  </BasicHeader>
+  </Section>
 </Page>
 
 <style>
   .cv {
-    aspect-ratio: 4 / 5;
-    width: 100%;
+    aspect-ratio: 595 / 842;
+
     border-radius: var(--pal-size-font-xs);
-    box-shadow: var(--decorator-shadow-1), var(--decorator-bevel-highlight);
+    box-shadow: var(--pal-shadow-1);
   }
 </style>

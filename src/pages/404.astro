@@ -1,11 +1,22 @@
 ---
 import Page from '@/layouts/Page/Page.astro'
-import BasicHeader from '@/layouts/BasicHeader/BasicHeader.astro'
+import Section from '@/layouts/Section/Section.astro'
+import { highlightToHTMLTag } from '@/tools'
 import jsonData from '@/data.json'
 
-const { head, data } = jsonData.pages.notFound
+const { head, title, strong, desc } = jsonData.pages.notFound
 ---
 
 <Page {head}>
-  <BasicHeader {...data} />
+  <Section {...{ title, strong }} main>
+    <div class="bg card layout">
+      <div class="paragraphs">
+        {
+          desc.map(item => (
+            <p class="text" set:html={highlightToHTMLTag(item)} />
+          ))
+        }
+      </div>
+    </div>
+  </Section>
 </Page>

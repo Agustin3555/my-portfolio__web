@@ -76,6 +76,8 @@
 
     align-self: stretch;
 
+    height: max(var(--section-heights));
+
     transition:
       width var(--pal-time-s) ease,
       border-color var(--pal-time-s) ease-out;

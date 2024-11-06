@@ -1,7 +1,7 @@
 {
   "documentInfo": {
     "title": {
-      "base": "Juan Agustín Lovera, Full Stack Web Dev",
+      "base": "Juan Agustín Lovera",
       "separator": "•"
     }
   },
@@ -442,27 +442,24 @@
         "desc": ""
       },
       "linkTitle": "Currículum",
-      "data": {
-        "title": "Currículum",
-        "titleStrong": "Resumen o CV",
-        "desc": [
-          "Normalmente, [personalizo] mi CV según el [puesto] y la [empresa] para destacar cómo puedo contribuir específicamente a sus necesidades. Por lo tanto, el siguiente documento es una [muestra genérica] de mis [habilidades] y [experiencia] 🤓."
-        ]
-      }
+      "title": "Currículum",
+      "strong": "Resumen o CV",
+      "faIcon": "fa-solid fa-file-pdf",
+      "desc": [
+        "Normalmente, [personalizo] mi CV según el [puesto] y la [empresa] para destacar cómo puedo contribuir específicamente a sus necesidades. Por lo tanto, el siguiente documento es una [muestra genérica] de mis [habilidades] y [experiencia] 🤓."
+      ]
     },
     "notFound": {
       "head": {
         "subtitle": "Error 404",
         "desc": ""
       },
-      "data": {
-        "title": "Página no encontrada",
-        "titleStrong": "Error 404",
-        "desc": [
-          "Creo que no es el programador que buscas 🫠.",
-          "El [error 404] ocurre cuando se intenta acceder a una página que no existe en un sitio web. Este problema puede surgir debido a una [URL incorrecta], una [página eliminada] o [problemas de redirección]."
-        ]
-      }
+      "title": "Página no encontrada",
+      "strong": "Error 404",
+      "desc": [
+        "Creo que no es el programador que buscas 🫠.",
+        "El [error 404] ocurre cuando se intenta acceder a una página que no existe en un sitio web. Este problema puede surgir debido a una [URL incorrecta], una [página eliminada] o [problemas de redirección]."
+      ]
     }
   }
 }

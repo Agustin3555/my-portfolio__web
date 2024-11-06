@@ -15,32 +15,26 @@ const { accordingToUser, email } = contact.data
 ---
 
 <Section {...{ sectionKey, title, strong, faIcon }}>
-  <div>
-    <div class="according-to-user">
-      {
-        accordingToUser.map(({ title, desc }) => (
-          <article class="bg card layout">
-            <h3>{title}</h3>
-            <p class="text" set:html={highlightToHTMLTag(desc)} />
-          </article>
-        ))
-      }
-    </div>
-    <address>
-      <p class="email">{email}</p>
-      <div class="controls">
-        <button
-          id="button-copy-email"
-          title="Copiar email"
-          data-copying="false"
-        >
-          <Icon faIcon="fa-solid fa-copy" handlingClass={'copy-icon'} />
-          <Icon faIcon="fa-solid fa-check" handlingClass={'check-icon'} />
-        </button>
-        <ContactLink emailSender />
-      </div>
-    </address>
+  <div class="according-to-user">
+    {
+      accordingToUser.map(({ title, desc }) => (
+        <article class="bg card layout">
+          <h3>{title}</h3>
+          <p class="text" set:html={highlightToHTMLTag(desc)} />
+        </article>
+      ))
+    }
   </div>
+  <address>
+    <p class="email">{email}</p>
+    <div class="controls">
+      <button id="button-copy-email" title="Copiar email" data-copying="false">
+        <Icon faIcon="fa-solid fa-copy" handlingClass={'copy-icon'} />
+        <Icon faIcon="fa-solid fa-check" handlingClass={'check-icon'} />
+      </button>
+      <ContactLink emailSender />
+    </div>
+  </address>
 </Section>
 
 <script>

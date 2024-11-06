@@ -99,6 +99,12 @@
     }
   }
 
+  > .content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--layout-gutter);
+  }
+
   &.main {
     justify-content: center;
     min-height: calc(100dvh - var(--layout-padding-top));
