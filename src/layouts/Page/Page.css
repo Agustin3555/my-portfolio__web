@@ -4,7 +4,7 @@ body {
   font-size: var(--pal-size-font-s);
   font-family: var(--pal-font-a);
   font-weight: 300;
-  color: rgba(var(--pal-color-base-white), 0.7);
+  color: rgba(var(--pal-color-base-white), 0.75);
 
   > .layout {
     --layout-max-width: 68rem;

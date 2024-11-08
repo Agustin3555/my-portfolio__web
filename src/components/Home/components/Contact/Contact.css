@@ -31,7 +31,7 @@
 
     border-radius: calc(var(--pal-size-2xs) + var(--gap));
     background-color: var(--pal-color-gs-100);
-    box-shadow: var(pal-shadow-1);
+    box-shadow: var(--pal-shadow-1);
 
     transition: background-color var(--pal-time-s) ease-out;
 

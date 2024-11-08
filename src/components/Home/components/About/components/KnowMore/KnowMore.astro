@@ -7,12 +7,12 @@ import MySelf2 from './myself-2.webp'
 import jsonData from '@/data.json'
 import Icon from '@/components/Icon/Icon.astro'
 
-const { history, hobbiesAndLikes } =
-  jsonData.pages.home.sections.about.data.knowMore.data
+const { data } = jsonData.pages.home.sections.about.data.knowMore
+const { history, hobbiesAndLikes } = data
 ---
 
 <section class="cmp-know-more">
-  <Image src={MySelf2} alt="" />
+  <Image src={MySelf2} alt="" loading="eager" />
   <article class="history bg card layout">
     <h3>{history.title}</h3>
     <div class="paragraphs">
@@ -33,7 +33,7 @@ const { history, hobbiesAndLikes } =
   </article>
   <article class="hobbies-and-likes bg card layout">
     <h3>{hobbiesAndLikes.title}</h3>
-    <div>
+    <div class="items">
       {
         hobbiesAndLikes.data.items.map(({ title, emoji }) => (
           <Pill emoji={emoji} size="m">
@@ -48,7 +48,7 @@ const { history, hobbiesAndLikes } =
 <script>
   import { $ } from '@/tools'
 
-  const history = $('.cmp-know-more .history')
+  const history = $('.cmp-know-more > .history')
 
   if (history) {
     const toggle = history.querySelector<HTMLButtonElement>('& > button')

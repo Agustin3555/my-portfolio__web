@@ -1,19 +1,6 @@
-.cmp-hi {
-  footer {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: var(--layout-gutter);
-
-    > nav {
-      display: flex;
-      gap: var(--pal-size-m);
-    }
-
-    > div {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--layout-gutter);
-    }
-  }
+.cmp-hi > footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--layout-gutter);
 }

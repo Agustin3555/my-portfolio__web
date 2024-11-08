@@ -3,11 +3,11 @@
   flex-direction: column;
   gap: var(--layout-gutter);
 
-  article {
+  > article {
     flex-direction: column;
   }
 
-  .history {
+  > .history {
     --button-height: 1.75rem;
     --button-height-compensation: calc(
       var(--layout-gutter) + var(--button-height)
@@ -21,7 +21,7 @@
     transition: height var(--pal-time-m) ease;
     interpolate-size: allow-keywords;
 
-    button {
+    > button {
       position: absolute;
       bottom: 0;
       left: 0.0625rem;
@@ -49,7 +49,7 @@
         color: var(--pal-color-white);
       }
 
-      small {
+      > small {
         position: absolute;
         bottom: calc((var(--button-height) - 1em) / 2);
 
@@ -80,15 +80,9 @@
     }
   }
 
-  .hobbies-and-likes {
-    > div {
-      --cls-bg-color: var(--pal-color-gs-800);
+  > .hobbies-and-likes > .items {
+    --cls-bg-color: var(--pal-color-gs-800);
 
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--pal-size-s);
-
-      color: var(--pal-color-gs-200);
-    }
+    flex-wrap: wrap;
   }
 }

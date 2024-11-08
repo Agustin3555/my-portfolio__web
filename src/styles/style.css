@@ -212,3 +212,24 @@ a {
     --decreasing-factor: var(--pal-size-xs);
   }
 }
+
+@keyframes pulsar {
+  from {
+    outline-width: 0;
+    outline-offset: initial;
+    outline-color: var(--pal-color-a-l2);
+  }
+  25%,
+  to {
+    outline-width: 0.0625rem;
+    outline-offset: var(--pal-size-xl);
+    outline-color: transparent;
+  }
+}
+
+.pulsar {
+  outline-width: 0;
+  outline-style: solid;
+
+  animation: pulsar calc((60s / var(--bpm)) * 8) linear infinite;
+}

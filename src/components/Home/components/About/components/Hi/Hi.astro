@@ -8,27 +8,25 @@ import { highlightToHTMLTag } from '@/tools'
 import MySelf1 from './myself-1.webp'
 import jsonData from '@/data.json'
 
-const { text, residenceMapsLink } =
-  jsonData.pages.home.sections.about.data.hi.data
+const { data, img } = jsonData.pages.home.sections.about.data.hi
+const { text, residenceMapsLink } = data
 ---
 
 <section class="cmp-hi">
-  <Image src={MySelf1} alt="" />
+  <Image src={MySelf1} alt={img.alt} loading="eager" />
   <div class="bg card layout">
     <p class="text" set:html={highlightToHTMLTag(text)} />
   </div>
   <footer>
-    <nav>
+    <nav class="items">
       <SocialNets />
       <ContactLink />
     </nav>
-    <div>
-      <SmallLink
-        url={residenceMapsLink.url}
-        faIcon="fa-solid fa-location-dot"
-        text={residenceMapsLink.title}
-        title={`Ir a ${residenceMapsLink.title} en Maps`}
-      />
-    </div>
+    <SmallLink
+      url={residenceMapsLink.url}
+      faIcon="fa-solid fa-location-dot"
+      text={residenceMapsLink.title}
+      title={`Ir a ${residenceMapsLink.title} en Maps`}
+    />
   </footer>
 </section>

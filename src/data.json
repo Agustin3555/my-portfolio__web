@@ -60,7 +60,6 @@
             "hi": {
               "title": "Hola",
               "img": {
-                "file": "myself-1.webp",
                 "alt": "Fotografía de Juan Agustín Lovera: cara frontal sonriente, cuerpo frontal y brazos cruzados"
               },
               "data": {
@@ -74,8 +73,7 @@
             "profProfile": {
               "title": "Perfil profesional",
               "img": {
-                "file": "myself-2.webp",
-                "alt": "Fotografía de Juan Agustín Lovera: cara lateral seria y cuerpo semi lateral"
+                "alt": "Logo de Juan Agustín Lovera, Full Stack Web Dev"
               },
               "data": {
                 "text": "Como [desarrollador web], me destaco en el uso de [TypeScript] y en la implementación de tecnologías modernas para crear soluciones eficientes y escalables. Mi experiencia abarca desde el [diseño UI], hasta el backend con [Node.js], destacando un uso avanzado de [CSS]. Soy un [aprendiz rápido], un [pensador lógico] y un [colaborador eficaz] en equipo, comprometido con la excelencia y la [mejora continua] de mis habilidades técnicas y de comunicación. Aunque me especializo en este campo, estoy abierto a explorar otras áreas del desarrollo en el futuro.",
@@ -85,8 +83,7 @@
             "knowMore": {
               "title": "Saber más",
               "img": {
-                "file": "flat-logo.svg",
-                "alt": "Logo de Juan Agustín Lovera, Full Stack Web Dev"
+                "alt": "Fotografía de Juan Agustín Lovera: cara lateral seria y cuerpo semi lateral"
               },
               "data": {
                 "history": {

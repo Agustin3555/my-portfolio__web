@@ -5,16 +5,16 @@ import { highlightToHTMLTag } from '@/tools'
 import FlatLogo from './flat-logo.svg'
 import jsonData from '@/data.json'
 
-const { text, englishLevel } =
-  jsonData.pages.home.sections.about.data.profProfile.data
+const { data, img } = jsonData.pages.home.sections.about.data.profProfile
+const { text, englishLevel } = data
 ---
 
 <section>
-  <Image src={FlatLogo} alt="" />
+  <Image src={FlatLogo} alt={img.alt} loading="eager" />
   <div class="bg card layout">
     <p class="text" set:html={highlightToHTMLTag(text)} />
   </div>
-  <div>
+  <div class="items">
     <Pill faIcon="fa-solid fa-comment-dots" size="s">
       <p>Ingles {englishLevel}</p>
     </Pill>

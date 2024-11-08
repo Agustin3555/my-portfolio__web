@@ -6,8 +6,7 @@
 
 @keyframes float {
   to {
-    translate: 0 150dvh;
-    /* BUG: en páginas cortas el desplazamiento es demasiado */
+    translate: 0 40%;
   }
 }
 
@@ -18,7 +17,7 @@
   animation: float linear both;
   animation-timeline: scroll(root);
 
-  .particle {
+  > .particle {
     position: absolute;
 
     aspect-ratio: 1;
