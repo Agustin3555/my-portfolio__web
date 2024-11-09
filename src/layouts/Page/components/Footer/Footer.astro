@@ -1,5 +1,6 @@
 ---
 import './Footer.css'
+import Separator from '@/components/Separator/Separator.astro'
 import Link from '@/components/Link/Link.astro'
 import jsonData from '@/data.json'
 
@@ -10,7 +11,7 @@ const { acknowledgments, othersPages } = sections
 ---
 
 <footer class="cmp-footer">
-  <span class="line"></span>
+  <Separator />
   <div class="sections">
     <article class="acknowledgments">
       <h4>{acknowledgments.title}</h4>

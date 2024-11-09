@@ -1,0 +1,22 @@
+:root {
+  --cmp-separator-long: auto;
+  --cmp-separator-thick: 0.0625rem;
+}
+
+.cmp-separator {
+  border: none;
+  width: var(--cmp-separator-long);
+  height: var(--cmp-separator-thick);
+
+  background-image: linear-gradient(
+    to left,
+    transparent,
+    var(--pal-color-white),
+    transparent
+  );
+
+  &.invert {
+    width: var(--cmp-separator-thick);
+    height: var(--cmp-separator-long);
+  }
+}

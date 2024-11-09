@@ -1,25 +1,14 @@
 ---
-import * as SeparatorStyled from "./Separator.styled";
-import { type HandlingClass, asClassName } from "@/tools";
+import './Separator.css'
 
 export interface Props {
-  asSpan?: boolean;
-  style: SeparatorStyled.Props;
-  handlingClass?: HandlingClass;
+  asSpan?: boolean
+  invert?: boolean
 }
 
-const { asSpan = false, style, handlingClass = [] } = Astro.props;
+const { asSpan = false, invert = false } = Astro.props
 
-const props = {
-  p: SeparatorStyled.adapter(style),
-  className: asClassName(...handlingClass),
-};
+const classList = ['cmp-separator', { invert }]
 ---
 
-{
-  asSpan ? (
-    <SeparatorStyled.SpanComponent {...props} />
-  ) : (
-    <SeparatorStyled.HrComponent {...props} />
-  )
-}
+{asSpan ? <span class:list={classList} /> : <hr class:list={classList} />}

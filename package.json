@@ -10,18 +10,11 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/react": "^3.0.10",
-    "@emotion/css": "^11.11.2",
-    "@emotion/styled": "^11.11.0",
     "@fontsource-variable/dm-sans": "^5.1.0",
     "@fontsource-variable/plus-jakarta-sans": "^5.1.0",
-    "astro": "^4.16.7",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "astro": "^4.16.10"
   },
   "devDependencies": {
-    "@types/react": "^18.2.60",
-    "@types/react-dom": "^18.2.19",
     "prettier": "^3.3.3",
     "prettier-plugin-astro": "^0.14.1"
   }

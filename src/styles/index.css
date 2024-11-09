@@ -1,5 +1,5 @@
-@layer normalize, palette, style;
+@layer normalize, palette, global;
 
 @import "normalize.css" layer(normalize);
 @import "palette.css" layer(palette);
-@import "style.css" layer(style);
+@import "global.css" layer(global);

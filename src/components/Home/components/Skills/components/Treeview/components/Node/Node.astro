@@ -4,8 +4,6 @@ import { Image } from 'astro:assets'
 import Separator, {
   type Props as SeparatorProps,
 } from '@/components/Separator/Separator.astro'
-import { FONT_SIZE, VARS } from '@/styles'
-import { asClassName } from '@/tools'
 import {
   getImgMetadata,
   validateImgMetadata,
@@ -35,16 +33,7 @@ const folder: Folder = 'skills'
 
 items.forEach(({ file }) => validateImgMetadata(folder, file))
 
-const separatorProps: SeparatorProps = {
-  style: {
-    invert: true,
-    long: FONT_SIZE.xs,
-    color: {
-      light: VARS.color.a.line.light,
-      dark: VARS.color.a.line.dark,
-    },
-  },
-}
+const separatorProps: SeparatorProps = { invert: true }
 ---
 
 <div class="cmp-node">
@@ -71,10 +60,10 @@ const separatorProps: SeparatorProps = {
           items.map(({ name, file, invertInDarkMode }, index) => (
             <>
               <Image
-                class={asClassName(
+                class:list={[
                   'icon',
-                  invertInDarkMode ? 'invert-in-dark-mode' : ''
-                )}
+                  { 'invert-in-dark-mode': invertInDarkMode },
+                ]}
                 src={getImgMetadata(folder, file)()}
                 alt={`Logo de ${name}`}
               />

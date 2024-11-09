@@ -157,10 +157,10 @@ a {
 }
 
 .external-link {
-  --arrow-width: 0.0625rem;
+  --arrow-thickness: 0.0625rem;
   --arrow-head-size: calc(var(--pal-size-m) - var(--decreasing-factor, 0rem));
   --arrow-line-length: calc(var(--arrow-head-size) * sqrt(2) * 1.125);
-  --arrow-color-alpha: 0.5;
+  --arrow-color-alpha: 0.625;
   --arrow-color: rgba(var(--pal-color-base-white), var(--arrow-color-alpha));
 
   position: relative;
@@ -186,21 +186,21 @@ a {
 
   &::before {
     width: var(--arrow-line-length);
-    height: var(--arrow-width);
+    height: var(--arrow-thickness);
     translate: -0.03125rem;
     scale: 0;
     rotate: -45deg;
 
     transition: scale var(--pal-time-s) ease-out;
 
-    background: linear-gradient(90deg, transparent, var(--arrow-color));
+    background: linear-gradient(45deg, transparent, var(--arrow-color));
     transform-origin: top right;
   }
 
   &::after {
     border-style: solid;
-    border-top-width: var(--arrow-width);
-    border-right-width: var(--arrow-width);
+    border-top-width: var(--arrow-thickness);
+    border-right-width: var(--arrow-thickness);
     border-image: linear-gradient(45deg, transparent 50%, var(--arrow-color)) 1;
     aspect-ratio: 1;
     width: var(--arrow-head-size);

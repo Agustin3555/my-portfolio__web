@@ -9,17 +9,6 @@
     font-size: var(--pal-size-font-xs);
   }
 
-  > .line {
-    height: 0.0625rem;
-
-    background-image: linear-gradient(
-      to left,
-      transparent,
-      var(--pal-color-white),
-      transparent
-    );
-  }
-
   .sections {
     display: flex;
     flex-wrap: wrap;
