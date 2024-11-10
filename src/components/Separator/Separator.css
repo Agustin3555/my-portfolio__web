@@ -4,18 +4,22 @@
 }
 
 .cmp-separator {
+  --gradient-direction: to left;
+
   border: none;
   width: var(--cmp-separator-long);
   height: var(--cmp-separator-thick);
 
   background-image: linear-gradient(
-    to left,
+    var(--gradient-direction),
     transparent,
     var(--pal-color-white),
     transparent
   );
 
   &.invert {
+    --gradient-direction: to top;
+
     width: var(--cmp-separator-thick);
     height: var(--cmp-separator-long);
   }

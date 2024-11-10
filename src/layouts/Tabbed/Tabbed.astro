@@ -2,10 +2,11 @@
 import './Tabbed.css'
 
 interface Props {
+  id: string
   titles: string[]
 }
 
-const { titles } = Astro.props
+const { id, titles } = Astro.props
 ---
 
 <article class="cmp-tabbed">
@@ -16,7 +17,11 @@ const { titles } = Astro.props
         {
           titles.map((title, index) => (
             <label>
-              <input type="radio" name="sections" checked={index === 0} />
+              <input
+                type="radio"
+                name={`${id}-sections`}
+                checked={index === 0}
+              />
               {title}
             </label>
           ))

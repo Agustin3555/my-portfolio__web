@@ -17,7 +17,7 @@ const titles = Object.values(data).map(item => item.title)
 ---
 
 <Section {...{ sectionKey, title, strong, faIcon }} main>
-  <Tabbed {titles}>
+  <Tabbed id={sectionKey} {titles}>
     <Hi />
     <ProfProfile />
     <KnowMore />

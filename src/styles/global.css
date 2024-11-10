@@ -102,11 +102,6 @@ a {
     color: var(--pal-color-a-l2);
 
     transition: color var(--pal-time-s) ease-out;
-
-    body[data-dark-mode="true"] & {
-      font-weight: 500;
-      color: var(--pal-color-a-l2);
-    }
   }
 }
 

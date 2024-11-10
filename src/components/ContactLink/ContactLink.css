@@ -4,7 +4,7 @@
   }
 }
 
-.contact-link {
+.cmp-contact-link {
   --cmp-icon-size: var(--pal-size-font-m);
 
   position: relative;
@@ -43,9 +43,5 @@
 
   .cmp-icon {
     z-index: 0;
-  }
-
-  &[data-email-sender] {
-    border-radius: var(--pal-size-2xs);
   }
 }

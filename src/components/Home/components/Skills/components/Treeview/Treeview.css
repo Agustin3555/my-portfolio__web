@@ -1,8 +1,4 @@
-#skill-treeview {
-  flex-grow: 2;
-
-  > ul {
-    flex-direction: column;
-    gap: var(--pal-size-xs);
-  }
+.cmp-treeview {
+  flex-direction: column;
+  gap: var(--items-gap);
 }

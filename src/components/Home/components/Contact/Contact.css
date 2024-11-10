@@ -98,6 +98,10 @@
           }
         }
       }
+
+      .cmp-contact-link {
+        border-radius: var(--pal-size-2xs);
+      }
     }
   }
 }

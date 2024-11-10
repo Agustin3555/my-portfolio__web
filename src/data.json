@@ -168,170 +168,241 @@
                 "desc": "Profundización constante, aplicando las mejores prácticas."
               }
             ],
-            "techs": [
-              {
+            "techs": {
+              "figma": {
                 "items": [
                   {
                     "name": "Figma",
-                    "file": "logo-figma.webp"
+                    "img": {
+                      "file": "logo-figma.webp"
+                    }
                   }
                 ],
-                "skillLevel": 2
+                "level": 2
               },
-              {
+              "html": {
                 "items": [
                   {
                     "name": "HTML",
-                    "file": "logo-html.webp"
+                    "img": {
+                      "file": "logo-html.webp"
+                    }
                   }
                 ],
-                "skillLevel": 2
+                "level": 2
               },
-              {
+              "css": {
                 "items": [
                   {
                     "name": "CSS",
-                    "file": "logo-css.webp"
+                    "img": {
+                      "file": "logo-css.webp"
+                    }
                   }
                 ],
-                "skillLevel": 3
+                "level": 3
               },
-              {
+              "js": {
                 "items": [
                   {
                     "name": "JavaScript",
-                    "file": "logo-javascript.webp"
+                    "img": {
+                      "file": "logo-javascript.webp"
+                    }
                   },
                   {
                     "name": "TypeScript",
-                    "file": "logo-typescript.webp"
+                    "img": {
+                      "file": "logo-typescript.webp"
+                    }
                   }
                 ],
-                "skillLevel": 3,
-                "techs": [
-                  {
-                    "items": [
-                      {
-                        "name": "Astro",
-                        "file": "logo-astro.webp",
-                        "invertInDarkMode": true
-                      }
-                    ],
-                    "skillLevel": 2
-                  },
-                  {
-                    "items": [
-                      {
-                        "name": "React",
-                        "file": "logo-react.webp"
-                      }
-                    ],
-                    "skillLevel": 2
-                  },
-                  {
-                    "items": [
-                      {
-                        "name": "React Native",
-                        "file": "logo-react.webp"
-                      }
-                    ],
-                    "skillLevel": 1
-                  },
-                  {
-                    "items": [
-                      {
-                        "name": "styled-components",
-                        "file": "logo-styled-components.webp"
-                      }
-                    ],
-                    "skillLevel": 2
-                  },
-                  {
-                    "items": [
-                      {
-                        "name": "Emotion",
-                        "file": "logo-emotion.webp"
-                      }
-                    ],
-                    "skillLevel": 2
-                  },
-                  {
-                    "items": [
-                      {
-                        "name": "Zustand",
-                        "file": "logo-zustand.webp"
-                      }
-                    ],
-                    "skillLevel": 2
-                  },
-                  {
-                    "items": [
-                      {
-                        "name": "Redux",
-                        "file": "logo-redux.webp"
-                      }
-                    ],
-                    "skillLevel": 2
-                  },
-                  {
-                    "items": [
-                      {
-                        "name": "NestJS",
-                        "file": "logo-nestjs.webp"
-                      }
-                    ],
-                    "skillLevel": 1
-                  },
-                  {
-                    "items": [
-                      {
-                        "name": "Express",
-                        "file": "logo-express.webp",
-                        "invertInDarkMode": true
-                      }
-                    ],
-                    "skillLevel": 1
-                  },
-                  {
-                    "items": [
-                      {
-                        "name": "Prisma",
-                        "file": "logo-prisma.webp",
-                        "invertInDarkMode": true
-                      }
-                    ],
-                    "skillLevel": 1
-                  }
-                ]
+                "level": 3
               },
-              {
+              "astro": {
+                "items": [
+                  {
+                    "name": "Astro",
+                    "img": {
+                      "file": "logo-astro.webp",
+                      "invertInDarkMode": true
+                    }
+                  }
+                ],
+                "level": 2
+              },
+              "react": {
+                "items": [
+                  {
+                    "name": "React",
+                    "img": {
+                      "file": "logo-react.webp"
+                    }
+                  }
+                ],
+                "level": 3
+              },
+              "nextJs": {
+                "items": [
+                  {
+                    "name": "Next.js",
+                    "img": {
+                      "file": "logo-nextjs.webp"
+                    }
+                  }
+                ],
+                "level": 1
+              },
+              "reactNative": {
+                "items": [
+                  {
+                    "name": "React Native",
+                    "img": {
+                      "file": "logo-react.webp"
+                    }
+                  }
+                ],
+                "level": 1
+              },
+              "zustand": {
+                "items": [
+                  {
+                    "name": "Zustand",
+                    "img": {
+                      "file": "logo-zustand.webp"
+                    }
+                  }
+                ],
+                "level": 2
+              },
+              "redux": {
+                "items": [
+                  {
+                    "name": "Redux",
+                    "img": {
+                      "file": "logo-redux.webp"
+                    }
+                  }
+                ],
+                "level": 2
+              },
+              "nestJs": {
+                "items": [
+                  {
+                    "name": "NestJS",
+                    "img": {
+                      "file": "logo-nestjs.webp"
+                    }
+                  }
+                ],
+                "level": 1
+              },
+              "express": {
+                "items": [
+                  {
+                    "name": "Express",
+                    "img": {
+                      "file": "logo-express.webp",
+                      "invertInDarkMode": true
+                    }
+                  }
+                ],
+                "level": 1
+              },
+              "prisma": {
+                "items": [
+                  {
+                    "name": "Prisma",
+                    "img": {
+                      "file": "logo-prisma.webp",
+                      "invertInDarkMode": true
+                    }
+                  }
+                ],
+                "level": 1
+              },
+              "php": {
                 "items": [
                   {
                     "name": "PHP",
-                    "file": "logo-php.webp"
+                    "img": {
+                      "file": "logo-php.webp"
+                    }
                   }
                 ],
-                "skillLevel": 1,
-                "techs": [
+                "level": 1
+              },
+              "laravel": {
+                "items": [
                   {
-                    "items": [
-                      {
-                        "name": "Laravel",
-                        "file": "logo-laravel.webp"
-                      }
-                    ],
-                    "skillLevel": 1
+                    "name": "Laravel",
+                    "img": {
+                      "file": "logo-laravel.webp"
+                    }
+                  }
+                ],
+                "level": 1
+              },
+              "sql": {
+                "items": [
+                  {
+                    "name": "SQL",
+                    "img": {
+                      "file": "logo-sql.webp"
+                    }
+                  }
+                ],
+                "level": 1
+              }
+            },
+            "treeviews": [
+              {
+                "title": "Full stack",
+                "techs": [
+                  "figma",
+                  "html",
+                  "css",
+                  {
+                    "js": [
+                      "astro",
+                      { "react": ["nextJs"] },
+                      "reactNative",
+                      "zustand",
+                      "redux",
+                      "nestJs",
+                      "express",
+                      "prisma"
+                    ]
+                  },
+                  { "php": ["laravel"] },
+                  "sql"
+                ]
+              },
+              {
+                "title": "Front",
+                "techs": [
+                  "html",
+                  "css",
+                  {
+                    "js": [
+                      "astro",
+                      { "react": ["nextJs"] },
+                      "reactNative",
+                      "zustand",
+                      "redux"
+                    ]
                   }
                 ]
               },
               {
-                "items": [
+                "title": "Back",
+                "techs": [
                   {
-                    "name": "SQL",
-                    "file": "logo-sql.webp"
-                  }
-                ],
-                "skillLevel": 1
+                    "js": ["nestJs", "express", "prisma"]
+                  },
+                  { "php": ["laravel"] },
+                  "sql"
+                ]
               }
             ]
           }

@@ -1,51 +1,42 @@
 ---
 import './Treeview.css'
 import Node from './components/Node/Node.astro'
+import type { DataNode } from '../../types/dataNode'
 import jsonData from '@/data.json'
 
-const { techs, levels } = jsonData.pages.home.sections.skills.data
+const { levels } = jsonData.pages.home.sections.skills.data
+
+interface Props {
+  dataNodes: DataNode[]
+}
+
+const { dataNodes } = Astro.props
 ---
 
-<div id="skill-treeview">
-  <ul style={`--levels: ${levels.length};`}>
-    {
-      techs.map(tech => (
-        <li>
-          <Node dataNode={tech} />
-        </li>
-      ))
-    }
-  </ul>
-</div>
+<ul class="cmp-treeview" style={`--levels: ${levels.length};`}>
+  {
+    dataNodes.map(dataNode => (
+      <li>
+        <Node {dataNode} />
+      </li>
+    ))
+  }
+</ul>
 
 <script>
-  import { $ } from '@/tools'
+  import { $$, asRem } from '@/tools'
 
-  const skillTreeview = $<HTMLElement>('#skill-treeview')
+  const treeviews = $$<HTMLElement>('.cmp-treeview')
 
-  if (skillTreeview) {
-    const icons = Array.from(
-      skillTreeview.querySelectorAll<HTMLElement>('.icons')
-    )
+  treeviews.forEach(item => {
+    const icons = Array.from(item.querySelectorAll<HTMLElement>('.icons'))
 
-    // Calcular el ancho máximo entre todos los icons
-    const iconsMaxWidth = Math.max(...icons.map(item => item.clientWidth))
-    skillTreeview.style.setProperty('--icons-max-width', `${iconsMaxWidth}px`)
+    const iconsMaxWidth = Math.max(...icons.map(icon => icon.clientWidth))
+    item.style.setProperty('--icons-max-width', asRem(iconsMaxWidth))
 
-    const names = Array.from(
-      skillTreeview.querySelectorAll<HTMLElement>('.names')
-    )
+    const names = Array.from(item.querySelectorAll<HTMLElement>('.names'))
 
-    const resizeObserver = new ResizeObserver(() => {
-      names.forEach(item => (item.style.display = 'flex'))
-
-      // Calcular el ancho máximo entre todos los names
-      const namesMaxWidth = Math.max(...names.map(item => item.clientWidth))
-      skillTreeview.style.setProperty('--names-max-width', `${namesMaxWidth}px`)
-
-      names.forEach(item => (item.style.display = ''))
-    })
-
-    resizeObserver.observe(names[0])
-  }
+    const namesMaxWidth = Math.max(...names.map(name => name.clientWidth))
+    item.style.setProperty('--names-max-width', asRem(namesMaxWidth))
+  })
 </script>

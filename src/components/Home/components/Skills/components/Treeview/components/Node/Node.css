@@ -1,199 +1,154 @@
-
 .cmp-node {
-  --gap-s: var(--pal-size-2xs);
+  --tech-padding: var(--pal-size-2xs);
+  --bullet-point-width: 1.125rem;
+  --bullet-point-gap: var(--pal-size-xs);
   --bar-height: var(--pal-size-l);
-  --tech-padding: var(--gap-s);
-  --tech-height: calc(var(--tech-padding) * 2 + var(--bar-height));
-  --bullet-point-width: var(--pal-size-l);
-  --bullet-point-node-gap: var(--gap-s);
 
   flex-grow: 1;
 
   display: flex;
   flex-direction: column;
-  gap: var(--gap-s);
+  gap: var(--items-gap);
 
-  .tech {
+  > .tech {
+    --bar-border-radius: var(--pal-size-2xs);
+
     display: flex;
     justify-content: space-between;
-    gap: calc(var(--gap-s) * 3);
+    gap: var(--pal-size-l);
     padding: var(--tech-padding);
-    padding-left: calc(var(--tech-padding) * 2);
-    border-radius: var(--pal-size-2xs);
+    padding-left: var(--pal-size-xs);
+
+    border-radius: calc(var(--bar-border-radius) + var(--tech-padding));
 
     transition:
       background-color var(--pal-time-s) ease-out,
       opacity var(--pal-time-s) ease-out;
 
     &:hover {
-      background-color: var(--pal-color-gs-850);
+      color: var(--pal-color-white);
 
-      .names {
-        color: ${COLOR.gs_18};
-      }
+      background-color: var(--pal-color-gs-800);
     }
 
-    .names {
+    > .names {
       display: flex;
       align-items: center;
-      gap: calc(var(--gap-s) * 2);
+      gap: var(--pal-size-xs);
       width: calc(
         var(--names-max-width) -
-          (var(--bullet-point-node-gap) + var(--bullet-point-width)) *
+          (var(--bullet-point-width) + var(--bullet-point-gap)) *
           var(--node-level)
       );
 
       transition: color var(--pal-time-s) ease-out;
 
-      .name {
+      > p {
         font-size: var(--pal-size-font-xs);
-
         white-space: nowrap;
       }
     }
 
-    .graphics {
-      flex-grow: 0.5;
+    > .graphics {
+      flex-grow: 1;
 
       display: flex;
       align-items: center;
-      gap: calc(var(--gap-s) * 3);
-      justify-content: space-between;
+      gap: var(--pal-size-s);
+      max-width: 22rem;
 
-      .icons {
+      > .icons {
         display: flex;
         align-items: center;
         justify-content: flex-end;
-        gap: var(--gap-s);
+        gap: var(--pal-size-xs);
         width: var(--icons-max-width);
 
-        .icon {
-
+        > .icon {
           aspect-ratio: 1;
           width: var(--pal-size-l);
           height: auto;
 
           object-fit: contain;
 
-          transition: filter var(--pal-time-s) ease-out;
-        }
-
-        .invert-in-dark-mode {
-          --invert-in-dark-mode: invert(0.5) brightness(180%);
+          &.invert-in-dark-mode {
+            filter: invert(0.5) brightness(180%);
+          }
         }
       }
 
-      .level-bar {
+      > .level-bar {
         flex-grow: 1;
 
-        min-width: calc(var(--bar-height) * var(--levels));
-
-        .bar {
+        > .bar {
           height: var(--bar-height);
-          border-radius: var(--pal-size-2xs);
 
+          border-radius: var(--bar-border-radius);
           background-color: var(--pal-color-a);
         }
       }
     }
-
-    @media (width < 32rem) {
-      .names {
-        display: none;
-      }
-
-      .graphics {
-        flex-grow: 1;
-
-        gap: var(--bar-height);
-
-        .icons {
-          justify-content: flex-start;
-          width: calc(
-            var(--icons-max-width) -
-              (var(--bullet-point-node-gap) + var(--bullet-point-width)) *
-              var(--node-level)
-          );
-        }
-
-        .level-bar {
-          flex-grow: 1;
-        }
-      }
-    }
   }
 
-  .techs-children {
+  > .techs-children {
     display: flex;
     flex-direction: column;
+    gap: var(--items-gap);
 
     > li {
+      --connection: var(--items-gap);
+
       display: flex;
-      gap: var(--bullet-point-node-gap);
+      gap: var(--bullet-point-gap);
 
-      :not(:nth-last-of-type(1)) {
-        --techs-children-gap: var(--gap-s);
-
-        .bullet-point .line {
-          width: .0625rem;
-        }
+      &:first-of-type > .bullet-point::before {
+        --connection: 0rem;
       }
 
-      .bullet-point {
-        --line-color: var(--pal-color-gs-400);
+      &:last-of-type > .bullet-point::after {
+        content: initial;
+      }
+
+      > .bullet-point {
+        --line-thickness: 0.0625rem;
+        --line-color: var(--pal-color-gs-500);
 
         position: relative;
-        width: var(--bullet-point-width);
-        height: calc(var(--tech-height) + var(--techs-children-gap));
 
-        > * {
+        width: var(--bullet-point-width);
+
+        &::before,
+        &::after {
           position: absolute;
           left: 50%;
+
+          content: "";
         }
 
-        .box {
-          width: var(--pal-size-2xs);
-          height: calc(var(--tech-height) / 2);
-          border-bottom-left-radius: var(--pal-size-2xs);
+        &::before {
+          top: calc(var(--connection) * -1);
 
           border-width: 0;
-          border-left-width: .0625rem;
-          border-bottom-width: .0625rem;
           border-style: solid;
           border-color: var(--line-color);
+          border-bottom-width: var(--line-thickness);
+          border-left-width: var(--line-thickness);
+          width: calc(50% - var(--line-thickness));
+          height: calc(
+            ((var(--tech-padding) * 2 + var(--bar-height)) / 2) +
+              var(--connection)
+          );
 
-          transition: border-color var(--pal-time-s) ease-out;
+          border-bottom-left-radius: var(--pal-size-xs);
         }
 
-        .line {
-          width: .0625rem;
+        &::after {
+          width: var(--line-thickness);
           height: 100%;
 
           background-color: var(--line-color);
-
-          transition: background-color var(--pal-time-s) ease-out;
         }
       }
     }
   }
-
-  /* body[data-dark-mode="true"] & {
-    .tech {
-      &:hover {
-        background-color: ${COLOR.gs_14};
-
-        .names {
-          color: ${COLOR.gs_0};
-        }
-      }
-
-      .graphics .icons .icon {
-        filter: var(--invert-in-dark-mode);
-      }
-    }
-
-    .techs-children > li .bullet-point {
-      --line-color: ${VARS.color.a.line.dark};
-    }
-  } */
 }

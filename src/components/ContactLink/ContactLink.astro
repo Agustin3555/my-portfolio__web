@@ -16,10 +16,9 @@ const { email } = sections.contact.data
 ---
 
 <a
-  class="contact-link bg-spin"
+  class="cmp-contact-link"
   href={emailSender ? `mailto:${email}` : `/#${sectionKey}`}
   title={emailSender ? 'Enviar correo' : 'Contáctame'}
-  data-email-sender={emailSender}
 >
   <Icon faIcon="fa-solid fa-paper-plane" />
 </a>

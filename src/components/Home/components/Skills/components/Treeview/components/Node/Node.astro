@@ -1,25 +1,16 @@
 ---
 import './Node.css'
 import { Image } from 'astro:assets'
-import Separator, {
-  type Props as SeparatorProps,
-} from '@/components/Separator/Separator.astro'
+import Separator from '@/components/Separator/Separator.astro'
 import {
   getImgMetadata,
   validateImgMetadata,
   type Folder,
 } from '@/tools/getImgMetadata.tool'
+import type { DataNode, Tech, TechKey } from '../../../../types/dataNode'
+import jsonData from '@/data.json'
 
-interface DataNode {
-  items: {
-    name: string
-    file: string
-    invertInBrightMode?: boolean
-    invertInDarkMode?: boolean
-  }[]
-  skillLevel: number
-  techs?: DataNode[]
-}
+const { techs } = jsonData.pages.home.sections.skills.data
 
 interface Props {
   dataNode: DataNode
@@ -27,29 +18,33 @@ interface Props {
 }
 
 const { dataNode, level = 0 } = Astro.props
-const { items, skillLevel, techs } = dataNode
+
+const [techKey, dataNodes] =
+  typeof dataNode === 'string'
+    ? [dataNode, undefined]
+    : [Object.keys(dataNode)[0] as TechKey, Object.values(dataNode)[0]]
+
+const tech = techs[techKey] as Tech
+const { items, level: skillLevel } = tech
 
 const folder: Folder = 'skills'
-
-items.forEach(({ file }) => validateImgMetadata(folder, file))
-
-const separatorProps: SeparatorProps = { invert: true }
+items.forEach(({ img }) => validateImgMetadata(folder, img.file))
 ---
 
 <div class="cmp-node">
   <div
     class="tech"
-    style={`
-      --node-level: ${level};
-      opacity: var(--level-${skillLevel - 1}-opacity);
-    `}
+    style={{
+      '--node-level': level,
+      opacity: `var(--level-${skillLevel - 1}-opacity)`,
+    }}
   >
     <div class="names">
       {
         items.map(({ name }, index) => (
           <>
-            <p class="name">{name}</p>
-            {index !== items.length - 1 && <Separator {...separatorProps} />}
+            <p>{name}</p>
+            {index !== items.length - 1 && <Separator invert />}
           </>
         ))
       }
@@ -57,18 +52,15 @@ const separatorProps: SeparatorProps = { invert: true }
     <div class="graphics">
       <div class="icons">
         {
-          items.map(({ name, file, invertInDarkMode }, index) => (
-            <>
-              <Image
-                class:list={[
-                  'icon',
-                  { 'invert-in-dark-mode': invertInDarkMode },
-                ]}
-                src={getImgMetadata(folder, file)()}
-                alt={`Logo de ${name}`}
-              />
-              {index !== items.length - 1 && <Separator {...separatorProps} />}
-            </>
+          items.map(({ name, img }, index) => (
+            <Image
+              class:list={[
+                'icon',
+                { 'invert-in-dark-mode': img.invertInDarkMode },
+              ]}
+              src={getImgMetadata(folder, img.file)()}
+              alt={`Logo de ${name}`}
+            />
           ))
         }
       </div>
@@ -79,14 +71,11 @@ const separatorProps: SeparatorProps = { invert: true }
     </div>
   </div>
   {
-    techs && (
+    dataNodes && (
       <ul class="techs-children">
-        {techs.map(tech => (
+        {dataNodes.map(tech => (
           <li>
-            <span class="bullet-point">
-              <span class="box" />
-              <span class="line" />
-            </span>
+            <span class="bullet-point" />
             <Astro.self dataNode={tech} level={level + 1} />
           </li>
         ))}

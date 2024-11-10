@@ -1,35 +1,23 @@
 .levels {
-  --gap: var(--pal-size-xl);
-
-  container-type: inline-size;
-  flex-grow: 1.5;
-  flex-basis: 13.125rem;
+  flex-grow: 1;
+  flex-basis: 20rem;
 
   display: flex;
   flex-wrap: wrap;
-  align-items: flex-start;
-  gap: var(--gap);
+  gap: var(--layout-gutter);
   border: none;
   padding: 0;
-
-  @media (width < 47.4375rem) {
-    order: -1;
-  }
 
   label {
     position: relative;
 
     flex-grow: 1;
-    flex-basis: 5rem;
+    flex-basis: 15rem;
 
     flex-direction: column;
-    align-items: flex-start;
+    justify-content: space-between;
 
     cursor: pointer;
-
-    @container (width < 40.625rem) {
-      flex-basis: 25rem;
-    }
 
     input {
       display: none;
@@ -47,7 +35,7 @@
       span {
         --border-width: 0.0625rem;
         --toggle-height: calc(var(--pal-size-m) - var(--border-width) * 2);
-        --toggle-width: calc(var(--toggle-height) * 2.25);
+        --toggle-width: calc(var(--toggle-height) * 2);
 
         position: relative;
         width: var(--toggle-width);

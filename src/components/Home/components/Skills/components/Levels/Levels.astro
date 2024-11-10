@@ -21,22 +21,22 @@ const { levels } = jsonData.pages.home.sections.skills.data
 </fieldset>
 
 <script>
-  import { $, $$ } from '@/tools'
+  import { $$ } from '@/tools'
 
   const levelToggles = $$<HTMLInputElement>('.level-toggle')
-  const skillTreeview = $<HTMLElement>('#skill-treeview')
+  const treeviews = $$<HTMLElement>('.cmp-treeview')
 
-  if (skillTreeview) {
-    levelToggles.forEach((toggle, index) => {
-      toggle.addEventListener('change', event => {
-        const element = event.target as HTMLInputElement
-        const { checked } = element
+  levelToggles.forEach((toggle, index) => {
+    toggle.onchange = event => {
+      const element = event.target as HTMLInputElement
+      const { checked } = element
 
-        skillTreeview.style.setProperty(
+      treeviews.forEach(treeview =>
+        treeview.style.setProperty(
           `--level-${index}-opacity`,
           checked ? '1' : '0.25'
         )
-      })
-    })
-  }
+      )
+    }
+  })
 </script>
