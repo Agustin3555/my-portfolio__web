@@ -1,9 +1,9 @@
 ---
 title: "Goicoechea Admin"
 types:
-  - "Web App"
-  - "API"
-  - "Data Base"
+  - "web-app"
+  - "api"
+  - "data-base"
 techs:
   - name: "TypeScript"
     version: "4.9"

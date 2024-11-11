@@ -1,0 +1,30 @@
+.cmp-pill.type {
+  font-weight: 500;
+  color: var(--pal-color-gs-900);
+
+  &.web {
+    --cls-bg-color: var(--pal-color-d-l2);
+  }
+
+  &.web-app {
+    --cls-bg-color: var(--pal-color-b-l2);
+  }
+
+  &.mobile-app {
+    --cls-bg-color: var(--pal-color-c-l2);
+  }
+
+  &.api {
+    --cls-bg-color: var(--pal-color-gs-100);
+  }
+
+  &.data-base {
+    --cls-bg-color: var(--pal-color-a-l2);
+  }
+
+  &.various {
+    --cls-bg-color: var(--pal-color-gs-700);
+
+    color: var(--pal-color-gs-100);
+  }
+}

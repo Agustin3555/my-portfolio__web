@@ -1,7 +1,7 @@
 ---
 title: "Spa Sentirse Bien"
 types:
-  - "Web App"
+  - "web-app"
 techs:
   - name: "TypeScript"
     version: "4.9"

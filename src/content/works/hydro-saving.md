@@ -1,7 +1,7 @@
 ---
 title: "Hydro Saving"
 types:
-  - "Mobile App"
+  - "mobile-app"
 techs:
   - name: "TypeScript"
     version: "5.1"

@@ -120,6 +120,14 @@
           "strong": "Mis proyectos",
           "faIcon": "fa-solid fa-briefcase",
           "data": {
+            "types": {
+              "web": "Web",
+              "web-app": "Web App",
+              "mobile-app": "Mobile App",
+              "api": "API",
+              "data-base": "Data Base",
+              "various": "Varios"
+            },
             "items": [
               {
                 "title": "Goicoechea Admin",

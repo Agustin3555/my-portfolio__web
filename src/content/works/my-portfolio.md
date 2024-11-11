@@ -1,7 +1,7 @@
 ---
 title: "Mi Portfolio"
 types:
-  - "Web"
+  - "web"
 techs:
   - name: "TypeScript"
     version: "5.0"

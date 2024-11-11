@@ -1,7 +1,7 @@
 ---
 title: "Proyectos de la Universidad"
 types:
-  - "Varios"
+  - "various"
 techs:
   - name: "TypeScript"
     version: "4.9"

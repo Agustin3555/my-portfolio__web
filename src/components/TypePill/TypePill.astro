@@ -1,0 +1,19 @@
+---
+import './TypePill.css'
+import Pill from '../Pill/Pill.astro'
+import jsonData from '@/data.json'
+
+const { types } = jsonData.pages.home.sections.works.data
+
+export type TypeKey = keyof typeof types
+
+export interface Props {
+  typeKey: TypeKey
+}
+
+const { typeKey } = Astro.props
+---
+
+<Pill size="s" handlingClass={['type', typeKey].join(' ')}>
+  <p>{types[typeKey]}</p>
+</Pill>

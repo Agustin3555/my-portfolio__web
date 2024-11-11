@@ -1,5 +1,5 @@
 ---
-import './Tech.css'
+import Pill from '../Pill/Pill.astro'
 
 export interface Props {
   name: string
@@ -9,7 +9,7 @@ export interface Props {
 const { name, version } = Astro.props
 ---
 
-<li class="cmp-tech">
+<Pill size="s">
   {name}
   {version && <small>{version}</small>}
-</li>
+</Pill>
