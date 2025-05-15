@@ -9,6 +9,10 @@ techs:
     version: "0.72"
   - name: "Zustand"
     version: "4.3"
+links:
+  repo:
+    url: "https://github.com/Agustin3555/hydro-saving__mobile-app"
+    host: "github"
 imgs:
   - file: "hs-1.webp"
     alt: "Hydro Saving mobile app: sección de Home y Estadísticas"

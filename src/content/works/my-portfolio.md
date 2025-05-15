@@ -9,6 +9,10 @@ techs:
     version: "4.4"
   - name: "Emotion"
     version: "11.11"
+links:
+  repo:
+    url: "https://github.com/Agustin3555/my-portfolio__web"
+    host: "github"
 imgs:
   - file: "mp-1.webp"
     alt: "Mi Portfolio web: presentación en la página principal en modo oscuro y claro"

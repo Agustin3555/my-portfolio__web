@@ -12,74 +12,83 @@ const { basicSeparation = 625 } = Astro.props
 ></span>
 
 <script>
-  import { debounce, randomInt, dropRandom, $$, asRem } from '@/tools'
+  import {
+    debounce,
+    randomInt,
+    dropRandom,
+    $$,
+    asRem,
+    onPageLoad,
+  } from '@/tools'
 
-  const particleMotions = $$<HTMLElement>('.cmp-particle-motion')
+  onPageLoad(() => {
+    const particleMotions = $$<HTMLElement>('.cmp-particle-motion')
 
-  const SIZES = [128, 256]
-  const COLORS = ['a', 'b']
-  const TIME_FACTORS = [2, 4, 8]
+    const SIZES = [128, 256]
+    const COLORS = ['a', 'b']
+    const TIME_FACTORS = [2, 4, 8]
 
-  const handleResize = () => {
-    particleMotions.forEach(particleMotion => {
-      const { clientWidth, clientHeight, dataset } = particleMotion
+    const handleResize = () => {
+      particleMotions.forEach(particleMotion => {
+        const { clientWidth, clientHeight, dataset } = particleMotion
 
-      let step: undefined | string | number = dataset.basicSeparation
+        let step: undefined | string | number = dataset.basicSeparation
 
-      if (step === undefined) return
+        if (step === undefined) return
 
-      // Eliminar los elementos anteriores
-      while (particleMotion.firstChild)
-        particleMotion.removeChild(particleMotion.firstChild)
+        // Eliminar los elementos anteriores
+        while (particleMotion.firstChild)
+          particleMotion.removeChild(particleMotion.firstChild)
 
-      const configElements: {
-        top: number
-        left: number
-        vars: {
-          size: number
-          backgroundColor: string
-          timeFactor: number
-        }
-      }[] = []
-
-      step = Number(step)
-
-      for (let top = 0; top < clientHeight; top += step) {
-        const left = randomInt({ min: -SIZES[1], max: clientWidth })
-
-        configElements.push({
-          top,
-          left,
+        const configElements: {
+          top: number
+          left: number
           vars: {
-            size: dropRandom(SIZES),
-            backgroundColor: dropRandom(COLORS),
-            timeFactor: dropRandom(TIME_FACTORS),
-          },
+            size: number
+            backgroundColor: string
+            timeFactor: number
+          }
+        }[] = []
+
+        step = Number(step)
+
+        for (let top = 0; top < clientHeight; top += step) {
+          const left = randomInt({ min: -SIZES[1], max: clientWidth })
+
+          configElements.push({
+            top,
+            left,
+            vars: {
+              size: dropRandom(SIZES),
+              backgroundColor: dropRandom(COLORS),
+              timeFactor: dropRandom(TIME_FACTORS),
+            },
+          })
+        }
+
+        configElements.forEach(({ top, left, vars }) => {
+          const { size, backgroundColor, timeFactor } = vars
+
+          const particle = window.document.createElement('span')
+
+          particle.className = 'particle'
+          particle.style.top = asRem(top)
+          particle.style.left = asRem(left)
+          particle.style.setProperty('--size', asRem(size))
+          particle.style.setProperty('--time-factor', String(timeFactor))
+          particle.style.setProperty(
+            '--background-color',
+            `var(--pal-color-base-${backgroundColor})`
+          )
+
+          particleMotion.appendChild(particle)
         })
-      }
-
-      configElements.forEach(({ top, left, vars }) => {
-        const { size, backgroundColor, timeFactor } = vars
-
-        const particle = window.document.createElement('span')
-
-        particle.className = 'particle'
-        particle.style.top = asRem(top)
-        particle.style.left = asRem(left)
-        particle.style.setProperty('--size', asRem(size))
-        particle.style.setProperty('--time-factor', String(timeFactor))
-        particle.style.setProperty(
-          '--background-color',
-          `var(--pal-color-base-${backgroundColor})`
-        )
-
-        particleMotion.appendChild(particle)
       })
-    })
-  }
+    }
 
-  handleResize()
+    handleResize()
 
-  // Evento de redimensionamiento con debounce para optimizarlo
-  window.addEventListener('resize', debounce(handleResize, 400))
+    // Evento de redimensionamiento con debounce para optimizarlo
+    window.addEventListener('resize', debounce(handleResize, 400))
+  })
 </script>

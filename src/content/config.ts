@@ -14,6 +14,24 @@ const works = defineCollection({
         version: z.string().optional(),
       }),
     ),
+    links: z
+      .object({
+        repo: z
+          .object({
+            host: z.string(),
+            url: z.string(),
+          })
+          .optional(),
+        others: z
+          .array(
+            z.object({
+              title: z.string(),
+              url: z.string(),
+            }),
+          )
+          .optional(),
+      })
+      .optional(),
     imgs: z.array(
       z.object({
         file: z.string(),

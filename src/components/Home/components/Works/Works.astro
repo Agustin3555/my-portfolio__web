@@ -1,9 +1,9 @@
 ---
-import './Work.css'
+import './Works.css'
 import Section from '@/layouts/Section/Section.astro'
 import WorkItem from './components/WorkItem/WorkItem.astro'
-import jsonData from '@/data.json'
 import { getCollection } from 'astro:content'
+import jsonData from '@/data.json'
 
 const { sections } = jsonData.pages.home
 const sectionKey: keyof typeof sections = 'works'
@@ -15,6 +15,6 @@ const works = await getCollection('works')
 
 <Section {...{ sectionKey, title, strong, faIcon }}>
   <nav>
-    {works.map(item => <WorkItem {...item.data} />)}
+    {works.map(({ slug: id, data }) => <WorkItem {id} {...data} />)}
   </nav>
 </Section>

@@ -5,6 +5,13 @@ types:
 techs:
   - name: "TypeScript"
     version: "4.9"
+links:
+  repo:
+    host: "github"
+    url: "https://github.com/Agustin3555/my-portfolio__web"
+  others:
+    - title: "Demo"
+      url: "https://github.com/Agustin3555/my-portfolio__web"
 imgs:
   - file: "ga-1.webp"
     alt: "Goicoechea Admin web app: presentación en la sección de Productos"

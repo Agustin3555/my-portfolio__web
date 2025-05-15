@@ -1,4 +1,5 @@
 ---
+import { ClientRouter } from 'astro:transitions'
 import jsonData from '@/data.json'
 
 export interface Props {
@@ -13,6 +14,8 @@ const { base, separator } = title
 
 const fullTitle = subtitle ? [base, separator, subtitle].join(' ') : base
 const faFiles = ['fontawesome.css', 'brands.css', 'solid.css']
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site)
 ---
 
 <head>
@@ -31,15 +34,16 @@ const faFiles = ['fontawesome.css', 'brands.css', 'solid.css']
 
   <title>{fullTitle}</title>
 
-  <!-- TODO: obtener desde .env -->
-  <link rel="canonical" href="https://juan-agustin-lovera.netlify.app/" />
+  <link rel="canonical" href={canonicalURL} />
   <link rel="icon" href="/favicon-logo-s.ico" />
   {
     faFiles.map(file => (
       <link
-        href={`src/assets/fontawesome-6.6.0/css/${file}`}
+        href={`/src/assets/fontawesome-6.6.0/css/${file}`}
         rel="stylesheet"
       />
     ))
   }
+
+  <ClientRouter />
 </head>

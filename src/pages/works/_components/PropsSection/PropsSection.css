@@ -1,0 +1,14 @@
+.cmp-props-section {
+  --gap: var(--pal-size-xs);
+
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  row-gap: var(--gap);
+  column-gap: var(--layout-gutter);
+
+  > ul {
+    flex-wrap: wrap;
+    gap: var(--gap);
+  }
+}

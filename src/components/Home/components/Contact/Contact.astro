@@ -38,20 +38,22 @@ const { accordingToUser, email } = contact.data
 </Section>
 
 <script>
-  import { $, sleep } from '@/tools'
+  import { $, sleep, onPageLoad } from '@/tools'
   import jsonData from '@/data.json'
 
-  const { email } = jsonData.pages.home.sections.contact.data
+  onPageLoad(() => {
+    const { email } = jsonData.pages.home.sections.contact.data
 
-  const buttonCopyEmail = $<HTMLButtonElement>('#button-copy-email')
+    const buttonCopyEmail = $<HTMLButtonElement>('#button-copy-email')
 
-  buttonCopyEmail?.addEventListener('click', async () => {
-    try {
-      await navigator.clipboard.writeText(email)
+    buttonCopyEmail?.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(email)
 
-      buttonCopyEmail.disabled = true
-      await sleep(2000)
-      buttonCopyEmail.disabled = false
-    } catch (error) {}
+        buttonCopyEmail.disabled = true
+        await sleep(2000)
+        buttonCopyEmail.disabled = false
+      } catch (error) {}
+    })
   })
 </script>

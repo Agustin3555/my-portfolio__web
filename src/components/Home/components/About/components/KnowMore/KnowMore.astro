@@ -46,13 +46,15 @@ const { history, hobbiesAndLikes } = data
 </section>
 
 <script>
-  import { $ } from '@/tools'
+  import { $, onPageLoad } from '@/tools'
 
-  const history = $('.cmp-know-more > .history')
+  onPageLoad(() => {
+    const history = $('.cmp-know-more > .history')
 
-  if (history) {
+    if (!history) return
+
     const toggle = history.querySelector<HTMLButtonElement>('& > button')
 
     toggle?.addEventListener('click', () => history.classList.toggle('open'))
-  }
+  })
 </script>

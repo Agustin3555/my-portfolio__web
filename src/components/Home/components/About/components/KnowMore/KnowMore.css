@@ -35,7 +35,7 @@
       font-size: var(--pal-size-font-xs);
       color: var(--pal-color-a-l2);
 
-      border-radius: var(--card-border-radius);
+      border-radius: var(--cls-card-border-radius);
       background: linear-gradient(
         0,
         var(--pal-color-gs-850) 0%,

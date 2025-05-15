@@ -1,4 +1,5 @@
 ---
+import './TechPill.css'
 import Pill from '../Pill/Pill.astro'
 
 export interface Props {
@@ -9,7 +10,7 @@ export interface Props {
 const { name, version } = Astro.props
 ---
 
-<Pill size="s">
+<Pill size="s" handlingClass="tech">
   {name}
   {version && <small>{version}</small>}
 </Pill>

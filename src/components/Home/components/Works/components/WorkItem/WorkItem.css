@@ -6,24 +6,12 @@
 
   overflow: hidden;
 
-  &:hover > .container-img > img {
+  &:hover > .cmp-auto-bg-image > img {
     scale: 1.0625;
   }
 
-  > .container-img {
-    aspect-ratio: 16 / 9;
-
-    background-color: rgba(var(--pal-color-base-a-l1), 0.25);
-    overflow: hidden;
-
-    > img {
-      width: 100%;
-      height: 100%;
-
-      object-fit: contain;
-
-      transition: scale var(--pal-time-m) ease;
-    }
+  > .cmp-auto-bg-image > img {
+    transition: scale var(--pal-time-m) ease;
   }
 
   > .content {

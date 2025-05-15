@@ -43,7 +43,7 @@
         "title": "Otras páginas"
       }
     },
-    "copyright": "© 2024 Juan Agustín Lovera."
+    "copyright": "© 2025 Juan Agustín Lovera."
   },
   "pages": {
     "home": {
@@ -135,23 +135,11 @@
               },
               {
                 "title": "Hydro Saving",
-                "sliderAspectRatio": "5 / 4",
-                "links": {
-                  "repo": {
-                    "url": "https://github.com/Agustin3555/hydro-saving__mobile-app",
-                    "host": "github"
-                  }
-                }
+                "sliderAspectRatio": "5 / 4"
               },
               {
                 "title": "Mi Portfolio",
-                "sliderAspectRatio": "5 / 4",
-                "links": {
-                  "repo": {
-                    "url": "https://github.com/Agustin3555/my-portfolio__web",
-                    "host": "github"
-                  }
-                }
+                "sliderAspectRatio": "5 / 4"
               }
             ]
           }

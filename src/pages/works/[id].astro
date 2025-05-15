@@ -1,0 +1,57 @@
+---
+import './_work.css'
+import Page from '@/layouts/Page/Page.astro'
+import AutoBgImage from '@/components/AutoBgImage/AutoBgImage.astro'
+import TypePill from '@/components/TypePill/TypePill.astro'
+import TechPill from '@/components/TechPill/TechPill.astro'
+import PropsSection from './_components/PropsSection/PropsSection.astro'
+import { getCollection, render } from 'astro:content'
+import Pill from '@/components/Pill/Pill.astro'
+import SmallLink from '@/components/SmallLink/SmallLink.astro'
+
+export const getStaticPaths = async () => {
+  const works = await getCollection('works')
+
+  return works.map(work => ({
+    params: { id: work.slug },
+    props: { work },
+  }))
+}
+
+const { id } = Astro.params
+const { work } = Astro.props
+const { title, types, techs, links, imgs } = work.data
+const { others } = links ?? {}
+const { file, alt } = imgs[0]
+
+const { Content } = await render(work)
+
+// TODO: estado: "Finalizado", "Abierto"
+---
+
+<Page>
+  <div class="cmp-work">
+    <AutoBgImage
+      img={{ folder: 'works', file, alt }}
+      transitionName={`img-${id}`}
+    />
+    <h1>
+      {title}
+    </h1>
+    <div class="props">
+      <PropsSection title="Tags">
+        {types.map(typeKey => <TypePill {typeKey} />)}
+      </PropsSection>
+      <PropsSection title="Estado">
+        <Pill size="s">h</Pill>
+      </PropsSection>
+      <PropsSection title="Techs">
+        {techs.map(tech => <TechPill {...tech} />)}
+      </PropsSection>
+      <PropsSection title="Links">
+        {others?.map(({ title, url }) => <SmallLink text={title} {url} />)}
+      </PropsSection>
+    </div>
+    <Content />
+  </div>
+</Page>

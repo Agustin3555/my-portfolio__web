@@ -36,74 +36,82 @@ const { id, titles } = Astro.props
 </article>
 
 <script>
-  import { $$, asRem } from '@/tools'
+  import { $$, asRem, onPageLoad } from '@/tools'
 
-  const ACTIVE_CLASS = 'active'
-  const INIT_INDEX = 0
+  onPageLoad(() => {
+    const ACTIVE_CLASS = 'active'
+    const INIT_INDEX = 0
 
-  const tabbeds = $$('.cmp-tabbed')
+    const tabbeds = $$('.cmp-tabbed')
 
-  tabbeds.forEach(tabbed => {
-    const slider = tabbed.querySelector<HTMLElement>('.slider')
-    const indicator = tabbed.querySelector<HTMLElement>('.bg-indicator')
+    tabbeds.forEach(tabbed => {
+      const slider = tabbed.querySelector<HTMLElement>('.slider')
+      const indicator = tabbed.querySelector<HTMLElement>('.bg-indicator')
 
-    if (!slider || !indicator) return
+      if (!slider || !indicator) return
 
-    const labels = tabbed.querySelectorAll('label')
-    const sections = Array.from<HTMLElement>(slider.querySelectorAll('& > *'))
-    const radios = tabbed.querySelectorAll<HTMLInputElement>(
-      'input[type="radio"]'
-    )
+      const labels = tabbed.querySelectorAll('label')
 
-    const moveIndicator = (index: number) => {
-      const label = labels[index]
-      const labelRect = label.getBoundingClientRect()
+      const sections = Array.from<HTMLElement>(
+        slider.querySelectorAll('& > *:not(script)')
+      )
 
-      indicator.style.left = asRem(label.offsetLeft)
-      indicator.style.width = asRem(labelRect.width)
-    }
+      const radios = tabbed.querySelectorAll<HTMLInputElement>(
+        'input[type="radio"]'
+      )
 
-    // Inicializar
-    let sectionActive = sections[INIT_INDEX]
-    sectionActive.classList.add(ACTIVE_CLASS)
-    moveIndicator(INIT_INDEX)
+      console.log(sections)
 
-    // TODO: desactivar los radios mientras se esten produciendo las transisiones
+      const moveIndicator = (index: number) => {
+        const label = labels[index]
+        const labelRect = label.getBoundingClientRect()
 
-    radios.forEach((radio, index) => {
-      radio.onchange = () => {
-        const newSectionActive = sections[index]
-
-        sectionActive.ontransitionend = () => {
-          sectionActive.ontransitionend = null
-
-          newSectionActive.classList.add(ACTIVE_CLASS)
-          sectionActive = newSectionActive
-        }
-
-        sectionActive.classList.remove(ACTIVE_CLASS)
-        moveIndicator(index)
+        indicator.style.left = asRem(label.offsetLeft)
+        indicator.style.width = asRem(labelRect.width)
       }
-    })
 
-    // Control de altura global
+      // Inicializar
+      let sectionActive = sections[INIT_INDEX]
+      sectionActive.classList.add(ACTIVE_CLASS)
+      moveIndicator(INIT_INDEX)
 
-    const sectionHeights: number[] = []
+      // TODO: desactivar los radios mientras se estén produciendo las transiciones
 
-    sections.forEach((section, index) => {
-      const resizeObserver = new ResizeObserver(() => {
-        const newHeight = section.clientHeight
+      radios.forEach((radio, index) => {
+        radio.onchange = () => {
+          const newSectionActive = sections[index]
 
-        // Solo actualizar si el valor es diferente
-        if (sectionHeights[index] !== newHeight) {
-          const value = sectionHeights.map(asRem).join(', ')
-          slider.style.setProperty('--section-heights', value)
+          sectionActive.ontransitionend = () => {
+            sectionActive.ontransitionend = null
 
-          sectionHeights[index] = newHeight
+            newSectionActive.classList.add(ACTIVE_CLASS)
+            sectionActive = newSectionActive
+          }
+
+          sectionActive.classList.remove(ACTIVE_CLASS)
+          moveIndicator(index)
         }
       })
 
-      resizeObserver.observe(section)
+      // Control de altura global
+
+      const sectionHeights: number[] = []
+
+      sections.forEach((section, index) => {
+        const resizeObserver = new ResizeObserver(() => {
+          const newHeight = section.clientHeight
+
+          // Solo actualizar si el valor es diferente
+          if (sectionHeights[index] !== newHeight) {
+            const value = sectionHeights.map(asRem).join(', ')
+            slider.style.setProperty('--section-heights', value)
+
+            sectionHeights[index] = newHeight
+          }
+        })
+
+        resizeObserver.observe(section)
+      })
     })
   })
 </script>

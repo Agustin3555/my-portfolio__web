@@ -27,14 +27,16 @@ import ToggleDarkMode from '@/components/ToggleDarkMode/ToggleDarkMode.astro'
 </header>
 
 <script>
-  import { $ } from '@/tools'
+  import { $, onPageLoad } from '@/tools'
 
-  const hamburger = $('.cmp-hamburger')
-  const backdrop = $('.backdrop')
-  const header = $('.cmp-header')
+  onPageLoad(() => {
+    const hamburger = $('.cmp-hamburger')
+    const backdrop = $('.backdrop')
+    const header = $('.cmp-header')
 
-  if (hamburger && backdrop && header) {
+    if (!hamburger || !backdrop || !header) return
+
     hamburger.addEventListener('click', () => header.classList.add('open'))
     backdrop.addEventListener('click', () => header.classList.remove('open'))
-  }
+  })
 </script>

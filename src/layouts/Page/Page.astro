@@ -33,24 +33,46 @@ const { head } = Astro.props
 </html>
 
 <script>
-  import { bodyManager } from '@/tools/elementManagers.tool'
   import { darkModeEntity } from '@/services'
+  import { onPageLoad } from '@/tools'
+  import { bodyManager } from '@/tools/elementManagers.tool'
 
-  const DEFAULT_DARK_MODE = true
+  onPageLoad(() => {
+    const DEFAULT_DARK_MODE = true
 
-  const darkModeInit = () => {
-    // Si existe la entidad en local storage, se la utiliza
-    const darkModeValue = darkModeEntity.get()
-    if (darkModeValue !== null) return darkModeValue
+    const darkModeInit = () => {
+      // Si existe la entidad en local storage, se la utiliza
+      const darkModeValue = darkModeEntity.get()
+      if (darkModeValue !== null) return darkModeValue
 
-    // Si existe la media del usuario, se la utiliza
-    if (window.matchMedia)
-      return window.matchMedia('(prefers-color-scheme: dark)').matches
+      // Si existe la media del usuario, se la utiliza
+      if (window.matchMedia)
+        return window.matchMedia('(prefers-color-scheme: dark)').matches
 
-    // Si no, se crea la entidad en local storage y se la utiliza
-    darkModeEntity.set(DEFAULT_DARK_MODE)
-    return DEFAULT_DARK_MODE
-  }
+      // Si no, se crea la entidad en local storage y se la utiliza
+      darkModeEntity.set(DEFAULT_DARK_MODE)
+      return DEFAULT_DARK_MODE
+    }
 
-  bodyManager.data.darkMode.set(String(darkModeInit()))
+    bodyManager.data.darkMode.set(String(darkModeInit()))
+  })
+</script>
+
+<script>
+  import { onPageLoad } from '@/tools'
+
+  const root = window.document.documentElement
+
+  /*
+    Desactiva el desplazamiento 'smooth' del scroll mientras se esta
+    produciendo la View Transition, con el objetivo acelerar la UX y no
+    entorpecer a la transición.
+  */
+  document.addEventListener('astro:before-preparation', () => {
+    root.style.scrollBehavior = 'initial'
+  })
+
+  onPageLoad(() => {
+    root.style.scrollBehavior = 'smooth'
+  })
 </script>

@@ -1,0 +1,88 @@
+---
+import './AutoBgImage.css'
+import { Image } from 'astro:assets'
+import {
+  getImgMetadata,
+  validateImgMetadata,
+  type Folder,
+} from '@/tools/getImgMetadata.tool'
+
+interface Props {
+  img: {
+    folder: Folder
+    file: string
+    alt: string
+  }
+  transitionName: string
+}
+
+const { img, transitionName } = Astro.props
+const { folder, file, alt } = img
+
+validateImgMetadata(folder, file)
+---
+
+<div class="cmp-auto-bg-image" transition:name={transitionName}>
+  <Image src={getImgMetadata(folder, file)()} {alt} />
+</div>
+
+<script>
+  import { $$, onPageLoad } from '@/tools'
+
+  const getAverageColor = (img: HTMLImageElement) => {
+    const canvas = document.createElement('canvas')
+    const context = canvas.getContext('2d')
+
+    if (!context) return
+
+    canvas.width = img.width
+    canvas.height = img.height
+
+    context.drawImage(img, 0, 0, img.width, img.height)
+    const imageData = context.getImageData(0, 0, canvas.width, canvas.height)
+    const { data } = imageData
+
+    let r = 0,
+      g = 0,
+      b = 0
+
+    for (let i = 0; i < data.length; i += 4) {
+      r += data[i]
+      g += data[i + 1]
+      b += data[i + 2]
+    }
+
+    const pixelCount = data.length / 4
+    r = Math.floor(r / pixelCount)
+    g = Math.floor(g / pixelCount)
+    b = Math.floor(b / pixelCount)
+
+    return [r, g, b].join(', ')
+  }
+
+  const setAverageColor = (
+    img: HTMLImageElement,
+    imgContainer: HTMLElement
+  ) => {
+    const averageColor = getAverageColor(img)
+
+    averageColor &&
+      imgContainer.style.setProperty('--average-color', averageColor)
+  }
+
+  onPageLoad(() => {
+    const autoBgImages = $$<HTMLElement>('.cmp-auto-bg-image')
+
+    autoBgImages.forEach(autoBgImage => {
+      const img = autoBgImage.querySelector<HTMLImageElement>('& > img')
+
+      if (!img) return
+
+      // Solo calcula el color promedio cuando la imagen se haya cargado
+      img.onload = () => setAverageColor(img, autoBgImage)
+
+      // Si la imagen ya está cargada
+      img.complete && setAverageColor(img, autoBgImage)
+    })
+  })
+</script>

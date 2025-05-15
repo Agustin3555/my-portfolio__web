@@ -12,17 +12,19 @@ import Icon from '@/components/Icon/Icon.astro'
 
 <script>
   import { darkModeEntity } from '@/services'
+  import { $$, onPageLoad } from '@/tools'
   import { bodyManager } from '@/tools/elementManagers.tool'
-  import { $$ } from '@/tools'
 
-  const toggleDarkModeList = $$('.cmp-toggle-dark-mode')
+  onPageLoad(() => {
+    const toggleDarkModeList = $$('.cmp-toggle-dark-mode')
 
-  toggleDarkModeList.forEach(item =>
-    item.addEventListener('click', () => {
-      const reverseDarkMode = !(bodyManager.data.darkMode.get() === 'true')
+    toggleDarkModeList.forEach(item =>
+      item.addEventListener('click', () => {
+        const reverseDarkMode = !(bodyManager.data.darkMode.get() === 'true')
 
-      bodyManager.data.darkMode.set(String(reverseDarkMode))
-      darkModeEntity.set(reverseDarkMode)
-    })
-  )
+        bodyManager.data.darkMode.set(String(reverseDarkMode))
+        darkModeEntity.set(reverseDarkMode)
+      })
+    )
+  })
 </script>

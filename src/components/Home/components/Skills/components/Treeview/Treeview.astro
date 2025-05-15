@@ -24,19 +24,21 @@ const { dataNodes } = Astro.props
 </ul>
 
 <script>
-  import { $$, asRem } from '@/tools'
+  import { $$, asRem, onPageLoad } from '@/tools'
 
-  const treeviews = $$<HTMLElement>('.cmp-treeview')
+  onPageLoad(() => {
+    const treeviews = $$<HTMLElement>('.cmp-treeview')
 
-  treeviews.forEach(item => {
-    const icons = Array.from(item.querySelectorAll<HTMLElement>('.icons'))
+    treeviews.forEach(item => {
+      const icons = Array.from(item.querySelectorAll<HTMLElement>('.icons'))
 
-    const iconsMaxWidth = Math.max(...icons.map(icon => icon.clientWidth))
-    item.style.setProperty('--icons-max-width', asRem(iconsMaxWidth))
+      const iconsMaxWidth = Math.max(...icons.map(icon => icon.clientWidth))
+      item.style.setProperty('--icons-max-width', asRem(iconsMaxWidth))
 
-    const names = Array.from(item.querySelectorAll<HTMLElement>('.names'))
+      const names = Array.from(item.querySelectorAll<HTMLElement>('.names'))
 
-    const namesMaxWidth = Math.max(...names.map(name => name.clientWidth))
-    item.style.setProperty('--names-max-width', asRem(namesMaxWidth))
+      const namesMaxWidth = Math.max(...names.map(name => name.clientWidth))
+      item.style.setProperty('--names-max-width', asRem(namesMaxWidth))
+    })
   })
 </script>

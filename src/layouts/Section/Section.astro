@@ -46,14 +46,16 @@ const { sectionKey, title, strong, faIcon, main } = Astro.props
 </section>
 
 <script>
-  import { $$, onScreen } from '@/tools'
+  import { $$, onPageLoad, onScreen } from '@/tools'
 
-  const sections = $$('.cmp-section')
+  onPageLoad(() => {
+    const sections = $$('.cmp-section')
 
-  sections?.forEach(section => {
-    onScreen(
-      { observed: section, margin: '-25%' },
-      isIntersecting => isIntersecting && section.classList.add('seen')
-    )
+    sections?.forEach(section => {
+      onScreen(
+        { observed: section, margin: '-25%' },
+        isIntersecting => isIntersecting && section.classList.add('seen')
+      )
+    })
   })
 </script>

@@ -12,7 +12,6 @@
   letter-spacing: calc(0.0625rem * 0.05);
   color: inherit;
 
-  scroll-behavior: smooth;
   scrollbar-width: thin;
   scrollbar-color: rgba(var(--pal-color-base-white), 0.25) transparent;
 }
@@ -132,10 +131,12 @@ a {
   box-shadow: var(--bevel);
 }
 
-.card {
-  --card-border-radius: var(--pal-size-s);
+:root {
+  --cls-card-border-radius: 0.625rem;
+}
 
-  border-radius: var(--card-border-radius);
+.card {
+  border-radius: var(--cls-card-border-radius);
   box-shadow: var(--pal-shadow-1), var(--bevel);
 
   &.bg {

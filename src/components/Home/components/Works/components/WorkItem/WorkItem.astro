@@ -1,28 +1,23 @@
 ---
 import './WorkItem.css'
-import { Image } from 'astro:assets'
+import AutoBgImage from '@/components/AutoBgImage/AutoBgImage.astro'
 import TypePill from '@/components/TypePill/TypePill.astro'
 import TechPill from '@/components/TechPill/TechPill.astro'
 import type { InferEntrySchema } from 'astro:content'
-import {
-  getImgMetadata,
-  validateImgMetadata,
-  type Folder,
-} from '@/tools/getImgMetadata.tool'
 
-interface Props extends InferEntrySchema<'works'> {}
+interface Props extends InferEntrySchema<'works'> {
+  id: string
+}
 
-const { title, types, techs, imgs } = Astro.props
+const { id, title, types, techs, imgs } = Astro.props
 const { file, alt } = imgs[0]
-
-const folder: Folder = 'works'
-validateImgMetadata(folder, file)
 ---
 
-<a class="cmp-work-item bg card" href="/">
-  <div class="container-img">
-    <Image src={getImgMetadata(folder, file)()} alt={alt} />
-  </div>
+<a class="cmp-work-item bg card" href={`/works/${id}`}>
+  <AutoBgImage
+    img={{ folder: 'works', file, alt }}
+    transitionName={`img-${id}`}
+  />
   <div class="content">
     <h3>
       {title}
