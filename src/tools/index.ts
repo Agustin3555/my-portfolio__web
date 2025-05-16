@@ -5,6 +5,7 @@ export * from "./highlightToHTMLTag.tool";
 export * from "./localStorageEntity.tool";
 export * from "./onPageLoad.tool";
 export * from "./onScreen.tool";
+export * from "./varList.tool";
 export * from "./querySelector.tool";
 export * from "./random.tool";
 export * from "./sleep.tool";

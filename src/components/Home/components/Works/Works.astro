@@ -2,7 +2,7 @@
 import './Works.css'
 import Section from '@/layouts/Section/Section.astro'
 import WorkItem from './components/WorkItem/WorkItem.astro'
-import { getCollection } from 'astro:content'
+import { getCollection, type CollectionEntry } from 'astro:content'
 import jsonData from '@/data.json'
 
 const { sections } = jsonData.pages.home
@@ -10,11 +10,21 @@ const sectionKey: keyof typeof sections = 'works'
 
 const { title, strong, faIcon } = sections.works
 
-const works = await getCollection('works')
+export const DEFAULT_WORK_SIZE: [number, number] = [1, 1]
+
+const works = (await getCollection('works')).sort((a, b) => {
+  const [sizeA1, sizeA2] = a.data.size ?? DEFAULT_WORK_SIZE
+  const [sizeB1, sizeB2] = b.data.size ?? DEFAULT_WORK_SIZE
+
+  const totalA = sizeA1 + sizeA2
+  const totalB = sizeB1 + sizeB2
+
+  return totalB - totalA
+})
 ---
 
 <Section {...{ sectionKey, title, strong, faIcon }}>
   <nav>
-    {works.map(({ slug: id, data }) => <WorkItem {id} {...data} />)}
+    {works.map(({ slug: id, data }) => <WorkItem id={id} {...data} />)}
   </nav>
 </Section>

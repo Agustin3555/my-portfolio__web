@@ -9,7 +9,7 @@ body {
   > .layout {
     --layout-max-width: 68rem;
     --layout-margin-inline: 4rem;
-    --layout-gutter: var(--pal-size-xl);
+    --layout-gutter: var(--pal-size-l);
     --layout-section-gap: 16rem;
     --layout-padding-top: calc(
       var(--cmp-hamburger-size) + var(--cmp-hamburger-gap) * 2
@@ -21,7 +21,6 @@ body {
     /* Mobile */
     @media (width <= 26.5625rem) {
       --layout-margin-inline: 1.25rem;
-      --layout-gutter: var(--pal-size-l);
     }
 
     > .content {

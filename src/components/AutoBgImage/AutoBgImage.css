@@ -1,13 +1,12 @@
 .cmp-auto-bg-image {
-  aspect-ratio: 16 / 9;
+  width: 100%;
+  height: 100%;
 
-  border-radius: var(--cls-card-border-radius);
-  background-color: var(--pal-color-gs-300);
+  background-color: var(--pal-color-white);
   background-image: radial-gradient(
     rgba(var(--average-color), 1) 12.5%,
-    rgba(var(--average-color), 0.625) 75%
+    rgba(var(--average-color), 0.75) 75%
   );
-  box-shadow: var(--pal-shadow-1);
   overflow: hidden;
 
   > img {

@@ -32,6 +32,7 @@ const works = defineCollection({
           .optional(),
       })
       .optional(),
+    size: z.tuple([z.number(), z.number()]).optional(),
     imgs: z.array(
       z.object({
         file: z.string(),

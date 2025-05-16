@@ -5,7 +5,7 @@
   .according-to-user {
     display: flex;
     flex-wrap: wrap;
-    gap: var(--pal-size-xl);
+    gap: var(--layout-gutter);
 
     article {
       flex-grow: 1;
