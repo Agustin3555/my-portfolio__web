@@ -5,7 +5,7 @@ import Tabbed from '@/layouts/Tabbed/Tabbed.astro'
 import Treeview from './components/Treeview/Treeview.astro'
 import Levels from './components/Levels/Levels.astro'
 import type { DataNode } from './types/dataNode'
-import jsonData from '@/data.json'
+import jsonData from '@/content/data.json'
 
 const { home } = jsonData.pages
 const sectionKey: keyof typeof home.sections = 'skills'

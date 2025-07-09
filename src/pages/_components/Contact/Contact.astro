@@ -4,7 +4,7 @@ import Section from '@/layouts/Section/Section.astro'
 import Icon from '@/components/Icon/Icon.astro'
 import ContactLink from '@/components/ContactLink/ContactLink.astro'
 import { highlightToHTMLTag } from '@/tools'
-import jsonData from '@/data.json'
+import jsonData from '@/content/data.json'
 
 const { sections } = jsonData.pages.home
 const sectionKey: keyof typeof sections = 'contact'
@@ -39,7 +39,7 @@ const { accordingToUser, email } = contact.data
 
 <script>
   import { $, sleep, onPageLoad } from '@/tools'
-  import jsonData from '@/data.json'
+  import jsonData from '@/content/data.json'
 
   onPageLoad(() => {
     const { email } = jsonData.pages.home.sections.contact.data

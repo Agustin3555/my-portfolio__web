@@ -1,4 +1,4 @@
-import jsonData from "@/data.json";
+import jsonData from "@/content/data.json";
 
 const { techs } = jsonData.pages.home.sections.skills.data;
 

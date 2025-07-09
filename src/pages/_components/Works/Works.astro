@@ -3,14 +3,14 @@ import './Works.css'
 import Section from '@/layouts/Section/Section.astro'
 import WorkItem from './components/WorkItem/WorkItem.astro'
 import { getCollection, type CollectionEntry } from 'astro:content'
-import jsonData from '@/data.json'
+import jsonData from '@/content/data.json'
 
 const { sections } = jsonData.pages.home
 const sectionKey: keyof typeof sections = 'works'
 
 const { title, strong, faIcon } = sections.works
 
-export const DEFAULT_WORK_SIZE: [number, number] = [1, 1]
+export const DEFAULT_WORK_SIZE = [1, 1]
 
 const works = (await getCollection('works')).sort((a, b) => {
   const [sizeA1, sizeA2] = a.data.size ?? DEFAULT_WORK_SIZE

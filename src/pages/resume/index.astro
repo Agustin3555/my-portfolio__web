@@ -1,8 +1,9 @@
 ---
+import './_resume.css'
 import Page from '@/layouts/Page/Page.astro'
 import Section from '@/layouts/Section/Section.astro'
 import { highlightToHTMLTag } from '@/tools'
-import jsonData from '@/data.json'
+import jsonData from '@/content/data.json'
 
 const { head, title, strong, faIcon, desc } = jsonData.pages.resume
 ---
@@ -25,12 +26,3 @@ const { head, title, strong, faIcon, desc } = jsonData.pages.resume
     />
   </Section>
 </Page>
-
-<style>
-  .cv {
-    aspect-ratio: 595 / 842;
-
-    border-radius: var(--pal-size-font-xs);
-    box-shadow: var(--pal-shadow-1);
-  }
-</style>

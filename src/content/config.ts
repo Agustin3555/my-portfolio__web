@@ -1,5 +1,5 @@
 import { defineCollection, z } from "astro:content";
-import jsonData from "@/data.json";
+import jsonData from "./data.json";
 import type { TypeKey } from "@/components/TypePill/TypePill.astro";
 
 const { types } = jsonData.pages.home.sections.works.data;

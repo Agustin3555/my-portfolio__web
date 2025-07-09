@@ -115,9 +115,9 @@
           }
         },
         "works": {
-          "linkTitle": "Proyectos",
+          "linkTitle": "Experiencia",
           "title": "Lo que hago",
-          "strong": "Mis proyectos",
+          "strong": "Mi experiencia",
           "faIcon": "fa-solid fa-briefcase",
           "data": {
             "types": {
@@ -127,21 +127,7 @@
               "api": "API",
               "data-base": "Data Base",
               "various": "Varios"
-            },
-            "items": [
-              {
-                "title": "Goicoechea Admin",
-                "sliderAspectRatio": "3 / 2"
-              },
-              {
-                "title": "Hydro Saving",
-                "sliderAspectRatio": "5 / 4"
-              },
-              {
-                "title": "Mi Portfolio",
-                "sliderAspectRatio": "5 / 4"
-              }
-            ]
+            }
           }
         },
         "skills": {

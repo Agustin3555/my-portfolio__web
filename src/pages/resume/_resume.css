@@ -1,0 +1,6 @@
+.cv {
+  aspect-ratio: 595 / 842;
+
+  border-radius: var(--pal-size-font-xs);
+  box-shadow: var(--pal-shadow-1);
+}
