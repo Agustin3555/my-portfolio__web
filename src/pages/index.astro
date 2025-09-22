@@ -1,8 +1,8 @@
 ---
 import Page from '@/layouts/Page/Page.astro'
 import About from './_components/About/About.astro'
-import Works from './_components/Works/Works.astro'
-import Skills from './_components/Skills/Skills.astro'
+import Experiences from './_components/Experiences/Experiences.astro'
+import Techs from './_components/Techs/Techs.astro'
 import Education from './_components/Education/Education.astro'
 import Contact from './_components/Contact/Contact.astro'
 import jsonData from '@/content/data.json'
@@ -12,8 +12,8 @@ const { head } = jsonData.pages.home
 
 <Page {head}>
   <About />
-  <Works />
-  <Skills />
+  <Experiences />
+  <Techs />
   <Education />
   <Contact />
 </Page>

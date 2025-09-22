@@ -1,0 +1,46 @@
+---
+import './ExperienceCard.css'
+import AutoBgImage from '@/components/AutoBgImage/AutoBgImage.astro'
+import TypePill from '@/components/TypePill/TypePill.astro'
+import TagPill from '@/components/TagPill/TagPill.astro'
+import TechPill from '@/components/TechPill/TechPill.astro'
+import type { InferEntrySchema } from 'astro:content'
+import { DEFAULT_WORK_SIZE } from '../../Experiences.astro'
+import { varList } from '@/tools'
+
+interface Props extends InferEntrySchema<'experiences'> {
+  id: string
+}
+
+const {
+  id,
+  title,
+  type,
+  tags,
+  techs,
+  imgs,
+  size = DEFAULT_WORK_SIZE,
+} = Astro.props
+const { file, alt } = imgs[0]
+---
+
+<a
+  class="cmp-experience-card bg card"
+  href={`/experiences/${id}`}
+  style={varList({ 'span-columns': size[0], 'span-rows': size[1] })}
+>
+  <AutoBgImage
+    img={{ folder: 'experiences', file, alt }}
+    transitionName={`img-${id}`}
+  />
+  <div class="content">
+    <h3>
+      {title}
+    </h3>
+    <ul class="pills">
+      <TypePill key={type} />
+      {tags.map(key => <TagPill {key} />)}
+      {techs.map(({ name }) => <TechPill {name} />)}
+    </ul>
+  </div>
+</a>

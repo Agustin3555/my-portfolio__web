@@ -1,18 +1,44 @@
 ---
 import './Footer.css'
+import { Image } from 'astro:assets'
 import Separator from '@/components/Separator/Separator.astro'
 import Link from '@/components/Link/Link.astro'
+import Gracias1 from '@/assets/gracias-1.svg'
+import Gracias2 from '@/assets/gracias-2.svg'
 import jsonData from '@/content/data.json'
+import pkg from '@/../package.json'
 
-const { copyright, sections } = jsonData.footer
+const { documentInfo, footer } = jsonData
+const { sections } = footer
 const { acknowledgments, othersPages } = sections
 
-// TODO: agregar un icono y un "Gracias por llegar hasta aqui" o algo asi
+const now = new Date()
+
+const buildDate = new Intl.DateTimeFormat('es-AR', {
+  day: 'numeric',
+  month: 'short',
+  year: 'numeric',
+}).format(now)
+
+const copyright = `© ${now.getFullYear()} ${documentInfo.title.base}`
+const version = `v${pkg.version}`
 ---
 
 <footer class="cmp-footer">
   <Separator />
   <div class="sections">
+    <div class="gracias">
+      <Image
+        src={Gracias1}
+        height={20}
+        alt="Agradecimiento por llegar al fin de la web (1)"
+      />
+      <Image
+        src={Gracias2}
+        height={20}
+        alt="Agradecimiento por llegar al fin de la web (2)"
+      />
+    </div>
     <article class="acknowledgments">
       <h4>{acknowledgments.title}</h4>
       <div>
@@ -38,5 +64,9 @@ const { acknowledgments, othersPages } = sections
       </nav>
     </article>
   </div>
-  <small class="text">{copyright}</small>
+  <div class="details">
+    <small class="text">{copyright}</small>
+    <small class="text">Última actualización: {buildDate}</small>
+    <small class="text">{version}</small>
+  </div>
 </footer>

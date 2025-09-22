@@ -2,11 +2,20 @@
 import SocialNet from './components/SocialNet/SocialNet.astro'
 import jsonData from '@/content/data.json'
 
+export interface Props {
+  show?: number
+}
+
+const { show } = Astro.props
+
 const { socialNets } = jsonData
 ---
 
 {
-  socialNets.map(({ title, ...rest }) => (
-    <SocialNet {...rest} title={`Ir al perfil de ${title}`} />
-  ))
+  socialNets.map(
+    ({ title, ...rest }, i) =>
+      i < (show ?? socialNets.length) && (
+        <SocialNet {...rest} title={`Ir al perfil de ${title}`} />
+      )
+  )
 }

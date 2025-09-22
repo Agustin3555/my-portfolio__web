@@ -2,18 +2,20 @@
 import './TypePill.css'
 import Pill from '../Pill/Pill.astro'
 import jsonData from '@/content/data.json'
+import Icon from '../Icon/Icon.astro'
 
-const { types } = jsonData.pages.home.sections.works.data
+const { types } = jsonData.pages.home.sections.experiences.data
 
 export type TypeKey = keyof typeof types
 
 export interface Props {
-  typeKey: TypeKey
+  key: TypeKey
 }
 
-const { typeKey } = Astro.props
+const { key } = Astro.props
 ---
 
-<Pill size="s" handlingClass={['type', typeKey].join(' ')}>
-  <p>{types[typeKey]}</p>
+<Pill size="s" handlingClass={['type', key].join(' ')}>
+  <Icon faIcon={types[key].faIcon} />
+  <p>{types[key].title}</p>
 </Pill>

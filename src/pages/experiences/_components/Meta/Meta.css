@@ -1,0 +1,7 @@
+.cmp-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(var(--layout-gutter) / 2);
+
+  font-size: var(--pal-size-font-xs);
+}

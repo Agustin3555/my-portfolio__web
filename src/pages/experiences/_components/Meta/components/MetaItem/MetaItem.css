@@ -1,0 +1,22 @@
+.cmp-meta-item {
+  --gap: var(--pal-size-xs);
+
+  flex-grow: 1;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  row-gap: var(--gap);
+  column-gap: calc(var(--layout-gutter) / 2);
+  border-width: var(--line-thickness);
+  border-style: solid;
+  border-color: var(--pal-color-gs-800);
+  padding: var(--pal-size-s);
+
+  border-radius: var(--pal-size-xs);
+
+  > ul {
+    flex-wrap: wrap;
+    gap: var(--gap);
+  }
+}

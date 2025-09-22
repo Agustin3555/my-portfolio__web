@@ -1,0 +1,19 @@
+---
+import './TagPill.css'
+import Pill from '../Pill/Pill.astro'
+import jsonData from '@/content/data.json'
+
+const { tags } = jsonData.pages.home.sections.experiences.data
+
+export type TagKey = keyof typeof tags
+
+export interface Props {
+  key: TagKey
+}
+
+const { key } = Astro.props
+---
+
+<Pill size="s" handlingClass={['tag', key].join(' ')}>
+  <p>{tags[key]}</p>
+</Pill>

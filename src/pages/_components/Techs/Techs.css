@@ -1,0 +1,12 @@
+#techs > .content {
+  flex-direction: row;
+  flex-wrap: wrap;
+  /* align-items: flex-start; */
+
+  > .cmp-tabbed {
+    --items-gap: var(--pal-size-2xs);
+
+    flex-grow: 3;
+    flex-basis: 25rem;
+  }
+}

@@ -5,7 +5,6 @@ import SocialNets from '@/components/SocialNets/SocialNets.astro'
 import ContactLink from '@/components/ContactLink/ContactLink.astro'
 import Hamburger from './components/Hamburger/Hamburger.astro'
 import ScrollUp from './components/ScrollUp/ScrollUp.astro'
-import ToggleDarkMode from './components/ToggleDarkMode/ToggleDarkMode.astro'
 ---
 
 <Hamburger />
@@ -17,11 +16,8 @@ import ToggleDarkMode from './components/ToggleDarkMode/ToggleDarkMode.astro'
       <Links />
     </div>
     <div class="section squares">
-      <SocialNets />
-    </div>
-    <div class="section squares">
+      <SocialNets show={2} />
       <ContactLink />
-      <ToggleDarkMode />
     </div>
   </nav>
 </header>

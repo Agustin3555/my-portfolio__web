@@ -1,13 +1,19 @@
 import { defineCollection, z } from "astro:content";
-import jsonData from "./data.json";
 import type { TypeKey } from "@/components/TypePill/TypePill.astro";
+import type { TagKey } from "@/components/TagPill/TagPill.astro";
+import jsonData from "./data.json";
 
-const { types } = jsonData.pages.home.sections.works.data;
+const { types, tags } = jsonData.pages.home.sections.experiences.data;
 
-const works = defineCollection({
+const experiences = defineCollection({
   schema: z.object({
     title: z.string(),
-    types: z.array(z.enum(Object.keys(types) as [TypeKey, ...TypeKey[]])),
+    jobPosition: z.string().optional(),
+    company: z.string().optional(),
+    startedAt: z.string().date(),
+    endedAt: z.string().date().optional(),
+    type: z.enum(Object.keys(types) as [TypeKey, ...TypeKey[]]),
+    tags: z.array(z.enum(Object.keys(tags) as [TagKey, ...TagKey[]])),
     techs: z.array(
       z.object({
         name: z.string(),
@@ -18,7 +24,7 @@ const works = defineCollection({
       .object({
         repo: z
           .object({
-            host: z.string(),
+            host: z.enum(["github", "bitbucket"]),
             url: z.string(),
           })
           .optional(),
@@ -42,4 +48,4 @@ const works = defineCollection({
   }),
 });
 
-export const collections = { works };
+export const collections = { experiences };

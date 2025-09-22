@@ -1,0 +1,60 @@
+---
+import './_experience.css'
+import { getCollection, render } from 'astro:content'
+import Page from '@/layouts/Page/Page.astro'
+import AutoBgImage from '@/components/AutoBgImage/AutoBgImage.astro'
+import TechPill from '@/components/TechPill/TechPill.astro'
+import Meta from './_components/Meta/Meta.astro'
+
+export const getStaticPaths = async () => {
+  const experiences = await getCollection('experiences')
+
+  return experiences.map(work => ({
+    params: { id: work.slug },
+    props: { work },
+  }))
+}
+
+const { id } = Astro.params
+const { work } = Astro.props
+
+const {
+  title,
+  jobPosition,
+  company,
+  startedAt,
+  endedAt,
+  type,
+  tags,
+  techs,
+  links,
+  imgs,
+} = work.data
+
+const { file, alt } = imgs[0]
+
+const { Content } = await render(work)
+---
+
+<Page>
+  <div class="cmp-experience">
+    <AutoBgImage
+      img={{ folder: 'experiences', file, alt }}
+      transitionName={`img-${id}`}
+    />
+    <div class="content">
+      <header>
+        <h1>{title}</h1>
+        <Meta
+          {...{ jobPosition, company, startedAt, endedAt, type, tags, links }}
+        />
+      </header>
+      <div class="desc">
+        <Content />
+      </div>
+      <div class="techs">
+        {techs.map(tech => <TechPill {...tech} />)}
+      </div>
+    </div>
+  </div>
+</Page>

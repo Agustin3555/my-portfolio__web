@@ -1,0 +1,24 @@
+---
+import './Techs.css'
+import Section from '@/layouts/Section/Section.astro'
+import Tabbed from '@/layouts/Tabbed/Tabbed.astro'
+import Treeview from './components/Treeview/Treeview.astro'
+import Levels from './components/Levels/Levels.astro'
+import type { DataNode } from './types/dataNode'
+import jsonData from '@/content/data.json'
+
+const { home } = jsonData.pages
+const sectionKey: keyof typeof home.sections = 'techs'
+
+const { title, strong, faIcon, data } = home.sections.techs
+const { treeviews } = data
+
+const titles = treeviews.map(item => item.title)
+---
+
+<Section {...{ sectionKey, title, strong, faIcon }}>
+  <Levels />
+  <Tabbed id={sectionKey} {titles}>
+    {treeviews.map(item => <Treeview dataNodes={item.techs as DataNode[]} />)}
+  </Tabbed>
+</Section>

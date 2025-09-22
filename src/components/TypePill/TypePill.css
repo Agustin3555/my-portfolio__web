@@ -2,29 +2,19 @@
   font-weight: 500;
   color: var(--pal-color-gs-900);
 
-  &.web {
-    --cls-bg-color: var(--pal-color-d-l2);
-  }
-
-  &.web-app {
-    --cls-bg-color: var(--pal-color-b-l2);
-  }
-
-  &.mobile-app {
-    --cls-bg-color: var(--pal-color-c-l2);
-  }
-
-  &.api {
-    --cls-bg-color: var(--pal-color-gs-100);
-  }
-
-  &.data-base {
+  &.job {
     --cls-bg-color: var(--pal-color-a-l2);
   }
 
-  &.various {
-    --cls-bg-color: var(--pal-color-gs-700);
+  &.freelance-project {
+    --cls-bg-color: var(--pal-color-c-l2);
+  }
 
-    color: var(--pal-color-gs-100);
+  &.personal-project {
+    --cls-bg-color: var(--pal-color-b-l2);
+  }
+
+  &.academic-project {
+    --cls-bg-color: var(--pal-color-gs-100);
   }
 }

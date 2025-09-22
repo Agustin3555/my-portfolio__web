@@ -4,8 +4,17 @@
   gap: var(--pal-size-s);
 
   font-size: var(--pal-size-font-xs);
+  white-space: nowrap;
 
   border-radius: var(--pal-size-2xs);
+  overflow: hidden;
+
+  > p {
+    line-height: normal;
+    text-overflow: ellipsis;
+
+    overflow: hidden;
+  }
 
   &.s {
     padding-inline: var(--pal-size-s);

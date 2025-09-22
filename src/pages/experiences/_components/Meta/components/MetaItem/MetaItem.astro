@@ -1,0 +1,17 @@
+---
+import './MetaItem.css'
+
+export interface Props {
+  title: string
+  handlingClass?: string
+}
+
+const { title, handlingClass } = Astro.props
+---
+
+<section class:list={['cmp-meta-item', handlingClass]}>
+  <h4>{title}</h4>
+  <ul>
+    <slot />
+  </ul>
+</section>

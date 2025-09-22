@@ -1,17 +1,17 @@
 import { type ImageMetadata } from "astro";
 
-export type Folder = "skills" | "works";
+export type Folder = "techs" | "experiences";
 
 /*
-  "glob" necesita un literal como parámetro, por lo tanto no se puedo
+  "glob" necesita un literal como parámetro, por lo tanto no se puede
   refactorizar y usar los template string.
 */
 const assets: Record<Folder, any> = {
-  skills: import.meta.glob<{ default: ImageMetadata }>(
-    "/src/assets/skills/*.{jpeg,jpg,png,gif,webp,svg}",
+  techs: import.meta.glob<{ default: ImageMetadata }>(
+    "/src/assets/techs/*.{jpeg,jpg,png,gif,webp,svg}",
   ),
-  works: import.meta.glob<{ default: ImageMetadata }>(
-    "/src/assets/works/*.{jpeg,jpg,png,gif,webp,svg}",
+  experiences: import.meta.glob<{ default: ImageMetadata }>(
+    "/src/assets/experiences/*.{jpeg,jpg,png,gif,webp,svg}",
   ),
 };
 

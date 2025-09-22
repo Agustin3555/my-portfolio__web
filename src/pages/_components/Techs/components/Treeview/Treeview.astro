@@ -1,0 +1,44 @@
+---
+import './Treeview.css'
+import Node from './components/Node/Node.astro'
+import type { DataNode } from '../../types/dataNode'
+import jsonData from '@/content/data.json'
+
+const { levels } = jsonData.pages.home.sections.techs.data
+
+interface Props {
+  dataNodes: DataNode[]
+}
+
+const { dataNodes } = Astro.props
+---
+
+<ul class="cmp-treeview" style={`--levels: ${levels.length};`}>
+  {
+    dataNodes.map(dataNode => (
+      <li>
+        <Node {dataNode} />
+      </li>
+    ))
+  }
+</ul>
+
+<script>
+  import { $$, asRem, onPageLoad } from '@/tools'
+
+  onPageLoad(() => {
+    const treeviews = $$<HTMLElement>('.cmp-treeview')
+
+    treeviews.forEach(item => {
+      const icons = Array.from(item.querySelectorAll<HTMLElement>('.icons'))
+
+      const iconsMaxWidth = Math.max(...icons.map(icon => icon.clientWidth))
+      item.style.setProperty('--icons-max-width', asRem(iconsMaxWidth))
+
+      const names = Array.from(item.querySelectorAll<HTMLElement>('.names'))
+
+      const namesMaxWidth = Math.max(...names.map(name => name.clientWidth))
+      item.style.setProperty('--names-max-width', asRem(namesMaxWidth))
+    })
+  })
+</script>

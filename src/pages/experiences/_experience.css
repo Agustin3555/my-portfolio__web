@@ -1,0 +1,43 @@
+.cmp-experience {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--layout-gutter) * 2);
+
+  > .cmp-auto-bg-image {
+    aspect-ratio: 21 / 9;
+  }
+
+  > .content {
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--layout-gutter) * 4);
+
+    > header {
+      display: flex;
+      flex-direction: column;
+      gap: calc(var(--layout-gutter) * 2);
+    }
+
+    > .desc > * {
+      margin-bottom: 1.75em;
+
+      line-height: 1.5;
+      text-wrap: pretty;
+
+      > strong {
+        font-weight: 600;
+        color: var(--pal-color-a-l2);
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    > .techs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--pal-size-xs);
+    }
+  }
+}

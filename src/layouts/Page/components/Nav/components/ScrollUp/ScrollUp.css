@@ -2,18 +2,13 @@
   position: absolute;
   top: var(--pal-size-m);
 
+  height: 3.5rem;
+
   border-radius: var(--pal-size-xs);
   background-color: var(--pal-color-c);
   box-shadow: var(--pal-shadow-1);
 
   @media (width < 67.5rem) {
     translate: calc((100% + var(--pal-size-m)) * -1);
-  }
-
-  img {
-    --size: 3.5rem;
-
-    width: var(--size);
-    height: var(--size);
   }
 }

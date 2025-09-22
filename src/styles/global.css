@@ -1,5 +1,6 @@
 :root {
   --bpm: 124;
+  --line-thickness: 0.0625rem;
 }
 
 * {
@@ -99,8 +100,6 @@ a {
   > strong {
     font-weight: 600;
     color: var(--pal-color-a-l2);
-
-    transition: color var(--pal-time-s) ease-out;
   }
 }
 

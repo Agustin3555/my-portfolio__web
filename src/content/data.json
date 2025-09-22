@@ -27,7 +27,7 @@
       "acknowledgments": {
         "title": "Agradecimientos",
         "data": {
-          "text": "Su apoyo y enseñanzas han sido invaluables. A continuación, quiero reconocer a quienes han dejado una huella significativa en mi carrera:",
+          "text": "Su apoyo y enseñanzas han sido invaluables:",
           "items": [
             {
               "emoji": "🫂",
@@ -42,8 +42,7 @@
       "othersPages": {
         "title": "Otras páginas"
       }
-    },
-    "copyright": "© 2025 Juan Agustín Lovera."
+    }
   },
   "pages": {
     "home": {
@@ -114,23 +113,41 @@
             }
           }
         },
-        "works": {
+        "experiences": {
           "linkTitle": "Experiencia",
           "title": "Lo que hago",
           "strong": "Mi experiencia",
           "faIcon": "fa-solid fa-briefcase",
           "data": {
             "types": {
+              "job": {
+                "title": "Trabajo en Empresa",
+                "faIcon": "fa-solid fa-briefcase"
+              },
+              "freelance-project": {
+                "title": "Proyecto Freelance",
+                "faIcon": "fa-solid fa-handshake"
+              },
+              "personal-project": {
+                "title": "Proyecto Personal",
+                "faIcon": "fa-solid fa-flask"
+              },
+              "academic-project": {
+                "title": "Proyecto Académico",
+                "faIcon": "fa-solid fa-graduation-cap"
+              }
+            },
+            "tags": {
               "web": "Web",
               "web-app": "Web App",
               "mobile-app": "Mobile App",
               "api": "API",
-              "data-base": "Data Base",
+              "db": "DB",
               "various": "Varios"
             }
           }
         },
-        "skills": {
+        "techs": {
           "linkTitle": "Tecnologías",
           "title": "Con que trabajo",
           "strong": "Mis tecnologías",

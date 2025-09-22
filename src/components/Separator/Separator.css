@@ -6,6 +6,8 @@
 .cmp-separator {
   --gradient-direction: to left;
 
+  flex-shrink: 0;
+
   border: none;
   width: var(--cmp-separator-long);
   height: var(--cmp-separator-thick);

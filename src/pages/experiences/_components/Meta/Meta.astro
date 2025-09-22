@@ -1,0 +1,129 @@
+---
+import './Meta.css'
+import TypePill from '@/components/TypePill/TypePill.astro'
+import TagPill from '@/components/TagPill/TagPill.astro'
+import SmallLink from '@/components/SmallLink/SmallLink.astro'
+import MetaItem from './components/MetaItem/MetaItem.astro'
+import type { CollectionEntry } from 'astro:content'
+import { getDuration, parseDate } from './tools/date'
+
+interface Props
+  extends Pick<
+    CollectionEntry<'experiences'>['data'],
+    | 'type'
+    | 'tags'
+    | 'jobPosition'
+    | 'company'
+    | 'startedAt'
+    | 'endedAt'
+    | 'links'
+  > {}
+
+const { type, tags, jobPosition, company, startedAt, endedAt, links } =
+  Astro.props
+
+const startedAtDate = parseDate(startedAt)
+const endedAtDate = endedAt ? parseDate(endedAt) : undefined
+
+const hostInfo: Record<
+  NonNullable<NonNullable<typeof links>['repo']>['host'],
+  { name: string; faIcon: string }
+> = {
+  github: {
+    name: 'GitHub',
+    faIcon: 'fa-brands fa-github',
+  },
+  bitbucket: {
+    name: 'Bitbucket',
+    faIcon: 'fa-brands fa-bitbucket',
+  },
+}
+---
+
+<div class="cmp-meta">
+  <MetaItem title="Tipo">
+    <TypePill key={type} />
+  </MetaItem>
+
+  <MetaItem title="Tags">
+    {tags.map(key => <TagPill {key} />)}
+  </MetaItem>
+
+  {
+    jobPosition && (
+      <MetaItem title="Puesto">
+        <p class="text">{jobPosition}</p>
+      </MetaItem>
+    )
+  }
+
+  {
+    company && (
+      <MetaItem title="Empresa">
+        <p class="text">{company}</p>
+      </MetaItem>
+    )
+  }
+
+  <MetaItem title="Duración" handlingClass="date-meta">
+    <p class="text date" data-started-at={startedAt}>
+      {startedAtDate.toLocaleDateString('es-ES')} –
+      {
+        endedAtDate ? (
+          endedAtDate.toLocaleDateString('es-ES')
+        ) : (
+          <strong>Actualidad</strong>
+        )
+      }
+    </p>
+    {
+      endedAtDate && (
+        <p class="text duration">({getDuration(startedAtDate, endedAtDate)})</p>
+      )
+    }
+  </MetaItem>
+
+  {
+    links && (
+      <MetaItem title="Links">
+        {links.repo && (
+          <SmallLink
+            title={`Repositorio en ${hostInfo[links.repo.host].name}`}
+            text="Repo"
+            faIcon={hostInfo[links.repo.host].faIcon}
+            url={links.repo.url}
+          />
+        )}
+        {links.others?.map(({ title, url }) => (
+          <SmallLink text={title} faIcon="fa-solid fa-link" {url} />
+        ))}
+      </MetaItem>
+    )
+  }
+</div>
+
+<script>
+  import { $, onPageLoad } from '@/tools'
+  import { getDuration, parseDate } from './tools/date'
+
+  onPageLoad(() => {
+    const dateMeta = $<HTMLElement>('.date-meta')
+    if (!dateMeta) return
+
+    const duration = dateMeta?.querySelector('.duration')
+    if (duration) return
+
+    // Si no existe duration, se creará desde 0 con startedAt y la fecha actual
+
+    const startedAt =
+      dateMeta.querySelector<HTMLElement>('.date')?.dataset.startedAt
+
+    if (!startedAt) return
+
+    const newDuration = window.document.createElement('p')
+    newDuration.classList.add('text', 'duration')
+    newDuration.innerText = `(${getDuration(parseDate(startedAt), new Date())})`
+
+    dateMeta.querySelector('ul')?.appendChild(newDuration)
+  })
+</script>

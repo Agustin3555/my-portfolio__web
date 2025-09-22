@@ -14,6 +14,16 @@
     flex-wrap: wrap;
     gap: calc(var(--layout-gutter) * 2);
 
+    > .gracias {
+      flex-grow: 2;
+      flex-basis: 8rem;
+      align-self: center;
+
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--pal-size-2xs);
+    }
+
     article {
       display: flex;
       flex-direction: column;
@@ -26,7 +36,7 @@
 
     .acknowledgments {
       flex-grow: 1;
-      flex-basis: 25rem;
+      flex-basis: 20rem;
 
       > div {
         display: flex;
@@ -71,7 +81,11 @@
     }
   }
 
-  > small {
-    text-align: center;
+  > .details {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    row-gap: var(--pal-size-xs);
+    column-gap: var(--pal-size-l);
   }
 }

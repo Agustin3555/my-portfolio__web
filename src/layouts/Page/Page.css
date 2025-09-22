@@ -26,7 +26,7 @@ body {
     > .content {
       display: flex;
       flex-direction: column;
-      gap: calc(var(--layout-section-gap) * 1.5);
+      gap: calc(var(--layout-section-gap) * 1.25);
       max-width: calc(
         var(--layout-max-width) + var(--layout-margin-inline) * 2
       );

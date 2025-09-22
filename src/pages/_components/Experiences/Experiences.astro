@@ -1,0 +1,34 @@
+---
+import './Experiences.css'
+import Section from '@/layouts/Section/Section.astro'
+import ExperienceCard from './components/ExperienceCard/ExperienceCard.astro'
+import { getCollection } from 'astro:content'
+import jsonData from '@/content/data.json'
+
+const { sections } = jsonData.pages.home
+const sectionKey: keyof typeof sections = 'experiences'
+
+const { title, strong, faIcon } = sections.experiences
+
+export const DEFAULT_WORK_SIZE = [1, 1]
+
+const experiences = (await getCollection(sectionKey)).sort((a, b) => {
+  const [sizeA1, sizeA2] = a.data.size ?? DEFAULT_WORK_SIZE
+  const [sizeB1, sizeB2] = b.data.size ?? DEFAULT_WORK_SIZE
+
+  const totalA = sizeA1 + sizeA2
+  const totalB = sizeB1 + sizeB2
+
+  return totalB - totalA
+})
+---
+
+<Section {...{ sectionKey, title, strong, faIcon }}>
+  <nav>
+    {
+      experiences.map(({ slug: id, data }) => (
+        <ExperienceCard id={id} {...data} />
+      ))
+    }
+  </nav>
+</Section>
