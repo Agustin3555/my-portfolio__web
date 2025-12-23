@@ -7,16 +7,20 @@ const { levels } = jsonData.pages.home.sections.techs.data
 
 <fieldset class="levels">
   {
-    levels.map(({ level, desc }) => (
-      <label class="bg card layout">
-        <input class="level-toggle" type="checkbox" checked />
-        <div class="group">
-          <span />
-          {level}
-        </div>
-        <p class="text">{desc}</p>
-      </label>
-    ))
+    levels.map(({ level, desc }, i) => {
+      const id = `level-${i}`
+
+      return (
+        <label class="bg card layout" for={id}>
+          <input class="level-toggle" {id} type="checkbox" checked />
+          <div class="group">
+            <span />
+            {level}
+          </div>
+          <p class="text">{desc}</p>
+        </label>
+      )
+    })
   }
 </fieldset>
 
