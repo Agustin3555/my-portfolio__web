@@ -37,10 +37,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site)
 
   {
     faFiles.map(file => (
-      <link
-        href={`/src/assets/fontawesome-6.6.0/css/${file}`}
-        rel="stylesheet"
-      />
+      <link href={`/fontawesome-6.6.0/css/${file}`} rel="stylesheet" />
     ))
   }
 
