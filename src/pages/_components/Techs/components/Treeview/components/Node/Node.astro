@@ -2,11 +2,7 @@
 import './Node.css'
 import { Image } from 'astro:assets'
 import Separator from '@/components/Separator/Separator.astro'
-import {
-  getImgMetadata,
-  validateImgMetadata,
-  type Folder,
-} from '@/tools/getImgMetadata.tool'
+import { getImgMeta } from '@/tools/getImgMeta.tool'
 import type { DataNode, Tech, TechKey } from '../../../../types/dataNode'
 import jsonData from '@/content/data.json'
 
@@ -25,10 +21,12 @@ const [techKey, dataNodes] =
     : [Object.keys(dataNode)[0] as TechKey, Object.values(dataNode)[0]]
 
 const tech = techs[techKey] as Tech
-const { items, level: skillLevel } = tech
+const { items: baseItems, level: skillLevel } = tech
 
-const folder: Folder = 'techs'
-items.forEach(({ img }) => validateImgMetadata(folder, img.file))
+const items = baseItems.map(({ img, ...rest }) => ({
+  img: { ...img, getSrc: getImgMeta('techs', img.file) },
+  ...rest,
+}))
 ---
 
 <div class="cmp-node">
@@ -52,13 +50,13 @@ items.forEach(({ img }) => validateImgMetadata(folder, img.file))
     <div class="graphics">
       <div class="icons">
         {
-          items.map(({ name, img }, index) => (
+          items.map(({ name, img }) => (
             <Image
               class:list={[
                 'icon',
                 { 'invert-in-dark-mode': img.invertInDarkMode },
               ]}
-              src={getImgMetadata(folder, img.file)()}
+              src={img.getSrc()}
               alt={`Logo de ${name}`}
             />
           ))

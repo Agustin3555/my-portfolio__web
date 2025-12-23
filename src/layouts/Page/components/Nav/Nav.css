@@ -39,7 +39,7 @@
     .squares {
       --cls-bg-color: var(--pal-color-gs-800);
 
-      gap: var(--pal-size-m);
+      gap: var(--pal-size-s);
     }
 
     .links {

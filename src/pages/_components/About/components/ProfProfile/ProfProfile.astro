@@ -14,9 +14,9 @@ const { text, englishLevel } = data
   <div class="bg card layout">
     <p class="text" set:html={highlightToHTMLTag(text)} />
   </div>
-  <div class="items">
+  <ul class="items">
     <Pill faIcon="fa-solid fa-comment-dots" size="s">
       <p>Ingles {englishLevel}</p>
     </Pill>
-  </div>
+  </ul>
 </section>

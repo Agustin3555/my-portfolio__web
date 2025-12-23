@@ -29,6 +29,7 @@ const {
   techs,
   links,
   imgs,
+  desc,
 } = work.data
 
 const { file, alt } = imgs[0]
@@ -36,7 +37,13 @@ const { file, alt } = imgs[0]
 const { Content } = await render(work)
 ---
 
-<Page>
+<Page
+  head={{
+    subtitle: title,
+    desc: `${title}: ${desc}`,
+    cardImg: `/src/assets/experiences/${file}`,
+  }}
+>
   <div class="cmp-experience">
     <AutoBgImage
       img={{ folder: 'experiences', file, alt }}

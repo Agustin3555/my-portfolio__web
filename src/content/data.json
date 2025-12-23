@@ -29,10 +29,7 @@
         "data": {
           "text": "Su apoyo y enseñanzas han sido invaluables:",
           "items": [
-            {
-              "emoji": "🫂",
-              "text": "Mis amigos y compañeros de universidad."
-            },
+            { "emoji": "🫂", "text": "Mis amigos y colegas de universidad." },
             { "emoji": "👨🏻‍🏫", "text": "Mis profesores de universidad." },
             { "emoji": "✨", "text": "Mis padres." },
             { "emoji": "😸", "text": "Mi primera gata." }
@@ -47,7 +44,7 @@
   "pages": {
     "home": {
       "head": {
-        "desc": "¡Hola! Soy Juan Agustín Lovera, un Full Stack Web Developer recién graduado con sólidas bases en la creación de software y un enfoque en tecnologías web y diseño UI. ¡Bienvenido a mi portafolio!"
+        "desc": "Full Stack Web Developer que combina diseño y desarrollo. Explora mis proyectos profesionales, freelance y personales, detallando habilidades, tecnologías y soluciones implementadas."
       },
       "sections": {
         "about": {
@@ -62,7 +59,7 @@
                 "alt": "Fotografía de Juan Agustín Lovera: cara frontal sonriente, cuerpo frontal y brazos cruzados"
               },
               "data": {
-                "text": "He recorrido un camino único que me ha permitido combinar conocimientos técnicos y creativos. Mi viaje en la programación comenzó en la secundaria, donde descubrí mi pasión por el diseño y la creación de sistemas. Desde entonces, me he dedicado a aprender y perfeccionar mis habilidades, siempre buscando nuevos desafíos y oportunidades para innovar.",
+                "text": "He recorrido un camino único que me ha permitido combinar conocimientos [técnicos] y [creativos]. Mi viaje en la programación comenzó en la secundaria, donde descubrí mi pasión por el [diseño] y la creación de [sistemas]. Desde entonces, me he dedicado a [aprender] y [perfeccionar] mis habilidades, siempre buscando [nuevos desafíos] y oportunidades para [innovar].",
                 "residenceMapsLink": {
                   "title": "Argentina, Resistencia",
                   "url": "https://maps.app.goo.gl/WV5tTaDhoktP9uRp8"
@@ -195,7 +192,7 @@
                   {
                     "name": "CSS",
                     "img": {
-                      "file": "logo-css.webp"
+                      "file": "logo-css.png"
                     }
                   }
                 ],
@@ -223,8 +220,7 @@
                   {
                     "name": "Astro",
                     "img": {
-                      "file": "logo-astro.webp",
-                      "invertInDarkMode": true
+                      "file": "logo-astro.png"
                     }
                   }
                 ],
@@ -274,17 +270,6 @@
                 ],
                 "level": 2
               },
-              "redux": {
-                "items": [
-                  {
-                    "name": "Redux",
-                    "img": {
-                      "file": "logo-redux.webp"
-                    }
-                  }
-                ],
-                "level": 2
-              },
               "nestJs": {
                 "items": [
                   {
@@ -318,7 +303,7 @@
                     }
                   }
                 ],
-                "level": 1
+                "level": 2
               },
               "php": {
                 "items": [
@@ -367,7 +352,6 @@
                       { "react": ["nextJs"] },
                       "reactNative",
                       "zustand",
-                      "redux",
                       "nestJs",
                       "express",
                       "prisma"
@@ -387,8 +371,7 @@
                       "astro",
                       { "react": ["nextJs"] },
                       "reactNative",
-                      "zustand",
-                      "redux"
+                      "zustand"
                     ]
                   }
                 ]
@@ -506,7 +489,7 @@
     "resume": {
       "head": {
         "subtitle": "Currículum",
-        "desc": ""
+        "desc": "Muestra de mis habilidades y experiencia profesional, adaptable según el puesto y la empresa."
       },
       "linkTitle": "Currículum",
       "title": "Currículum",
@@ -519,7 +502,7 @@
     "notFound": {
       "head": {
         "subtitle": "Error 404",
-        "desc": ""
+        "desc": "La página que intentas visitar no existe o fue eliminada."
       },
       "title": "Página no encontrada",
       "strong": "Error 404",

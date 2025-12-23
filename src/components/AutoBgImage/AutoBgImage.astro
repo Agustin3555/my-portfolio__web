@@ -1,15 +1,11 @@
 ---
 import './AutoBgImage.css'
 import { Image } from 'astro:assets'
-import {
-  getImgMetadata,
-  validateImgMetadata,
-  type Folder,
-} from '@/tools/getImgMetadata.tool'
+import { getImgMeta, type ImgFolder } from '@/tools/getImgMeta.tool'
 
 interface Props {
   img: {
-    folder: Folder
+    folder: ImgFolder
     file: string
     alt: string
   }
@@ -19,11 +15,11 @@ interface Props {
 const { img, transitionName } = Astro.props
 const { folder, file, alt } = img
 
-validateImgMetadata(folder, file)
+const getSrc = getImgMeta(folder, file)
 ---
 
 <div class="cmp-auto-bg-image" transition:name={transitionName}>
-  <Image src={getImgMetadata(folder, file)()} {alt} />
+  <Image src={getSrc()} {alt} />
 </div>
 
 <script>

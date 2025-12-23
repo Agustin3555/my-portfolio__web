@@ -2,7 +2,7 @@
   flex-direction: column;
   justify-content: space-between;
 
-  > div {
+  > ul {
     display: flex;
     flex-wrap: wrap;
     row-gap: var(--pal-size-xs);

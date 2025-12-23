@@ -13,7 +13,7 @@ const { items } = data
 ---
 
 <Section {...{ sectionKey, title, strong, faIcon }}>
-  <ul class="education">
+  <div>
     {items.map(item => <EducationItem {...item} />)}
-  </ul>
+  </div>
 </Section>

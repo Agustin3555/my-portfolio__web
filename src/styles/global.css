@@ -82,6 +82,16 @@ span {
   display: block;
 }
 
+code {
+  padding-inline: var(--pal-size-2xs);
+  padding-block: var(--pal-size-3xs);
+
+  font-family: "Cascadia Code", monospace;
+
+  border-radius: var(--pal-size-2xs);
+  background-color: var(--pal-color-gs-800);
+}
+
 button {
   border: none;
   padding: 0;

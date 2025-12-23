@@ -33,7 +33,7 @@ const { title, institutionName, endDate, duration, moreInfoLink } = Astro.props
     {title}
     <strong>{institutionName}</strong>
   </h3>
-  <div>
+  <ul>
     <Pill faIcon="fa-solid fa-calendar-check">
       <time class="text" datetime={endDate.machine}>
         {endDate.human}
@@ -44,5 +44,5 @@ const { title, institutionName, endDate, duration, moreInfoLink } = Astro.props
         {duration.human}
       </time>
     </Pill>
-  </div>
+  </ul>
 </a>

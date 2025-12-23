@@ -33,7 +33,7 @@ const { history, hobbiesAndLikes } = data
   </article>
   <article class="hobbies-and-likes bg card layout">
     <h3>{hobbiesAndLikes.title}</h3>
-    <div class="items">
+    <ul class="items">
       {
         hobbiesAndLikes.data.items.map(({ title, emoji }) => (
           <Pill emoji={emoji} size="m">
@@ -41,7 +41,7 @@ const { history, hobbiesAndLikes } = data
           </Pill>
         ))
       }
-    </div>
+    </ul>
   </article>
 </section>
 

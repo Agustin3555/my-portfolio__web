@@ -5,9 +5,10 @@ import jsonData from '@/content/data.json'
 export interface Props {
   subtitle?: string
   desc: string
+  cardImg?: string
 }
 
-const { subtitle, desc } = Astro.props
+const { subtitle, desc, cardImg = '/banner.png' } = Astro.props
 
 const { title } = jsonData.documentInfo
 const { base, separator } = title
@@ -23,19 +24,17 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site)
   <meta name="viewport" content="width=device-width" />
   <meta name="generator" content={Astro.generator} />
   <meta name="robots" content="index, follow" />
-
   <meta name="description" content={desc} />
-  <meta name="theme-color" content="#eb5547" />
+  <meta name="theme-color" content="#406981" />
+  <link rel="canonical" href={canonicalURL} />
+  <link rel="icon" href="/favicon-logo-s.ico" />
+
   <!-- TODO: obtener desde .env -->
   <meta
     name="google-site-verification"
     content="YYKIvWV2nOIwchh9AOzo4kwVG5FWKATc4FVCH2h2pH0"
   />
 
-  <title>{fullTitle}</title>
-
-  <link rel="canonical" href={canonicalURL} />
-  <link rel="icon" href="/favicon-logo-s.ico" />
   {
     faFiles.map(file => (
       <link
@@ -45,5 +44,18 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site)
     ))
   }
 
+  <meta property="og:url" content={canonicalURL} />
+  <meta property="og:title" content={fullTitle} />
+  <meta property="og:description" content={desc} />
+  <meta property="og:image" content={cardImg} />
+  <meta property="og:type" content="website" />
+
+  <meta name="twitter:url" content={canonicalURL} />
+  <meta name="twitter:title" content={fullTitle} />
+  <meta name="twitter:description" content={desc} />
+  <meta name="twitter:image" content={cardImg} />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <title>{fullTitle}</title>
   <ClientRouter />
 </head>

@@ -4,7 +4,7 @@
   gap: calc(var(--layout-gutter) * 2);
 
   > .cmp-auto-bg-image {
-    aspect-ratio: 21 / 9;
+    aspect-ratio: 16 / 9;
   }
 
   > .content {
@@ -18,19 +18,36 @@
       gap: calc(var(--layout-gutter) * 2);
     }
 
-    > .desc > * {
-      margin-bottom: 1.75em;
-
-      line-height: 1.5;
-      text-wrap: pretty;
-
-      > strong {
+    > .desc {
+      strong {
         font-weight: 600;
         color: var(--pal-color-a-l2);
       }
 
-      &:last-child {
-        margin-bottom: 0;
+      > *,
+      > ul > li {
+        margin-bottom: 1.75em;
+
+        line-height: 1.5;
+        text-wrap: pretty;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+
+      > ul {
+        display: block;
+
+        padding-left: 1.125rem;
+
+        > li {
+          list-style: initial;
+
+          > strong:first-child {
+            color: var(--pal-color-b-l1);
+          }
+        }
       }
     }
 
