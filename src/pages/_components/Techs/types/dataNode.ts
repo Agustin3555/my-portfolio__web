@@ -1,18 +1,18 @@
-import jsonData from "@/content/data.json";
+import jsonData from '@/content/data.json'
 
-const { techs } = jsonData.pages.home.sections.techs.data;
+const { techs } = jsonData.pages.home.sections.techs.data
 
 export interface Tech {
   items: {
-    name: string;
+    name: string
     img: {
-      file: string;
-      invertInDarkMode: boolean;
-    };
-  }[];
-  level: number;
+      file: string
+      invertInDarkMode: boolean
+    }
+  }[]
+  level: number
 }
 
-export type TechKey = keyof typeof techs;
+export type TechKey = keyof typeof techs
 
-export type DataNode = TechKey | Record<TechKey, DataNode[]>;
+export type DataNode = TechKey | Record<TechKey, DataNode[]>

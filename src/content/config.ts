@@ -1,9 +1,9 @@
-import { defineCollection, z } from "astro:content";
-import type { TypeKey } from "@/components/TypePill/TypePill.astro";
-import type { TagKey } from "@/components/TagPill/TagPill.astro";
-import jsonData from "./data.json";
+import { defineCollection, z } from 'astro:content'
+import type { TypeKey } from '@/components/TypePill/TypePill.astro'
+import type { TagKey } from '@/components/TagPill/TagPill.astro'
+import jsonData from './data.json'
 
-const { types, tags } = jsonData.pages.home.sections.experiences.data;
+const { types, tags } = jsonData.pages.home.sections.experiences.data
 
 const experiences = defineCollection({
   schema: z.object({
@@ -24,7 +24,7 @@ const experiences = defineCollection({
       .object({
         repo: z
           .object({
-            host: z.enum(["github", "bitbucket"]),
+            host: z.enum(['github', 'bitbucket']),
             url: z.string(),
           })
           .optional(),
@@ -47,6 +47,6 @@ const experiences = defineCollection({
     ),
     desc: z.string(),
   }),
-});
+})
 
-export const collections = { experiences };
+export const collections = { experiences }

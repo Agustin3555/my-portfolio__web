@@ -14,13 +14,11 @@ const { dataNodes } = Astro.props
 ---
 
 <ul class="cmp-treeview" style={`--levels: ${levels.length};`}>
-  {
-    dataNodes.map(dataNode => (
-      <li>
-        <Node {dataNode} />
-      </li>
-    ))
-  }
+  {dataNodes.map(dataNode => (
+    <li>
+      <Node {dataNode} />
+    </li>
+  ))}
 </ul>
 
 <script>

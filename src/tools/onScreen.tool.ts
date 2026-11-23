@@ -1,8 +1,8 @@
 interface Options {
-  observed: Element;
-  containerObserver?: Element;
-  margin?: string;
-  threshold?: number | number[];
+  observed: Element
+  containerObserver?: Element
+  margin?: string
+  threshold?: number | number[]
 }
 
 export const onScreen = (
@@ -11,12 +11,12 @@ export const onScreen = (
 ) => {
   const observer = new IntersectionObserver(
     ([entry]) => {
-      const { isIntersecting } = entry;
+      const { isIntersecting } = entry
 
-      onIntersectionChange(isIntersecting);
+      onIntersectionChange(isIntersecting)
     },
     { root: containerObserver, rootMargin: margin, threshold },
-  );
+  )
 
-  observer.observe(observed);
-};
+  observer.observe(observed)
+}

@@ -14,18 +14,12 @@ const { id, titles } = Astro.props
     <div class="nav">
       <span class="bg-indicator bg"></span>
       <fieldset>
-        {
-          titles.map((title, index) => (
-            <label>
-              <input
-                type="radio"
-                name={`${id}-sections`}
-                checked={index === 0}
-              />
-              {title}
-            </label>
-          ))
-        }
+        {titles.map((title, index) => (
+          <label>
+            <input type="radio" name={`${id}-sections`} checked={index === 0} />
+            {title}
+          </label>
+        ))}
       </fieldset>
     </div>
     <span class="line"></span>
@@ -53,11 +47,11 @@ const { id, titles } = Astro.props
       const labels = tabbed.querySelectorAll('label')
 
       const sections = Array.from<HTMLElement>(
-        slider.querySelectorAll('& > *:not(script)')
+        slider.querySelectorAll('& > *:not(script)'),
       )
 
       const radios = tabbed.querySelectorAll<HTMLInputElement>(
-        'input[type="radio"]'
+        'input[type="radio"]',
       )
 
       const moveIndicator = (index: number) => {

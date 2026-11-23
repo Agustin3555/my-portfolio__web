@@ -57,7 +57,7 @@
     }
   }
 
-  body[data-dark-mode="true"] & {
+  body[data-dark-mode='true'] & {
     background-color: var(--pal-color-gs-950);
 
     .switch {

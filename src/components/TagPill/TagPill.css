@@ -10,8 +10,12 @@
     --cls-bg-color: var(--pal-color-b-l2);
   }
 
-  &.mobile-app {
+  &.desktop-app {
     --cls-bg-color: var(--pal-color-c-l2);
+  }
+
+  &.mobile-app {
+    --cls-bg-color: var(--pal-color-d-l2);
   }
 
   &.api {

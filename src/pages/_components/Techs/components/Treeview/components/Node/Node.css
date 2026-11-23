@@ -121,7 +121,7 @@
           position: absolute;
           left: 50%;
 
-          content: "";
+          content: '';
         }
 
         &::before {

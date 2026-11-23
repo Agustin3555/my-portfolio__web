@@ -15,30 +15,26 @@ const { sectionKey, title, strong, faIcon, main } = Astro.props
 
 <section class:list={['cmp-section', { main }]} id={sectionKey}>
   <header>
-    {
-      faIcon && (
-        <div class="bullet">
-          <span class="line top" />
-          <div class="point pulsar">
-            <Icon {faIcon} />
-          </div>
-          <span class="line bot" />
+    {faIcon && (
+      <div class="bullet">
+        <span class="line top" />
+        <div class="point pulsar">
+          <Icon {faIcon} />
         </div>
-      )
-    }
-    {
-      main ? (
-        <h1>
-          {title}
-          <strong>{strong}</strong>
-        </h1>
-      ) : (
-        <h2>
-          {title}
-          <strong>{strong}</strong>
-        </h2>
-      )
-    }
+        <span class="line bot" />
+      </div>
+    )}
+    {main ? (
+      <h1>
+        {title}
+        <strong>{strong}</strong>
+      </h1>
+    ) : (
+      <h2>
+        {title}
+        <strong>{strong}</strong>
+      </h2>
+    )}
   </header>
   <div class="content">
     <slot />
@@ -54,7 +50,7 @@ const { sectionKey, title, strong, faIcon, main } = Astro.props
     sections?.forEach(section => {
       onScreen(
         { observed: section, margin: '-25%' },
-        isIntersecting => isIntersecting && section.classList.add('seen')
+        isIntersecting => isIntersecting && section.classList.add('seen'),
       )
     })
   })

@@ -19,16 +19,20 @@ const experiences = (await getCollection(sectionKey)).sort((a, b) => {
   const totalA = sizeA1 + sizeA2
   const totalB = sizeB1 + sizeB2
 
-  return totalB - totalA
+  if (totalB !== totalA) return totalB - totalA
+
+  const priorityTypes = ['job', 'freelance-project']
+  const priorityA = priorityTypes.includes(a.data.type) ? 1 : 0
+  const priorityB = priorityTypes.includes(b.data.type) ? 1 : 0
+
+  return priorityB - priorityA
 })
 ---
 
 <Section {...{ sectionKey, title, strong, faIcon }}>
   <nav>
-    {
-      experiences.map(({ slug: id, data }) => (
-        <ExperienceCard id={id} {...data} />
-      ))
-    }
+    {experiences.map(({ slug: id, data }) => (
+      <ExperienceCard id={id} {...data} />
+    ))}
   </nav>
 </Section>

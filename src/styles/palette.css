@@ -1,8 +1,8 @@
 :root {
   /* FONT */
 
-  --pal-font-a: "Plus Jakarta Sans Variable", sans-serif;
-  --pal-font-b: "DM Sans Variable", sans-serif;
+  --pal-font-a: 'Plus Jakarta Sans Variable', sans-serif;
+  --pal-font-b: 'DM Sans Variable', sans-serif;
 
   /* FONT SIZE */
 
@@ -136,13 +136,17 @@
 
   /* MISC */
 
-  --pal-shadow-0: 0.3px 0.5px 0.7px rgba(0, 0, 0, 0.1),
-    0.4px 0.8px 1px rgba(0, 0, 0, 0.1), 1px 2px 2.5px rgba(0, 0, 0, 0.1);
-  --pal-shadow-1: 0.3px 0.5px 0.7px rgba(0, 0, 0, 0.09),
-    0.7px 1.3px 1.7px rgba(0, 0, 0, 0.09), 1.3px 2.6px 3.3px rgba(0, 0, 0, 0.09),
+  --pal-shadow-0:
+    0.3px 0.5px 0.7px rgba(0, 0, 0, 0.1), 0.4px 0.8px 1px rgba(0, 0, 0, 0.1),
+    1px 2px 2.5px rgba(0, 0, 0, 0.1);
+  --pal-shadow-1:
+    0.3px 0.5px 0.7px rgba(0, 0, 0, 0.09),
+    0.7px 1.3px 1.7px rgba(0, 0, 0, 0.09),
+    1.3px 2.6px 3.3px rgba(0, 0, 0, 0.09),
     2.6px 5.2px 6.5px rgba(0, 0, 0, 0.09), 5px 10px 12.6px rgba(0, 0, 0, 0.09);
-  --pal-shadow-2: 0.3px 0.5px 0.7px rgba(0, 0, 0, 0.08),
-    1.2px 2.4px 3px rgba(0, 0, 0, 0.08), 2.1px 4.3px 5.4px rgba(0, 0, 0, 0.08),
+  --pal-shadow-2:
+    0.3px 0.5px 0.7px rgba(0, 0, 0, 0.08), 1.2px 2.4px 3px rgba(0, 0, 0, 0.08),
+    2.1px 4.3px 5.4px rgba(0, 0, 0, 0.08),
     3.2px 6.5px 8.2px rgba(0, 0, 0, 0.08),
     4.7px 9.4px 11.8px rgba(0, 0, 0, 0.08),
     6.8px 13.6px 17.1px rgba(0, 0, 0, 0.08),

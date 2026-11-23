@@ -61,7 +61,7 @@
           border-radius: var(--pal-size-3xl);
           background-color: var(--pal-color-a);
 
-          content: "";
+          content: '';
 
           transition: top var(--pal-time-l) ease-out;
         }

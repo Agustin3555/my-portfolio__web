@@ -12,11 +12,9 @@ const { head, title, strong, faIcon, desc } = jsonData.pages.resume
   <Section {...{ title, strong, faIcon }}>
     <div class="bg card layout">
       <div class="paragraphs">
-        {
-          desc.map(item => (
-            <p class="text" set:html={highlightToHTMLTag(item)} />
-          ))
-        }
+        {desc.map(item => (
+          <p class="text" set:html={highlightToHTMLTag(item)} />
+        ))}
       </div>
     </div>
     <embed

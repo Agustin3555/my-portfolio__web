@@ -38,46 +38,42 @@ const items = baseItems.map(({ img, ...rest }) => ({
     }}
   >
     <div class="names">
-      {
-        items.map(({ name }, index) => (
-          <>
-            <p>{name}</p>
-            {index !== items.length - 1 && <Separator invert />}
-          </>
-        ))
-      }
+      {items.map(({ name }, index) => (
+        <>
+          <p>{name}</p>
+          {index !== items.length - 1 && <Separator invert />}
+        </>
+      ))}
     </div>
     <div class="graphics">
       <div class="icons">
-        {
-          items.map(({ name, img }) => (
-            <Image
-              class:list={[
-                'icon',
-                { 'invert-in-dark-mode': img.invertInDarkMode },
-              ]}
-              src={img.getSrc()}
-              alt={`Logo de ${name}`}
-            />
-          ))
-        }
+        {items.map(({ name, img }) => (
+          <Image
+            class:list={[
+              'icon',
+              { 'invert-in-dark-mode': img.invertInDarkMode },
+            ]}
+            src={img.getSrc()}
+            alt={`Logo de ${name}`}
+          />
+        ))}
       </div>
       <div class="level-bar">
-        <span class="bar" style={{ width: `${(skillLevel / 3) * 100}%` }}
+        <span
+          class="bar"
+          style={{ width: `${(skillLevel / 3) * 100}%` }}
         ></span>
       </div>
     </div>
   </div>
-  {
-    dataNodes && (
-      <ul class="techs-children">
-        {dataNodes.map(tech => (
-          <li>
-            <span class="bullet-point" />
-            <Astro.self dataNode={tech} level={level + 1} />
-          </li>
-        ))}
-      </ul>
-    )
-  }
+  {dataNodes && (
+    <ul class="techs-children">
+      {dataNodes.map(tech => (
+        <li>
+          <span class="bullet-point" />
+          <Astro.self dataNode={tech} level={level + 1} />
+        </li>
+      ))}
+    </ul>
+  )}
 </div>

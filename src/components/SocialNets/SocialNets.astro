@@ -11,11 +11,9 @@ const { show } = Astro.props
 const { socialNets } = jsonData
 ---
 
-{
-  socialNets.map(
-    ({ title, ...rest }, i) =>
-      i < (show ?? socialNets.length) && (
-        <SocialNet {...rest} title={`Ir al perfil de ${title}`} />
-      )
-  )
-}
+{socialNets.map(
+  ({ title, ...rest }, i) =>
+    i < (show ?? socialNets.length) && (
+      <SocialNet {...rest} title={`Ir al perfil de ${title}`} />
+    ),
+)}

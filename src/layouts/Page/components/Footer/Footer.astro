@@ -44,16 +44,14 @@ const version = `v${pkg.version}`
       <div>
         <p class="text">{acknowledgments.data.text}</p>
         <ul>
-          {
-            acknowledgments.data.items.map(({ emoji, text }) => (
-              <li>
-                <p class="text">
-                  <span class="emoji">{emoji}</span>
-                  {text}
-                </p>
-              </li>
-            ))
-          }
+          {acknowledgments.data.items.map(({ emoji, text }) => (
+            <li>
+              <p class="text">
+                <span class="emoji">{emoji}</span>
+                {text}
+              </p>
+            </li>
+          ))}
         </ul>
       </div>
     </article>

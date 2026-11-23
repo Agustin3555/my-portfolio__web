@@ -34,11 +34,9 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site)
     content={import.meta.env.GOOGLE_SITE_VERIFICATION}
   />
 
-  {
-    faFiles.map(file => (
-      <link href={`/fontawesome-6.6.0/css/${file}`} rel="stylesheet" />
-    ))
-  }
+  {faFiles.map(file => (
+    <link href={`/fontawesome-6.6.0/css/${file}`} rel="stylesheet" />
+  ))}
 
   <meta property="og:url" content={canonicalURL} />
   <meta property="og:title" content={fullTitle} />

@@ -14,6 +14,8 @@ const { items } = data
 
 <Section {...{ sectionKey, title, strong, faIcon }}>
   <div>
-    {items.map(item => <EducationItem {...item} />)}
+    {items.map(item => (
+      <EducationItem {...item} />
+    ))}
   </div>
 </Section>

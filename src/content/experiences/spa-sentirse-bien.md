@@ -1,33 +1,33 @@
 ---
-title: "Spa Sentirse Bien"
-startedAt: "2022-08-01"
-endedAt: "2024-10-27"
-type: "academic-project"
+title: 'Spa Sentirse Bien'
+startedAt: '2022-08-01'
+endedAt: '2024-10-27'
+type: 'academic-project'
 tags:
-  - "web-app"
+  - 'web-app'
 techs:
-  - name: "TypeScript"
-    version: "5.5"
-  - name: "Next.js"
-    version: "14.2"
-  - name: "NextAuth.js"
-    version: "4.24"
-  - name: "Axios"
-    version: "1.7"
+  - name: 'TypeScript'
+    version: '5.5'
+  - name: 'Next.js'
+    version: '14.2'
+  - name: 'NextAuth.js'
+    version: '4.24'
+  - name: 'Axios'
+    version: '1.7'
 links:
   repo:
-    host: "github"
-    url: "https://github.com/Agustin3555/spa-sb__web-app"
+    host: 'github'
+    url: 'https://github.com/Agustin3555/spa-sb__web-app'
   others:
-    - title: "Demo"
-      url: "https://spa-sentirse-bien.vercel.app/"
+    - title: 'Demo'
+      url: 'https://spa-sentirse-bien.vercel.app/'
 imgs:
-  - file: "ssb-1.png"
-    alt: "Spa Sentirse Bien web app: página de Inicio y Servicios"
+  - file: 'ssb-1.png'
+    alt: 'Spa Sentirse Bien web app: página de Inicio y Servicios'
 size:
-  - 3
-  - 3
-desc: "Aplicación web integral para un Spa ficticio, con reservas y pagos online, más panel para empleados que optimiza la gestión interna y organización."
+  - 2
+  - 2
+desc: 'Aplicación web integral para un Spa ficticio, con reservas y pagos online, más panel para empleados que optimiza la gestión interna y organización.'
 ---
 
 Desarrollé una aplicación web integral como proyecto final para una materia universitaria. Esta web sirve como la **presentación principal** de los **servicios** de un Spa ficticio, permitiendo a los clientes **reservar** y **pagar** citas de manera directa.

@@ -24,6 +24,24 @@
         color: var(--pal-color-a-l2);
       }
 
+      a {
+        text-decoration: underline;
+        text-decoration-color: color-mix(
+          in srgb,
+          transparent,
+          var(--pal-color-c-l1) 37.5%
+        );
+        text-underline-offset: 0.1875rem;
+
+        color: var(--pal-color-c-l1);
+
+        transition: text-decoration-color var(--pal-time-xs) ease-out;
+
+        &:hover {
+          text-decoration-color: var(--pal-color-c-l1);
+        }
+      }
+
       > *,
       > ul > li {
         margin-bottom: 1.75em;

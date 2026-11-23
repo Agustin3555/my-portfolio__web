@@ -16,11 +16,9 @@ const { history, hobbiesAndLikes } = data
   <article class="history bg card layout">
     <h3>{history.title}</h3>
     <div class="paragraphs">
-      {
-        history.data.paragraphs.map(item => (
-          <p class="text" set:html={highlightToHTMLTag(item)} />
-        ))
-      }
+      {history.data.paragraphs.map(item => (
+        <p class="text" set:html={highlightToHTMLTag(item)} />
+      ))}
     </div>
     <button>
       <small class="open">
@@ -34,13 +32,11 @@ const { history, hobbiesAndLikes } = data
   <article class="hobbies-and-likes bg card layout">
     <h3>{hobbiesAndLikes.title}</h3>
     <ul class="items">
-      {
-        hobbiesAndLikes.data.items.map(({ title, emoji }) => (
-          <Pill emoji={emoji} size="m">
-            <p>{title}</p>
-          </Pill>
-        ))
-      }
+      {hobbiesAndLikes.data.items.map(({ title, emoji }) => (
+        <Pill emoji={emoji} size="m">
+          <p>{title}</p>
+        </Pill>
+      ))}
     </ul>
   </article>
 </section>

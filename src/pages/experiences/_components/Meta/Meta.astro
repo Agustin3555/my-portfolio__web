@@ -7,17 +7,16 @@ import MetaItem from './components/MetaItem/MetaItem.astro'
 import type { CollectionEntry } from 'astro:content'
 import { getDuration, parseDate } from './tools/date'
 
-interface Props
-  extends Pick<
-    CollectionEntry<'experiences'>['data'],
-    | 'type'
-    | 'tags'
-    | 'jobPosition'
-    | 'company'
-    | 'startedAt'
-    | 'endedAt'
-    | 'links'
-  > {}
+interface Props extends Pick<
+  CollectionEntry<'experiences'>['data'],
+  | 'type'
+  | 'tags'
+  | 'jobPosition'
+  | 'company'
+  | 'startedAt'
+  | 'endedAt'
+  | 'links'
+> {}
 
 const { type, tags, jobPosition, company, startedAt, endedAt, links } =
   Astro.props
@@ -46,60 +45,52 @@ const hostInfo: Record<
   </MetaItem>
 
   <MetaItem title="Tags">
-    {tags.map(key => <TagPill {key} />)}
+    {tags.map(key => (
+      <TagPill {key} />
+    ))}
   </MetaItem>
 
-  {
-    jobPosition && (
-      <MetaItem title="Puesto">
-        <p class="text">{jobPosition}</p>
-      </MetaItem>
-    )
-  }
+  {jobPosition && (
+    <MetaItem title="Puesto">
+      <p class="text">{jobPosition}</p>
+    </MetaItem>
+  )}
 
-  {
-    company && (
-      <MetaItem title="Empresa">
-        <p class="text">{company}</p>
-      </MetaItem>
-    )
-  }
+  {company && (
+    <MetaItem title="Empresa">
+      <p class="text">{company}</p>
+    </MetaItem>
+  )}
 
   <MetaItem title="Duración" handlingClass="date-meta">
     <p class="text date" data-started-at={startedAt}>
       {startedAtDate.toLocaleDateString('es-ES')} –
-      {
-        endedAtDate ? (
-          endedAtDate.toLocaleDateString('es-ES')
-        ) : (
-          <strong>Actualidad</strong>
-        )
-      }
+      {endedAtDate ? (
+        endedAtDate.toLocaleDateString('es-ES')
+      ) : (
+        <strong>Actualidad</strong>
+      )}
     </p>
-    {
-      endedAtDate && (
-        <p class="text duration">({getDuration(startedAtDate, endedAtDate)})</p>
-      )
-    }
+    {endedAtDate && (
+      <p class="text duration">({getDuration(startedAtDate, endedAtDate)})</p>
+    )}
   </MetaItem>
 
-  {
-    links && (
-      <MetaItem title="Enlaces">
-        {links.repo && (
-          <SmallLink
-            title={`Repositorio en ${hostInfo[links.repo.host].name}`}
-            text="Repo"
-            faIcon={hostInfo[links.repo.host].faIcon}
-            url={links.repo.url}
-          />
-        )}
-        {links.others?.map(({ title, url }) => (
-          <SmallLink text={title} faIcon="fa-solid fa-link" {url} />
-        ))}
-      </MetaItem>
-    )
-  }
+  {links && (
+    <MetaItem title="Enlaces">
+      {links.repo && (
+        <SmallLink
+          title={`Repositorio en ${hostInfo[links.repo.host].name}`}
+          text="Repo"
+          faIcon={hostInfo[links.repo.host].faIcon}
+          url={links.repo.url}
+        />
+      )}
+      {links.others?.map(({ title, url }) => (
+        <SmallLink text={title} faIcon="fa-solid fa-link" {url} />
+      ))}
+    </MetaItem>
+  )}
 </div>
 
 <script>

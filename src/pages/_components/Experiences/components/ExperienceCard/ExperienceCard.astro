@@ -34,13 +34,15 @@ const { file, alt } = imgs[0]
     transitionName={`img-${id}`}
   />
   <div class="content">
-    <h3>
-      {title}
-    </h3>
+    <h3>{title}</h3>
     <ul class="pills">
       <TypePill key={type} />
-      {tags.map(key => <TagPill {key} />)}
-      {techs.map(({ name }) => <TechPill {name} />)}
+      {tags.map(key => (
+        <TagPill {key} />
+      ))}
+      {techs.map(({ name }) => (
+        <TechPill {name} />
+      ))}
     </ul>
   </div>
 </a>

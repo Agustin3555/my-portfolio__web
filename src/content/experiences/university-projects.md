@@ -1,25 +1,25 @@
 ---
-title: "Proyectos de la Universidad"
-startedAt: "2020-03-02"
-endedAt: "2023-12-07"
-type: "academic-project"
+title: 'Proyectos de la Universidad'
+startedAt: '2020-03-02'
+endedAt: '2023-12-07'
+type: 'academic-project'
 tags:
-  - "various"
+  - 'various'
 techs:
-  - name: "Java"
-  - name: "C#"
-  - name: "Windows Forms"
-  - name: "C"
-  - name: "PHP"
-  - name: "HTML"
-  - name: "Microsoft SQL Server"
+  - name: 'Java'
+  - name: 'C#'
+  - name: 'Windows Forms'
+  - name: 'C'
+  - name: 'PHP'
+  - name: 'HTML'
+  - name: 'Microsoft SQL Server'
 imgs:
-  - file: "up-1.png"
-    alt: "Proyectos de la Universidad: 2 apps de escritorio, 1 MER y 1 diseño de tablas de una base de datos"
+  - file: 'up-1.png'
+    alt: 'Proyectos de la Universidad: 2 apps de escritorio, 1 MER y 1 diseño de tablas de una base de datos'
 size:
   - 1
-  - 2
-desc: "Proyectos universitarios de apps de escritorio y bases de datos, resolviendo desafíos técnicos y de modelado con soluciones sólidas y escalables."
+  - 1
+desc: 'Proyectos universitarios de apps de escritorio y bases de datos, resolviendo desafíos técnicos y de modelado con soluciones sólidas y escalables.'
 ---
 
 Durante mi formación universitaria desarrollé proyectos que me enfrentaron a distintos escenarios ficticios, resolviendo **desafíos técnicos** y de **modelado de datos**. Entre los más relevantes se encuentran:

@@ -122,7 +122,7 @@
                 "faIcon": "fa-solid fa-briefcase"
               },
               "freelance-project": {
-                "title": "Proyecto Freelance",
+                "title": "Trabajo Freelance",
                 "faIcon": "fa-solid fa-handshake"
               },
               "personal-project": {
@@ -137,6 +137,7 @@
             "tags": {
               "web": "Web",
               "web-app": "Web App",
+              "desktop-app": "Desktop App",
               "mobile-app": "Mobile App",
               "api": "API",
               "db": "DB",

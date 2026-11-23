@@ -15,7 +15,7 @@
 */
 export const reassemble = <T extends Record<string, any>, R>(
   object: T,
-  callback: (key: keyof T, current: T[keyof T], index: number) => R
+  callback: (key: keyof T, current: T[keyof T], index: number) => R,
 ): R[] => {
   const result: R[] = []
 

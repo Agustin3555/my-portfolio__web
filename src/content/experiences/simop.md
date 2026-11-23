@@ -1,57 +1,57 @@
 ---
-title: "SIMOP"
-jobPosition: "Full Stack Dev"
-company: "Casa de Gobierno de la Provincia del Chaco"
-startedAt: "2024-11-13"
-type: "job"
+title: 'SIMOP'
+jobPosition: 'Full Stack Dev'
+company: 'Casa de Gobierno de la Provincia del Chaco'
+startedAt: '2024-11-13'
+type: 'job'
 tags:
-  - "web-app"
-  - "api"
-  - "db"
+  - 'web-app'
+  - 'api'
+  - 'db'
 techs:
-  - name: "TypeScript"
-    version: "5.6"
-  - name: "NestJS"
-    version: "10.4"
-  - name: "Prisma"
-    version: "6.2"
-  - name: "MySQL"
+  - name: 'TypeScript'
+    version: '5.6'
+  - name: 'NestJS'
+    version: '10.4'
+  - name: 'Prisma'
+    version: '6.2'
+  - name: 'MySQL'
 
-  - name: "React"
-    version: "19.1"
-  - name: "HTML"
-    version: "5"
-  - name: "CSS"
-    version: "3"
-  - name: "Tanstack Query"
-    version: "5.74"
-  - name: "Tanstack Table"
-    version: "8.21"
-  - name: "React Leaflet"
-    version: "5.0"
-  - name: "Recharts"
-    version: "3.1"
-  - name: "React-pdf"
-    version: "4.3"
-  - name: "Zustand"
-    version: "5.0"
-  - name: "Axios"
-    version: "1.9"
-  - name: "Floating UI"
-    version: "0.27"
-  - name: "Wouter"
-    version: "3.7"
+  - name: 'React'
+    version: '19.1'
+  - name: 'HTML'
+    version: '5'
+  - name: 'CSS'
+    version: '3'
+  - name: 'Tanstack Query'
+    version: '5.74'
+  - name: 'Tanstack Table'
+    version: '8.21'
+  - name: 'React Leaflet'
+    version: '5.0'
+  - name: 'Recharts'
+    version: '3.1'
+  - name: 'React-pdf'
+    version: '4.3'
+  - name: 'Zustand'
+    version: '5.0'
+  - name: 'Axios'
+    version: '1.9'
+  - name: 'Floating UI'
+    version: '0.27'
+  - name: 'Wouter'
+    version: '3.7'
 links:
   repo:
-    host: "github"
-    url: "https://github.com/Agustin3555/simop__web-app"
+    host: 'github'
+    url: 'https://github.com/Agustin3555/simop__web-app'
 imgs:
-  - file: "s-1.png"
-    alt: "SIMOP web app: dashboard de de Obras"
+  - file: 's-1.png'
+    alt: 'SIMOP web app: dashboard de de Obras'
 size:
   - 3
   - 3
-desc: "Sistema modular para centralizar datos de obras públicas, con informes claros y mejoras de eficiencia del 45%, liderando un equipo de 3 devs."
+desc: 'Sistema modular para centralizar datos de obras públicas, con informes claros y mejoras de eficiencia del 45%, liderando un equipo de 3 devs.'
 ---
 
 Desarrollé un **sistema modular** para **centralizar** y gestionar todos los **datos** de las obras públicas, **mejorando** significativamente la **interpretación de la información** y la **calidad de los informes**. Gracias a esta herramienta se **optimizó la eficiencia en un 45%** y se **revelaron inconsistencias** de datos que antes eran difíciles de detectar, impactando directamente en una **mejor toma de decisiones**.

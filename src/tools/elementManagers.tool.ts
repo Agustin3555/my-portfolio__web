@@ -1,11 +1,11 @@
-import { ElementManager } from "@/tools";
+import { ElementManager } from '@/tools'
 
 export const bodyManager = new ElementManager(window.document.body, [
-  "darkMode",
-  "socialNetsLocation",
-]);
+  'darkMode',
+  'socialNetsLocation',
+])
 
 export const hamburgerMenuManager = new ElementManager(
-  window.document.querySelector<HTMLElement>("#hamburger-menu"),
-  ["isOpen"],
-);
+  window.document.querySelector<HTMLElement>('#hamburger-menu'),
+  ['isOpen'],
+)

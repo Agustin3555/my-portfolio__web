@@ -6,22 +6,20 @@ const { levels } = jsonData.pages.home.sections.techs.data
 ---
 
 <fieldset class="levels">
-  {
-    levels.map(({ level, desc }, i) => {
-      const id = `level-${i}`
+  {levels.map(({ level, desc }, i) => {
+    const id = `level-${i}`
 
-      return (
-        <label class="bg card layout" for={id}>
-          <input class="level-toggle" {id} type="checkbox" checked />
-          <div class="group">
-            <span />
-            {level}
-          </div>
-          <p class="text">{desc}</p>
-        </label>
-      )
-    })
-  }
+    return (
+      <label class="bg card layout" for={id}>
+        <input class="level-toggle" {id} type="checkbox" checked />
+        <div class="group">
+          <span />
+          {level}
+        </div>
+        <p class="text">{desc}</p>
+      </label>
+    )
+  })}
 </fieldset>
 
 <script>
@@ -39,8 +37,8 @@ const { levels } = jsonData.pages.home.sections.techs.data
         treeviews.forEach(treeview =>
           treeview.style.setProperty(
             `--level-${index}-opacity`,
-            checked ? '1' : '0.25'
-          )
+            checked ? '1' : '0.25',
+          ),
         )
       }
     })

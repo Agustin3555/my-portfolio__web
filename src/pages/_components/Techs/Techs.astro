@@ -19,6 +19,8 @@ const titles = treeviews.map(item => item.title)
 <Section {...{ sectionKey, title, strong, faIcon }}>
   <Levels />
   <Tabbed id={sectionKey} {titles}>
-    {treeviews.map(item => <Treeview dataNodes={item.techs as DataNode[]} />)}
+    {treeviews.map(item => (
+      <Treeview dataNodes={item.techs as DataNode[]} />
+    ))}
   </Tabbed>
 </Section>
